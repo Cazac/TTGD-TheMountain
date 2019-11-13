@@ -1,0 +1,25 @@
+
+
+      ¡î ¡î ¡î Santa Claus Is Coming to Town ¡î ¡î ¡î
+
+
+Demo game for Moenen-Voxel-Collection. Have fun with it : )
+
+
+This game is a very simple action game. Every once in a while a monster came to the stage, 
+if there were 100 monsters on the stage, the game will over. So the player need to kill 
+these monsters as soon as possible.
+
+
+Please feel free to modify and use the source code and assets in that game, but not sell the game directly.
+
+
+Down load here: http://u3d.as/u5V
+
+
+
+
+
+
+
+

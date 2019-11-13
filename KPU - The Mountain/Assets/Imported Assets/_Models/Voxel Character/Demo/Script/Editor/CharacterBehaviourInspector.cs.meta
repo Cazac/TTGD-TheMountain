@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 51c2e0eb5a903f64398d87cd462eee13
+timeCreated: 1470040468
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - _2L2H_Ani: {fileID: 9100000, guid: f20b3c397d8a7764bb27b787a74421c6, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

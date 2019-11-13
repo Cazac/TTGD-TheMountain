@@ -1,0 +1,109 @@
+fileFormatVersion: 2
+guid: 179a0e1a8d9a7824492ef50d76fc17e9
+timeCreated: 1511172211
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: obsidian
+    100002: plank_jungle
+    100004: plank_spruce
+    100006: //RootNode
+    100008: wool_black
+    100010: wool_dark_gray
+    100012: wool_white
+    400000: obsidian
+    400002: plank_jungle
+    400004: plank_spruce
+    400006: //RootNode
+    400008: wool_black
+    400010: wool_dark_gray
+    400012: wool_white
+    2300000: obsidian
+    2300002: plank_jungle
+    2300004: plank_spruce
+    2300006: wool_black
+    2300008: wool_dark_gray
+    2300010: wool_white
+    3300000: obsidian
+    3300002: plank_jungle
+    3300004: plank_spruce
+    3300006: wool_black
+    3300008: wool_dark_gray
+    3300010: wool_white
+    4300000: obsidian
+    4300002: plank_jungle
+    4300004: plank_spruce
+    4300006: wool_black
+    4300008: wool_dark_gray
+    4300010: wool_white
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
