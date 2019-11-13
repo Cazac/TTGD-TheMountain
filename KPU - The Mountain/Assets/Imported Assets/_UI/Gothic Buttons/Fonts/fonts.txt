@@ -1,0 +1,6 @@
+Fonts used for the heading:
+http://www.dafont.com/rodondo.font?fpp=100&l[]=10&l[]=1&text=Gothic+RPG+Buttons
+http://www.dafont.com/x360.font?fpp=100&l[]=10&l[]=1&text=Gothic+RPG+Buttons
+
+Fonts used for the buttons:
+http://www.dafont.com/final-frontier.font

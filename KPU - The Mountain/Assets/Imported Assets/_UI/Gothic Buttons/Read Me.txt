@@ -1,0 +1,22 @@
+This is version 2 - Methodic Upgrade of Gothic Buttons.
+
+By Methodic, I mean, instead of vector shapes now the buttons are Smart Objects. To edit a Smart Object
+double click on the layer's thumbnail to reveal it's contents.
+
+Resizing by CTRL+T on the selected Smart Object Layer. Be sure to resize the Hover and Active/Pressed state of the
+buttons, together with the Normal state.
+
+Resizing the font should be done with the Photoshop Text tool.
+
+Sliced Images for those of you without a Photoshop. b=Button # is the number, a=Active/Pressed, n=Normal, h=Hover state for
+easier reading.
+
+Going back to Photoshop users:
+When coding you can scale them down. If you think they are small you can resize them by hitting CTRL+T. Just don't exceed the
+original width+height. You can view the original width+height by opening the biggest Smart Object layer e.g. Outer Part in 
+most cases.
+
+Cutting/Extracting a Smart Object can be done by creating an empty layer above the Smart Object (can be bellow too) and merging
+the two. Then Cut and Paste on a new document. You can then remove the background and export as PNG.
+
+PS: I have removed version one so this product can be smaller in size.
