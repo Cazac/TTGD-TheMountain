@@ -60,4 +60,23 @@ public class TM_ButtonController_Title : MonoBehaviour
     }
 
     /////////////////////////////////////////////////////////////////
+
+
+    public void Button_SettingsConfirm()
+    {
+
+    }
+
+    public void Button_SettingsBack()
+    {
+
+    }
+
+    public void Slider_TotalVolume()
+    {
+
+    }
+
+    /////////////////////////////////////////////////////////////////
+
 }
