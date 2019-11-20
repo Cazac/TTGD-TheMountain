@@ -34,21 +34,6 @@ public class TM_TitleScreenController : MonoBehaviour
 
 
 
-    public void Button_SettingsConfirm()
-    {
-
-    }
-
-    public void Button_SettingsBack()
-    {
-
-    }
-
-    public void Slider_TotalVolume()
-    {
-
-    }
-
 
 
 

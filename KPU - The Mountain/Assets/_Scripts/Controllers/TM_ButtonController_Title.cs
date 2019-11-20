@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_ButtonController_Title
+/// 
+/// </summary>
+///////////////
+
 public class TM_ButtonController_Title : MonoBehaviour
 {
     ////////////////////////////////
@@ -58,6 +66,24 @@ public class TM_ButtonController_Title : MonoBehaviour
         //Quit Application
         Application.Quit();
     }
+
+    /////////////////////////////////////////////////////////////////
+
+    public void Button_SettingsConfirm()
+    {
+
+    }
+
+    public void Button_SettingsBack()
+    {
+
+    }
+
+    public void Slider_TotalVolume()
+    {
+
+    }
+
 
     /////////////////////////////////////////////////////////////////
 }

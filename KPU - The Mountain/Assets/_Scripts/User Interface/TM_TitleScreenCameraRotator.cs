@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class rotator : MonoBehaviour
+public class TM_TitleScreenCameraRotator : MonoBehaviour
 {
     public float speed = 5;
 
