@@ -66,7 +66,7 @@ public class TM_CreditsController : MonoBehaviour
         if (Input.GetKey("escape"))
         {
             //Load back into main game
-            SceneManager.LoadScene("TM_TitleScreen");
+            SceneManager.LoadScene("TM_Title");
         }
     }
 

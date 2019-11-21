@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 ///////////////
 /// <summary>
@@ -18,7 +19,9 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     ////////////////////////////////
 
-
+    public GameObject newGame_Panel;
+    public GameObject loadGame_Panel;
+    public GameObject settings_Panel;
 
 
     /////////////////////////////////////////////////////////////////
@@ -40,25 +43,65 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     public void Button_NewGame()
     {
-        //Close All Other Panels
+        //Check if already opened
+        if (newGame_Panel.activeSelf == true)
+        {
+            //Open Settings Panel
+            newGame_Panel.SetActive(false);
+        }
+        else
+        {
+            //Close All Other Panels
 
-        //Check if Settings Should Be Saved With A Confim Prompt? ???
+            //Check if Settings Should Be Saved With A Confim Prompt? ???
 
-        //Open Load Game Panel
+            //Open Settings Panel
+            newGame_Panel.SetActive(true);
+        }
     }
 
     public void Button_LoadGame()
     {
-        //Close All Other Panels
+        //Check if already opened
+        if (loadGame_Panel.activeSelf == true)
+        {
+            //Open Settings Panel
+            loadGame_Panel.SetActive(false);
+        }
+        else
+        {
+            //Close All Other Panels
 
-        //Check if Settings Should Be Saved With A Confim Prompt? ???
 
-        //Open Load Game Panel
+
+            //Open Settings Panel
+            loadGame_Panel.SetActive(true);
+        }
     }
 
     public void Button_Settings()
     {
-        //Open Settings Panel
+        //Check if already opened
+        if (settings_Panel.activeSelf == true)
+        {
+            //Open Settings Panel
+            settings_Panel.SetActive(false);
+        }
+        else
+        {
+            //Close All Other Panels
+
+            //Check if Settings Should Be Saved With A Confim Prompt? ???
+
+            //Open Settings Panel
+            settings_Panel.SetActive(true);
+        }
+    }
+
+    public void Button_Credits()
+    {
+        //Load Credits Scene
+        SceneManager.LoadScene("TM_Credits");
     }
 
     public void Button_Quit()
@@ -84,6 +127,17 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     }
 
+    /////////////////////////////////////////////////////////////////
+
+    public void OpenConfirmDialog_Settings()
+    {
+
+    }
+
+    public void OpenConfirmDialog_DeleteSave()
+    {
+
+    }
 
     /////////////////////////////////////////////////////////////////
 }
