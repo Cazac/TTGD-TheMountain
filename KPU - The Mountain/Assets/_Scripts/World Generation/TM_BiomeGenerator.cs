@@ -131,13 +131,13 @@ public class TM_BiomeGenerator : MonoBehaviour
         }
 
 
-        print("Test Code: " + currentBiomeMap.Length);
+        //print("Test Code: " + currentBiomeMap.Length);
 
         //int nextSize = (int)Mathf.Pow(currentBiomeMap.Length, 2f);
         int nextSize = currentBiomeMap.Length * 4;
         int rowSize = currentBiomeMap.Length * 2;
 
-        print("Test Code: " + nextSize);
+        //print("Test Code: " + nextSize);
 
         nextBiomeMap = new int[nextSize];
         coloredBiomeMap = new int[nextSize];
