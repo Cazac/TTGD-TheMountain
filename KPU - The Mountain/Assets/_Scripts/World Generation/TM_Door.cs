@@ -6,7 +6,10 @@ public class TM_Door : MonoBehaviour
 {
 
 
+    public GameObject doorFrame;
+    public GameObject doorWall;
 
+    public GameObject doorConnectionSpot;
 
 
 }

@@ -106,7 +106,7 @@ public class TM_DungeonGenerator : MonoBehaviour
     {
         print("Test Code: Starting Dungeon Generator");
 
-
+        //Wait for the player to look at the current model
         yield return new WaitForSeconds(generatorWaitSpeed);
 
 
@@ -245,7 +245,14 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     }
 
+    public void SetupRandomGenerator()
+    {
+        int randomValue = Random.Range(0, 100);
 
+        print("Test Code: Generating New Randomizer Using " + randomValue);
+
+        System.Random randomGenerator = new System.Random(randomValue);
+    }
 
     public void SpawnBiomeAreas()
     {

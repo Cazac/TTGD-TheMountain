@@ -7,9 +7,14 @@ public class TM_Room : MonoBehaviour
 {
     public List<TM_Door> doorways_LIST;
 
-    public BoxCollider collider;
+
+    public BoxCollider roomGenerator_BoxCollider;
+
+    public string Biome;
 
     ///////////////////////////////////////////////////////
+
+
 
     private void Awake()
     {
