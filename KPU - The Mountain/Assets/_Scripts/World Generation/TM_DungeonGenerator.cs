@@ -36,9 +36,9 @@ public class TM_DungeonGenerator : MonoBehaviour
     //public List<GameObject> BiomeAreas_List;
 
     [Header("Variables Controlling the Generator")]
-    private int maxRoomAmount = 8;
+    private int maxRoomAmount = 50;
     private int currentRoomAmount = 0;
-    private float generatorWaitSpeed = 1.0f;
+    private float generatorWaitSpeed = 0.2f;
 
     public System.Random seededRandomGen;
 
@@ -54,7 +54,7 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     public IEnumerator GenerateDungeon()
     {
-        print("Test Code: Starting Dungeon Generator");
+        print("Test Code: Starting Dungeon Generator...");
 
         //Wait for the player to look at the current model
         yield return new WaitForSeconds(generatorWaitSpeed);
@@ -65,16 +65,16 @@ public class TM_DungeonGenerator : MonoBehaviour
         //Add doors from the start room
         AddDoorsFromRoom(StartRoom);
 
-
-
         //CHeck for Alloted room count and doors avalible
         while ((currentRoomAmount <= maxRoomAmount) && (AvalibleDoorways_List.Count > 0))
         {
-    
+            //TM_Room oldRoom_SCRIPT = chosenDoor.transform.parent.GetComponent<TM_Room>();       //Owner of the chosen door
+
+
             //Get Random Door
-            int RandomMax_Door = AvalibleDoorways_List.Count;
-            int RandomMin_Door = 0;
-            int RandomValue_Door = Random.Range(RandomMin_Door, RandomMax_Door);
+            int RandomMax_oldDoor = AvalibleDoorways_List.Count;
+            int RandomMin_oldDoor = 0;
+            int RandomValue_oldDoor = Random.Range(RandomMin_oldDoor, RandomMax_oldDoor);
 
             //Get Random Room Prefab
             int RandomMax_Room = SpawnRooms_StoneDungeon_List.Count;
@@ -82,7 +82,7 @@ public class TM_DungeonGenerator : MonoBehaviour
             int RandomValue_Room = Random.Range(RandomMin_Room, RandomMax_Room);
 
             //Choose Door
-            TM_Door oldDoor_SCRIPT = AvalibleDoorways_List[RandomValue_Door];
+            TM_Door oldDoor_SCRIPT = AvalibleDoorways_List[RandomValue_oldDoor];
 
             //Choose Room
             GameObject oldRoom_GO = SpawnRooms_StoneDungeon_List[RandomValue_Room];
@@ -92,19 +92,22 @@ public class TM_DungeonGenerator : MonoBehaviour
             //Instantiate the new room
             GameObject spawnRoom_GO = Instantiate(oldRoom_GO, WorldGen_Parent.transform);
 
-            //Get the Room Scripts from the gameobjects
-            //TM_Room oldRoom_SCRIPT = chosenDoor.transform.parent.GetComponent<TM_Room>();       //Owner of the chosen door
+            //Get the Room Script
             TM_Room spawnRoom_SCRIPT = spawnRoom_GO.GetComponent<TM_Room>();
-            TM_Door spawnDoor_SCRIPT = spawnRoom_SCRIPT.doorways_LIST[0];
 
+            //Get Random Door
+            int RandomMax_spawnDoor = spawnRoom_SCRIPT.doorways_LIST.Count;
+            int RandomMin_spawnDoor = 0;
+            int RandomValue_spawnDoor = Random.Range(RandomMin_spawnDoor, RandomMax_spawnDoor);
 
+            //Choose Door
+            TM_Door spawnDoor_SCRIPT = spawnRoom_SCRIPT.doorways_LIST[RandomValue_spawnDoor];
+
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //Get Connection Dots
             GameObject oldConnectionDot = oldDoor_SCRIPT.doorConnectionSpot;
             GameObject spawnConnectionDot = spawnDoor_SCRIPT.doorConnectionSpot;
-
-
-
 
             //Get starting rotation and flip it 180 to find the wanted rotation
             Vector3 startingRotation = oldConnectionDot.transform.rotation.eulerAngles;
@@ -126,60 +129,65 @@ public class TM_DungeonGenerator : MonoBehaviour
             //Check Colliders
 
 
-            //if ()
-
-
-
-
-            //Add New Doors To pool
-            AddDoorsFromRoom(spawnRoom_GO);
-
-            //Set Active Door Between The 2 Rooms
-            //oldDoor_SCRIPT.doorFrame.SetActive(true);
-            //spawnDoor_SCRIPT.doorWall.SetActive(false);
-
-            //Remove Walls On Doors
-            oldDoor_SCRIPT.doorWall.SetActive(false);
-            spawnDoor_SCRIPT.doorWall.SetActive(false);
-
-            //Remove Connectio Nodes On Doors
-            //oldDoor_SCRIPT.doorConnectionSpot.SetActive(false);
-            //spawnDoor_SCRIPT.doorConnectionSpot.SetActive(false);
-
-            //Remove Doors From Spawn Pool
-            AvalibleDoorways_List.Remove(oldDoor_SCRIPT);
-            AvalibleDoorways_List.Remove(spawnDoor_SCRIPT);
-
-            //Set Frame 1*
-            //Set Walls
-
-   
-
-
-            //          //          // - Randomize the door choice
+            //Wait 2 Frames so that Physics are calculated
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
 
 
 
 
 
-            //          //          // - Next Iteration
 
+            if (spawnRoom_SCRIPT.roomGenerator_BoxCollider.GetComponent<TM_RoomCollider>().hasCollided)
+            {
+                //Try Again?
 
-            //          //          // - Remove Doors
+                //Set Inactive, Destroy Later
+                spawnRoom_GO.SetActive(false);
 
+                //Destory Later
+                //Destroy();
 
+                AvalibleDoorways_List.Remove(oldDoor_SCRIPT);
+            }
+            else
+            {
+                //Add New Doors To pool
+                AddDoorsFromRoom(spawnRoom_GO);
 
-            //Wait for the player to look at the current model
-            yield return new WaitForSeconds(generatorWaitSpeed);
+                //Set Active Door Between The 2 Rooms
+                //oldDoor_SCRIPT.doorFrame.SetActive(true);
+                //spawnDoor_SCRIPT.doorWall.SetActive(false);
 
-            //Add a room to the counter
-            currentRoomAmount++;
+                //Remove Walls On Doors
+                oldDoor_SCRIPT.doorWall.SetActive(false);
+                spawnDoor_SCRIPT.doorWall.SetActive(false);
+
+                //Remove Connectio Nodes On Doors
+                //oldDoor_SCRIPT.doorConnectionSpot.SetActive(false);
+                //spawnDoor_SCRIPT.doorConnectionSpot.SetActive(false);
+
+                //Remove Doors From Spawn Pool
+                AvalibleDoorways_List.Remove(oldDoor_SCRIPT);
+                AvalibleDoorways_List.Remove(spawnDoor_SCRIPT);
+
+                //Wait for the player to look at the current model (DEBUG)
+                yield return new WaitForSeconds(generatorWaitSpeed);
+
+                //Add a room to the counter
+                currentRoomAmount++;
+            }
         }
 
+        //Generate Hallways
 
+        //Remove Remaining Doors
         SealRemainingDoors();
 
-        print("Test Code: Dungeon Generator Has Finished");
+        //Removed Disabled Rooms
+        RemoveDisabledRooms();
+
+        print("Test Code: ...Dungeon Generator Has Finished");
 
         //Return Out Of IEnum
         yield return null;
@@ -216,6 +224,20 @@ public class TM_DungeonGenerator : MonoBehaviour
 
             //Add To Sealed door list ???
 
+        }
+    }
+
+    private void RemoveDisabledRooms()
+    {
+        //Loop All Spawned Rooms
+        foreach (Transform disabledRoom in WorldGen_Parent.transform)
+        {
+            //Look For Disabled Rooms
+            if (disabledRoom.gameObject.activeSelf == false)
+            {
+                //Destroy Them
+                Destroy(disabledRoom.gameObject);
+            }
         }
     }
 
