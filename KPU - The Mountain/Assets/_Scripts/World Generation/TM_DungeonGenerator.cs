@@ -36,7 +36,7 @@ public class TM_DungeonGenerator : MonoBehaviour
     //public List<GameObject> BiomeAreas_List;
 
     [Header("Variables Controlling the Generator")]
-    private int maxRoomAmount = 50;
+    private int maxRoomAmount = 10;
     private int currentRoomAmount = 0;
     private float generatorWaitSpeed = 0.2f;
 
@@ -140,10 +140,25 @@ public class TM_DungeonGenerator : MonoBehaviour
 
             if (spawnRoom_SCRIPT.roomGenerator_BoxCollider.GetComponent<TM_RoomCollider>().hasCollided)
             {
+                //print("Test Code: Collision");
+
+                yield return new WaitForSeconds(generatorWaitSpeed);
+
                 //Try Again?
 
                 //Set Inactive, Destroy Later
                 spawnRoom_GO.SetActive(false);
+
+                //Set Wall On Door
+                oldDoor_SCRIPT.doorWall.SetActive(true);
+
+                //Remove Door Frame
+                oldDoor_SCRIPT.doorFrame.SetActive(false);
+                oldDoor_SCRIPT.door.SetActive(false);
+
+                //Remove Connection Nodes
+                oldDoor_SCRIPT.doorConnectionSpot.SetActive(false);
+
 
                 //Destory Later
                 //Destroy();
@@ -152,24 +167,28 @@ public class TM_DungeonGenerator : MonoBehaviour
             }
             else
             {
+                //print("Test Code: No Collision");
+
                 //Add New Doors To pool
                 AddDoorsFromRoom(spawnRoom_GO);
 
-                //Set Active Door Between The 2 Rooms
-                //oldDoor_SCRIPT.doorFrame.SetActive(true);
-                //spawnDoor_SCRIPT.doorWall.SetActive(false);
+                //Remove Active Door Between The 2 Rooms
+                spawnDoor_SCRIPT.door.SetActive(false);
 
                 //Remove Walls On Doors
                 oldDoor_SCRIPT.doorWall.SetActive(false);
                 spawnDoor_SCRIPT.doorWall.SetActive(false);
 
                 //Remove Connectio Nodes On Doors
-                //oldDoor_SCRIPT.doorConnectionSpot.SetActive(false);
-                //spawnDoor_SCRIPT.doorConnectionSpot.SetActive(false);
+                oldDoor_SCRIPT.doorConnectionSpot.SetActive(false);
+                spawnDoor_SCRIPT.doorConnectionSpot.SetActive(false);
 
                 //Remove Doors From Spawn Pool
                 AvalibleDoorways_List.Remove(oldDoor_SCRIPT);
                 AvalibleDoorways_List.Remove(spawnDoor_SCRIPT);
+
+                //Setup Room
+                Room_SetTheme(spawnRoom_SCRIPT);
 
                 //Wait for the player to look at the current model (DEBUG)
                 yield return new WaitForSeconds(generatorWaitSpeed);
@@ -215,8 +234,9 @@ public class TM_DungeonGenerator : MonoBehaviour
             //Set Wall On Door
             door.doorWall.SetActive(true);
 
-            //Remove Door Frame
+            //Remove Door Frame / Door
             door.doorFrame.SetActive(false);
+            door.door.SetActive(false);
 
             //Remove Connection Nodes
             door.doorConnectionSpot.SetActive(false);
@@ -253,6 +273,54 @@ public class TM_DungeonGenerator : MonoBehaviour
 
         //How to use
         //int newNumber = seededRandomGen.Next(0, 100);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Room_SetTheme(TM_Room newRoom)
+    {
+        //Get Random Theme
+        int RandomMax_Theme = newRoom.themes_LIST.Count;
+        int RandomMin_Theme = 0;
+        int RandomValue_Theme = Random.Range(RandomMin_Theme, RandomMax_Theme);
+
+        //Choose Theme
+        TM_Theme selectedTheme_Script = newRoom.themes_LIST[RandomValue_Theme];
+
+        //Activate Theme Gameobejct
+        selectedTheme_Script.gameObject.SetActive(true);
+
+        //Set Nodes
+        Room_SetLootNodes(selectedTheme_Script);
+        Room_SetChestNodes();
+        Room_SetResourceNodes();
+        Room_SetMonsterNodes();
+    }
+
+    public void Room_SetLootNodes(TM_Theme theme)
+    {
+        foreach (Transform nodeTransform in theme.LootNodes_Parent.transform)
+        {
+            TM_LootNode lootNode = nodeTransform.gameObject.GetComponent<TM_LootNode>();
+
+            //DEBUG REMOVAL
+            nodeTransform.gameObject.SetActive(false);
+        }
+    }
+
+    public void Room_SetChestNodes()
+    {
+
+    }
+
+    public void Room_SetResourceNodes()
+    {
+
+    }
+
+    public void Room_SetMonsterNodes()
+    {
+
     }
 
     ///////////////////////////////////////////////////////

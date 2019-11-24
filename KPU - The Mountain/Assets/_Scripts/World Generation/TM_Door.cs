@@ -5,7 +5,7 @@ using UnityEngine;
 public class TM_Door : MonoBehaviour
 {
 
-
+    public GameObject door;
     public GameObject doorFrame;
     public GameObject doorWall;
 
