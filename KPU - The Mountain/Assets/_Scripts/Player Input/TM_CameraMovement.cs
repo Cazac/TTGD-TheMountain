@@ -22,7 +22,7 @@ public class TM_CameraMovement : MonoBehaviour
     [Header("Mouse Controls")]
     private Vector2 defaultLookLimits = new Vector2(-90f, 90f);
     private Vector2 lookAngles;
-    private Vector2 currentMouseLook;
+    //private Vector2 currentMouseLook;
     private float currentRollAngle;
 
     //private int lastLookFrame;
@@ -39,34 +39,21 @@ public class TM_CameraMovement : MonoBehaviour
 
     private void Update()
     {
-        //Toggle Mouse Lock
-        CheckForCameraToggle();
-
         //Look around with camera
         MoveCamera();
     }
 
-    ///////////////////////////////////////////////////////
 
-    private void CheckForCameraToggle()
-    {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
-        }
-    }
 
     ///////////////////////////////////////////////////////
 
     private void MoveCamera()
     {
+        if (Cursor.lockState == CursorLockMode.None)
+        {
+            return;
+        }
+
         //Get Mouse Speeds
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");

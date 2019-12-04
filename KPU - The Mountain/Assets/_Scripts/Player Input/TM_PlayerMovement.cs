@@ -68,23 +68,7 @@ public class TM_PlayerMovement : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    private void CheckForCameraUnlock()
-    {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SetCameraLock_Off();
-        }
-    }
-
-    private void SetCameraLock_On()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void SetCameraLock_Off()
-    {
-        Cursor.lockState = CursorLockMode.None;
-    }
+    
 
     ///////////////////////////////////////////////////////
 
