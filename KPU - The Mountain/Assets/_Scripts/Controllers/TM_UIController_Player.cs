@@ -78,6 +78,15 @@ public class TM_UIController_Player : MonoBehaviour
         //Load Title Screen
 
 
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+
+        //Quit Application
+        Application.Quit();
+
     }
 
     ///////////////////////////////////////////////////////
@@ -97,6 +106,7 @@ public class TM_UIController_Player : MonoBehaviour
                 gameState_IsPasued = false;
                 Time.timeScale = 1;
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
@@ -105,6 +115,7 @@ public class TM_UIController_Player : MonoBehaviour
                 gameState_IsPasued = true;
                 Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
