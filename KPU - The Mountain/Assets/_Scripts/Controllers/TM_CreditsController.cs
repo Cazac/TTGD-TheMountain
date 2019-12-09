@@ -77,8 +77,6 @@ public class TM_CreditsController : MonoBehaviour
         //Wait before starting the slideshow
         yield return new WaitForSeconds(animatorDelay);
 
-        print("Test Code: BLANK");
-
         //Play Credits Slideshow
         CreditsAnimator.Play("Play");
     }
