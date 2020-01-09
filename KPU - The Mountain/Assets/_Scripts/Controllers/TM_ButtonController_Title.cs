@@ -106,6 +106,12 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     public void Button_Quit()
     {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+
         //Quit Application
         Application.Quit();
     }

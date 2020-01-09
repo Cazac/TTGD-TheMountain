@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Node LootTable
+  m_EditorClassIdentifier: Assembly-CSharp::TC_NodeLootTable_SO
+  minValues_list: 050000000a000000
+  maxValues_list: 050000000a000000
+  chanceValues_list: 0600000005000000
+  percentValues_list:
+  - 54.545456
+  - 45.454544
+  PrefabValues_list:
+  - {fileID: 122520, guid: 085bcf27a35c8de46bc8c5c3deeb6cd5, type: 3}
+  - {fileID: 1889659231822248, guid: 3080b65eb4ce241f5b246839f9d29935, type: 3}
+  items: []

@@ -7,7 +7,7 @@ public class TM_RoomCollider : MonoBehaviour
 
     public bool hasCollided = false;
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         hasCollided = true;
     }

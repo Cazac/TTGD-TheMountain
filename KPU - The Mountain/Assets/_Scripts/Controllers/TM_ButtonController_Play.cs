@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 ///////////////
 /// <summary>
@@ -20,12 +21,16 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-
-
     public GameObject charecterNew_Panel;
     public GameObject charecterLoad_Panel;
 
+    ///////////////////////////////////////////////////////
 
+    public void Button_Load_Play()
+    {
+        //Load Game Scene
+        SceneManager.LoadScene("TM_Game");
+    }
 
     public void Button_SaveSlot(int saveSlot)
     {
@@ -85,6 +90,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     }
 
+    ///////////////////////////////////////////////////////
 
     private void LoadCharecterSheet_New()
     {
@@ -96,12 +102,5 @@ public class TM_ButtonController_Play : MonoBehaviour
         print("Test Code: Old Charecter - " + saveData);
     }
 
-
-
-    private void Awake()
-    {
-        
-    }
-
-
+    ///////////////////////////////////////////////////////
 }
