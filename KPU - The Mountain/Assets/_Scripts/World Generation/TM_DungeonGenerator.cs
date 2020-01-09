@@ -130,6 +130,8 @@ public class TM_DungeonGenerator : MonoBehaviour
 
 
             //Wait 2 Frames so that Physics are calculated
+
+            //Physics.Simulate();
             yield return new WaitForEndOfFrame();
             yield return new WaitForEndOfFrame();
 

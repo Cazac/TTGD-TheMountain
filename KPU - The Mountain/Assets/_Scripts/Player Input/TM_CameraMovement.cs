@@ -35,6 +35,7 @@ public class TM_CameraMovement : MonoBehaviour
     {
         //Turn On Camera Lock
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Update()

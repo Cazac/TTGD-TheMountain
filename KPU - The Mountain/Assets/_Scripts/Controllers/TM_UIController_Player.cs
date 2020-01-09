@@ -51,6 +51,7 @@ public class TM_UIController_Player : MonoBehaviour
         gameState_IsPasued = false;
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void Button_Pause_Settings()
@@ -134,6 +135,7 @@ public class TM_UIController_Player : MonoBehaviour
 
 
                 Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
             }
             else
             {
@@ -149,6 +151,7 @@ public class TM_UIController_Player : MonoBehaviour
 
 
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
