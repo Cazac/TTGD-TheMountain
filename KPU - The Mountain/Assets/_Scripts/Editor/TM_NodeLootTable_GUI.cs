@@ -4,9 +4,19 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_NodeLootTable_GUI is a custom GUI to showcase a Scriptable Object.
+/// 
+/// </summary>
+///////////////
+
 [CustomEditor(typeof(TC_NodeLootTable_SO))]
 public class TM_NodeLootTable_GUI : Editor
 {
+    ////////////////////////////////
+
     [SerializeField]
     int lootTableCount = 0;
 
@@ -25,6 +35,7 @@ public class TM_NodeLootTable_GUI : Editor
     [SerializeField]
     List<GameObject> PrefabValues_list = new List<GameObject>();
 
+    /////////////////////////////////////////////////////////////////
 
     public override void OnInspectorGUI()
     {
@@ -213,4 +224,6 @@ public class TM_NodeLootTable_GUI : Editor
 
     */
     }
+
+    /////////////////////////////////////////////////////////////////
 }

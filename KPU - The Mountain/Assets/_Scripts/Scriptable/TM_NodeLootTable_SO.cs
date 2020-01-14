@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_NodeLootTable_GUI is a custom GUI to showcase a Scriptable Object.
+/// 
+/// </summary>
+///////////////
+
 [CreateAssetMenu(fileName = "Node LootTable", menuName = "Scriptable Objects/Node LootTable")]
 public class TC_NodeLootTable_SO : ScriptableObject
 {
+    ////////////////////////////////
 
     public List<int> minValues_list = new List<int>();
     public List<int> maxValues_list = new List<int>();
@@ -12,15 +21,10 @@ public class TC_NodeLootTable_SO : ScriptableObject
     public List<float> percentValues_list = new List<float>();
     public List<GameObject> PrefabValues_list = new List<GameObject>();
 
-
-
-
     [Header("Banner ID")]
     public List<string> items;
 
-    //public List<float>
-
-
+    /////////////////////////////////////////////////////////////////
 
     public void SelectLootItem()
     {
@@ -55,4 +59,5 @@ public class TC_NodeLootTable_SO : ScriptableObject
 
     }
 
+    /////////////////////////////////////////////////////////////////
 }

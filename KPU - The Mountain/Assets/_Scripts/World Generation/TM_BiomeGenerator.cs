@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+///////////////
+/// <summary>
+///     
+/// TM_BiomeGenerator 
+/// 
+/// </summary>
+///////////////
+
 public class TM_BiomeGenerator : MonoBehaviour
 {
     ////////////////////////////////
@@ -15,16 +23,14 @@ public class TM_BiomeGenerator : MonoBehaviour
     public GameObject BiomeSpawn_Prefab;
     public GridLayoutGroup gridLayout;
 
-
     private int currentIteration;
     private int[] currentBiomeMap;
     private int[] nextBiomeMap;
     private int[] coloredBiomeMap;
 
-
     ///////////////////////////////////////////////////////
 
-    void Awake()
+    private void Awake()
     {
         CreateDefaultBiome();
 
@@ -38,10 +44,7 @@ public class TM_BiomeGenerator : MonoBehaviour
         Expand();
     }
 
-
     ///////////////////////////////////////////////////////
-
-
 
     private void CreateDefaultBiome()
     {
@@ -219,7 +222,7 @@ public class TM_BiomeGenerator : MonoBehaviour
         yield break;
     }
 
-
+    ///////////////////////////////////////////////////////
 
     private void CheckForValidValue()
     {
@@ -263,14 +266,11 @@ public class TM_BiomeGenerator : MonoBehaviour
         return FinalValue;
     }
 
-
-
     private void Expand()
     {
         
 
     }
-
 
     ///////////////////////////////////////////////////////
 }

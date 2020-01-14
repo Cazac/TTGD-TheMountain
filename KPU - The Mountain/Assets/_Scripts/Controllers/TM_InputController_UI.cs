@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_InputController_UI is used to search for keyboard input keys to use the basic UI menus.
+/// This does not include the Item interaction menus.
+/// 
+/// </summary>
+///////////////
+
 public class TM_InputController_UI : MonoBehaviour
 {
+    ////////////////////////////////
+
+    public static TM_InputController_UI Instance;
+
+    ////////////////////////////////
 
     public GameObject PauseMenu_Panel;
     public GameObject InventoryMenu_Panel;
@@ -14,21 +28,20 @@ public class TM_InputController_UI : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    private void Update()
+    private void Awake()
     {
-
-
-        LookForMenuKey_Pause();
-
-        LookForMenuKey_Inventory();
-
-
-        LookForMenuKeyEquipment();
+        //Set Static Singleton Self Refference
+        Instance = this;
     }
 
-    ///////////////////////////////////////////////////////
-
-
+    private void Update()
+    {
+        //Search for keys
+        LookForMenuKey_Pause();
+        LookForMenuKey_Inventory();
+        LookForMenuKey_Equipment();
+        LookForMenuKey_Notes();
+    }
 
     ///////////////////////////////////////////////////////
 
@@ -67,7 +80,7 @@ public class TM_InputController_UI : MonoBehaviour
         }
     }
 
-    private void LookForMenuKeyEquipment()
+    private void LookForMenuKey_Equipment()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -81,21 +94,6 @@ public class TM_InputController_UI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
 
-
-        }
-    }
-
-    private void LookForMenuKey_Interact()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            //Look For Colliders To Interact with
-
-        }
-
-        if (Input.GetKey(KeyCode.F))
-        {
-            //Look For Colliders To Interact with
 
         }
     }

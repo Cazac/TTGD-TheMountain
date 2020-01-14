@@ -6,7 +6,7 @@ using UnityEngine.UI;
 ///////////////
 /// <summary>
 ///     
-/// TM_Room 
+/// TM_Room is used to hold info on spawned room in the dungeon.
 /// 
 /// </summary>
 ///////////////
@@ -27,5 +27,5 @@ public class TM_Room : MonoBehaviour
     [Header("World Gen Biome")]
     public string Biome;
 
-    ///////////////////////////////////////////////////////
+    ////////////////////////////////
 }

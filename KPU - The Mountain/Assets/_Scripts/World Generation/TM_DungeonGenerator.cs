@@ -5,7 +5,7 @@ using UnityEngine;
 ///////////////
 /// <summary>
 ///     
-/// TM_DungeonGenerator 
+/// TM_DungeonGenerator is used the generate the TM_Rooms and connect them to each other using the TM_BiomeGenerator values.
 /// 
 /// </summary>
 ///////////////
@@ -14,7 +14,7 @@ public class TM_DungeonGenerator : MonoBehaviour
 {
     ////////////////////////////////
 
-    //Set as Controller?
+    public static TM_DungeonGenerator Instance;
 
     ////////////////////////////////
 
@@ -46,6 +46,9 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     private void Awake()
     {
+        //Set Static Singleton Self Refference
+        Instance = this;
+    
         //Start the Debug Dungeon Generator
         StartCoroutine(GenerateDungeon()); 
     }

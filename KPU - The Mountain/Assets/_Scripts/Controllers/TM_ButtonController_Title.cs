@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 ///////////////
 /// <summary>
 ///     
-/// TM_ButtonController_Title
+/// TM_ButtonController_Title is used the control the main buttons in the main menu of the game
 /// 
 /// </summary>
 ///////////////
@@ -15,7 +15,7 @@ public class TM_ButtonController_Title : MonoBehaviour
 {
     ////////////////////////////////
 
-    public static TM_ButtonController_Title Instance { set; get; }
+    public static TM_ButtonController_Title Instance;
 
     ////////////////////////////////
 
@@ -23,19 +23,11 @@ public class TM_ButtonController_Title : MonoBehaviour
     public GameObject loadGame_Panel;
     public GameObject settings_Panel;
 
-
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
     {
-        SetSingleton();
-    }
-
-    /////////////////////////////////////////////////////////////////
-
-    private void SetSingleton()
-    {
-        //Set Static Self Refference
+        //Set Static Singleton Self Refference
         Instance = this;
     }
 

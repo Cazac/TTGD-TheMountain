@@ -6,13 +6,17 @@ using UnityEngine.SceneManagement;
 ///////////////
 /// <summary>
 ///     
-/// TM_CreditsController 
+/// TM_CreditsController controls the credits sequence at the end of the game or though the menu.
 /// 
 /// </summary>
 ///////////////
 
 public class TM_CreditsController : MonoBehaviour
 {
+    ////////////////////////////////
+
+    public static TM_CreditsController Instance;
+
     ////////////////////////////////
 
     [Header("Canvas Credits Gameobject Animator")]
@@ -24,6 +28,12 @@ public class TM_CreditsController : MonoBehaviour
     private int animatorSpeed_Regular = 1;
 
     ///////////////////////////////////////////////////////
+
+    private void Awake()
+    {
+        //Set Static Singleton Self Refference
+        Instance = this;
+    }
 
     private void Start()
     {

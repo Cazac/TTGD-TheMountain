@@ -17,12 +17,20 @@ public class TM_ButtonController_Play : MonoBehaviour
 {
     ////////////////////////////////
 
-    public static TM_ButtonController_Play Instance { set; get; }
+    public static TM_ButtonController_Play Instance;
 
     ////////////////////////////////
 
     public GameObject charecterNew_Panel;
     public GameObject charecterLoad_Panel;
+
+    ///////////////////////////////////////////////////////
+
+    private void Awake()
+    {
+        //Set Static Singleton Self Refference
+        Instance = this;
+    }
 
     ///////////////////////////////////////////////////////
 
