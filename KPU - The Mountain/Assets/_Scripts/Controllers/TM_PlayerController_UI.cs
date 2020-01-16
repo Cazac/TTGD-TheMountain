@@ -109,16 +109,31 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     public void Action_Fire_OpenUI()
     {
+        //Tunr On Panel
         Fire_Panel.SetActive(true);
 
+        //Enable Mouse
+        UnlockMouse();
+
+  
+
         //Load Stuff
+
     }
 
     public void Action_Fire_CloseUI()
     {
+        //Tunr Off Panel
         Fire_Panel.SetActive(false);
 
+        //Disable Mouse
+        LockMouse();
+
+
+
         //Load Stuff
+
+
     }
 
     public void Action_Workbench_OpenUI()
@@ -139,8 +154,7 @@ public class TM_PlayerController_UI : MonoBehaviour
                 PauseMenu_Panel.SetActive(false);
                 gameState_IsPasued = false;
                 Time.timeScale = 1;
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                LockMouse();
             }
             else
             {
@@ -148,8 +162,7 @@ public class TM_PlayerController_UI : MonoBehaviour
                 PauseMenu_Panel.SetActive(true);
                 gameState_IsPasued = true;
                 Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                UnlockMouse();
             }
         }
     }
@@ -162,29 +175,16 @@ public class TM_PlayerController_UI : MonoBehaviour
             {
                 //Close Panel
                 PlayerMenu_Panel.SetActive(false);
-
-
                 gameState_IsMenu = false;
-
-
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                LockMouse();
             }
             else
             {
                 //Open Panel
                 PlayerMenu_Panel.SetActive(true);
-
-                InventoryMenu_Panel.SetActive(true);
-                InventoryMenu_Panel.SetActive(true);
-                InventoryMenu_Panel.SetActive(true);
-
-
                 gameState_IsMenu = true;
-
-
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                //InventoryMenu_Panel.SetActive(true);
+                UnlockMouse();
             }
         }
     }
@@ -220,6 +220,34 @@ public class TM_PlayerController_UI : MonoBehaviour
             //Look For Colliders To Interact with
 
         }
+    }
+
+    ///////////////////////////////////////////////////////
+    
+    public void LockMouse()
+    {
+        //Hide Cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        //Enable Movement
+        TM_PlayerController_Movement.Instance.canPlayerMove = true;
+
+        //Disable Interaction UI
+        TM_InteractionController.Instance.playerInteraction_Text.gameObject.SetActive(true);
+    }
+
+    public void UnlockMouse()
+    {
+        //Allow Cusror to show
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        //Disable Movement
+        TM_PlayerController_Movement.Instance.canPlayerMove = false;
+
+        //Disable Interaction UI
+        TM_InteractionController.Instance.playerInteraction_Text.gameObject.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////

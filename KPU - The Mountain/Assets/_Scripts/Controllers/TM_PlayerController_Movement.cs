@@ -17,6 +17,11 @@ public class TM_PlayerController_Movement : MonoBehaviour
     public static TM_PlayerController_Movement Instance;
 
     ////////////////////////////////
+    
+    [Header("Player Able To Move")]
+    public bool canPlayerMove;
+
+    ////////////////////////////////
 
     [Header("Player Speeds")]
     private float defaultSpeed = 5f;
@@ -45,12 +50,20 @@ public class TM_PlayerController_Movement : MonoBehaviour
         //Set Static Singleton Self Refference
         Instance = this;
 
+        //Allow Movement
+        canPlayerMove = true;
+
         //Get Charecter Controller
         player_CC = gameObject.GetComponent<CharacterController>();
     }
 
     private void Update()
     {
+        if (canPlayerMove == false)
+        {
+            return;
+        }
+
         //Set Speed Values
         PlayerCrouch();
         PlayerSprint();

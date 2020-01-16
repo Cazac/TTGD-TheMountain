@@ -16,7 +16,7 @@ public class TM_InteractableObject_HomeFire : MonoBehaviour, TM_InteractableObje
     
     public float maxRange { get { return MAXRANGE; } }
 
-    private const float MAXRANGE = 50f;
+    private const float MAXRANGE = 40f;
 
     ///////////////////////////////////////////////////////
 
@@ -39,12 +39,12 @@ public class TM_InteractableObject_HomeFire : MonoBehaviour, TM_InteractableObje
 
     public void OnInteractHold()
     {
-        print("Test Code: HOlding");
+        return;
     }
 
     public void OnInteractEndHold()
     {
-        //print("Test Code: End HOld");
+        return;
     }
 
     public void OnEndHover()

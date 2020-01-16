@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 ///////////////
 /// <summary>
@@ -26,9 +27,11 @@ public class TM_InteractionController : MonoBehaviour
     private Camera raycastCamera;
     private TM_InteractableObject_Base currentTarget;
 
-    [Header("Interaction Text")]
+    [Header("Interaction Gameobjects")]
     public TextMeshProUGUI playerInteraction_Text;
- 
+    public Image playerInteraction_Icon;
+    public GameObject playerInteractionDot;
+
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
