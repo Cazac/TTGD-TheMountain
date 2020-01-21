@@ -43,7 +43,7 @@ public class TM_InputController_UI : MonoBehaviour
         LookForMenuKey_Notes();
     }
 
-    ///////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////// - Menus
 
     private void LookForMenuKey_Pause()
     {
@@ -95,6 +95,42 @@ public class TM_InputController_UI : MonoBehaviour
         {
 
 
+        }
+    }
+
+    /////////////////////////////////////////////////////// - Toolbar
+
+    private void LookForMouseScroll_Toolbar()
+    {
+
+    }
+
+    private void LookForSwapKey_Toolbar()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_InputKey(1);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_InputKey(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_InputKey(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_InputKey(4);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_InputKey(5);
         }
     }
 
