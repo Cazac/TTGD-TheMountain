@@ -16,11 +16,12 @@ MonoBehaviour:
     type: 3}
   dropped_Prefab: {fileID: 8549683135584501830, guid: 21a8060adc1657942adf2e1b74650ee9,
     type: 3}
-  name: Apple
-  desc: This is an apple.
-  icon: {fileID: 21300000, guid: 83a9225c890ac7448997423a580fc1bb, type: 3}
+  itemName: Apple
+  itemDesc: This is an apple.
+  itemIcon: {fileID: 21300000, guid: 83a9225c890ac7448997423a580fc1bb, type: 3}
   maxDurablity: 0
   currentDurablity: 0
   maxStackSize: 20
+  currentStackSize: 6
   hunger: 10
   health: 5
