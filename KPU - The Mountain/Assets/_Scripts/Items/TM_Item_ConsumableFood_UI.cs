@@ -14,52 +14,45 @@ public class TM_Item_ConsumableFood_UI : TM_ItemUI_Base
 {
     ////////////////////////////////
 
-    public Sprite itemIcon;
+    public TM_Item_ConsumableFood_SO originalScriptableItem;
 
-    public Sprite ItemIcon { get => itemIcon; set => itemIcon = ItemIcon; }
+    ////////////////////////////////
 
+    public string ItemName { get; set; }
+    public string ItemDesc { get; set; }
+    public Sprite ItemIcon { get; set; }
+    public int MaxDurablity { get; set; }
+    public int CurrentDurablity { get; set; }
+    public int MaxStackSize { get; set; }
+    public int CurrentStackSize { get; set; }
 
+    ////////////////////////////////
+
+    [Header("Item Stats (Consumable Food)")]
+    public string hunger;
+    public string health;
 
     ///////////////////////////////////////////////////////
 
-    public void Dropped_PickupObject()
+    public TM_Item_ConsumableFood_UI(TM_Item_ConsumableFood_SO scriptableItem)
     {
-        throw new System.NotImplementedException();
-    }
+        //Set Original Scriptable Object
+        originalScriptableItem = scriptableItem;
 
-    public void Placed_PickupObject()
-    {
-        throw new System.NotImplementedException();
-    }
+        //Interface Stats
+        ItemName = originalScriptableItem.itemName;
+        ItemDesc = originalScriptableItem.itemDesc;
+        ItemIcon = originalScriptableItem.itemIcon;
 
-    public void UI_DropObject()
-    {
-        throw new System.NotImplementedException();
-    }
+        MaxDurablity = originalScriptableItem.maxDurablity;
+        CurrentDurablity = originalScriptableItem.currentDurablity;
+        MaxStackSize = originalScriptableItem.maxStackSize;
+        CurrentStackSize = originalScriptableItem.currentStackSize;
 
-    public void UI_PickupObject()
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public void UI_PlaceObject()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UI_SplitStackObject_Multi()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UI_SplitStackObject_Single()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void UI_StackMoveObject()
-    {
-        throw new System.NotImplementedException();
+        //Others
+        hunger = originalScriptableItem.hunger;
+        health = originalScriptableItem.health;
     }
 
     ///////////////////////////////////////////////////////

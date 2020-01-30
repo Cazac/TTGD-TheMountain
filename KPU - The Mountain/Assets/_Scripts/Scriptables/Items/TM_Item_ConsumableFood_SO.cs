@@ -23,14 +23,15 @@ public class TM_Item_ConsumableFood_SO : ScriptableObject
     //////////////////////////////// - Consumable Food Stats
 
     [Header("Item Descriptions")]
-    public string name;
-    public string desc;
-    public Sprite icon;
+    public string itemName;
+    public string itemDesc;
+    public Sprite itemIcon;
 
     [Header("Item UI Info")]
     public int maxDurablity;
     public int currentDurablity;
     public int maxStackSize;
+    public int currentStackSize;
 
     ////////////////////////////////
 
@@ -56,9 +57,9 @@ public class TM_Item_ConsumableFood_SO : ScriptableObject
         TM_Item_ConsumableFood_Placed SpawnedItem_Script = spawnedItem.GetComponent<TM_Item_ConsumableFood_Placed>();
 
         //Construct Values
-        SpawnedItem_Script.name = name;
-        SpawnedItem_Script.desc = desc;
-        SpawnedItem_Script.stackSize = maxStackSize;
+        SpawnedItem_Script.name = itemName;
+        SpawnedItem_Script.desc = itemDesc;
+        SpawnedItem_Script.StackSize = maxStackSize;
         SpawnedItem_Script.hunger = hunger;
         SpawnedItem_Script.health = health;
 

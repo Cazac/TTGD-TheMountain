@@ -19,7 +19,7 @@ public class TM_Item_ConsumableFood_Placed : MonoBehaviour, TM_ItemUI_Base, TM_I
     public string name;
     public string desc;
 
-    public int stackSize;
+    private int stackSize;
 
     [Header("Item Stats")]
     public string hunger;
@@ -28,6 +28,17 @@ public class TM_Item_ConsumableFood_Placed : MonoBehaviour, TM_ItemUI_Base, TM_I
     public float maxRange => throw new System.NotImplementedException();
 
     public Sprite ItemIcon { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int maxDurablity { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int MaxDurablity { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int currentDurablity { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int CurrentDurablity { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int maxStackSize { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int MaxStackSize { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int currentStackSize { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int CurrentStackSize { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public int StackSize { get => stackSize; set => stackSize = value; }
+    public string ItemName { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public string ItemDesc { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
 
 

@@ -57,12 +57,12 @@ public class TM_CursorController : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public TM_Item_ConsumableFood_SO Cursor_GetItem()
+    public TM_ItemUI_Base Cursor_GetItem()
     {
         return cursorItemSlot.currentItem;
     }
 
-    public void Cursor_SetItem(TM_Item_ConsumableFood_SO item)
+    public void Cursor_SetItem(TM_ItemUI_Base item)
     {
         gameObject.GetComponent<TM_ItemSlot_Basic>().ItemSlot_SetItem(item);
     }

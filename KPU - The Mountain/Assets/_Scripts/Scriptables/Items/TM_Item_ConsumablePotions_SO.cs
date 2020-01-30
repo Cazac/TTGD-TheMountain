@@ -49,7 +49,7 @@ public class TM_Item_ConsumablePotions_SO : ScriptableObject
         //Construct Values
         SpawnedItem_Script.name = name;
         SpawnedItem_Script.desc = desc;
-        SpawnedItem_Script.stackSize = stackSize;
+        SpawnedItem_Script.StackSize = stackSize;
 
     }
 

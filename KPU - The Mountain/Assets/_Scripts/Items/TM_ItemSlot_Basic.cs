@@ -18,12 +18,15 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
     ////////////////////////////////
 
     [Header("Cursor Settings")]
-    public bool isCursorItem;
+    public bool isCursorSlot;
+    public bool isInventorySlot;
+    public bool isToolbarSlot;
+    public bool isContainerSlot;
 
     ////////////////////////////////
 
     [Header("Current Item Selected")]
-    public TM_Item_ConsumableFood_SO currentItem;
+    public TM_ItemUI_Base currentItem;
 
     ////////////////////////////////
 
@@ -32,6 +35,7 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     [Header("Slot Durablity")]
     public GameObject slotDurablityBar_GO;
+    public Image slotDurablityFillBar_Image;
 
     [Header("Slot Stack Size")]
     public GameObject slotStackSize_GO;
@@ -39,40 +43,20 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     ////////////////////////////////
 
-    public TM_ItemUI_Base currentSlotItem;
+    //public TM_ItemUI_Base currentSlotItem;
 
     ///////////////////////////////////////////////////////
 
     private void Start()
     {
-        //slotIcon = gameObject.transform.Find("slotIcon").GetComponent<Image>();
-        // slotDurablityBar = gameObject.transform.Find("slotDurablityBar").GetComponent<Image>();
-        // slotStackSize_Text = gameObject.transform.Find("slotStackSize_Text").GetComponent<TextMeshProUGUI>();
-
-
-        int value = Random.Range(0, 20);
-
-
-        if (value < 5)
-        {
-            SpawnRandomDebugItem(0);
-        }
-        else if (value < 10)
-        {
-            SpawnRandomDebugItem(1);
-        }
-
+        //Debug Spawning
+        SpawnRandomDebugItem();
     }
 
     ///////////////////////////////////////////////////////
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (isCursorItem)
-        {
-            return;
-        }
-
 
         //Look for Shift 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -91,109 +75,80 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
             TryAction_Select();
         }
 
-
-
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //print("Test Code: Enter");
+        //Create ToolTip
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //print("Test Code: Leave");
+        //Remove ToolTip
     }
 
     ///////////////////////////////////////////////////////
 
-    private void SpawnRandomDebugItem(int input)
+    private void SpawnRandomDebugItem()
     {
-        if (isCursorItem)
+        if (isInventorySlot)
         {
-            return;
+            //Get Item Value
+            int value = Random.Range(0, 6);
+
+            //Check Valid Values
+            if (value < (TM_DatabaseController.Instance.consumableFood_LIST.Count))
+            {
+                //Create New Item From Database
+                TM_ItemUI_Base newItem = new TM_Item_ConsumableFood_UI(TM_DatabaseController.Instance.consumableFood_LIST[value]);
+
+                //Set Debug Item
+                ItemSlot_SetItem(newItem);
+            }
         }
+    }
 
-        currentItem = TM_DatabaseController.Instance.consumableFood_LIST[input];
+    ///////////////////////////////////////////////////////
 
+    public void ItemSlot_SetItem(TM_ItemUI_Base newItem)
+    {
+        //Set Item
+        currentItem = newItem;
 
-        slotIcon.sprite = currentItem.icon;
+        //Set Sprite
         slotIcon.gameObject.SetActive(true);
+        slotIcon.sprite = currentItem.ItemIcon;
 
         //Durablity
-        if (currentItem.maxDurablity > 0)
+        if (currentItem.MaxDurablity > 0)
         {
+            //Turn On Durablity and Fill Bar
             slotDurablityBar_GO.SetActive(true);
+            //slotDurablityFillBar_Image.fillAmount = (float)currentItem.currentDurablity / currentItem.maxDurablity;
         }
         else
         {
+            //Turn Off Durablity and Reset Bar
             slotDurablityBar_GO.SetActive(false);
+            //slotDurablityFillBar_Image.fillAmount = 1;
         }
 
         //Max Stack Size
-        if (currentItem.maxStackSize > 1)
+        if (newItem.MaxStackSize > 1)
         {
+            //Turn On Durablity and Set Text
             slotStackSize_GO.SetActive(true);
-
-            slotStackSize_Text.text = "1";
+            slotStackSize_Text.text = currentItem.CurrentStackSize.ToString();
         }
         else
         {
-            slotStackSize_GO.SetActive(true);
-            //slotStackSize_GO.SetActive(false);
+            //NOT RIGHT
 
+
+            //Turn Off Stack Icon and Reset Text
+            slotStackSize_GO.SetActive(true);
             slotStackSize_Text.text = "";
         }
-
-
-    }
-
-    ///////////////////////////////////////////////////////
-
-    public void ItemSlot_SetItem(TM_Item_ConsumableFood_SO newItem)
-    {
-        slotIcon.gameObject.SetActive(true);
-        slotDurablityBar_GO.SetActive(true);
-        slotStackSize_GO.SetActive(true);
-
-
-     
-
-        //print("Test Code: Item " + newItem);
-
-
-        currentItem = newItem;
-
-        slotIcon.sprite = newItem.icon;
-
-
-        if (newItem.maxDurablity > 0)
-        {
-            slotDurablityBar_GO.SetActive(true);
-        }
-        else
-        {
-            slotDurablityBar_GO.SetActive(false);
-        }
-
-        if (newItem.maxStackSize > 1)
-        {
-            slotStackSize_GO.SetActive(true);
-
-            slotStackSize_Text.text = "1";
-        }
-        else
-        {
-            slotStackSize_GO.SetActive(true);
-
-
-            //slotStackSize_GO.SetActive(false);
-
-            slotStackSize_Text.text = "";
-        }
-
-
     }
 
     public void ItemSlot_RemoveItem()
@@ -205,6 +160,11 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
         slotIcon.gameObject.SetActive(false);
         slotDurablityBar_GO.SetActive(false);
         slotStackSize_GO.SetActive(false);
+    }
+
+    public void ItemSlot_UpdateValues()
+    {
+
     }
 
     ///////////////////////////////////////////////////////
@@ -237,59 +197,56 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public void TryAction_Select()
     {
-
-
-        //Switch
-        if (currentItem == null)
+        //Slot Type
+        if (isInventorySlot)
         {
-            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            //Current Item
+            if (currentItem == null)
             {
-                //Set stack to Inventory
-                Action_Inventory_PlaceStack();
-   
+                //Cursor Item
+                if (TM_CursorController.Instance.Cursor_GetItem() != null)
+                {
+                    //Set stack to Inventory
+                    Action_Inventory_PlaceStack();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
             }
             else
             {
-                //No Action
-                Action_NoAction();
+                //Cursor Item
+                if (TM_CursorController.Instance.Cursor_GetItem() != null)
+                {
+                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    {
+                        //Attempt To Merge Stacks
+                        Action_Inventory_CombineStacks();
+                    }
+                    else
+                    {
+                        //Switch Stacks
+                        Action_Inventory_SwitchStacks();
+                    }
+                }
+                else
+                {
+                    //Pickup the stack and give to cursor
+                    Action_Inventory_PickupStack();
+                }
             }
         }
         else
         {
-            if (TM_CursorController.Instance.Cursor_GetItem() != null)
-            {
-                //Switch Stacks
-                Action_Inventory_SwitchStacks();
-            }
-            else
-            {
-                //Pickup the stack and give to cursor
-                Action_Inventory_PickupStack();
-            }
+            print("Test Code: Oops, you forgot to set a slot tag!");
         }
+        
+        
 
 
 
-
-
-
-     
-
-
-
-        //slotIcon.gameObject.SetActive(true);
-
-
-
-
-
-        //cursor
-        //Target
-
-        //if ()
-        {
-            //Action_DiscardStack_CursorToGround();
-        }
     }
 
     ///////////////////////////////////////////////////////
@@ -297,7 +254,6 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
     private void Action_NoAction()
     {
         print("Test Code: Double Empty / No Action");
-
     }
 
     ///////////////////////////////////////////////////////
@@ -323,12 +279,64 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
     private void Action_Inventory_SwitchStacks()
     {
         //Get Items
-        TM_Item_ConsumableFood_SO inventoryItem = currentItem;
-        TM_Item_ConsumableFood_SO cursorItem = TM_CursorController.Instance.Cursor_GetItem();
+        TM_ItemUI_Base inventoryItem = currentItem;
+        TM_ItemUI_Base cursorItem = TM_CursorController.Instance.Cursor_GetItem();
 
         //Switch Values
         TM_CursorController.Instance.Cursor_SetItem(inventoryItem);
         ItemSlot_SetItem(cursorItem);
+    }
+
+    private void Action_Inventory_CombineStacks()
+    {
+        if (currentItem.MaxStackSize == 0)
+        {
+            print("Test Code: NOT SURE WHAT TO DO ERROR ERROR ERROR IS THIS A SPECIAL CODE???");
+            return;
+        }
+
+        if (currentItem.CurrentStackSize < currentItem.MaxStackSize)
+        {
+            //Get Max Values For Passing and Incoming
+            int maxAllowedItems_INV = currentItem.MaxStackSize - currentItem.CurrentStackSize;
+            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+
+            //Check for extra values
+            if (maxPassableItems_CUR >= maxAllowedItems_INV)
+            {
+                print("Test Code: Stack All");
+
+                //Give Some Values
+                currentItem.CurrentStackSize += maxAllowedItems_INV;
+
+                //Remove Some Values
+                TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize -= maxAllowedItems_INV;
+
+                //Set Items Again To Refresh Stats
+                ItemSlot_SetItem(currentItem);
+                TM_CursorController.Instance.Cursor_SetItem(TM_CursorController.Instance.Cursor_GetItem());
+            }
+            else
+            {
+                print("Test Code: Stack Some");
+
+                //Deposit All Values
+                currentItem.CurrentStackSize += TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+
+                //Clear the Cursor
+                TM_CursorController.Instance.Cursor_RemoveItem();
+
+                //Set Items Again To Refresh Stats (Cursor was already removed)
+                ItemSlot_SetItem(currentItem);
+            }
+        }
+        else
+        {
+            print("Test Code: Just Swap");
+
+            //Go back and just swap stacks
+            Action_Inventory_SwitchStacks();
+        }
     }
 
     ///////////////////////////////////////////////////////
