@@ -1,14 +1,18 @@
-﻿///////////////
+﻿using UnityEngine;
+
+///////////////
 /// <summary>
 ///     
-/// TM_DatabaseController 
+/// TM_ItemUI_Base 
 /// 
 /// </summary>
-///////////////d
+///////////////
 
 public interface TM_ItemUI_Base
 {
     ////////////////////////////////
+
+    Sprite ItemIcon { get; set; }
 
     //Read only
     //float maxRange { get; }
@@ -27,7 +31,6 @@ public interface TM_ItemUI_Base
     void UI_SplitStackObject_Single();
 
     void Dropped_PickupObject();
-
-
+    
     ///////////////////////////////////////////////////////
 }

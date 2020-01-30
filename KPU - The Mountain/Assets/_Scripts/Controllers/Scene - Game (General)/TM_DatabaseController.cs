@@ -18,9 +18,13 @@ public class TM_DatabaseController : MonoBehaviour
 
     ////////////////////////////////
 
+    [Header("Prebuilt Item Lists")]
     public List<TM_Item_ConsumableFood_SO> consumableFood_LIST;
+    public List<TM_Item_ConsumablePotions_SO> consumablePotions_LIST;
+    public List<TM_Item_EquiptableArmor_SO> equiptableArmor_LIST;
+    public List<TM_Item_EquiptableWeapons_SO> equiptableWeapon_LIST;
 
-
+    //[Header("Enemy Lists")]
 
 
     /////////////////////////////////////////////////////////////////
@@ -33,14 +37,19 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Update()
     {
-        //DEBUG
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            consumableFood_LIST[0].SpawnItem_Placed();
-
-        }
+        SpawnDebugItemPlaced();
     }
 
+    /////////////////////////////////////////////////////////////////
+
+    private void SpawnDebugItemPlaced()
+    {
+        //DEBUG SPAWN
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //consumableFood_LIST[0].SpawnItem_Placed();
+        }
+    }
 
     /////////////////////////////////////////////////////////////////
 }

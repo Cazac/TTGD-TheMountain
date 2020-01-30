@@ -5,7 +5,7 @@ using UnityEngine;
 ///////////////
 /// <summary>
 ///     
-/// TM_DatabaseController 
+/// TM_Item_ConsumableFood_UI 
 /// 
 /// </summary>
 ///////////////
@@ -14,7 +14,9 @@ public class TM_Item_ConsumableFood_UI : TM_ItemUI_Base
 {
     ////////////////////////////////
 
+    public Sprite itemIcon;
 
+    public Sprite ItemIcon { get => itemIcon; set => itemIcon = ItemIcon; }
 
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 ///////////////
 /// <summary>
 ///     
-/// TM_DatabaseController 
+/// TM_Item_ConsumableFood_Placed 
 /// 
 /// </summary>
 ///////////////
@@ -26,6 +26,8 @@ public class TM_Item_ConsumableFood_Placed : MonoBehaviour, TM_ItemUI_Base, TM_I
     public string health;
 
     public float maxRange => throw new System.NotImplementedException();
+
+    public Sprite ItemIcon { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
 
 
