@@ -57,23 +57,37 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //Look For Mouse Click Type
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            //Look for Shift 
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                TryAction_QuickmoveStack();
+            }
+            //Look for CTRL
+            else if (Input.GetKey(KeyCode.LeftControl))
+            {
 
-        //Look for Shift 
-        if (Input.GetKey(KeyCode.LeftShift))
+            }
+            //No Input
+            else
+            {
+                //Try To Select
+                TryAction_Select();
+            }
+        }
+        else if (eventData.button == PointerEventData.InputButton.Middle)
         {
 
         }
-        //Look for CTRL
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (eventData.button == PointerEventData.InputButton.Right)
         {
+            //Right Click
+            TryAction_DetachSingle();
+        }
 
-        }
-        //No Input
-        else
-        {
-            //Try To Select
-            TryAction_Select();
-        }
+        
 
     }
 
@@ -94,7 +108,7 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
         if (isInventorySlot)
         {
             //Get Item Value
-            int value = Random.Range(0, 6);
+            int value = Random.Range(0, 4);
 
             //Check Valid Values
             if (value < (TM_DatabaseController.Instance.consumableFood_LIST.Count))
@@ -112,6 +126,14 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public void ItemSlot_SetItem(TM_ItemUI_Base newItem)
     {
+        //Check for an Empty Stack
+        if (newItem.CurrentStackSize <= 0)
+        {
+            //Remove Item
+            ItemSlot_RemoveItem();
+            return;
+        }
+
         //Set Item
         currentItem = newItem;
 
@@ -134,11 +156,21 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
         }
 
         //Max Stack Size
-        if (newItem.MaxStackSize > 1)
+        if (currentItem.MaxStackSize > 0)
         {
             //Turn On Durablity and Set Text
             slotStackSize_GO.SetActive(true);
-            slotStackSize_Text.text = currentItem.CurrentStackSize.ToString();
+
+            if (currentItem.CurrentStackSize == currentItem.MaxStackSize)
+            {
+                //Set Full Stack Color
+                slotStackSize_Text.text = "<color=#ffff00>" + currentItem.CurrentStackSize.ToString() + "</color>";
+            }
+            else
+            {
+                //Set Default White
+                slotStackSize_Text.text = currentItem.CurrentStackSize.ToString();
+            }
         }
         else
         {
@@ -147,7 +179,7 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
             //Turn Off Stack Icon and Reset Text
             slotStackSize_GO.SetActive(true);
-            slotStackSize_Text.text = "";
+            slotStackSize_Text.text = "1";
         }
     }
 
@@ -169,6 +201,55 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     ///////////////////////////////////////////////////////
 
+    public void TryAction_DetachSingle()
+    {
+        //Slot Type
+        if (isInventorySlot)
+        {
+            //Current Item
+            if (currentItem == null)
+            {
+                //Cursor Item
+                if (TM_CursorController.Instance.Cursor_GetItem() != null)
+                {
+                    //Set stack to Inventory
+                    Action_Inventory_PlaceSingle();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Cursor Item
+                if (TM_CursorController.Instance.Cursor_GetItem() != null)
+                {
+                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    {
+                        //Attempt To Merge Stacks
+                        Action_Inventory_CombineStacks();
+                    }
+                    else
+                    {
+                        //Switch Stacks
+                        Action_Inventory_SwitchStacks();
+                    }
+                }
+                else
+                {
+                    //Pickup the stack and give to cursor
+                    Action_Inventory_PickupStack();
+                }
+            }
+        }
+        else
+        {
+            print("Test Code: Oops, you forgot to set a slot tag!");
+        }
+    }
+
     public void TryAction_SplitStack()
     {
 
@@ -184,13 +265,29 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
 
     public void TryAction_QuickmoveStack()
     {
-
-        //cursor
-
-        //Target
-
+        //Slot Type
+        if (isInventorySlot)
+        {
 
 
+            //Check if Container is open!
+
+
+            Action_Toolbar_QuickStack();
+
+
+        }
+        else if (isToolbarSlot)
+        {
+
+            //Check if Container is open!
+
+            Action_Inventory_QuickStack();
+
+        }
+
+
+   
 
 
     }
@@ -304,8 +401,6 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
             //Check for extra values
             if (maxPassableItems_CUR >= maxAllowedItems_INV)
             {
-                print("Test Code: Stack All");
-
                 //Give Some Values
                 currentItem.CurrentStackSize += maxAllowedItems_INV;
 
@@ -318,8 +413,6 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
             }
             else
             {
-                print("Test Code: Stack Some");
-
                 //Deposit All Values
                 currentItem.CurrentStackSize += TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
 
@@ -332,15 +425,145 @@ public class TM_ItemSlot_Basic : MonoBehaviour, IPointerClickHandler, IPointerEn
         }
         else
         {
-            print("Test Code: Just Swap");
-
             //Go back and just swap stacks
             Action_Inventory_SwitchStacks();
         }
     }
 
+    private void Action_Inventory_QuickStack()
+    {
+
+    }
+
+    private void Action_Inventory_PickupSingle()
+    {
+
+    }
+
+    private void Action_Inventory_PlaceSingle()
+    {
+        //Create a New Single Stack
+        TM_ItemUI_Base newItemStack = TM_CursorController.Instance.Cursor_GetItem();
+        newItemStack.CurrentStackSize = 1;
+
+        //Give a Single Item
+        ItemSlot_SetItem(newItemStack);
+
+        //Remove a Single Item
+        //TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize--;
+        TM_CursorController.Instance.Cursor_SetItem(TM_CursorController.Instance.Cursor_GetItem());
+    }
+
     ///////////////////////////////////////////////////////
 
+    private void Action_Toolbar_QuickStack()
+    {
+        //List of Possible Merges
+        List<TM_ItemSlot_Basic> possibleEmptySpots_List = new List<TM_ItemSlot_Basic>();
+        List<TM_ItemSlot_Basic> possibleMerges_List = new List<TM_ItemSlot_Basic>();
+
+        ///////////////////////////////////////////////////////
+
+        //Find Empty Slots in Toolbar
+        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.toolbarItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot_Basic slot = itemSlot.GetComponent<TM_ItemSlot_Basic>();
+
+            //Search Empty Spots
+            if (slot.currentItem == null)
+            {
+                //Add to Empty Spots
+                possibleEmptySpots_List.Add(slot);
+            }
+            else 
+            {
+                //Check For Matching Names
+                if (slot.currentItem.ItemName == currentItem.ItemName)
+                {
+                    //Check For Non-Max Values
+                    if (slot.currentItem.CurrentStackSize < slot.currentItem.MaxStackSize)
+                    {
+                        //Add to Mergable Spots
+                        possibleMerges_List.Add(slot);
+                    }
+                }
+            }
+        }
+
+        ///////////////////////////////////////////////////////
+
+        for (int i = 0; i < possibleMerges_List.Count; i++)
+        {
+            //Check if No values left to add
+            if (currentItem.CurrentStackSize <= 0)
+            {
+                print("Test Code: IS THIS POSSIBLE TO HIT????");
+                //Break Out Of Method, There is Nothing left to do
+                return;
+            }
+            else
+            {
+                //Calculate Max Item Recivable / Passable
+                int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.MaxStackSize - possibleMerges_List[i].currentItem.CurrentStackSize;
+                int maxPassableItems_INV = currentItem.CurrentStackSize;
+
+                //Check for extra values
+                if (maxPassableItems_INV >= maxAllowedItems_TOL)
+                {
+                    //Give Some Values
+                    possibleMerges_List[i].currentItem.CurrentStackSize += maxAllowedItems_TOL;
+
+                    //Remove Some Values
+                    currentItem.CurrentStackSize -= maxAllowedItems_TOL;
+
+                    //Set Items Again To Refresh Stats
+                    ItemSlot_SetItem(currentItem);
+                    possibleMerges_List[i].ItemSlot_SetItem(possibleMerges_List[i].currentItem);
+                }
+                else
+                {
+                    //Deposit All Values
+                    possibleMerges_List[i].currentItem.CurrentStackSize += currentItem.CurrentStackSize;
+
+                    //Clear the INV Item
+                    ItemSlot_RemoveItem();
+
+                    //Set Items Again To Refresh Stats (INV was already removed)
+                    possibleMerges_List[i].ItemSlot_SetItem(possibleMerges_List[i].currentItem);
+
+                    //Break Out Of Method, There is Nothing left to do
+                    return;
+                }
+            }
+        }
+
+        ///////////////////////////////////////////////////////
+
+        if (possibleEmptySpots_List.Count > 0)
+        {
+            //Move Stack
+            possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
+
+            //Remove Stack
+            ItemSlot_RemoveItem();
+
+            //Break Out Of Method, There is Nothing left to do
+            return;
+        }
+
+        ///////////////////////////////////////////////////////
+
+
+
+
+        //if none found then send To top of the  ?????????????????
+
+
+
+
+
+    }
 
 
     /*
