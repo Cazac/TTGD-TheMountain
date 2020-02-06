@@ -44,12 +44,12 @@ public class TM_Item_EquiptableArmor_SO : ScriptableObject
 
 
         //Get Script
-        TM_Item_ConsumableFood_Placed SpawnedItem_Script = spawnedItem.GetComponent<TM_Item_ConsumableFood_Placed>();
+        TM_ItemPlaced SpawnedItem_Script = spawnedItem.GetComponent<TM_ItemPlaced>();
 
         //Construct Values
         SpawnedItem_Script.name = name;
-        SpawnedItem_Script.desc = desc;
-        SpawnedItem_Script.StackSize = stackSize;
+        SpawnedItem_Script.ItemDesc = desc;
+        SpawnedItem_Script.CurrentStackSize = stackSize;
     }
 
     ///////////////////////////////////////////////////////

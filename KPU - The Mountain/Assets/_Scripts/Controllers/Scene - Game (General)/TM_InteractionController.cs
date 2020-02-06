@@ -69,7 +69,7 @@ public class TM_InteractionController : MonoBehaviour
             if (interactableObject != null)
             {
                 //Check If In Range
-                if (objectHit.distance <= interactableObject.maxRange)
+                if (objectHit.distance <= interactableObject.MaxRange)
                 {
                     if (interactableObject == currentTarget)
                     {

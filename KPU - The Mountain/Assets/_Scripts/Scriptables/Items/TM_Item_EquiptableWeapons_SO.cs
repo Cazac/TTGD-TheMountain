@@ -16,41 +16,33 @@ public class TM_Item_EquiptableWeapons_SO : ScriptableObject
     //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
-    public GameObject UI_Prefab;
-    public GameObject placed_Prefab;
     public GameObject dropped_Prefab;
+    public GameObject placed_Prefab;
 
-    //////////////////////////////// - Consumable Food Stats
+    //////////////////////////////// - All Item Stats 
 
     [Header("Item Descriptions")]
-    public string name;
-    public string desc;
-    public int stackSize;
+    public string itemName;
+    public string itemDesc;
+    public Sprite itemIcon;
 
+    [Header("Item UI Info")]
+    public int maxDurablity;
+    public int currentDurablity;
+    public int maxStackSize;
+    public int currentStackSize;
 
-    ///////////////////////////////////////////////////////
+    //////////////////////////////// - Equiptable Weapon Stats
 
-    public void SpawnItem_Placed()
-    {
-        Debug.Log("Test Code: Spawned");
+    [Header("Item Stats (Equiptable Weapon)")]
+    public int weapon_Damage;
+    public int weapon_Range;
+    public int weapon_SwingSpeed;
 
-        //Spawn Object
-        GameObject spawnedItem = Instantiate(dropped_Prefab);
-
-
-        //Position? 
-        //Parents?
-
-
-        //Get Script
-        TM_Item_ConsumableFood_Placed SpawnedItem_Script = spawnedItem.GetComponent<TM_Item_ConsumableFood_Placed>();
-
-        //Construct Values
-        SpawnedItem_Script.name = name;
-        SpawnedItem_Script.desc = desc;
-        SpawnedItem_Script.StackSize = stackSize;
-
-    }
+    public int weaponReq_STR;
+    public int weaponReq_DEX;
+    public int weaponReq_INT;
+    public int weaponReq_CON;
 
     ///////////////////////////////////////////////////////
 }
