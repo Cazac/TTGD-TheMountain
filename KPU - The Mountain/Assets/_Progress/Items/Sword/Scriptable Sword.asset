@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d86dc01b5f09ae41b57f2d40c23479f, type: 3}
+  m_Name: Scriptable Sword
+  m_EditorClassIdentifier: 
+  dropped_Prefab: {fileID: 7695001790840525898, guid: 48f1102cada80c7488dd21790d5d603f,
+    type: 3}
+  placed_Prefab: {fileID: 6955344300480745049, guid: 3dddf0e898b27bb419cd4193612f9fa7,
+    type: 3}
+  itemName: Debug Sword
+  itemDesc: This is a Sword
+  itemIcon: {fileID: 21300000, guid: 66aa8d13bb105be40946a6452b50b736, type: 3}
+  maxDurablity: 10
+  currentDurablity: 10
+  maxStackSize: 1
+  currentStackSize: 1
+  weapon_Damage: 50
+  weapon_Range: 100
+  weapon_SwingSpeed: 100
+  weaponReq_STR: 5
+  weaponReq_DEX: 5
+  weaponReq_INT: 5
+  weaponReq_CON: 5

@@ -83,7 +83,6 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
         //PlayerDodge(moveDirection);
 
-
     }
 
     ///////////////////////////////////////////////////////
@@ -146,11 +145,15 @@ public class TM_PlayerController_Movement : MonoBehaviour
     private void PlayerMove_Regluar()
     {
         // use Unity's built-in Input axis to create a move vector
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        moveDirection = new Vector3(-Input.GetAxis("Horizontal"), 0f, -Input.GetAxis("Vertical"));
 
         // change moveDirection from local space to global space (current global pos + moveDirection)
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= currentSpeed * Time.deltaTime;
+
+        //DEBUG
+        float speed = Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.y) + Mathf.Abs(moveDirection.z);
+        TM_PlayerController_Actions.Instance.SetAnimationValue_PlayerSpeed(speed);
     }
 
     private void PlayerMove_Vertical()

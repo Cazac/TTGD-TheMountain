@@ -20,7 +20,7 @@ public class TM_CursorController : MonoBehaviour
 
     ////////////////////////////////
 
-    private TM_ItemSlot_Basic cursorItemSlot;
+    private TM_ItemSlot cursorItemSlot;
 
     ///////////////////////////////////////////////////////
 
@@ -30,7 +30,7 @@ public class TM_CursorController : MonoBehaviour
         Instance = this;
 
         //Set Slotbox
-        cursorItemSlot = gameObject.GetComponent<TM_ItemSlot_Basic>();
+        cursorItemSlot = gameObject.GetComponent<TM_ItemSlot>();
     }
 
     private void Update()
@@ -64,12 +64,56 @@ public class TM_CursorController : MonoBehaviour
 
     public void Cursor_SetItem(TM_ItemUI_Base item)
     {
-        gameObject.GetComponent<TM_ItemSlot_Basic>().ItemSlot_SetItem(item);
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_SetItem(item);
     }
 
+    public void Cursor_UpdateItem()
+    {
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_UpdateItem();
+    }
+    
     public void Cursor_RemoveItem()
     {
-        gameObject.GetComponent<TM_ItemSlot_Basic>().ItemSlot_RemoveItem();
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_RemoveItem();
+    }
+
+    public void Cursor_DropItem()
+    {
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DropItem();
+    }
+
+    public void Cursor_DupplicateItem(object item)
+    {
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DupplicateItem(item);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void TryAction_AddItemToInventory(GameObject interactedItem)
+    {
+        if (gameObject.GetComponent<TM_ItemSlot>().Action_Toolbar_QuickStack())
+        {
+            //All Good, Destory Me!
+            Destroy(interactedItem);
+        }
+        else
+        {
+            if (gameObject.GetComponent<TM_ItemSlot>().Action_Inventory_QuickStack())
+            {
+                //All Good, Destory Me!
+                Destroy(interactedItem);
+            }
+            else
+            {
+                //Nothing Worked Leave Item Alone
+                gameObject.GetComponent<TM_ItemSlot>().Action_NoAction();
+            }
+        }
+
+
+
+        //Remove Item From Cursor Anyways
+        Cursor_RemoveItem();
     }
 
     ///////////////////////////////////////////////////////

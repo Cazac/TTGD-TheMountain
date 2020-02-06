@@ -23,10 +23,11 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     [Header("Player Menus")]
     public GameObject PlayerMenu_Panel;
-    public GameObject StatsMenu_Panel;
+
     public GameObject InventoryMenu_Panel;
     public GameObject EquipmentMenu_Panel;
-    public GameObject LoreMenu_Panel;
+    public GameObject NotesMenu_Panel;
+    public GameObject StatsMenu_Panel;
 
     [Header("Home Base Menus")]
     public GameObject Fire_Panel;
@@ -54,15 +55,13 @@ public class TM_PlayerController_UI : MonoBehaviour
         //Look for key inputs
         LookForMenuKey_Pause();
         LookForMenuKey_Inventory();
-        LookForMenuKey_Equipment();
 
         //Toolbar
         LookForMouseScroll_Toolbar();
-            LookForSwapKey_Toolbar();
-
+        LookForSwapKey_Toolbar();
     }
 
-    ///////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////// - Button Inputs (Systems Menu)
 
     public void Button_Pause_Continue()
     {
@@ -110,43 +109,48 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     }
 
-    ///////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////// - Button Inputs (Player Menu)
 
-    public void Action_Fire_OpenUI()
+    public void Button_InventoryTab()
     {
-        //Tunr On Panel
-        Fire_Panel.SetActive(true);
+        //Turn Off All Panels
+        PlayerMenu_TurnOffPanels();
 
-        //Enable Mouse
+        //Open Panel
+        PlayerMenu_Panel.SetActive(true);
+        InventoryMenu_Panel.SetActive(true);
+        gameState_IsMenu = true;
+        UnlockMouse();
+    }
+
+    public void Button_StatsTab()
+    {
+        //Turn Off All Panels
+        PlayerMenu_TurnOffPanels();
+
+        //Open Panel
+        PlayerMenu_Panel.SetActive(true);
+        StatsMenu_Panel.SetActive(true);
+        gameState_IsMenu = true;
         UnlockMouse();
 
-  
-
-        //Load Stuff
-
+        //Setup Panel
+        TM_PlayerController_Stats.Instance.RefreshStatsUI();
     }
 
-    public void Action_Fire_CloseUI()
+    public void Button_NotesTab()
     {
-        //Tunr Off Panel
-        Fire_Panel.SetActive(false);
+        //Turn Off All Panels
+        PlayerMenu_TurnOffPanels();
 
-        //Disable Mouse
-        LockMouse();
-
-
-
-        //Load Stuff
-
-
+        //Open Panel
+        PlayerMenu_Panel.SetActive(true);
+        NotesMenu_Panel.SetActive(true);
+        gameState_IsMenu = true;
+        UnlockMouse();
     }
 
-    public void Action_Workbench_OpenUI()
-    {
-
-    }
-
-    ///////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////// - Look For Key Inputs
 
     private void LookForMenuKey_Pause()
     {
@@ -176,8 +180,11 @@ public class TM_PlayerController_UI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (gameState_IsMenu)
+            if (gameState_IsMenu && InventoryMenu_Panel.activeSelf == true)
             {
+                //Turn Off All Panels
+                PlayerMenu_TurnOffPanels();
+
                 //Close Panel
                 PlayerMenu_Panel.SetActive(false);
                 gameState_IsMenu = false;
@@ -185,21 +192,15 @@ public class TM_PlayerController_UI : MonoBehaviour
             }
             else
             {
+                //Turn Off All Panels
+                PlayerMenu_TurnOffPanels();
+
                 //Open Panel
                 PlayerMenu_Panel.SetActive(true);
+                InventoryMenu_Panel.SetActive(true);
                 gameState_IsMenu = true;
-                //InventoryMenu_Panel.SetActive(true);
                 UnlockMouse();
             }
-        }
-    }
-
-    private void LookForMenuKey_Equipment()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-
-
         }
     }
 
@@ -208,25 +209,60 @@ public class TM_PlayerController_UI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N))
         {
 
-
+          
         }
     }
 
-    private void LookForMenuKey_Interact()
+    private void LookForMenuKey_Stats()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.J))
         {
-            //Look For Colliders To Interact with
 
-        }
-
-        if (Input.GetKey(KeyCode.F))
-        {
-            //Look For Colliders To Interact with
-
+       
         }
     }
 
+    ///////////////////////////////////////////////////////
+
+  
+
+    /////////////////////////////////////////////////////// - Fire UI
+
+    public void Action_Fire_OpenUI()
+    {
+        //Tunr On Panel
+        Fire_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+
+
+        //Load Stuff
+
+    }
+
+    public void Action_Fire_CloseUI()
+    {
+        //Tunr Off Panel
+        Fire_Panel.SetActive(false);
+
+        //Disable Mouse
+        LockMouse();
+
+
+
+        //Load Stuff
+
+
+    }
+
+    /////////////////////////////////////////////////////// - Workbench UI
+
+    public void Action_Workbench_OpenUI()
+    {
+
+    }
 
     /////////////////////////////////////////////////////// - Toolbar
 
@@ -282,10 +318,39 @@ public class TM_PlayerController_UI : MonoBehaviour
         {
             TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(4);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(5);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(6);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(7);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(8);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(9);
+        }
     }
 
+    /////////////////////////////////////////////////////// - Utility
 
-    ///////////////////////////////////////////////////////
+    public void PlayerMenu_TurnOffPanels()
+    {
+        InventoryMenu_Panel.SetActive(false);
+        StatsMenu_Panel.SetActive(false);
+        NotesMenu_Panel.SetActive(false);
+
+        //Prob should be somewhere else
+        TM_CursorController.Instance.Cursor_DropItem();
+    }
 
     public void LockMouse()
     {
