@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9896a4d75890c548b4be972694654fa, type: 3}
   m_Name: Heart Food
   m_EditorClassIdentifier: 
-  placed_Prefab: {fileID: 8549683135584501830, guid: 21a8060adc1657942adf2e1b74650ee9,
-    type: 3}
   dropped_Prefab: {fileID: 8549683135584501830, guid: 21a8060adc1657942adf2e1b74650ee9,
+    type: 3}
+  placed_Prefab: {fileID: 8549683135584501830, guid: 21a8060adc1657942adf2e1b74650ee9,
     type: 3}
   itemName: Heart
   itemDesc: This is a heart.
@@ -23,5 +23,6 @@ MonoBehaviour:
   currentDurablity: 10
   maxStackSize: 1
   currentStackSize: 1
+  isBurnable: 1
   hunger: 10
   health: 5

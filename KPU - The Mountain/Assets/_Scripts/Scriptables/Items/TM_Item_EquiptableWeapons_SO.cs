@@ -32,6 +32,9 @@ public class TM_Item_EquiptableWeapons_SO : ScriptableObject
     public int maxStackSize;
     public int currentStackSize;
 
+    [Header("Item UI Info")]
+    public bool isBurnable;
+
     //////////////////////////////// - Equiptable Weapon Stats
 
     [Header("Item Stats (Equiptable Weapon)")]

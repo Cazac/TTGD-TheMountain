@@ -50,6 +50,7 @@ public class TM_ItemUI_ConsumableFood : TM_ItemUI_Base
         MaxStackSize = originalScriptableItem.maxStackSize;
         CurrentStackSize = originalScriptableItem.currentStackSize;
 
+        IsBurnable = originalScriptableItem.isBurnable;
 
         //Others
         hunger = originalScriptableItem.hunger;
@@ -71,6 +72,7 @@ public class TM_ItemUI_ConsumableFood : TM_ItemUI_Base
         MaxStackSize = originalItem.MaxStackSize;
         CurrentStackSize = originalItem.CurrentStackSize;
 
+        IsBurnable = originalItem.IsBurnable;
 
         //Others
         hunger = originalScriptableItem.hunger;
