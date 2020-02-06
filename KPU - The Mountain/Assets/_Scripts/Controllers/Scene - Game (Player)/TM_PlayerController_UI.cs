@@ -42,6 +42,13 @@ public class TM_PlayerController_UI : MonoBehaviour
     public bool gameState_IsMenu;
     public bool gameState_IsPlaying;
 
+
+    ////////////////////////////////
+
+    [Header("Fire")]
+    public GameObject fire_BurnableItem_GO;
+    public GameObject fire_ContentContainer_GO;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -236,9 +243,65 @@ public class TM_PlayerController_UI : MonoBehaviour
         //Enable Mouse
         UnlockMouse();
 
+        //Setup
+        Action_Fire_RefreshList();
+        Action_Fire_UpdateBar();
+    }
+
+    private void Action_Fire_RefreshList()
+    {
+        //
+        List<TM_ItemUI_Base> itemsBurnable_List = new List<TM_ItemUI_Base>();
 
 
-        //Load Stuff
+        //Remove Old List Values
+        foreach (Transform oldItem in fire_ContentContainer_GO.transform)
+        {
+            Destroy(oldItem.gameObject);
+        }
+
+        //Find Slots in Toolbar
+        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.toolbarItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            if (slot.currentItem != null)
+            {
+                if (slot.currentItem.IsBurnable)
+                {
+                    itemsBurnable_List.Add(slot.currentItem);
+                }
+            }
+        }
+
+        //Find Slots in Inventory
+        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.playerItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            if (slot.currentItem != null)
+            {
+                if (slot.currentItem.IsBurnable)
+                {
+                    itemsBurnable_List.Add(slot.currentItem);
+                }
+            }
+        }
+
+        //Create and Fill Prefabs
+        foreach (TM_ItemUI_Base item in itemsBurnable_List)
+        {
+            GameObject newItem = Instantiate(fire_BurnableItem_GO, fire_ContentContainer_GO.transform);
+
+            //Fill Out Info
+            //newItem.transform.FindChild("Title Text");
+        }
+    }
+
+    private void Action_Fire_UpdateBar()
+    {
 
     }
 

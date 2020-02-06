@@ -25,6 +25,7 @@ public class TM_ItemUI_ConsumableFood : TM_ItemUI_Base
     public int CurrentDurablity { get; set; }
     public int MaxStackSize { get; set; }
     public int CurrentStackSize { get; set; }
+    public bool IsBurnable { get; set; }
 
     ////////////////////////////////
 
