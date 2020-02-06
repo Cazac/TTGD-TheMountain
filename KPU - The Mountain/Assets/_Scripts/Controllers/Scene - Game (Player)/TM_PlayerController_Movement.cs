@@ -153,7 +153,8 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
         //DEBUG
         float speed = Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.y) + Mathf.Abs(moveDirection.z);
-        TM_PlayerController_Actions.Instance.SetAnimationValue_PlayerSpeed(speed);
+        TM_PlayerController_Animation.Instance.SetAnimationValue_PlayerSpeed(speed);
+        TM_PlayerController_Animation.Instance.SetAnimationValue_IsGrounded(player_CC.isGrounded);
     }
 
     private void PlayerMove_Vertical()
@@ -215,7 +216,7 @@ public class TM_PlayerController_Movement : MonoBehaviour
         if (two_press)
         {
             two_press_timer = two_press_timer - Time.deltaTime;
-            transform.Translate(Vector3.left * 20 * Time.deltaTime);
+            transform.Translate(Vector3.right * 20 * Time.deltaTime);
             if (two_press_timer <= 0)
             {
                 two_press = false;
