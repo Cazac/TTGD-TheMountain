@@ -33,6 +33,8 @@ public class TM_PlayerController_UI : MonoBehaviour
     [Header("Home Base Menus")]
     public GameObject Fire_Panel;
     public GameObject Workshop_Panel;
+    public GameObject Alchemy_Panel;
+    public GameObject Kitchen_Panel;
     public GameObject Forge_Panel;
 
     [Header("Other Menus")]
@@ -274,8 +276,6 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     }
 
-
-
     private void Action_Fire_RefreshList()
     {
         //Burnable Lists
@@ -415,10 +415,23 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     public void Action_Workbench_OpenUI()
     {
+        //Tunr On Panel
+        Workshop_Panel.SetActive(true);
 
+        //Enable Mouse
+        LockMouse();
     }
 
-    /////////////////////////////////////////////////////// - Workbench UI
+    public void Action_Workbench_CloseUI()
+    {
+        //Tunr On Panel
+        Workshop_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    /////////////////////////////////////////////////////// - Forge UI
 
     public void Action_Forge_OpenUI()
     {
@@ -436,6 +449,52 @@ public class TM_PlayerController_UI : MonoBehaviour
     {
         //Tunr On Panel
         Forge_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    /////////////////////////////////////////////////////// - 
+
+    public void Action_Alchemy_OpenUI()
+    {
+        //Tunr On Panel
+        Alchemy_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Alchemy_CloseUI()
+    {
+        //Tunr On Panel
+        Alchemy_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Action_Kitchen_OpenUI()
+    {
+        //Tunr On Panel
+        Kitchen_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Kitchen_CloseUI()
+    {
+        //Tunr On Panel
+        Kitchen_Panel.SetActive(false);
 
         //Enable Mouse
         LockMouse();
