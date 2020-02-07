@@ -418,6 +418,29 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     }
 
+    /////////////////////////////////////////////////////// - Workbench UI
+
+    public void Action_Forge_OpenUI()
+    {
+        //Tunr On Panel
+        Forge_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Forge_CloseUI()
+    {
+        //Tunr On Panel
+        Forge_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
     /////////////////////////////////////////////////////// - Toolbar
 
     private void LookForMouseScroll_Toolbar()

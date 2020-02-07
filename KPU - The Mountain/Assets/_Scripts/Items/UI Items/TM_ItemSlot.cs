@@ -249,7 +249,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
                 //Create a position infront of the player
                 Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * 3;
+                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
                 spawnPosition.y += 1;
 
                 //Add Jitter
