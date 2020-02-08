@@ -23,7 +23,7 @@ public class TM_InteractableObject_Workshop : MonoBehaviour, TM_InteractableObje
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
-        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access the kitchen");
+        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Workshop");
     }
 
     public void OnEndHover()
@@ -37,15 +37,15 @@ public class TM_InteractableObject_Workshop : MonoBehaviour, TM_InteractableObje
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerController_UI.Instance.Kitchen_Panel.activeSelf)
+        if (TM_PlayerController_UI.Instance.Workshop_Panel.activeSelf)
         {
             //Close UI
-            TM_PlayerController_UI.Instance.Action_Kitchen_CloseUI();
+            TM_PlayerController_UI.Instance.Action_Workshop_CloseUI();
         }
         else
         {
             //Open UI
-            TM_PlayerController_UI.Instance.Action_Kitchen_OpenUI();
+            TM_PlayerController_UI.Instance.Action_Workshop_OpenUI();
         }
     }
 

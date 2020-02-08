@@ -23,7 +23,7 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
-        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access the furnace");
+        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Forge");
     }
 
     public void OnEndHover()

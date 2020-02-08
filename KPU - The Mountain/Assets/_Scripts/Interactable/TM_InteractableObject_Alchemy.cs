@@ -23,7 +23,7 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
-        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access the brewery");
+        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Brewery");
     }
 
     public void OnEndHover()

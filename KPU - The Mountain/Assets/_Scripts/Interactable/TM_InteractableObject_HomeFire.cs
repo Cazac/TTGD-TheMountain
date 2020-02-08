@@ -23,7 +23,7 @@ public class TM_InteractableObject_HomeFire : MonoBehaviour, TM_InteractableObje
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
-        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access the fire");
+        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Fire");
     }
 
     public void OnEndHover()

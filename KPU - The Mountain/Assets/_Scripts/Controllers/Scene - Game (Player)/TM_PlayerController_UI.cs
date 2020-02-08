@@ -413,7 +413,7 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Workbench UI
 
-    public void Action_Workbench_OpenUI()
+    public void Action_Workshop_OpenUI()
     {
         //Tunr On Panel
         Workshop_Panel.SetActive(true);
@@ -422,7 +422,7 @@ public class TM_PlayerController_UI : MonoBehaviour
         LockMouse();
     }
 
-    public void Action_Workbench_CloseUI()
+    public void Action_Workshop_CloseUI()
     {
         //Tunr On Panel
         Workshop_Panel.SetActive(false);

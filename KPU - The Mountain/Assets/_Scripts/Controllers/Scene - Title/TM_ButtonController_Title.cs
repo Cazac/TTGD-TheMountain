@@ -18,9 +18,9 @@ public class TM_ButtonController_Title : MonoBehaviour
     public static TM_ButtonController_Title Instance;
 
     ////////////////////////////////
-
-    public GameObject newGame_Panel;
-    public GameObject loadGame_Panel;
+    
+    [Header("Panels")]
+    public GameObject play_Panel;
     public GameObject settings_Panel;
 
     /////////////////////////////////////////////////////////////////
@@ -33,32 +33,13 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void Button_NewGame()
-    {
-        //Check if already opened
-        if (newGame_Panel.activeSelf == true)
-        {
-            //Open Settings Panel
-            newGame_Panel.SetActive(false);
-        }
-        else
-        {
-            //Close All Other Panels
-
-            //Check if Settings Should Be Saved With A Confim Prompt? ???
-
-            //Open Settings Panel
-            newGame_Panel.SetActive(true);
-        }
-    }
-
     public void Button_LoadGame()
     {
         //Check if already opened
-        if (loadGame_Panel.activeSelf == true)
+        if (play_Panel.activeSelf == true)
         {
             //Open Settings Panel
-            loadGame_Panel.SetActive(false);
+            play_Panel.SetActive(false);
         }
         else
         {
@@ -67,7 +48,7 @@ public class TM_ButtonController_Title : MonoBehaviour
 
 
             //Open Settings Panel
-            loadGame_Panel.SetActive(true);
+            play_Panel.SetActive(true);
         }
     }
 
@@ -83,10 +64,16 @@ public class TM_ButtonController_Title : MonoBehaviour
         {
             //Close All Other Panels
 
+            //newGame_Panel.SetActive(false);
+            play_Panel.SetActive(false);
+
             //Check if Settings Should Be Saved With A Confim Prompt? ???
 
             //Open Settings Panel
             settings_Panel.SetActive(true);
+
+            //Open First Panel
+            TM_ButtonController_Settings.Instance.Button_OpenPanel_KeyBinding();
         }
     }
 
@@ -110,28 +97,13 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void Button_SettingsConfirm()
+    private void CloseAllPanels()
     {
-
+        settings_Panel.SetActive(true);
+        //newGame_Panel.SetActive(false);
+        play_Panel.SetActive(false);
     }
-
-    public void Button_SettingsBack()
-    {
-
-    }
-
-    public void Slider_TotalVolume()
-    {
-
-    }
-
-    /////////////////////////////////////////////////////////////////
-
-    public void OpenConfirmDialog_Settings()
-    {
-
-    }
-
+ 
     public void OpenConfirmDialog_DeleteSave()
     {
 

@@ -23,7 +23,7 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
-        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access the kitchen");
+        TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Kitchen");
     }
 
     public void OnEndHover()
