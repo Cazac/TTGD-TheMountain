@@ -25,7 +25,14 @@ public class TM_ButtonController_Play : MonoBehaviour
     [Header("Charecter Panel Info")]
     public GameObject charecterNew_Panel;
     public GameObject charecterLoad_Panel;
-
+    public TextMeshProUGUI charecterLoad_SaveSlot_Text;
+    public TextMeshProUGUI charecterLoad_Name_Text;
+    public TextMeshProUGUI charecterLoad_Level_Text;
+    public TextMeshProUGUI charecterLoad_STR_Text;
+    public TextMeshProUGUI charecterLoad_DEX_Text;
+    public TextMeshProUGUI charecterLoad_INT_Text;
+    public TextMeshProUGUI charecterLoad_CON_Text;
+  
     ////////////////////////////////
 
     [Header("Icon Info - 1")]
@@ -36,24 +43,50 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("Icon New Info - 2")]
+    [Header("Icon Info - 2")]
     public GameObject saveIcon2_NewSave_Panel;
     public GameObject saveIcon2_LoadSave_Panel;
     public TextMeshProUGUI saveIcon2_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon2_LoadSaveDesc_Text;
 
+    ////////////////////////////////
+
+    [Header("Icon Info - 3")]
+    public GameObject saveIcon3_NewSave_Panel;
+    public GameObject saveIcon3_LoadSave_Panel;
+    public TextMeshProUGUI saveIcon3_LoadSaveTitle_Text;
+    public TextMeshProUGUI saveIcon3_LoadSaveDesc_Text;
 
     ////////////////////////////////
 
+    [Header("Icon Info - 4")]
+    public GameObject saveIcon4_NewSave_Panel;
+    public GameObject saveIcon4_LoadSave_Panel;
+    public TextMeshProUGUI saveIcon4_LoadSaveTitle_Text;
+    public TextMeshProUGUI saveIcon4_LoadSaveDesc_Text;
 
-    public ES3File playerSave_1;
+    ////////////////////////////////
+
+    [Header("Icon Info - 5")]
+    public GameObject saveIcon5_NewSave_Panel;
+    public GameObject saveIcon5_LoadSave_Panel;
+    public TextMeshProUGUI saveIcon5_LoadSaveTitle_Text;
+    public TextMeshProUGUI saveIcon5_LoadSaveDesc_Text;
+
+    ////////////////////////////////
+
+    [Header("Panel Info - All")]
 
 
+
+
+    ////////////////////////////////
 
     private int currentSelected_SaveSlotID;
-
-
     public ES3File[] saveFiles_Array = new ES3File[5];
+
+
+
 
     ///////////////////////////////////////////////////////
 
@@ -129,7 +162,19 @@ public class TM_ButtonController_Play : MonoBehaviour
             //Use Loaded charecter sheet
             charecterNew_Panel.SetActive(false);
             charecterLoad_Panel.SetActive(true);
-        }
+
+            //Set Info
+            charecterLoad_SaveSlot_Text.text = "Save Slot " + currentSelected_SaveSlotID;
+            charecterLoad_Name_Text.text = selectedSaveFile.Load<string>("PlayerName");
+            charecterLoad_Level_Text.text = "Level " + selectedSaveFile.Load<string>("PlayerLevel");
+            //charecterLoad_STR_Text
+            //charecterLoad_DEX_Text
+            //charecterLoad_INT_Text
+            //charecterLoad_CON_Text
+
+
+
+}
         else
         {
             //Use New charecter sheet
@@ -180,7 +225,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
             //Load Info
             saveIcon1_LoadSaveTitle_Text.text = saveFiles_Array[0].Load<string>("PlayerName");
-            saveIcon1_LoadSaveDesc_Text.text = saveFiles_Array[0].Load<string>("PlayerLevel");
+            saveIcon1_LoadSaveDesc_Text.text = "Level " + saveFiles_Array[0].Load<string>("PlayerLevel");
             //ICON
         }
         else
@@ -201,7 +246,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
             //Load Info
             saveIcon2_LoadSaveTitle_Text.text = saveFiles_Array[1].Load<string>("PlayerName");
-            saveIcon2_LoadSaveDesc_Text.text = saveFiles_Array[1].Load<string>("PlayerLevel");
+            saveIcon2_LoadSaveDesc_Text.text = "Level " + saveFiles_Array[1].Load<string>("PlayerLevel");
             //ICON
         }
         else
@@ -211,13 +256,69 @@ public class TM_ButtonController_Play : MonoBehaviour
             saveIcon2_LoadSave_Panel.SetActive(false);
         }
 
+        ////////////////////////////////
 
+        //Save File 3
+        if (saveFiles_Array[2].KeyExists("PlayerName"))
+        {
+            //Set Loaded Panels
+            saveIcon3_NewSave_Panel.SetActive(false);
+            saveIcon3_LoadSave_Panel.SetActive(true);
 
+            //Load Info
+            saveIcon3_LoadSaveTitle_Text.text = saveFiles_Array[2].Load<string>("PlayerName");
+            saveIcon3_LoadSaveDesc_Text.text = "Level " + saveFiles_Array[2].Load<string>("PlayerLevel");
+            //ICON
+        }
+        else
+        {
+            //New Panel
+            saveIcon3_NewSave_Panel.SetActive(true);
+            saveIcon3_LoadSave_Panel.SetActive(false);
+        }
 
+        ////////////////////////////////
 
+        //Save File 2
+        if (saveFiles_Array[3].KeyExists("PlayerName"))
+        {
+            //Set Loaded Panels
+            saveIcon4_NewSave_Panel.SetActive(false);
+            saveIcon4_LoadSave_Panel.SetActive(true);
+
+            //Load Info
+            saveIcon4_LoadSaveTitle_Text.text = saveFiles_Array[3].Load<string>("PlayerName");
+            saveIcon4_LoadSaveDesc_Text.text = "Level " + saveFiles_Array[3].Load<string>("PlayerLevel");
+            //ICON
+        }
+        else
+        {
+            //New Panel
+            saveIcon4_NewSave_Panel.SetActive(true);
+            saveIcon4_LoadSave_Panel.SetActive(false);
+        }
+
+        ////////////////////////////////
+
+        //Save File 2
+        if (saveFiles_Array[4].KeyExists("PlayerName"))
+        {
+            //Set Loaded Panels
+            saveIcon5_NewSave_Panel.SetActive(false);
+            saveIcon5_LoadSave_Panel.SetActive(true);
+
+            //Load Info
+            saveIcon5_LoadSaveTitle_Text.text = saveFiles_Array[4].Load<string>("PlayerName");
+            saveIcon5_LoadSaveDesc_Text.text = "Level " + saveFiles_Array[4].Load<string>("PlayerLevel");
+            //ICON
+        }
+        else
+        {
+            //New Panel
+            saveIcon5_NewSave_Panel.SetActive(true);
+            saveIcon5_LoadSave_Panel.SetActive(false);
+        }
     }
-
-
 
     ///////////////////////////////////////////////////////
 
@@ -230,6 +331,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
 
         Refresh_SaveIconInfo();
+
+
+        Button_SaveSlot(currentSelected_SaveSlotID);
     }
 
 
@@ -248,9 +352,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
         Refresh_SaveIconInfo();
 
-        print("Test Code: Create");
+        Button_SaveSlot(currentSelected_SaveSlotID);
 
-
+   
 
         // Load the int array
 
