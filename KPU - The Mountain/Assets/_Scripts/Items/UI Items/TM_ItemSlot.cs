@@ -816,7 +816,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ///////////////////////////////////////////////////////
 
         //Find Empty Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.playerItemSlots_Array)
+        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array)
         {
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
@@ -1042,7 +1042,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ///////////////////////////////////////////////////////
 
         //Find Empty Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.toolbarItemSlots_Array)
+        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array)
         {
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();

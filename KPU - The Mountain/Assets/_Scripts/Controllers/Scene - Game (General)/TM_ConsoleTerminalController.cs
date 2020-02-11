@@ -68,7 +68,7 @@ public class TM_ConsoleTerminalController : MonoBehaviour
         terminal_Panel.SetActive(true);
 
         //Pause Game
-        TM_PlayerController_UI.Instance.gameState_IsPasued = true;
+        TM_PlayerMenuController_UI.Instance.gameState_IsPasued = true;
         Time.timeScale = 0;
 
 
@@ -97,7 +97,7 @@ public class TM_ConsoleTerminalController : MonoBehaviour
 
 
         //Unpause Game
-        TM_PlayerController_UI.Instance.gameState_IsPasued = false;
+        TM_PlayerMenuController_UI.Instance.gameState_IsPasued = false;
         Time.timeScale = 1;
 
         //Set Bool

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 ///////////////
 /// <summary>
 ///     
 /// TM_PlayerController_Stats
+/// 
+/// 
+/// IF YOU WANT TO SAVE DUPPICATE THIS, CONTRSUTOR IT INTO A NEW SERILIZABLE CLASS, THIS IS GONNA BE MONO.
 /// 
 /// </summary>
 ///////////////
@@ -19,48 +21,33 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     ////////////////////////////////
 
-    public int skillPoints_Avalible;
-    public int skillPoints_Spent;
+    public int player_CurrentHealth;
+    public int player_MaxHealth;
+    public int player_BaseHealth;
 
     ////////////////////////////////
 
-    public int playerStat_STR;
-    public int playerStat_DEX;
-    public int playerStat_INT;
-    public int playerStat_CON;
+    public int player_CurrentHunger;
+    public int player_MaxHunger;
+    public int player_BaseHunger;
 
     ////////////////////////////////
 
-    private int equipmentStat_STR;
-    private int equipmentStat_DEX;
-    private int equipmentStat_INT;
-    private int equipmentStat_CON;
+    public int player_CurrentFire;
+    public int player_MaxFire;
+    public int player_BaseFire;
+
+
+
+
+    bool continueCoroutine_HungerDrain = true;
+    bool continueCoroutine_FireDrain = true;
+
+    private float secondsPer_HungerDrain = 10f;
+    private float secondsPer_FireDrain = 5f;
+
 
     ////////////////////////////////
-
-    private int tempStat_STR;
-    private int tempStat_DEX;
-    private int tempStat_INT;
-    private int tempStat_CON;
-
-    ////////////////////////////////
-
-    [Header("Buttons")]
-    public GameObject STR_Button;
-    public GameObject DEX_Button;
-    public GameObject INT_Button;
-    public GameObject CON_Button;
-
-    ////////////////////////////////
-
-    [Header("Text")]
-    public TextMeshProUGUI skillPointAvalible_Text;
-    public TextMeshProUGUI STR_Text;
-    public TextMeshProUGUI DEX_Text;
-    public TextMeshProUGUI INT_Text;
-    public TextMeshProUGUI CON_Text;
-
-    ///////////////////////////////////////////////////////
 
     private void Awake()
     {
@@ -70,126 +57,215 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     private void Start()
     {
-        DebugSpawnStats();
+        SetDebugStats();
+
+        //Refresh the current values at first chance when systems are setup
+        TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
+        TM_PlayerMenuController_UI.Instance.UpdateUI_HungerValue();
+        TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
+
+        StartCoroutine(HungerDrain());
+        StartCoroutine(FireDrain());
     }
 
     ///////////////////////////////////////////////////////
 
-    private void DebugSpawnStats()
+    public void LoadStats()
     {
-        skillPoints_Avalible = Random.Range(3, 5);
 
-        playerStat_STR = Random.Range(2, 8);
-        playerStat_DEX = Random.Range(2, 8);
-        playerStat_INT = Random.Range(2, 8);
-        playerStat_CON = Random.Range(2, 8);
+    }
+
+    private void SetDebugStats()
+    {
+        player_CurrentHealth = 90;
+        player_MaxHealth = 100;
+        player_BaseHealth = 100;
+
+        player_CurrentHunger = 30;
+        player_MaxHunger = 200;
+        player_BaseHunger = 100;
+
+        player_CurrentFire = 150;
+        player_MaxFire = 150;
+        player_BaseFire = 100;
+    }
+
+    private void FixedUpdate()
+    {
+        //ChangeHealth_Current(-1);
     }
 
     ///////////////////////////////////////////////////////
 
-    public void Button_AddValue_STR()
+    public IEnumerator HungerDrain()
     {
-        if (skillPoints_Avalible > 0)
+        while (continueCoroutine_HungerDrain)
         {
-            //Add Stat
-            playerStat_STR++;
+            if (player_CurrentHunger > 0)
+            {
+                //Remove Hunger
+                ChangeHunger_Current(-1);
 
-            //Remove Point
-            skillPoints_Avalible--;
+                //Wait
+                yield return new WaitForSeconds(secondsPer_HungerDrain);
+            }
+            else
+            {
+                //Remove Health due to lack of hunger
+                ChangeHealth_Current(-1);
 
-            //Refresh UI
-            RefreshStatsUI();
+                //Wait
+                yield return new WaitForSeconds(secondsPer_HungerDrain);
+            }
         }
     }
 
-    public void Button_AddValue_DEX()
+    public IEnumerator FireDrain()
     {
-        if (skillPoints_Avalible > 0)
+        while (continueCoroutine_FireDrain)
         {
-            //Add Stat
-            playerStat_DEX++;
+            if (player_CurrentFire > 0)
+            {
+                //Remove Hunger
+                ChangeFire_Current(-1);
 
-            //Remove Point
-            skillPoints_Avalible--;
+                //Wait
+                yield return new WaitForSeconds(secondsPer_FireDrain);
+            }
+            else
+            {
+                //Remove Health due to lack of hunger
+                PlayerDeath();
 
-            //Refresh UI
-            RefreshStatsUI();
+                //Wait
+                yield return new WaitForSeconds(secondsPer_FireDrain);
+            }
         }
     }
 
-    public void Button_AddValue_INT()
+
+    ///////////////////////////////////////////////////////
+
+    public void ChangeHealth_Current(int changeValue)
     {
-        if (skillPoints_Avalible > 0)
+        //Change Value
+        player_CurrentHealth += changeValue;
+
+        //Check For Overload
+        if (player_CurrentHealth > player_MaxHealth)
         {
-            //Add Stat
-            playerStat_INT++;
-
-            //Remove Point
-            skillPoints_Avalible--;
-
-            //Refresh UI
-            RefreshStatsUI();
+            //Cap at Max
+            player_CurrentHealth = player_MaxHealth;
         }
+
+        //Check For Death
+        if (player_CurrentHealth <= 0)
+        {
+            //No HP
+            player_CurrentHealth = 0;
+
+            //Death
+            PlayerDeath();
+        }
+
+        //Update UI
+        TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
     }
 
-    public void Button_AddValue_CON()
+    public void ChangeHealth_Max()
     {
-        if (skillPoints_Avalible > 0)
-        {
-            //Add Stat
-            playerStat_CON++;
 
-            //Remove Point
-            skillPoints_Avalible--;
 
-            //Refresh UI
-            RefreshStatsUI();
-        }
+    }
+
+    public void ChangeHealth_Base()
+    {
+
+
     }
 
     ///////////////////////////////////////////////////////
 
-    public void RefreshStatsUI()
+    public void ChangeHunger_Current(int changeValue)
     {
-        skillPointAvalible_Text.text = "Skill Points Avalible: " + skillPoints_Avalible;
+        //Change Value
+        player_CurrentHunger += changeValue;
 
-        int additive_STR = equipmentStat_STR + tempStat_STR;
-        int additive_DEX = equipmentStat_DEX + tempStat_DEX;
-        int additive_INT = equipmentStat_INT + tempStat_INT;
-        int additive_CON = equipmentStat_CON + tempStat_CON;
-
-        if (additive_STR > 0)
+        //Check For Overload
+        if (player_CurrentHunger > player_MaxHunger)
         {
-            STR_Text.text = playerStat_STR + " (+<color=#ffff00>" + additive_STR + "</color>)";
-        }
-        else if (additive_STR < 0)
-        {
-            STR_Text.text = playerStat_STR + " (-<color=#ffff00>" + additive_STR + "</color>)";
-        }
-        else
-        {
-            STR_Text.text = playerStat_STR + " (+0)";
+            //Cap at Max
+            player_CurrentHunger = player_MaxHunger;
         }
 
-        DEX_Text.text = playerStat_DEX + " (+0)";
-        INT_Text.text = playerStat_INT + " (+0)";
-        CON_Text.text = playerStat_CON + " (+0)";
-
-            
-        if (skillPoints_Avalible <= 0)
+        //Check For Death
+        if (player_CurrentHunger <= 0)
         {
-            STR_Button.SetActive(false);
-            DEX_Button.SetActive(false);
-            INT_Button.SetActive(false);
-            CON_Button.SetActive(false);
-        } 
-        else
-        {
-            STR_Button.SetActive(true);
-            DEX_Button.SetActive(true);
-            INT_Button.SetActive(true);
-            CON_Button.SetActive(true);
+            //No HP
+            player_CurrentHunger = 0;
         }
+
+        //Update UI
+        TM_PlayerMenuController_UI.Instance.UpdateUI_HungerValue();
+    }
+
+    public void ChangeHunger_Max()
+    {
+
+
+    }
+
+    public void ChangeHunger_Base()
+    {
+
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void ChangeFire_Current(int changeValue)
+    {
+        //Change Value
+        player_CurrentFire += changeValue;
+
+        //Check For Overload
+        if (player_CurrentFire > player_MaxFire)
+        {
+            //Cap at Max
+            player_CurrentFire = player_MaxFire;
+        }
+
+        //Check For Death
+        if (player_CurrentFire <= 0)
+        {
+            //No HP
+            player_CurrentFire = 0;
+
+            //Death
+            PlayerDeath();
+        }
+
+        //Update UI
+        TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
+    }
+
+    public void ChangeFire_Max()
+    {
+
+
+    }
+
+    public void ChangeFire_Base()
+    {
+
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void PlayerDeath()
+    {
+        print("Test Code: You Ded");
     }
 
     ///////////////////////////////////////////////////////
