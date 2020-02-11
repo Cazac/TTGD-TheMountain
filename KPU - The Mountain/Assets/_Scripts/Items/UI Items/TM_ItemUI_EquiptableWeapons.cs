@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TM_ItemUI_EquiptableWeapons : MonoBehaviour, TM_ItemUI_Base
+public class TM_ItemUI_EquiptableWeapons : TM_ItemUI_Base
 {
     ////////////////////////////////
 

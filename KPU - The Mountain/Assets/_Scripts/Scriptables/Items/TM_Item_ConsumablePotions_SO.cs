@@ -13,13 +13,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/Consumable Potion")]
 public class TM_Item_ConsumablePotions_SO : ScriptableObject
 {
-    /////////////////////////////// - Prefabs
+    //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
     public GameObject dropped_Prefab;
     public GameObject placed_Prefab;
 
-    //////////////////////////////// - All Item Stats
+    //////////////////////////////// - All Item Stats 
 
     [Header("Item Descriptions")]
     public string itemName;
@@ -32,11 +32,12 @@ public class TM_Item_ConsumablePotions_SO : ScriptableObject
     public int maxStackSize;
     public int currentStackSize;
 
-    //////////////////////////////// - Consumable Potion Stats
+    [Header("Item UI Info")]
+    public bool isBurnable;
 
-    [Header("Item Stats (Consumable Potions)")]
-    public string hunger;
-    public string health;
+    //////////////////////////////// - Equiptable Weapon Stats
+
+
 
     ///////////////////////////////////////////////////////
 }
