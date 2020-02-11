@@ -33,6 +33,9 @@ public class TM_Item_ConsumableFood_SO : ScriptableObject
     public int maxStackSize;
     public int currentStackSize;
 
+    [Header("Item UI Info")]
+    public bool isBurnable;
+
     //////////////////////////////// - Consumable Food Stats
 
     [Header("Item Stats (Consumable Food)")]

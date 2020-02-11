@@ -245,11 +245,12 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (currentItem.GetType() == typeof(TM_ItemUI_ConsumableFood))
             {
                 //Cast Type Of Object
+                //Cast Type Of Object
                 TM_ItemUI_ConsumableFood convertedUIItem = (TM_ItemUI_ConsumableFood)currentItem;
 
                 //Create a position infront of the player
                 Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * 3;
+                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
                 spawnPosition.y += 1;
 
                 //Add Jitter

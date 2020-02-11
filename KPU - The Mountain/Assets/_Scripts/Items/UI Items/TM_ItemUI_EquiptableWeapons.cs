@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TM_ItemUI_EquiptableWeapons : MonoBehaviour, TM_ItemUI_Base
+public class TM_ItemUI_EquiptableWeapons : TM_ItemUI_Base
 {
     ////////////////////////////////
 
@@ -17,10 +17,11 @@ public class TM_ItemUI_EquiptableWeapons : MonoBehaviour, TM_ItemUI_Base
     public int CurrentDurablity { get; set; }
     public int MaxStackSize { get; set; }
     public int CurrentStackSize { get; set; }
+    public bool IsBurnable { get; set; }
 
     ////////////////////////////////
 
-    [Header("Item Stats (Consumable Food)")]
+    [Header("Item Stats (Equiptable Weapons)")]
     public string hunger;
     public string health;
 
@@ -41,9 +42,10 @@ public class TM_ItemUI_EquiptableWeapons : MonoBehaviour, TM_ItemUI_Base
         MaxStackSize = originalScriptableItem.maxStackSize;
         CurrentStackSize = originalScriptableItem.currentStackSize;
 
+        IsBurnable = originalScriptableItem.isBurnable;
 
         //Others
-       // hunger = originalScriptableItem.hunger;
+        // hunger = originalScriptableItem.hunger;
         //health = originalScriptableItem.health;
     }
 
@@ -62,6 +64,7 @@ public class TM_ItemUI_EquiptableWeapons : MonoBehaviour, TM_ItemUI_Base
         MaxStackSize = originalItem.MaxStackSize;
         CurrentStackSize = originalItem.CurrentStackSize;
 
+        IsBurnable = originalItem.IsBurnable;
 
         //Others
         //hunger = originalScriptableItem.hunger;

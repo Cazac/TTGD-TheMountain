@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+using System.Linq;
 
 ///////////////
 /// <summary>
@@ -23,14 +26,16 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     [Header("Player Menus")]
     public GameObject PlayerMenu_Panel;
-
     public GameObject InventoryMenu_Panel;
-    public GameObject EquipmentMenu_Panel;
     public GameObject NotesMenu_Panel;
     public GameObject StatsMenu_Panel;
 
     [Header("Home Base Menus")]
     public GameObject Fire_Panel;
+    public GameObject Workshop_Panel;
+    public GameObject Alchemy_Panel;
+    public GameObject Kitchen_Panel;
+    public GameObject Forge_Panel;
 
     [Header("Other Menus")]
     public GameObject EventLogMenu_Panel;
@@ -41,6 +46,15 @@ public class TM_PlayerController_UI : MonoBehaviour
     public bool gameState_IsPasued;
     public bool gameState_IsMenu;
     public bool gameState_IsPlaying;
+
+    ////////////////////////////////
+
+    [Header("Fire")]
+    public GameObject fire_BurnableItem_Prefab;
+    public GameObject fire_ContentContainer_GO;
+    private GameObject fire_selectedBurnable_GO;
+    public Button fire_burnItem_Button;
+
 
     ///////////////////////////////////////////////////////
 
@@ -224,7 +238,7 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-  
+
 
     /////////////////////////////////////////////////////// - Fire UI
 
@@ -236,10 +250,150 @@ public class TM_PlayerController_UI : MonoBehaviour
         //Enable Mouse
         UnlockMouse();
 
+        //Setup
+        Action_Fire_RefreshList();
+        Action_Fire_RefreshBar();
+        Action_Fire_RefreshBurnButton();
+    }
+
+    public void Button_Fire_SelectBurnable(Button button)
+    {
+        if (fire_selectedBurnable_GO == button.gameObject)
+        {
+            fire_selectedBurnable_GO = null;
+        }
+        else
+        {
+            print("Test Code: Setting");
+            fire_selectedBurnable_GO = button.gameObject;
+        }
+
+        Action_Fire_RefreshBurnButton();
+    }
+
+    public void Button_Fire_BurnItem()
+    {
+
+    }
+
+    private void Action_Fire_RefreshList()
+    {
+        //Burnable Lists
+        List<TM_ItemUI_Base> itemsBurnable_List = new List<TM_ItemUI_Base>();
+        List<TM_ItemUI_Base> itemsBurnableFiltered_List = new List<TM_ItemUI_Base>();
 
 
-        //Load Stuff
+        //Remove Old List Values
+        foreach (Transform oldItem in fire_ContentContainer_GO.transform)
+        {
+            Destroy(oldItem.gameObject);
+        }
 
+        //Find Slots in Toolbar
+        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.toolbarItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            if (slot.currentItem != null)
+            {
+                if (slot.currentItem.IsBurnable)
+                {
+                    itemsBurnable_List.Add(slot.currentItem);
+                }
+            }
+        }
+
+        //Find Slots in Inventory
+        foreach (GameObject itemSlot in TM_PlayerController_Inventory.Instance.playerItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            if (slot.currentItem != null)
+            {
+                if (slot.currentItem.IsBurnable)
+                {
+                    itemsBurnable_List.Add(slot.currentItem);
+                }
+            }
+        }
+
+
+        bool canPass = false;
+        TM_ItemUI_Base mergingItem = null;
+        TM_ItemUI_Base removalItem_Basic = null;
+        TM_ItemUI_Base removalItem_Listed = null;
+
+        //Merge Items
+        while (canPass == false)
+        {
+            for (int i = 0; i < itemsBurnable_List.Count; i++)
+            {
+                foreach (TM_ItemUI_Base item in itemsBurnable_List)
+                {
+                    if (itemsBurnable_List[i] != item)
+                    {
+                        if (itemsBurnable_List[i].ItemName == item.ItemName && itemsBurnable_List[i].CurrentDurablity == item.CurrentDurablity)
+                        {
+                            //Set Item Removal
+                            removalItem_Basic = item;
+                            removalItem_Listed = itemsBurnable_List[i];
+
+                            //Set Merge Item
+                            mergingItem = item;
+                            mergingItem.CurrentStackSize += itemsBurnable_List[i].CurrentStackSize;
+
+                            //Skip Loops, A Match Was Found
+                            goto BreakLoops;
+                        }
+                    }
+                }
+            }
+
+            //Made the Full Loop, Break Out
+            canPass = true;
+
+            //Goto Pointer
+            BreakLoops:
+
+            //Add and Remove Merged Items
+            if (removalItem_Basic != null && removalItem_Listed != null & mergingItem != null)
+            {
+                itemsBurnable_List.Remove(removalItem_Basic);
+                itemsBurnable_List.Remove(removalItem_Listed);
+                itemsBurnable_List.Add(mergingItem);
+            }
+        }
+
+        //Create and Fill Prefabs
+        foreach (TM_ItemUI_Base item in itemsBurnable_List)
+        {
+            GameObject newItem = Instantiate(fire_BurnableItem_Prefab, fire_ContentContainer_GO.transform);
+
+            //Fill Out Info
+            newItem.transform.Find("Item Name Text").GetComponent<TextMeshProUGUI>().text = item.ItemName;
+            newItem.transform.Find("Item Count Text").GetComponent<TextMeshProUGUI>().text = item.CurrentStackSize.ToString();
+            newItem.transform.Find("Item Desc Text").GetComponent<TextMeshProUGUI>().text = item.ItemDesc;
+            newItem.transform.Find("Item BG").transform.Find("Item Icon").GetComponent<Image>().sprite = item.ItemIcon;
+        }
+    }
+
+    private void Action_Fire_RefreshBar()
+    {
+
+    }
+
+    private void Action_Fire_RefreshBurnButton()
+    {
+        if (fire_selectedBurnable_GO != null)
+        {
+            fire_burnItem_Button.interactable = true;
+        }
+        else
+        {
+            fire_burnItem_Button.interactable = false;
+        }
     }
 
     public void Action_Fire_CloseUI()
@@ -259,9 +413,91 @@ public class TM_PlayerController_UI : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Workbench UI
 
-    public void Action_Workbench_OpenUI()
+    public void Action_Workshop_OpenUI()
     {
+        //Tunr On Panel
+        Workshop_Panel.SetActive(true);
 
+        //Enable Mouse
+        LockMouse();
+    }
+
+    public void Action_Workshop_CloseUI()
+    {
+        //Tunr On Panel
+        Workshop_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    /////////////////////////////////////////////////////// - Forge UI
+
+    public void Action_Forge_OpenUI()
+    {
+        //Tunr On Panel
+        Forge_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Forge_CloseUI()
+    {
+        //Tunr On Panel
+        Forge_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    /////////////////////////////////////////////////////// - 
+
+    public void Action_Alchemy_OpenUI()
+    {
+        //Tunr On Panel
+        Alchemy_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Alchemy_CloseUI()
+    {
+        //Tunr On Panel
+        Alchemy_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Action_Kitchen_OpenUI()
+    {
+        //Tunr On Panel
+        Kitchen_Panel.SetActive(true);
+
+        //Enable Mouse
+        UnlockMouse();
+
+        //Setup
+
+    }
+
+    public void Action_Kitchen_CloseUI()
+    {
+        //Tunr On Panel
+        Kitchen_Panel.SetActive(false);
+
+        //Enable Mouse
+        LockMouse();
     }
 
     /////////////////////////////////////////////////////// - Toolbar

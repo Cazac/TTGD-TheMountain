@@ -22,5 +22,7 @@ public interface TM_ItemUI_Base
     int MaxStackSize { get; set; }
     int CurrentStackSize { get; set; }
 
+    bool IsBurnable { get; set; }
+
     ///////////////////////////////////////////////////////
 }

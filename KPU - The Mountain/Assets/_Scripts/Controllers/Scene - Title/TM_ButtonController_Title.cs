@@ -18,10 +18,12 @@ public class TM_ButtonController_Title : MonoBehaviour
     public static TM_ButtonController_Title Instance;
 
     ////////////////////////////////
-
-    public GameObject newGame_Panel;
-    public GameObject loadGame_Panel;
+    
+    [Header("Panels")]
+    public GameObject play_Panel;
     public GameObject settings_Panel;
+    public GameObject notes_Panel;
+    public GameObject morgue_Panel;
 
     /////////////////////////////////////////////////////////////////
 
@@ -33,41 +35,27 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void Button_NewGame()
+    public void Button_Play()
     {
         //Check if already opened
-        if (newGame_Panel.activeSelf == true)
+        if (play_Panel.activeSelf == true)
         {
             //Open Settings Panel
-            newGame_Panel.SetActive(false);
+            play_Panel.SetActive(false);
         }
         else
         {
             //Close All Other Panels
-
-            //Check if Settings Should Be Saved With A Confim Prompt? ???
-
-            //Open Settings Panel
-            newGame_Panel.SetActive(true);
-        }
-    }
-
-    public void Button_LoadGame()
-    {
-        //Check if already opened
-        if (loadGame_Panel.activeSelf == true)
-        {
-            //Open Settings Panel
-            loadGame_Panel.SetActive(false);
-        }
-        else
-        {
-            //Close All Other Panels
-
-
+            CloseAllPanels();
 
             //Open Settings Panel
-            loadGame_Panel.SetActive(true);
+            play_Panel.SetActive(true);
+
+            //Select First Save Slot
+            TM_ButtonController_Play.Instance.Button_SaveSlot(1);
+
+            //Open First Save File
+            TM_ButtonController_Play.Instance.Refresh_SaveIconInfo();
         }
     }
 
@@ -82,11 +70,65 @@ public class TM_ButtonController_Title : MonoBehaviour
         else
         {
             //Close All Other Panels
+            CloseAllPanels();
 
             //Check if Settings Should Be Saved With A Confim Prompt? ???
 
             //Open Settings Panel
             settings_Panel.SetActive(true);
+
+            //Open First Panel
+            TM_ButtonController_Settings.Instance.Button_OpenPanel_KeyBinding();
+        }
+    }
+
+    public void Button_Notes()
+    {
+        //Check if already opened
+        if (notes_Panel.activeSelf == true)
+        {
+            //Open Settings Panel
+            notes_Panel.SetActive(false);
+        }
+        else
+        {
+            //Close All Other Panels
+            CloseAllPanels();
+
+            //Check if Settings Should Be Saved With A Confim Prompt? ???
+
+            //Open Settings Panel
+            notes_Panel.SetActive(true);
+
+            //Open First Panel
+          
+
+
+        }
+    }
+
+    public void Button_Morgue()
+    {
+        //Check if already opened
+        if (morgue_Panel.activeSelf == true)
+        {
+            //Open Settings Panel
+            morgue_Panel.SetActive(false);
+        }
+        else
+        {
+            //Close All Other Panels
+            CloseAllPanels();
+
+            //Check if Settings Should Be Saved With A Confim Prompt? ???
+
+            //Open Settings Panel
+            morgue_Panel.SetActive(true);
+
+            //Open First Panel
+          
+
+
         }
     }
 
@@ -110,28 +152,14 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void Button_SettingsConfirm()
+    private void CloseAllPanels()
     {
-
+        play_Panel.SetActive(false);
+        settings_Panel.SetActive(false);
+        notes_Panel.SetActive(false);
+        morgue_Panel.SetActive(false);
     }
-
-    public void Button_SettingsBack()
-    {
-
-    }
-
-    public void Slider_TotalVolume()
-    {
-
-    }
-
-    /////////////////////////////////////////////////////////////////
-
-    public void OpenConfirmDialog_Settings()
-    {
-
-    }
-
+ 
     public void OpenConfirmDialog_DeleteSave()
     {
 
