@@ -77,8 +77,12 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
 
 
-        //Debug 
-        DoubleTap();
+
+
+
+        //Debug Dodge
+        DoubleTap_Left();
+        DoubleTap_Right();
 
 
         //PlayerDodge(moveDirection);
@@ -169,6 +173,9 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
+
+    ///////////////////////////////////////////////////////
+
     ///////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////////////
@@ -179,49 +186,87 @@ public class TM_PlayerController_Movement : MonoBehaviour
     /// Code found for double tap dodge
     /// 
     /// </summary>
-    
-    private bool one_press;
-    private bool timer_running;
-    private float delay;
-    private bool two_press;
-    private float two_press_timer;
 
-    private void DoubleTap()
+    private bool onePress_Left;
+    private float delay_Left;
+    private bool twoPress_Left;
+    private float twoPressTimer_Left;
+
+    private bool onePress_Right;
+    private float delay_Right;
+    private bool twoPress_Right;
+    private float twoPressTimer_Right;
+
+    private void DoubleTap_Left()
     {
-
+        //Check For Key
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if (!one_press)
+            if (!onePress_Left)
             {
-                one_press = true;
-                delay = Time.time + 0.2f;
+                onePress_Left = true;
+                delay_Left = Time.time + 0.2f;
             }
             else
             {
-                one_press = false;
-                two_press_timer = 0.3f;
-                two_press = true;
+                onePress_Left = false;
+                twoPressTimer_Left = 0.3f;
+                twoPress_Left = true;
             }
         }
 
-
-
-        if (one_press)
+        if (onePress_Left)
         {
-            if ((Time.time - .05) > delay)
+            if ((Time.time - .05) > delay_Left)
             {
-                one_press = false;
+                onePress_Left = false;
             }
         }
-        if (two_press)
+        if (twoPress_Left)
         {
-            two_press_timer = two_press_timer - Time.deltaTime;
+            twoPressTimer_Left = twoPressTimer_Left - Time.deltaTime;
             transform.Translate(Vector3.right * 20 * Time.deltaTime);
-            if (two_press_timer <= 0)
+            if (twoPressTimer_Left <= 0)
             {
-                two_press = false;
+                twoPress_Left = false;
             }
 
+        }
+    }
+
+    private void DoubleTap_Right()
+    {
+        //Check For Key
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if (!onePress_Right)
+            {
+                onePress_Right = true;
+                delay_Right = Time.time + 0.2f;
+            }
+            else
+            {
+                onePress_Right = false;
+                twoPressTimer_Right = 0.3f;
+                twoPress_Right = true;
+            }
+        }
+
+        if (onePress_Right)
+        {
+            if ((Time.time - .05) > delay_Right)
+            {
+                onePress_Right = false;
+            }
+        }
+        if (twoPress_Right)
+        {
+            twoPressTimer_Right = twoPressTimer_Right - Time.deltaTime;
+            transform.Translate(Vector3.left * 20 * Time.deltaTime);
+            if (twoPressTimer_Right <= 0)
+            {
+                twoPress_Right = false;
+            }
         }
     }
 
@@ -245,12 +290,12 @@ public class TM_PlayerController_Movement : MonoBehaviour
         }
 
 
-        if (two_press_timer <= 0)
+        if (twoPressTimer_Left <= 0)
         {
-            two_press = false;
+            twoPress_Left = false;
         }
 
-        two_press_timer = two_press_timer - Time.deltaTime;
+        twoPressTimer_Left = twoPressTimer_Left - Time.deltaTime;
 
     }
 

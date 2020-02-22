@@ -43,6 +43,8 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
         //Get Animator
         playerAnimator = gameObject.GetComponent<Animator>();
+
+        print("Test Code: " + gameObject.name);
     }
    
     private void Update()
@@ -56,18 +58,26 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SetAnimationValue_QuickAttack()
     {
-        playerAnimator.SetBool("IsAttacking_MeleeQuick", true);
+        playerAnimator.Play("Attack Melee Quick", 0);
     }
 
     public void SetAnimationValue_PlayerSpeed(float value)
     {
         playerAnimator.SetFloat("PlayerSpeed", value);
+
+
+
     }
 
     public void SetAnimationValue_IsGrounded(bool value)
     {
+
         playerAnimator.SetBool("IsGrounded", value);
     }
+
+    ///////////////////////////////////////////////////////
+
+
 
     ///////////////////////////////////////////////////////
 
