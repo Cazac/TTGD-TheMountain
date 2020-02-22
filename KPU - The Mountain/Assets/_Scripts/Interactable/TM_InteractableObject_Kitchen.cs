@@ -37,15 +37,15 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerController_UI.Instance.Kitchen_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.Kitchen_Panel.activeSelf)
         {
             //Close UI
-            TM_PlayerController_UI.Instance.Action_Kitchen_CloseUI();
+            TM_PlayerMenuController_UI.Instance.Action_Kitchen_CloseUI();
         }
         else
         {
             //Open UI
-            TM_PlayerController_UI.Instance.Action_Kitchen_OpenUI();
+            TM_PlayerMenuController_UI.Instance.Action_Kitchen_OpenUI();
         }
     }
 

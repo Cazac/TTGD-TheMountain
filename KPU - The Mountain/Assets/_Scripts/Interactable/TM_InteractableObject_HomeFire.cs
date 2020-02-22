@@ -37,15 +37,15 @@ public class TM_InteractableObject_HomeFire : MonoBehaviour, TM_InteractableObje
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerController_UI.Instance.Fire_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.Fire_Panel.activeSelf)
         {
             //Close UI
-            TM_PlayerController_UI.Instance.Action_Fire_CloseUI();
+            TM_PlayerMenuController_UI.Instance.Action_Fire_CloseUI();
         }
         else
         {
             //Open UI
-            TM_PlayerController_UI.Instance.Action_Fire_OpenUI();
+            TM_PlayerMenuController_UI.Instance.Action_Fire_OpenUI();
         }
     }
 

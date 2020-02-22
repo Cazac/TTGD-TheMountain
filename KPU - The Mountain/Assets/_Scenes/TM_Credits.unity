@@ -120,6 +120,275 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &9557079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9557083}
+  - component: {fileID: 9557082}
+  - component: {fileID: 9557081}
+  - component: {fileID: 9557080}
+  m_Layer: 0
+  m_Name: Easy Save 3 Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &9557080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9557079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107aee0ced90422da95f0b31680501f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 4292edca-4133-4258-a6ad-ee5efea4ece2
+  saveEvent: 1
+  loadEvent: 1
+  settings:
+    _location: 0
+    path: SaveData.es3
+    encryptionType: 0
+    encryptionPassword: password
+    directory: 0
+    format: 0
+    bufferSize: 2048
+    saveChildren: 0
+    typeChecking: 1
+    safeReflection: 1
+    memberReferenceMode: 0
+    referenceMode: 2
+    assemblyNames:
+    - Assembly-CSharp
+    - Assembly-CSharp-firstpass
+    showAdvancedSettings: 0
+  autoSaves: []
+--- !u!114 &9557081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9557079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a83408fcc9044c4fbc7e5d09a369ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openReferences: 0
+  openPrefabs: 0
+  idRef:
+    _Keys: 2b1c1aa5c41551542324bd6956550f0f98e8bbc9b90bed600377497592d0b174b27c73b13d01e13ba122270ef2144f4f401c97df9ea4ea35f58557c4a03819538eb648251da12d68078069db33fc5217c798b5ae6890125666a9bbb8a91c9b26c3847ec434d5ce62ef2fe61e0ec56806cebf02f87c94141dca9f8cc65de511151cbce85182711d0eca539c977731652b12c185691f93a3586763722c9e6a40081ed10351dd17835c5d0b3d30ce546a05fb4827e09484cb519fbf15e0000f8f3493a5b44934b6092945e20b13567389443188d8196edf625d62ab0e62d29ba24e7c089c299f21d1443efd9bb279b8fb2cca2f5187c98a394bbea918775759a9563fbd964dd65fa510496b248fbb4f1b55b0e12c01ec2a1707bf1719b7c5b763675a0e8d44de52a929d5613e5e65aa906e723cd8c67955bc15a58f0bed785cd66ff843ca523e28880275a929b1978a93147954d6fd6fd51e51cca3e96e5e96a230c752a9578b1d5349b4d53b237e6eac2f221f742485d9ff2224781de112f66021f9068616cc15605bff72b76665042d395019917e0ac6b511ae78cdec008dc84275192978e796630dbf1822f8906588295ba8ced47720d33f44673cba1cb3a370568b2480d15adf197d9e3e22e9aea21301f79257bff4ca6aed69bb4ed21e2973bc93a1054107584b7717a7261d4fa96a3bd646dbdfb34e4a568e93679e914765c8b1df7c4fa7540851ddcfd79cf18761c05112fbd84e9408bca8514d8b0e521930bd1131d1d9451d2b4e2bbd8225e747eb0b59b281b4721646e7c1a656077c418bb5a7dfdf558f65962fd08923d6851e9198637fb5a0977ab5041415e7613932cb6c4838cdc6276b7df349b185fc3a1c921fe9425c037415e2d36b1b965ab2350a61414871b2ae56c0cf03c256e5f54ec1cf7d3787092937f73256f95a0bd5295a8057dc450e544533bffdd4f8c894383745239a27154200c8f5bf5cf6574e345bd2e228c22d6b3025c205c80b553e3fc78e30a02f705170c35714504ff84e750f322fcbabbdfb644fac899aef850a1dcc016b97d851fa157f8d9a94e7e41f1c127bb9d82572947b89945182e6b6803d4cf71b5063e64e43c7e5b2e2dc998333355a5394c01cbd586ef0216da27dfb34f1271e20ff907f08cbfda00a24765710111db7400a15fe69b574bd5307bce644e1e6f0b57b62333b26a3353c844dcc0899107fc0343c3e2329b56b8bd22b0079e4e5eb0b660d8b50e97b1a66dfc1e468a8b4ec183ba6781ddbec743909579605a3bc1f6938d76f747bd15650a85bfc67d003e31d3fe83d76a1f6cf8567adb841eedf3ddc5d84d02fbb886396afd78a36eadc0a0d3bb44545825637bdf716f23218143e8798d9c555d413d8c84bd326797ffa90bc483983396608a4f8b2ecc85c69cf513be9ed313da25fe24e8c0e9155834ec1027ac915526988de70cb335d18b583a1837d15706cd431e417a8cb537467058a9bd43a1e6047005c8d345ef76d03c999086d0dd86741d2d1b71a015634dc5309c5a9c1447a9abec283461dc832d7ade68d9aa31d582e225b0168664544ab27b2e15432c440861fa32ccf5bae5d9b04e16d1ac99937ca4e68799abdee0004072d6ecfa9875c1659f884ff0e772d8b01999c7a28d61e8f7aaba39b3dda430ea430d7881c2c448d3d8474c11e374329c51267dbae7924310efc4a542bf754ccc46d5cc1b14957d222d74753b41f6f44687bd52b72675fd5f4f768e688674835d8a9fcb0db81767cba96b8d632d119d2937142593280585d0e31b6a9b13e598a20127a0b23bf6819fba58f235177073beec68605565d01a7af605e5634323683c3d049e0a9f1512cf7a4ab27ef835187397bbbebb85433
+    _Values:
+    - {fileID: 2123966057}
+    - {fileID: 2123966058}
+    - {fileID: 293867419}
+    - {fileID: 293867422}
+    - {fileID: 293867421}
+    - {fileID: 293867420}
+    - {fileID: 735129222}
+    - {fileID: 735129224}
+    - {fileID: 735129223}
+    - {fileID: 11500000, guid: 3c3ba18b3b2658746842ef6e42c8fd5c, type: 3}
+    - {fileID: 620341946}
+    - {fileID: 620341947}
+    - {fileID: 620341948}
+    - {fileID: 771833409}
+    - {fileID: 771833410}
+    - {fileID: 4800000, guid: fe393ace9b354375a9cb14cdbbc28be4, type: 3}
+    - {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+    - {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+    - {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+    - {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+    - {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    - {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
+    - {fileID: 2100000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    - {fileID: 10906, guid: 0000000000000000f000000000000000, type: 0}
+    - {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
+    - {fileID: 2800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    - {fileID: 28684132378477856, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - {fileID: 28268798066460806, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+    - {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+    - {fileID: 9100000, guid: 9b78e1be15068fe4eb191a1cb81b85bc, type: 2}
+    - {fileID: 7400000, guid: 82412a00f85a4d54b95a9894de7a814b, type: 2}
+    - {fileID: 199499004}
+    - {fileID: 199499005}
+    - {fileID: 199499007}
+    - {fileID: 199499006}
+    - {fileID: 3210890248948435813}
+    - {fileID: 3210890248948435812}
+    - {fileID: 3210890247417265840}
+    - {fileID: 3210890247417265843}
+    - {fileID: 3210890247417265853}
+    - {fileID: 3210890247417265842}
+    - {fileID: 3210890248099657112}
+    - {fileID: 3210890247491070757}
+    - {fileID: 3210890247491070776}
+    - {fileID: 3210890247491070779}
+    - {fileID: 3210890247491070778}
+    - {fileID: 3210890247665772426}
+    - {fileID: 3210890247665772469}
+    - {fileID: 3210890247665772471}
+    - {fileID: 3210890247665772468}
+    - {fileID: 3210890247724925010}
+    - {fileID: 3210890247724925021}
+    - {fileID: 3210890247724925023}
+    - {fileID: 3210890247724925020}
+    - {fileID: 3210890247956359405}
+    - {fileID: 3210890247771511144}
+    - {fileID: 3210890247771511147}
+    - {fileID: 3210890247771511189}
+    - {fileID: 3210890247771511146}
+    - {fileID: 3210890247956359394}
+    - {fileID: 3210890248877080839}
+    - {fileID: 3210890248669863027}
+    - {fileID: 3210890248497518610}
+    - {fileID: 3210890248346444391}
+    - {fileID: 3210890248677983393}
+    - {fileID: 3210890249043000927}
+    - {fileID: 3210890248408041228}
+    - {fileID: 3210890249324380390}
+    - {fileID: 3210890248139346718}
+    - {fileID: 3210890248041349148}
+    - {fileID: 3210890248041349149}
+    - {fileID: 3210890248041349150}
+    - {fileID: 3210890248041349151}
+    - {fileID: 3210890248099657113}
+    - {fileID: 3210890248249290920}
+    - {fileID: 3210890249511756498}
+    - {fileID: 3210890248718956456}
+    - {fileID: 3210890249299692345}
+    - {fileID: 3210890248922723377}
+    - {fileID: 3210890248780914431}
+    - {fileID: 3210890248350859039}
+    - {fileID: 3210890248139346712}
+    - {fileID: 3210890248139346719}
+    - {fileID: 3210890248139346713}
+    - {fileID: 3210890248244580848}
+    - {fileID: 3210890248244580851}
+    - {fileID: 3210890248244580861}
+    - {fileID: 3210890248244580850}
+    - {fileID: 3210890248428096493}
+    - {fileID: 3210890248249290921}
+    - {fileID: 3210890248249290922}
+    - {fileID: 3210890248249290923}
+    - {fileID: 3210890248346444385}
+    - {fileID: 3210890248346444388}
+    - {fileID: 3210890248346444390}
+    - {fileID: 3210890248350859033}
+    - {fileID: 3210890248350859036}
+    - {fileID: 3210890248350859038}
+    - {fileID: 3210890248408041229}
+    - {fileID: 3210890248408041230}
+    - {fileID: 3210890248408041231}
+    - {fileID: 3210890248428096480}
+    - {fileID: 3210890248428096481}
+    - {fileID: 3210890248428096482}
+    - {fileID: 3210890248428096483}
+    - {fileID: 3210890248482904125}
+    - {fileID: 3210890248434176450}
+    - {fileID: 3210890248434176461}
+    - {fileID: 3210890248434176463}
+    - {fileID: 3210890248434176460}
+    - {fileID: 3210890248482904114}
+    - {fileID: 3210890248482904127}
+    - {fileID: 3210890248482904124}
+    - {fileID: 3210890248497518611}
+    - {fileID: 3210890248497518620}
+    - {fileID: 3210890248497518621}
+    - {fileID: 3210890248648891272}
+    - {fileID: 3210890248648891273}
+    - {fileID: 3210890248648891274}
+    - {fileID: 3210890248648891275}
+    - {fileID: 3210890248669863024}
+    - {fileID: 3210890248669863037}
+    - {fileID: 3210890248669863026}
+    - {fileID: 3210890248677983392}
+    - {fileID: 3210890248677983398}
+    - {fileID: 3210890248677983395}
+    - {fileID: 3210890248718956457}
+    - {fileID: 3210890248718956458}
+    - {fileID: 3210890248718956459}
+    - {fileID: 3210890248780914425}
+    - {fileID: 3210890248780914428}
+    - {fileID: 3210890248780914430}
+    - {fileID: 3210890248877080833}
+    - {fileID: 3210890248877080836}
+    - {fileID: 3210890248877080838}
+    - {fileID: 3210890248922723376}
+    - {fileID: 3210890248922723382}
+    - {fileID: 3210890248922723379}
+    - {fileID: 3210890248948435834}
+    - {fileID: 3210890249214970378}
+    - {fileID: 3210890249491358165}
+    - {fileID: 3210890249043000921}
+    - {fileID: 3210890249043000924}
+    - {fileID: 3210890249043000926}
+    - {fileID: 3210890249214970379}
+    - {fileID: 3210890249214970420}
+    - {fileID: 3210890249214970421}
+    - {fileID: 3210890249299692344}
+    - {fileID: 3210890249299692350}
+    - {fileID: 3210890249299692347}
+    - {fileID: 3210890249324380384}
+    - {fileID: 3210890249324380391}
+    - {fileID: 3210890249324380385}
+    - {fileID: 3210890249491358122}
+    - {fileID: 3210890249491358167}
+    - {fileID: 3210890249491358164}
+    - {fileID: 3210890249511756499}
+    - {fileID: 3210890249511756508}
+    - {fileID: 3210890249511756509}
+    - {fileID: 1083377533}
+    - {fileID: 1083377534}
+  prefabs: []
+--- !u!114 &9557082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9557079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8714d999c5ae749538494c1347e5a3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: 'The Easy Save 3 Manager is required in any scenes which use Easy Save,
+    and is automatically added to your scene when you enter Play mode.
+
+
+    To stop this from automatically being added to your scene, go to ''Window > Easy
+    Save 3 > Settings'' and deselect the ''Auto Add Manager to Scene'' checkbox.'
+--- !u!4 &9557083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9557079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &199499004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1437,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Concept Artists
+  m_text: Item Design
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1237,7 +1506,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3210890247771511146}
-    characterCount: 15
+    characterCount: 11
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -1883,7 +2152,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "Zachary Blouin (Cazac) \n\n(DuckDuck)\n\n(MagnetoCat)\n\n\n\n"
+  m_text: 'Zachary Blouin
+
+
+    Shawn
+
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1928,7 +2204,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 52
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1952,12 +2228,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3210890248346444390}
-    characterCount: 53
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 11
-    wordCount: 5
+    spaceCount: 6
+    wordCount: 3
     linkCount: 0
-    lineCount: 8
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2788,10 +3064,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'AnnaLynn Michelle (Jupityr)
+  m_text: 'Gabe
 
 
-    (TheMiteyZ)'
+    Arron'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2860,10 +3136,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3210890248497518621}
-    characterCount: 40
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 4
+    spaceCount: 2
+    wordCount: 2
     linkCount: 0
     lineCount: 3
     pageCount: 1
@@ -2995,7 +3271,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "(DuckDuck)\n\nZachary Blouin (Cazac) \n\n(MagnetoCat)\n"
+  m_text: 'Zachary Blouin
+
+
+    Gabe
+
+
+    Arron
+
+
+    Shawn
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3064,12 +3351,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3210890248669863026}
-    characterCount: 50
+    characterCount: 35
     spriteCount: 0
     spaceCount: 8
     wordCount: 5
     linkCount: 0
-    lineCount: 5
+    lineCount: 7
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -3631,7 +3918,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Zachary Blouin (Cazac)
+  m_text: 'Zachary Blouin
 
 '
   m_isRightToLeft: 0
@@ -3702,10 +3989,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 3210890248877080838}
-    characterCount: 23
+    characterCount: 15
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 3
+    spaceCount: 2
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1

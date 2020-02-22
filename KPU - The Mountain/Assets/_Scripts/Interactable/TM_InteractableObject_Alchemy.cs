@@ -37,15 +37,15 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerController_UI.Instance.Alchemy_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.Alchemy_Panel.activeSelf)
         {
             //Close UI
-            TM_PlayerController_UI.Instance.Action_Alchemy_CloseUI();
+            TM_PlayerMenuController_UI.Instance.Action_Alchemy_CloseUI();
         }
         else
         {
             //Open UI
-            TM_PlayerController_UI.Instance.Action_Alchemy_OpenUI();
+            TM_PlayerMenuController_UI.Instance.Action_Alchemy_OpenUI();
         }
     }
 

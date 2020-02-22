@@ -120,23 +120,23 @@ public class TM_PlayerController_Animation : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(5);
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_SetHover(5);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(6);
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_SetHover(6);
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(7);
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_SetHover(7);
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(8);
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_SetHover(8);
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            TM_PlayerController_Inventory.Instance.Toolbar_MoveSelector_SetHover(9);
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_SetHover(9);
         }
     }
 
