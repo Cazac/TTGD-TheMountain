@@ -626,7 +626,7 @@ BlendTree:
     m_Mirror: 0
   - serializedVersion: 2
     m_Motion: {fileID: 20699812}
-    m_Threshold: 1
+    m_Threshold: 4.99
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -635,7 +635,7 @@ BlendTree:
   m_BlendParameter: RunWalkID
   m_BlendParameterY: Speed
   m_MinThreshold: 0.1
-  m_MaxThreshold: 1
+  m_MaxThreshold: 4.99
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
@@ -1789,7 +1789,7 @@ AnimatorStateMachine:
     m_Position: {x: 108, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110203218}
-    m_Position: {x: -168, y: -48, z: 0}
+    m_Position: {x: -170, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110204980}
     m_Position: {x: 396, y: -48, z: 0}

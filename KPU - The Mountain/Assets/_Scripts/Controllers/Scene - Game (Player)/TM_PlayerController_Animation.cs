@@ -43,15 +43,12 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
         //Get Animator
         playerAnimator = gameObject.GetComponent<Animator>();
-
-        print("Test Code: " + gameObject.name);
     }
    
     private void Update()
     {
         LookForAnimationKeys_ViewType();
         LookForAnimationKeys_DebugChanges();
-
     }
 
     ///////////////////////////////////////////////////////

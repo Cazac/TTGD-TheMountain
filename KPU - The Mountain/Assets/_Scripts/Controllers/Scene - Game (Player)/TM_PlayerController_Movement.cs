@@ -24,7 +24,7 @@ public class TM_PlayerController_Movement : MonoBehaviour
     ////////////////////////////////
 
     [Header("Player Speeds")]
-    private float defaultSpeed = 5f;
+    private float defaultSpeed = 10f;
     private float sprintSpeed = 14f;
     private float crouchSpeed = 3f;
 
@@ -66,7 +66,7 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
         //Set Speed Values
         PlayerCrouch();
-        PlayerSprint();
+        //PlayerSprint();
 
         //Get Player Movement Values
         PlayerMove_Regluar();
@@ -85,7 +85,10 @@ public class TM_PlayerController_Movement : MonoBehaviour
         DoubleTap_Right();
 
 
-        //PlayerDodge(moveDirection);
+
+        //Debug Shift Dodge
+        PlayerDodge(moveDirection);
+
 
     }
 
@@ -156,7 +159,7 @@ public class TM_PlayerController_Movement : MonoBehaviour
         moveDirection *= currentSpeed * Time.deltaTime;
 
         //DEBUG
-        float speed = Mathf.Abs(moveDirection.x) + Mathf.Abs(moveDirection.y) + Mathf.Abs(moveDirection.z);
+        float speed = player_CC.velocity.magnitude;
         TM_PlayerController_Animation.Instance.SetAnimationValue_PlayerSpeed(speed);
         TM_PlayerController_Animation.Instance.SetAnimationValue_IsGrounded(player_CC.isGrounded);
     }
@@ -196,6 +199,14 @@ public class TM_PlayerController_Movement : MonoBehaviour
     private float delay_Right;
     private bool twoPress_Right;
     private float twoPressTimer_Right;
+
+
+    bool twoPress_Shift = false;
+    float twoPressTimer_Shift = 0;
+    Vector3 boostDirection;
+
+
+
 
     private void DoubleTap_Left()
     {
@@ -272,31 +283,48 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
     private void PlayerDodge(Vector3 moveDirection)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+
+        //Facing X
+
+
+
+        //Check For Key
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            twoPress_Shift = true;
+            twoPressTimer_Shift = 0.1f;
+
+
+            boostDirection = new Vector3(player_CC.velocity.x, 0f, player_CC.velocity.z) * 6f;
+        }
+
+        //Keep Moving
+        if (twoPress_Shift)
         {
 
-            print("Test Code: BLANK");
-            //player_CC.isGrounded && 
 
-            //if ()
+       
+            //Scale Direction To Time
+            Vector3 scaledDirection = boostDirection * Time.deltaTime;
+
+            //Move GameObject
+            transform.Translate(scaledDirection, Space.World);
+
+
+
+
+
+
+            //Subtract Time
+            twoPressTimer_Shift -= Time.deltaTime;
+
+            //Check If Done
+            if (twoPressTimer_Shift <= 0)
             {
-
+                twoPress_Shift = false;
             }
-
-
-            //moveDirection.Scale();
-
-            transform.Translate(moveDirection * 30);
         }
-
-
-        if (twoPressTimer_Left <= 0)
-        {
-            twoPress_Left = false;
-        }
-
-        twoPressTimer_Left = twoPressTimer_Left - Time.deltaTime;
-
     }
 
     ///////////////////////////////////////////////////////
