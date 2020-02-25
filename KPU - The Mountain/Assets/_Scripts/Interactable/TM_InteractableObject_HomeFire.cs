@@ -40,12 +40,12 @@ public class TM_InteractableObject_HomeFire : MonoBehaviour, TM_InteractableObje
         if (TM_PlayerMenuController_UI.Instance.Fire_Panel.activeSelf)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Fire_CloseUI();
+            TM_PlayerMenuController_Fire.Instance.FireMenu_CloseUI();
         }
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Fire_OpenUI();
+            TM_PlayerMenuController_Fire.Instance.FireMenu_OpenUI();
         }
     }
 

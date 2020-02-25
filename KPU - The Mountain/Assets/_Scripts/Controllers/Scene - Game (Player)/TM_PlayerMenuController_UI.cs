@@ -287,6 +287,8 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Fire UI
 
+        /*
+
     public void Action_Fire_OpenUI()
     {
         //Tunr On Panel
@@ -455,6 +457,8 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
 
 
     }
+
+    */
 
     /////////////////////////////////////////////////////// - Workbench UI
 
