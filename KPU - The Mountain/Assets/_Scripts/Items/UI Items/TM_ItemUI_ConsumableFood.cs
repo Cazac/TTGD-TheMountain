@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +11,9 @@ using UnityEngine;
 /// </summary>
 ///////////////
 
-public class TM_ItemUI_ConsumableFood : TM_ItemUI_Base
+public class TM_ItemUI_ConsumableFood 
 {
+    /*
     ////////////////////////////////
 
     public TM_Item_ConsumableFood_SO originalScriptableItem;
@@ -79,5 +81,7 @@ public class TM_ItemUI_ConsumableFood : TM_ItemUI_Base
         health = originalScriptableItem.health; 
     }
 
+
     ///////////////////////////////////////////////////////
 }
+    */

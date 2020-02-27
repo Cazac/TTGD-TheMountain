@@ -51,6 +51,42 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
         //Set New Position
         currentToolbarPosition = hoverPosition;
+
+
+        // ***** DEBUG CODE ******
+
+
+
+
+        //Check If Slot has an Item
+        if (toolbarItemSlots_Array[hoverPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem() != null)
+        {
+            //Set Animation Value
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(true);
+
+            TM_ItemUI item = toolbarItemSlots_Array[hoverPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+            //Spawn Item
+            TM_PlayerController_Animation.Instance.SpawnItemInHand_Hover(item.original_SO);
+        }
+        else
+        {
+            //Set Animation Value
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(false);
+
+            //Remove Old Item
+            TM_PlayerController_Animation.Instance.RemoveItemInHand_Right();
+        }
+
+
+
+
+
+
+
+
+
+        // ***** DEBUG CODE ******
     }
 
     ///////////////////////////////////////////////////////

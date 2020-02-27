@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿
+/*
+using UnityEngine;
 
 ///////////////
 /// <summary>
@@ -26,3 +28,4 @@ public interface TM_ItemUI_Base
 
     ///////////////////////////////////////////////////////
 }
+*/

@@ -13,6 +13,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/Basic")]
 public class TM_Item_BasicItem_SO : ScriptableObject
 {
+    /*
     //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
@@ -36,7 +37,7 @@ public class TM_Item_BasicItem_SO : ScriptableObject
     public bool isBurnable;
 
     //////////////////////////////// - Equiptable Weapon Stats
-
+    */
 
 
     ///////////////////////////////////////////////////////

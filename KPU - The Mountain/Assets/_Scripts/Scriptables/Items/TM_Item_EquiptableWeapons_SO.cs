@@ -13,6 +13,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/Equiptable Weapon")]
 public class TM_Item_EquiptableWeapons_SO : ScriptableObject
 {
+        /*
+
     //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
@@ -46,6 +48,8 @@ public class TM_Item_EquiptableWeapons_SO : ScriptableObject
     public int weaponReq_DEX;
     public int weaponReq_INT;
     public int weaponReq_CON;
+
+    */
 
     ///////////////////////////////////////////////////////
 }

@@ -13,6 +13,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/Equiptable Armor")]
 public class TM_Item_EquiptableArmor_SO : ScriptableObject
 {
+        /*
+
     //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
@@ -38,6 +40,6 @@ public class TM_Item_EquiptableArmor_SO : ScriptableObject
     //////////////////////////////// - Equiptable Weapon Stats
 
 
-
+    */
     ///////////////////////////////////////////////////////
 }

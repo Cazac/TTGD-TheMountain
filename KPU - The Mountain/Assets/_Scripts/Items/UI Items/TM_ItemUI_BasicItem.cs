@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TM_ItemUI_BasicItem : TM_ItemUI_Base
+public class TM_ItemUI_BasicItem 
 {
+    /*
     ////////////////////////////////
 
     public TM_Item_BasicItem_SO originalScriptableItem;
@@ -27,7 +29,7 @@ public class TM_ItemUI_BasicItem : TM_ItemUI_Base
 
     ///////////////////////////////////////////////////////
 
-    public TM_ItemUI_BasicItem(TM_Item_BasicItem_SO scriptableItem)
+    public TM_ItemUI_BasicItem(TM_Item_SO scriptableItem)
     {
         //Set Original Scriptable Object
         originalScriptableItem = scriptableItem;
@@ -69,5 +71,7 @@ public class TM_ItemUI_BasicItem : TM_ItemUI_Base
 
     }
 
+
     ///////////////////////////////////////////////////////
 }
+*/

@@ -14,6 +14,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/Consumable Food")]
 public class TM_Item_ConsumableFood_SO : ScriptableObject
 {
+        /*
+
     //////////////////////////////// - Prefabs
 
     [Header("Item Prefabs")]
@@ -41,6 +43,8 @@ public class TM_Item_ConsumableFood_SO : ScriptableObject
     [Header("Item Stats (Consumable Food)")]
     public string hunger;
     public string health;
+
+    */
 
     ///////////////////////////////////////////////////////
 }

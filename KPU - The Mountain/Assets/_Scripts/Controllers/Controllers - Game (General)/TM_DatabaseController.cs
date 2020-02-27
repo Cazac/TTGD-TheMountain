@@ -25,7 +25,7 @@ public class TM_DatabaseController : MonoBehaviour
     public List<TM_Item_EquiptableWeapons_SO> equiptableWeapon_LIST;
 
     //[Header("Enemy Lists")]
-
+    public TM_Item_SO apple;
 
     /////////////////////////////////////////////////////////////////
 

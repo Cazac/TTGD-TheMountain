@@ -103,9 +103,9 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
 
             //Set Image
             selectedIcon_Image.gameObject.SetActive(true);
-            selectedIcon_Image.sprite = burnableTab.currentBurnableItem.ItemIcon;
-            selectedBurnName_Text.text = burnableTab.currentBurnableItem.ItemName;
-            selectedBurnDesc_Text.text = burnableTab.currentBurnableItem.ItemDesc;
+            selectedIcon_Image.sprite = burnableTab.currentBurnableItem.itemIcon;
+            selectedBurnName_Text.text = burnableTab.currentBurnableItem.itemName;
+            selectedBurnDesc_Text.text = burnableTab.currentBurnableItem.itemDesc;
             selectedEffect_Text.text = "- ???";
 
 
@@ -145,12 +145,12 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
 
 
-            if (slot.currentItem != null)
+            if (slot.ItemSlot_GetItem() != null)
             {
-                if (slot.currentItem.ItemName == currentSelectedBurnable_Tab.currentBurnableItem.ItemName)
+                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
                 {
 
-                    slot.currentItem.CurrentStackSize--;
+                    slot.ItemSlot_GetItem().currentStackSize--;
                     slot.ItemSlot_UpdateItem();
                     Refresh_BurnableItemsList();
                     return;
@@ -164,12 +164,12 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
 
-            if (slot.currentItem != null)
+            if (slot.ItemSlot_GetItem() != null)
             {
-                if (slot.currentItem.ItemName == currentSelectedBurnable_Tab.currentBurnableItem.ItemName)
+                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
                 {
 
-                    slot.currentItem.CurrentStackSize--;
+                    slot.ItemSlot_GetItem().currentStackSize--;
                     slot.ItemSlot_UpdateItem();
                     Refresh_BurnableItemsList();
                     return;
@@ -185,8 +185,8 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
     private void Refresh_BurnableItemsList()
     {
         //Burnable Lists
-        List<TM_ItemUI_Base> itemsBurnable_List = new List<TM_ItemUI_Base>();
-        List<TM_ItemUI_Base> itemsBurnableFiltered_List = new List<TM_ItemUI_Base>();
+        List<TM_ItemUI> itemsBurnable_List = new List<TM_ItemUI>();
+        List<TM_ItemUI> itemsBurnableFiltered_List = new List<TM_ItemUI>();
 
 
         //Remove Old List Values
@@ -201,11 +201,11 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
 
-            if (slot.currentItem != null)
+            if (slot.ItemSlot_GetItem() != null)
             {
-                if (slot.currentItem.IsBurnable)
+                if (slot.ItemSlot_GetItem().isBurnable)
                 {
-                    itemsBurnable_List.Add(slot.currentItem);
+                    itemsBurnable_List.Add(slot.ItemSlot_GetItem());
                 }
             }
         }
@@ -216,31 +216,31 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
 
-            if (slot.currentItem != null)
+            if (slot.ItemSlot_GetItem() != null)
             {
-                if (slot.currentItem.IsBurnable)
+                if (slot.ItemSlot_GetItem().isBurnable)
                 {
-                    itemsBurnable_List.Add(slot.currentItem);
+                    itemsBurnable_List.Add(slot.ItemSlot_GetItem());
                 }
             }
         }
 
 
         bool canPass = false;
-        TM_ItemUI_Base mergingItem = null;
-        TM_ItemUI_Base removalItem_Basic = null;
-        TM_ItemUI_Base removalItem_Listed = null;
+        TM_ItemUI mergingItem = null;
+        TM_ItemUI removalItem_Basic = null;
+        TM_ItemUI removalItem_Listed = null;
 
         //Merge Items
         while (canPass == false)
         {
             for (int i = 0; i < itemsBurnable_List.Count; i++)
             {
-                foreach (TM_ItemUI_Base item in itemsBurnable_List)
+                foreach (TM_ItemUI item in itemsBurnable_List)
                 {
                     if (itemsBurnable_List[i] != item)
                     {
-                        if (itemsBurnable_List[i].ItemName == item.ItemName && itemsBurnable_List[i].CurrentDurablity == item.CurrentDurablity)
+                        if (itemsBurnable_List[i].itemName == item.itemName && itemsBurnable_List[i].currentDurablity == item.currentDurablity)
                         {
                             //Set Item Removal
                             removalItem_Basic = item;
@@ -257,7 +257,7 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
 
 
                             mergingItem = item;
-                            mergingItem.CurrentStackSize += itemsBurnable_List[i].CurrentStackSize;
+                            mergingItem.currentStackSize += itemsBurnable_List[i].currentStackSize;
 
                             //Skip Loops, A Match Was Found
                             goto BreakLoops;
@@ -282,7 +282,7 @@ public class TM_PlayerMenuController_Fire : MonoBehaviour
         }
 
         //Create and Fill Prefabs
-        foreach (TM_ItemUI_Base item in itemsBurnable_List)
+        foreach (TM_ItemUI item in itemsBurnable_List)
         {
             //Get Objects
             GameObject newItem = Instantiate(burnableItem_Prefab, burnablesContentContainer_GO.transform);

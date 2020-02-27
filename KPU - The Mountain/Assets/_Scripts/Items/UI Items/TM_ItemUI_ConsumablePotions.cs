@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿/*
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,3 +72,4 @@ public class TM_ItemUI_ConsumablePotions : TM_ItemUI_Base
         //health = originalScriptableItem.health;
     }
 }
+*/

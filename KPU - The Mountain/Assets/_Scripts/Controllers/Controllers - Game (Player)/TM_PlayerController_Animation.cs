@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +15,17 @@ public class TM_PlayerController_Animation : MonoBehaviour
     public GameObject firstPersonCamera_GO;
     public GameObject thirdPersonCamera_GO;
 
+    ////////////////////////////////
+
+    [Header("Hand Spawn Points")]
+    public GameObject playerRightHandSpawnPoint_GO;
+    public GameObject playerLeftHandSpawnPoint_GO;
 
     ////////////////////////////////
 
     private Animator playerAnimator;
+
+    ////////////////////////////////
 
     /*
     float TypeID_Running;
@@ -30,9 +38,6 @@ public class TM_PlayerController_Animation : MonoBehaviour
     bool IsAttacking_MeleeStrong;
     bool IsAttacking_MagicQuick;
     */
-
-
-
 
     ///////////////////////////////////////////////////////
 
@@ -72,9 +77,43 @@ public class TM_PlayerController_Animation : MonoBehaviour
         playerAnimator.SetBool("IsGrounded", value);
     }
 
+    public void SetAnimationValue_IsHoldingItem(bool value)
+    {
+        playerAnimator.SetBool("IsHoldingToolbarItem", value);
+    }
+
     ///////////////////////////////////////////////////////
 
+    public void RemoveItemInHand_Right()
+    {
+        //Remove Old Item In Hand
+        foreach (Transform child in playerRightHandSpawnPoint_GO.transform)
+        {
+            //Remove Children
+            Destroy(child.gameObject);
+        }
+    }
 
+    public void SpawnItemInHand_Hover(TM_Item_SO original_SO)
+    {
+        //Remove Old Item
+        RemoveItemInHand_Right();
+
+
+        if (original_SO.held_Prefab != null)
+        {
+            Instantiate(original_SO.held_Prefab, playerRightHandSpawnPoint_GO.transform);
+        }
+        else
+        {
+            print("Test Code: Oops");
+        }
+    }
+
+    public void SpawnItemInHand_Combat(TM_Item_SO original_SO)
+    {
+        throw new NotImplementedException();
+    }
 
     ///////////////////////////////////////////////////////
 

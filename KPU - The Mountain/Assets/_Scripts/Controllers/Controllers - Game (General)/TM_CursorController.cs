@@ -57,12 +57,12 @@ public class TM_CursorController : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public TM_ItemUI_Base Cursor_GetItem()
+    public TM_ItemUI Cursor_GetItem()
     {
-        return cursorItemSlot.currentItem;
+        return cursorItemSlot.ItemSlot_GetItem();
     }
 
-    public void Cursor_SetItem(TM_ItemUI_Base item)
+    public void Cursor_SetItem(TM_ItemUI item)
     {
         gameObject.GetComponent<TM_ItemSlot>().ItemSlot_SetItem(item);
     }
@@ -82,7 +82,7 @@ public class TM_CursorController : MonoBehaviour
         gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DropItem();
     }
 
-    public void Cursor_DupplicateItem(object item)
+    public void Cursor_DupplicateItem(TM_ItemUI item)
     {
         gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DupplicateItem(item);
     }
@@ -91,6 +91,7 @@ public class TM_CursorController : MonoBehaviour
 
     public void TryAction_AddItemToInventory(GameObject interactedItem)
     {
+        //Looking For Possible Merges In Toolbar
         if (gameObject.GetComponent<TM_ItemSlot>().Action_Toolbar_QuickStack())
         {
             //All Good, Destory Me!
@@ -98,6 +99,7 @@ public class TM_CursorController : MonoBehaviour
         }
         else
         {
+            //Looking For Possible Merges In Inventory
             if (gameObject.GetComponent<TM_ItemSlot>().Action_Inventory_QuickStack())
             {
                 //All Good, Destory Me!
@@ -109,8 +111,6 @@ public class TM_CursorController : MonoBehaviour
                 gameObject.GetComponent<TM_ItemSlot>().Action_NoAction();
             }
         }
-
-
 
         //Remove Item From Cursor Anyways
         Cursor_RemoveItem();

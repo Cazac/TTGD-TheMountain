@@ -31,8 +31,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     ////////////////////////////////
 
-    [Header("Current Item Selected")]
-    public TM_ItemUI_Base currentItem;
+    //[Header("Current Item Selected")]
+    private TM_ItemUI currentItem { get; set; }
 
     ////////////////////////////////
 
@@ -118,7 +118,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (value < (TM_DatabaseController.Instance.consumableFood_LIST.Count))
             {
                 //Create New Item From Database
-                TM_ItemUI_Base newItem = new TM_ItemUI_ConsumableFood(TM_DatabaseController.Instance.consumableFood_LIST[value]);
+                TM_ItemUI newItem = new TM_ItemUI(TM_DatabaseController.Instance.apple);    //Time TO Add THE NEW ITEMS STYLE AND DELTE THE OLD
 
                 //Set Debug Item
                 ItemSlot_SetItem(newItem);
@@ -128,10 +128,16 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     ///////////////////////////////////////////////////////
 
-    public void ItemSlot_SetItem(TM_ItemUI_Base newItem)
+    public TM_ItemUI ItemSlot_GetItem()
+    {
+        //Return Current Item
+        return currentItem;
+    }
+
+    public void ItemSlot_SetItem(TM_ItemUI newItem)
     {
         //Check for an Empty Stack
-        if (newItem.CurrentStackSize <= 0)
+        if (newItem.currentStackSize <= 0)
         {
             //Remove Item
             ItemSlot_RemoveItem();
@@ -143,34 +149,19 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
         //Set Sprite
         slotIcon.gameObject.SetActive(true);
-        slotIcon.sprite = currentItem.ItemIcon;
+        slotIcon.sprite = currentItem.itemIcon;
 
         //Update UI
         ItemSlot_UpdateItem();
     }
 
-    public void ItemSlot_DupplicateItem(object orignalItem)
+    public void ItemSlot_DupplicateItem(TM_ItemUI orignalItem)
     {
-        //Filter Object Type
-        if (orignalItem.GetType() == typeof(TM_ItemUI_ConsumableFood))
-        {
-            //Cast Type Of Object
-            TM_ItemUI_ConsumableFood newItem = (TM_ItemUI_ConsumableFood)orignalItem;
+        //Deep Copy the Item
+        currentItem = new TM_ItemUI(orignalItem);
 
-            //Deep Copy the Item
-            currentItem = new TM_ItemUI_ConsumableFood(newItem);
-
-            //Set Item
-            ItemSlot_SetItem(currentItem);
-        }
-        else if (orignalItem.GetType() == typeof(TM_Item_EquiptableArmor_SO))
-        {
-            //Invalid Needs Other Tpyes
-        }
-        else
-        {
-            print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-        }
+        //Set Item
+        ItemSlot_SetItem(currentItem);
     }
 
     public void ItemSlot_RemoveItem()
@@ -187,7 +178,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void ItemSlot_UpdateItem()
     {
         //Check for an Empty Stack
-        if (currentItem.CurrentStackSize <= 0)
+        if (currentItem.currentStackSize <= 0)
         {
             //Remove Item
             ItemSlot_RemoveItem();
@@ -195,7 +186,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
 
         //Durablity
-        if (currentItem.MaxDurablity > 0)
+        if (currentItem.maxDurablity > 0)
         {
             //Turn On Durablity and Fill Bar
             slotDurablityBar_GO.SetActive(true);
@@ -209,20 +200,20 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
 
         //Max Stack Size
-        if (currentItem.MaxStackSize > 0)
+        if (currentItem.maxStackSize > 0)
         {
             //Turn On Durablity and Set Text
             slotStackSize_GO.SetActive(true);
 
-            if (currentItem.CurrentStackSize == currentItem.MaxStackSize)
+            if (currentItem.currentStackSize == currentItem.maxStackSize)
             {
                 //Set Full Stack Color
-                slotStackSize_Text.text = "<color=#ffff00>" + currentItem.CurrentStackSize.ToString() + "</color>";
+                slotStackSize_Text.text = "<color=#ffff00>" + currentItem.currentStackSize.ToString() + "</color>";
             }
             else
             {
                 //Set Default White
-                slotStackSize_Text.text = currentItem.CurrentStackSize.ToString();
+                slotStackSize_Text.text = currentItem.currentStackSize.ToString();
             }
         }
         else
@@ -241,86 +232,24 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         //Check For Item
         if (currentItem != null)
         {
-            //Filter Object Type
-            if (currentItem.GetType() == typeof(TM_ItemUI_ConsumableFood))
-            {
-                //Cast Type Of Object
-                //Cast Type Of Object
-                TM_ItemUI_ConsumableFood convertedUIItem = (TM_ItemUI_ConsumableFood)currentItem;
+            //Create a position infront of the player
+            Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
+            spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
+            spawnPosition.y += 1;
 
-                //Create a position infront of the player
-                Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
-                spawnPosition.y += 1;
+            //Add Jitter
+            spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.right * Random.Range(-0.1f, 0.1f);
 
-                //Add Jitter
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.right * Random.Range(-0.1f, 0.1f);
+            //Spawn Item as Dropped
+            GameObject newObject = Instantiate(currentItem.original_SO.dropped_Prefab, spawnPosition, Quaternion.identity);
 
-                //Spawn Item as Dropped
-                GameObject newObject = Instantiate(convertedUIItem.originalScriptableItem.dropped_Prefab, spawnPosition, Quaternion.identity);
+            //Set Stacksize and Durablity 
+            newObject.GetComponent<TM_ItemDropped>().currentStackSize = currentItem.currentStackSize;
+            newObject.GetComponent<TM_ItemDropped>().currentDurablity = currentItem.currentDurablity;
 
-                //Set Stacksize and Durablity 
-                newObject.GetComponent<TM_ItemDropped>().currentStackSize = currentItem.CurrentStackSize;
-                newObject.GetComponent<TM_ItemDropped>().currentDurablity = currentItem.CurrentDurablity;
-
-                //Remove Stack From UI
-                TM_CursorController.Instance.Cursor_RemoveItem();
-            }
-            else if (currentItem.GetType() == typeof(TM_ItemUI_EquiptableWeapons))
-            {
-                //Cast Type Of Object
-                TM_ItemUI_EquiptableWeapons convertedUIItem = (TM_ItemUI_EquiptableWeapons)currentItem;
-
-                //Create a position infront of the player
-                Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * 3;
-                spawnPosition.y += 1;
-
-                //Add Jitter
-                spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.right * Random.Range(-0.1f, 0.1f);
-
-                //Spawn Item as Dropped
-                GameObject newObject = Instantiate(convertedUIItem.originalScriptableItem.dropped_Prefab, spawnPosition, Quaternion.identity);
-
-                //Set Stacksize and Durablity 
-                newObject.GetComponent<TM_ItemDropped>().currentStackSize = currentItem.CurrentStackSize;
-                newObject.GetComponent<TM_ItemDropped>().currentDurablity = currentItem.CurrentDurablity;
-
-                //Remove Stack From UI
-                TM_CursorController.Instance.Cursor_RemoveItem();
-            }
-            else if (currentItem.GetType() == typeof(TM_ItemUI_EquiptableArmor))
-            {
-                //Invalid Needs Other Tpyes
-                print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-            }
-            else if (currentItem.GetType() == typeof(TM_ItemUI_ConsumablePotions))
-            {
-                //Invalid Needs Other Tpyes
-                print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-            }
-            else
-            {
-                print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-            }
-
-
-
-
-
-
-
-            //convert to dropped item version
-           // currentItem.
-
+            //Remove Stack From UI
+            TM_CursorController.Instance.Cursor_RemoveItem();
         }
-        //if item
-
-
-
-        //add timer for no pickup
-
-        //remove item 
     }
 
     ///////////////////////////////////////////////////////
@@ -350,7 +279,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Inventory_PickupSingle();
@@ -390,7 +319,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Toolbar_PickupSingle();
@@ -439,7 +368,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Inventory_PickupSingle();
@@ -479,7 +408,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Toolbar_PickupSingle();
@@ -562,7 +491,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Inventory_CombineStacks();
@@ -602,7 +531,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Cursor Item
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
-                    if (TM_CursorController.Instance.Cursor_GetItem().ItemName == currentItem.ItemName)
+                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
                         Action_Toolbar_CombineStacks();
@@ -633,7 +562,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Filter Object Type
-                    if (TM_CursorController.Instance.Cursor_GetItem().GetType() == typeof(TM_ItemUI_EquiptableWeapons))
+                    if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
                     {
                         //Set stack to Inventory
                         Action_Equipment_PlaceStack();
@@ -656,7 +585,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Filter Object Type
-                    if (TM_CursorController.Instance.Cursor_GetItem().GetType() == typeof(TM_ItemUI_EquiptableWeapons))
+                    if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
                     {
                         //Switch Stacks
                         Action_Equipment_SwitchStacks();
@@ -712,8 +641,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private void Action_Inventory_SwitchStacks()
     {
         //Get Items
-        TM_ItemUI_Base inventoryItem = currentItem;
-        TM_ItemUI_Base cursorItem = TM_CursorController.Instance.Cursor_GetItem();
+        TM_ItemUI inventoryItem = currentItem;
+        TM_ItemUI cursorItem = TM_CursorController.Instance.Cursor_GetItem();
 
         //Switch Values
         TM_CursorController.Instance.Cursor_SetItem(inventoryItem);
@@ -722,20 +651,20 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void Action_Inventory_CombineStacks()
     {
-        if (currentItem.CurrentStackSize < currentItem.MaxStackSize)
+        if (currentItem.currentStackSize < currentItem.maxStackSize)
         {
             //Get Max Values For Passing and Incoming
-            int maxAllowedItems_INV = currentItem.MaxStackSize - currentItem.CurrentStackSize;
-            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+            int maxAllowedItems_INV = currentItem.maxStackSize - currentItem.currentStackSize;
+            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
 
             //Check for extra values
             if (maxPassableItems_CUR >= maxAllowedItems_INV)
             {
                 //Give Some Values
-                currentItem.CurrentStackSize += maxAllowedItems_INV;
+                currentItem.currentStackSize += maxAllowedItems_INV;
 
                 //Remove Some Values
-                TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize -= maxAllowedItems_INV;
+                TM_CursorController.Instance.Cursor_GetItem().currentStackSize -= maxAllowedItems_INV;
 
                 //Set Items Again To Refresh Stats
                 ItemSlot_SetItem(currentItem);
@@ -744,7 +673,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 //Deposit All Values
-                currentItem.CurrentStackSize += TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+                currentItem.currentStackSize += TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
 
                 //Clear the Cursor
                 TM_CursorController.Instance.Cursor_RemoveItem();
@@ -767,13 +696,13 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Give an Item and Make it Single
             TM_CursorController.Instance.Cursor_DupplicateItem(currentItem);
-            TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize = 1;
+            TM_CursorController.Instance.Cursor_GetItem().currentStackSize = 1;
             TM_CursorController.Instance.Cursor_UpdateItem();
         }
         else
         {
             //Add an Item
-            TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize++;
+            TM_CursorController.Instance.Cursor_GetItem().currentStackSize++;
             TM_CursorController.Instance.Cursor_UpdateItem();
         }
 
@@ -781,7 +710,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
 
         //Remove a Single Item
-        currentItem.CurrentStackSize--;
+        currentItem.currentStackSize--;
         ItemSlot_UpdateItem();
     }
 
@@ -792,18 +721,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Give an Item and Make it Single
             ItemSlot_DupplicateItem(TM_CursorController.Instance.Cursor_GetItem());
-            currentItem.CurrentStackSize = 1;
+            currentItem.currentStackSize = 1;
             ItemSlot_UpdateItem();
         }
         else
         {
             //Add an Item
-            currentItem.CurrentStackSize++;
+            currentItem.currentStackSize++;
             ItemSlot_UpdateItem();
         }
 
         //Remove a Single Item
-        TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize--;
+        TM_CursorController.Instance.Cursor_GetItem().currentStackSize--;
         TM_CursorController.Instance.Cursor_UpdateItem();
     }
 
@@ -830,10 +759,10 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 //Check For Matching Names
-                if (slot.currentItem.ItemName == currentItem.ItemName)
+                if (slot.currentItem.itemName == currentItem.itemName)
                 {
                     //Check For Non-Max Values
-                    if (slot.currentItem.CurrentStackSize < slot.currentItem.MaxStackSize)
+                    if (slot.currentItem.currentStackSize < slot.currentItem.maxStackSize)
                     {
                         //Add to Mergable Spots
                         possibleMerges_List.Add(slot);
@@ -847,17 +776,17 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         for (int i = 0; i < possibleMerges_List.Count; i++)
         {
             //Calculate Max Item Recivable / Passable
-            int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.MaxStackSize - possibleMerges_List[i].currentItem.CurrentStackSize;
-            int maxPassableItems_INV = currentItem.CurrentStackSize;
+            int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.maxStackSize - possibleMerges_List[i].currentItem.currentStackSize;
+            int maxPassableItems_INV = currentItem.currentStackSize;
 
             //Check for extra values
             if (maxPassableItems_INV >= maxAllowedItems_TOL)
             {
                 //Give Some Values
-                possibleMerges_List[i].currentItem.CurrentStackSize += maxAllowedItems_TOL;
+                possibleMerges_List[i].currentItem.currentStackSize += maxAllowedItems_TOL;
 
                 //Remove Some Values
-                currentItem.CurrentStackSize -= maxAllowedItems_TOL;
+                currentItem.currentStackSize -= maxAllowedItems_TOL;
 
                 //Set Items Again To Refresh Stats
                 ItemSlot_SetItem(currentItem);
@@ -873,7 +802,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 //Deposit All Values
-                possibleMerges_List[i].currentItem.CurrentStackSize += currentItem.CurrentStackSize;
+                possibleMerges_List[i].currentItem.currentStackSize += currentItem.currentStackSize;
 
                 //Clear the INV Item
                 ItemSlot_RemoveItem();
@@ -895,6 +824,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 //Move Stack
                 possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
+
+                print("Test Code: FOunds");
 
                 //Remove Stack
                 ItemSlot_RemoveItem();
@@ -933,8 +864,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private void Action_Toolbar_SwitchStacks()
     {
         //Get Items
-        TM_ItemUI_Base inventoryItem = currentItem;
-        TM_ItemUI_Base cursorItem = TM_CursorController.Instance.Cursor_GetItem();
+        TM_ItemUI inventoryItem = currentItem;
+        TM_ItemUI cursorItem = TM_CursorController.Instance.Cursor_GetItem();
 
         //Switch Values
         TM_CursorController.Instance.Cursor_SetItem(inventoryItem);
@@ -943,20 +874,20 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void Action_Toolbar_CombineStacks()
     {
-        if (currentItem.CurrentStackSize < currentItem.MaxStackSize)
+        if (currentItem.currentStackSize < currentItem.maxStackSize)
         {
             //Get Max Values For Passing and Incoming
-            int maxAllowedItems_INV = currentItem.MaxStackSize - currentItem.CurrentStackSize;
-            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+            int maxAllowedItems_INV = currentItem.maxStackSize - currentItem.currentStackSize;
+            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
 
             //Check for extra values
             if (maxPassableItems_CUR >= maxAllowedItems_INV)
             {
                 //Give Some Values
-                currentItem.CurrentStackSize += maxAllowedItems_INV;
+                currentItem.currentStackSize += maxAllowedItems_INV;
 
                 //Remove Some Values
-                TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize -= maxAllowedItems_INV;
+                TM_CursorController.Instance.Cursor_GetItem().currentStackSize -= maxAllowedItems_INV;
 
                 //Set Items Again To Refresh Stats
                 ItemSlot_SetItem(currentItem);
@@ -965,7 +896,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 //Deposit All Values
-                currentItem.CurrentStackSize += TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize;
+                currentItem.currentStackSize += TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
 
                 //Clear the Cursor
                 TM_CursorController.Instance.Cursor_RemoveItem();
@@ -988,13 +919,13 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Give an Item and Make it Single
             TM_CursorController.Instance.Cursor_DupplicateItem(currentItem);
-            TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize = 1;
+            TM_CursorController.Instance.Cursor_GetItem().currentStackSize = 1;
             TM_CursorController.Instance.Cursor_UpdateItem();
         }
         else
         {
             //Add an Item
-            TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize++;
+            TM_CursorController.Instance.Cursor_GetItem().currentStackSize++;
             TM_CursorController.Instance.Cursor_UpdateItem();
         }
 
@@ -1002,7 +933,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
 
         //Remove a Single Item
-        currentItem.CurrentStackSize--;
+        currentItem.currentStackSize--;
         ItemSlot_UpdateItem();
     }
 
@@ -1013,18 +944,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Give an Item and Make it Single
             ItemSlot_DupplicateItem(TM_CursorController.Instance.Cursor_GetItem());
-            currentItem.CurrentStackSize = 1;
+            currentItem.currentStackSize = 1;
             ItemSlot_UpdateItem();
         }
         else
         {
             //Add an Item
-            currentItem.CurrentStackSize++;
+            currentItem.currentStackSize++;
             ItemSlot_UpdateItem();
         }
 
         //Remove a Single Item
-        TM_CursorController.Instance.Cursor_GetItem().CurrentStackSize--;
+        TM_CursorController.Instance.Cursor_GetItem().currentStackSize--;
         TM_CursorController.Instance.Cursor_UpdateItem();
     }
 
@@ -1032,6 +963,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (currentItem == null)
         {
+            print("Test Code: Failed Toolbar");
             return false;
         }
 
@@ -1056,10 +988,10 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else 
             {
                 //Check For Matching Names
-                if (slot.currentItem.ItemName == currentItem.ItemName)
+                if (slot.currentItem.itemName == currentItem.itemName)
                 {
                     //Check For Non-Max Values
-                    if (slot.currentItem.CurrentStackSize < slot.currentItem.MaxStackSize)
+                    if (slot.currentItem.currentStackSize < slot.currentItem.maxStackSize)
                     {
                         //Add to Mergable Spots
                         possibleMerges_List.Add(slot);
@@ -1073,17 +1005,17 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         for (int i = 0; i < possibleMerges_List.Count; i++)
         {
             //Calculate Max Item Recivable / Passable
-            int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.MaxStackSize - possibleMerges_List[i].currentItem.CurrentStackSize;
-            int maxPassableItems_INV = currentItem.CurrentStackSize;
+            int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.maxStackSize - possibleMerges_List[i].currentItem.currentStackSize;
+            int maxPassableItems_INV = currentItem.currentStackSize;
 
             //Check for extra values
             if (maxPassableItems_INV >= maxAllowedItems_TOL)
             {
                 //Give Some Values
-                possibleMerges_List[i].currentItem.CurrentStackSize += maxAllowedItems_TOL;
+                possibleMerges_List[i].currentItem.currentStackSize += maxAllowedItems_TOL;
 
                 //Remove Some Values
-                currentItem.CurrentStackSize -= maxAllowedItems_TOL;
+                currentItem.currentStackSize -= maxAllowedItems_TOL;
 
                 //Set Items Again To Refresh Stats
                 ItemSlot_SetItem(currentItem);
@@ -1099,7 +1031,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 //Deposit All Values
-                possibleMerges_List[i].currentItem.CurrentStackSize += currentItem.CurrentStackSize;
+                possibleMerges_List[i].currentItem.currentStackSize += currentItem.currentStackSize;
 
                 //Clear the INV Item
                 ItemSlot_RemoveItem();
@@ -1159,8 +1091,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void Action_Equipment_SwitchStacks()
     {
         //Get Items
-        TM_ItemUI_Base inventoryItem = currentItem;
-        TM_ItemUI_Base cursorItem = TM_CursorController.Instance.Cursor_GetItem();
+        TM_ItemUI inventoryItem = currentItem;
+        TM_ItemUI cursorItem = TM_CursorController.Instance.Cursor_GetItem();
 
         //Switch Values
         TM_CursorController.Instance.Cursor_SetItem(inventoryItem);

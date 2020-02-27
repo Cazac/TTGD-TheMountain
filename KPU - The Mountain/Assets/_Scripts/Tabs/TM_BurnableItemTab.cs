@@ -11,7 +11,7 @@ public class TM_BurnableItemTab : MonoBehaviour, IPointerClickHandler
 
 
 
-    public TM_ItemUI_Base currentBurnableItem;
+    public TM_ItemUI currentBurnableItem;
 
     public TextMeshProUGUI itemName_Text;
     public TextMeshProUGUI itemCount_Text;
@@ -31,9 +31,9 @@ public class TM_BurnableItemTab : MonoBehaviour, IPointerClickHandler
     public void RefreshTab()
     {
         //Fill Out Info
-        itemName_Text.text = currentBurnableItem.ItemName;
-        itemCount_Text.text = "x " + currentBurnableItem.CurrentStackSize.ToString();
-        itemIcon_Image.sprite = currentBurnableItem.ItemIcon;
+        itemName_Text.text = currentBurnableItem.itemName;
+        itemCount_Text.text = "x " + currentBurnableItem.currentStackSize.ToString();
+        itemIcon_Image.sprite = currentBurnableItem.itemIcon;
     }
 
     public void OnPointerClick(PointerEventData eventData)
