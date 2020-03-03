@@ -1,0 +1,25 @@
+{
+	"bindings":
+	[
+		{
+			"action": "Forward",
+			"key": "I"
+		},
+		{
+			"action": "Back",
+			"key": "K"
+		},
+		{
+			"action": "Left",
+			"key": "J"
+		},
+		{
+			"action": "Right",
+			"key": "L"
+		},
+		{
+			"action": "Jump",
+			"key": "Space"
+		}
+	]
+}
