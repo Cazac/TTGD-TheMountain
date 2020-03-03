@@ -37,10 +37,14 @@ public class TM_InteractableObject_Workshop : MonoBehaviour, TM_InteractableObje
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf == true)
         {
             //Close UI
             TM_PlayerMenuController_UI.Instance.Action_Workshop_CloseUI();
+        }
+        else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf == false)
+        {
+            return;
         }
         else
         {

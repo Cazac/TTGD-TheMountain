@@ -37,15 +37,19 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerMenuController_UI.Instance.Alchemy_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Alchemy_CloseUI();
+            TM_PlayerMenuController_UI.Instance.Action_Brewery_CloseUI();
+        }
+        else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf == false)
+        {
+            return;
         }
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Alchemy_OpenUI();
+            TM_PlayerMenuController_UI.Instance.Action_Brewery_OpenUI();
         }
     }
 

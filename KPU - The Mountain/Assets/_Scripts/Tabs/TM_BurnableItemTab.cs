@@ -38,7 +38,7 @@ public class TM_BurnableItemTab : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        TM_PlayerMenuController_Fire.Instance.Button_SelectBurnable(this);
+        TM_HomeMenuController_Fire.Instance.Button_SelectBurnable(this);
 
 
     }
