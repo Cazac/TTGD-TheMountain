@@ -10,6 +10,10 @@ using System.Linq;
 ///     
 /// TM_PlayerController_UI controles the UI shown to the player
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 
@@ -22,7 +26,6 @@ public class TM_HomeMenuController_Canteen : MonoBehaviour
     ////////////////////////////////
 
     [Header("Item Slots")]
-    public TM_ItemSlot[] CanteenItemSlots_Array;
     public TM_ItemSlot[] playerItemSlots_Array;
 
     ///////////////////////////////////////////////////////
@@ -71,7 +74,7 @@ public class TM_HomeMenuController_Canteen : MonoBehaviour
     private void LoadInventory_Player()
     {
         //Clear Items
-        Player_ClearPlayerInventory();
+        Player_ClearInventory();
 
         //Load Items
         TM_ItemUI[] itemArray = TM_PlayerMenuController_Inventory.Instance.Inventory_GetItemsToArray();
@@ -80,16 +83,7 @@ public class TM_HomeMenuController_Canteen : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    private void Canteen_ClearPlayerInventory()
-    {
-        //Clear All Items
-        foreach (TM_ItemSlot itemSlot in CanteenItemSlots_Array)
-        {
-            itemSlot.ItemSlot_RemoveItem();
-        }
-    }
-
-    private void Player_ClearPlayerInventory()
+    private void Player_ClearInventory()
     {
         //Clear All Items
         foreach (TM_ItemSlot itemSlot in playerItemSlots_Array)

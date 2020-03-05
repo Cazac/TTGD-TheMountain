@@ -40,7 +40,7 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
         if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Canteen_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Canteen_CloseUI();
+            TM_HomeMenuController_Canteen.Instance.CanteenMenu_CloseUI();
         }
         else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Canteen_Panel.activeSelf == false)
         {
@@ -49,7 +49,7 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Canteen_OpenUI();
+            TM_HomeMenuController_Canteen.Instance.CanteenMenu_OpenUI();
         }
     }
 

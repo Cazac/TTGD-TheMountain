@@ -8,6 +8,10 @@ using UnityEngine.UI;
 ///     
 /// TM_CycleController Controls the cycle clock in the UI and the effect it produces in the world.
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 

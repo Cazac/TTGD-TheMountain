@@ -22,7 +22,6 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
     ////////////////////////////////
 
     [Header("Item Slots")]
-    public TM_ItemSlot[] storageItemSlots_Array;
     public TM_ItemSlot[] playerItemSlots_Array;
 
     ///////////////////////////////////////////////////////
@@ -35,10 +34,10 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Fire UI
 
-    public void StorageMenu_OpenUI()
+    public void WorkshopMenu_OpenUI()
     {
         //Turn On Panel
-        TM_PlayerMenuController_UI.Instance.Storage_Panel.SetActive(true);
+        TM_PlayerMenuController_UI.Instance.Workshop_Panel.SetActive(true);
 
         //Change Game State
         TM_PlayerMenuController_UI.Instance.gameState_IsMenu = true;
@@ -47,13 +46,13 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
         TM_PlayerMenuController_UI.Instance.UnlockMouse();
 
         //Setup
-        LoadInventory_Player();
+        //LoadInventory_Player();
     }
 
-    public void StorageMenu_CloseUI()
+    public void WorkshopMenu_CloseUI()
     {
         //Tunr Off Panel
-        TM_PlayerMenuController_UI.Instance.Storage_Panel.SetActive(false);
+        TM_PlayerMenuController_UI.Instance.Workshop_Panel.SetActive(false);
 
         //Change Game State
         TM_PlayerMenuController_UI.Instance.gameState_IsMenu = false;
@@ -62,8 +61,8 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
         TM_PlayerMenuController_UI.Instance.LockMouse();
 
         //Save To Inventory
-        TM_ItemUI[] itemArray = Player_GetItemsToArray();
-        TM_PlayerMenuController_Inventory.Instance.Inventory_SetItemsFromArray(itemArray);
+        //TM_ItemUI[] itemArray = Player_GetItemsToArray();
+        //TM_PlayerMenuController_Inventory.Instance.Inventory_SetItemsFromArray(itemArray);
     }
 
     ///////////////////////////////////////////////////////
@@ -71,7 +70,7 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
     private void LoadInventory_Player()
     {
         //Clear Items
-        Player_ClearPlayerInventory();
+        Player_ClearInventory();
 
         //Load Items
         TM_ItemUI[] itemArray = TM_PlayerMenuController_Inventory.Instance.Inventory_GetItemsToArray();
@@ -80,16 +79,7 @@ public class TM_HomeMenuController_Workshop : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    private void Storage_ClearPlayerInventory()
-    {
-        //Clear All Items
-        foreach (TM_ItemSlot itemSlot in storageItemSlots_Array)
-        {
-            itemSlot.ItemSlot_RemoveItem();
-        }
-    }
-
-    private void Player_ClearPlayerInventory()
+    private void Player_ClearInventory()
     {
         //Clear All Items
         foreach (TM_ItemSlot itemSlot in playerItemSlots_Array)

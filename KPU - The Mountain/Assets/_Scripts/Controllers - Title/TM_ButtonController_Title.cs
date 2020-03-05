@@ -33,6 +33,13 @@ public class TM_ButtonController_Title : MonoBehaviour
         Instance = this;
     }
 
+
+    private void Start()
+    {
+        //Play Music
+        TM_MusicController.Instance.PlayMusicTrack(TM_DatabaseController.Instance.musicDatabase.titleMusic_MainTheme);
+    }
+
     /////////////////////////////////////////////////////////////////
 
     public void Button_Play()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Cycle", menuName = "Scriptable Cycle/Cycle")]
+[CreateAssetMenu(fileName = "Cycle", menuName = "Scriptables/New Cycle")]
 public class TM_CycleSO : ScriptableObject
 {
 

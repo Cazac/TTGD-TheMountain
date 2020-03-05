@@ -9,6 +9,10 @@ using UnityEngine.UI;
 ///     
 /// TM_InteractionController is used to raycast the players camera to find interactable object for the player to use. 
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 

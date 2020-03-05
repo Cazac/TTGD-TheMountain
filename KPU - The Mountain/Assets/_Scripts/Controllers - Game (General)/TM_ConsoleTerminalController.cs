@@ -4,6 +4,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+///////////////
+/// <summary>
+///     
+/// TM_ConsoleTerminalController 
+/// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
+/// </summary>
+///////////////
+
+
 public class TM_ConsoleTerminalController : MonoBehaviour
 {
     ////////////////////////////////

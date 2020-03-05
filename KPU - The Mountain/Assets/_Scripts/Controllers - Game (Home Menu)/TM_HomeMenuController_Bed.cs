@@ -10,6 +10,10 @@ using System.Linq;
 ///     
 /// TM_PlayerController_UI controles the UI shown to the player
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 
@@ -50,7 +54,7 @@ public class TM_HomeMenuController_Bed : MonoBehaviour
 
     public void BedMenu_CloseUI()
     {
-        //Tunr Off Panel
+        //Turn Off Panel
         TM_PlayerMenuController_UI.Instance.Bed_Panel.SetActive(false);
 
         //Change Game State

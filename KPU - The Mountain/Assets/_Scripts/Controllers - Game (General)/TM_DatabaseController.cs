@@ -7,6 +7,10 @@ using UnityEngine;
 ///     
 /// TM_DatabaseController 
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 
@@ -17,6 +21,15 @@ public class TM_DatabaseController : MonoBehaviour
     public static TM_DatabaseController Instance;
 
     ////////////////////////////////
+
+    [Header("Music Database")]
+    public TM_MusicData musicDatabase;
+
+
+
+
+    public TM_PlayerSaveData playerSaveData;
+
 
 
     //[Header("Enemy Lists")]
@@ -33,6 +46,9 @@ public class TM_DatabaseController : MonoBehaviour
     private void Update()
     {
         SpawnDebugItemPlaced();
+
+
+        playerSaveData = new TM_PlayerSaveData();
     }
 
     /////////////////////////////////////////////////////////////////

@@ -40,7 +40,7 @@ public class TM_InteractableObject_Workshop : MonoBehaviour, TM_InteractableObje
         if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Workshop_CloseUI();
+            TM_HomeMenuController_Workshop.Instance.WorkshopMenu_CloseUI();
         }
         else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf == false)
         {
@@ -49,7 +49,7 @@ public class TM_InteractableObject_Workshop : MonoBehaviour, TM_InteractableObje
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Workshop_OpenUI();
+            TM_HomeMenuController_Workshop.Instance.WorkshopMenu_OpenUI();
         }
     }
 

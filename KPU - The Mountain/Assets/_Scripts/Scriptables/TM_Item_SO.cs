@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item", menuName = "Scriptable Items/New Item")]
+[CreateAssetMenu(fileName = "Item", menuName = "Scriptables/New Item")]
 public class TM_Item_SO : ScriptableObject
 {
     //////////////////////////////// - Prefabs

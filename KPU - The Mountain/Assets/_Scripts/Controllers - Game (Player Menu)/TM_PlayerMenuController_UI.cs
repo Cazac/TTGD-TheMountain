@@ -297,126 +297,6 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
         player_FireCircleValue_Text.text = playerCurrentFire + " / " + playerMaxFire;
     }
 
-    ///////////////////////////////////////////////////////
-
-    
-
-
-
-
-    /////////////////////////////////////////////////////// - Workbench UI
-
-    public void Action_Workshop_OpenUI()
-    {
-        //Tunr On Panel
-        Workshop_Panel.SetActive(true);
-
-        //Change Game State
-        gameState_IsMenu = true;
-
-        //Enable Mouse
-        UnlockMouse();
-    }
-
-    public void Action_Workshop_CloseUI()
-    {
-        //Tunr On Panel
-        Workshop_Panel.SetActive(false);
-
-        //Change Game State
-        gameState_IsMenu = false;
-
-        //Enable Mouse
-        LockMouse();
-    }
-
-    /////////////////////////////////////////////////////// - Forge UI
-
-    public void Action_Forge_OpenUI()
-    {
-        //Tunr On Panel
-        Forge_Panel.SetActive(true);
-
-        //Change Game State
-        gameState_IsMenu = true;
-
-        //Enable Mouse
-        UnlockMouse();
-
-        //Setup
-
-    }
-
-    public void Action_Forge_CloseUI()
-    {
-        //Tunr On Panel
-        Forge_Panel.SetActive(false);
-
-        //Change Game State
-        gameState_IsMenu = false;
-
-        //Enable Mouse
-        LockMouse();
-    }
-
-    /////////////////////////////////////////////////////// - Alchemy UI
-
-    public void Action_Brewery_OpenUI()
-    {
-        //Tunr On Panel
-        Brewery_Panel.SetActive(true);
-
-        //Change Game State
-        gameState_IsMenu = true;
-
-        //Enable Mouse
-        UnlockMouse();
-
-        //Setup
-
-    }
-
-    public void Action_Brewery_CloseUI()
-    {
-        //Tunr On Panel
-        Brewery_Panel.SetActive(false);
-
-        //Change Game State
-        gameState_IsMenu = false;
-
-        //Enable Mouse
-        LockMouse();
-    }
-
-    /////////////////////////////////////////////////////// - Kitchen UI
-
-    public void Action_Canteen_OpenUI()
-    {
-        //Tunr On Panel
-        Canteen_Panel.SetActive(true);
-
-        //Change Game State
-        gameState_IsMenu = true;
-
-        //Enable Mouse
-        UnlockMouse();
-
-        //Setup
-
-    }
-
-    public void Action_Canteen_CloseUI()
-    {
-        //Tunr On Panel
-        Canteen_Panel.SetActive(false);
-
-        //Change Game State
-        gameState_IsMenu = false;
-
-        //Enable Mouse
-        LockMouse();
-    }
-
     /////////////////////////////////////////////////////// - Toolbar
 
     private void LookForMouseScroll_Toolbar()
@@ -515,12 +395,22 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
         {
             TM_HomeMenuController_Storage.Instance.StorageMenu_CloseUI();
         }
-
-        Workshop_Panel.SetActive(false);
-        Brewery_Panel.SetActive(false);
-        Canteen_Panel.SetActive(false);
-        Forge_Panel.SetActive(false);
-        InventoryMenu_Panel.SetActive(false);
+        if (Brewery_Panel.activeSelf == true)
+        {
+            TM_HomeMenuController_Brewery.Instance.BreweryMenu_CloseUI();
+        }
+        if (Canteen_Panel.activeSelf == true)
+        {
+            TM_HomeMenuController_Canteen.Instance.CanteenMenu_CloseUI();
+        }
+        if (Forge_Panel.activeSelf == true)
+        {
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
+        }
+        if (Workshop_Panel.activeSelf == true)
+        {
+            TM_HomeMenuController_Workshop.Instance.WorkshopMenu_CloseUI();
+        }
 
         //Prob should be somewhere else
         TM_CursorController.Instance.Cursor_DropItem();

@@ -8,7 +8,11 @@ using System.Linq;
 ///////////////
 /// <summary>
 ///     
-/// TM_PlayerController_UI controles the UI shown to the player
+/// TM_HomeMenuController_Dispenser
+/// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
 /// 
 /// </summary>
 ///////////////

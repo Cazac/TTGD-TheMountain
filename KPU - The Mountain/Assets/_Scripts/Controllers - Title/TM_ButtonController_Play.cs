@@ -343,7 +343,7 @@ public class TM_ButtonController_Play : MonoBehaviour
         int name = UnityEngine.Random.Range(0, 100);
         int level = UnityEngine.Random.Range(0, 50);
 
-
+        Debug.Log(Application.persistentDataPath);
 
 
         ES3.Save<string>("PlayerName", name.ToString(), "The Mountain Save " + currentSelected_SaveSlotID + ".es3");

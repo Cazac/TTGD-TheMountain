@@ -8,6 +8,10 @@ using UnityEngine.SceneManagement;
 ///     
 /// TM_CreditsController controls the credits sequence at the end of the game or though the menu.
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 
@@ -38,7 +42,7 @@ public class TM_CreditsController : MonoBehaviour
     private void Start()
     {
         //Play Music
-        //FindObjectOfType<SoundManager>().PlaySpecificSound("Peace");
+        TM_MusicController.Instance.PlayMusicTrack(TM_DatabaseController.Instance.musicDatabase.creditsMusic_MainTheme);
 
         //Start the Coroutine to play the slideshow after a delay
         StartCoroutine(CreditsPlay());
@@ -58,7 +62,7 @@ public class TM_CreditsController : MonoBehaviour
     private void SpeedUp()
     {
         //Look for the spacebar key to speed up the credits
-        if (Input.GetKey("space"))
+        if (Input.GetKey(KeyCode.Space))
         {
             //Go faster
             CreditsAnimator.speed = animatorSpeed_Fast;
@@ -73,7 +77,7 @@ public class TM_CreditsController : MonoBehaviour
     private void ExitCredits()
     {
         //Look for the escape key to exit the credits
-        if (Input.GetKey("escape"))
+        if (Input.GetKey(KeyCode.Escape))
         {
             //Load back into main game
             SceneManager.LoadScene("TM_Title");

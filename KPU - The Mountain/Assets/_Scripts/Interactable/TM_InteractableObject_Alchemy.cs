@@ -40,7 +40,7 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
         if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Brewery_CloseUI();
+            TM_HomeMenuController_Brewery.Instance.BreweryMenu_CloseUI();
         }
         else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf == false)
         {
@@ -49,7 +49,7 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Brewery_OpenUI();
+            TM_HomeMenuController_Brewery.Instance.BreweryMenu_OpenUI();
         }
     }
 

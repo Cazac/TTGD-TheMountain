@@ -40,7 +40,7 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
         if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Forge_CloseUI();
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
         }
         else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == false)
         {
@@ -49,7 +49,7 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Forge_OpenUI();
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI();
         }
     }
 

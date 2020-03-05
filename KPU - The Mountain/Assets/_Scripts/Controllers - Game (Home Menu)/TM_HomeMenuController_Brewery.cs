@@ -10,6 +10,10 @@ using System.Linq;
 ///     
 /// TM_PlayerController_UI controles the UI shown to the player
 /// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
 /// </summary>
 ///////////////
 
@@ -22,7 +26,6 @@ public class TM_HomeMenuController_Brewery : MonoBehaviour
     ////////////////////////////////
 
     [Header("Item Slots")]
-    public TM_ItemSlot[] storageItemSlots_Array;
     public TM_ItemSlot[] playerItemSlots_Array;
 
     ///////////////////////////////////////////////////////
@@ -35,10 +38,10 @@ public class TM_HomeMenuController_Brewery : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Fire UI
 
-    public void StorageMenu_OpenUI()
+    public void BreweryMenu_OpenUI()
     {
         //Turn On Panel
-        TM_PlayerMenuController_UI.Instance.Storage_Panel.SetActive(true);
+        TM_PlayerMenuController_UI.Instance.Brewery_Panel.SetActive(true);
 
         //Change Game State
         TM_PlayerMenuController_UI.Instance.gameState_IsMenu = true;
@@ -50,10 +53,10 @@ public class TM_HomeMenuController_Brewery : MonoBehaviour
         LoadInventory_Player();
     }
 
-    public void StorageMenu_CloseUI()
+    public void BreweryMenu_CloseUI()
     {
         //Tunr Off Panel
-        TM_PlayerMenuController_UI.Instance.Storage_Panel.SetActive(false);
+        TM_PlayerMenuController_UI.Instance.Brewery_Panel.SetActive(false);
 
         //Change Game State
         TM_PlayerMenuController_UI.Instance.gameState_IsMenu = false;
@@ -79,15 +82,6 @@ public class TM_HomeMenuController_Brewery : MonoBehaviour
     }
 
     ///////////////////////////////////////////////////////
-
-    private void Storage_ClearPlayerInventory()
-    {
-        //Clear All Items
-        foreach (TM_ItemSlot itemSlot in storageItemSlots_Array)
-        {
-            itemSlot.ItemSlot_RemoveItem();
-        }
-    }
 
     private void Player_ClearPlayerInventory()
     {

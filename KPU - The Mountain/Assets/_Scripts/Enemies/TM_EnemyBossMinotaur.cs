@@ -7,70 +7,53 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
 {
     ////////////////////////////////
 
-    private float visualRangeRaduis = 20f;
-
-    private readonly float wandering_NextNodeDistance = 10f;
-
-    ////////////////////////////////
-
-
-    private string currentState;
-
-
     [Header("Animator")]
     public Animator enemy_Animator;
 
     [Header("Charecter Controller")]
     public CharacterController enemy_CC;
 
+    [Header("Nav Mesh Agent")]
+    public NavMeshAgent enemyNavAgent;
 
+    [Header("Range Activator")]
+    public TM_EnemyRangeActivator rangeActivator;
 
-
-
-
-
-    ////////////////////////////////
-    public float wanderRadius;
-    public float wanderTimer;
-
-    //private Transform target;
-    private NavMeshAgent agent;
-    private float timer;
-    ////////////////////////////////
-
-
-
-
-
+    [Header("Current State")]
+    public EnemyState currentState;
 
     ////////////////////////////////
 
+    [Header("Travel Points")]
     private Vector3 currentTargetLocation;
     private Transform currentChaseTarget;
 
-    Transform target;   // Reference to the player
-    private NavMeshAgent enemyNavAgent;
+    ////////////////////////////////
 
-    //CharacterCombat combat;
+    [Header("Ranges")]
+    private float visualRangeRadius = 20f;
+    private float attackingRangeRadius = 6f;
+    private float wandering_NextNodeDistance = 10f;
+
+    ////////////////////////////////
+
+
+    //Loot?
+
+
 
     ///////////////////////////////////////////////////////
 
     private void Awake()
     {
-        //Get Nav Mesh Agaent
-        enemyNavAgent = gameObject.GetComponent<NavMeshAgent>();
-
-
-        currentState = "Chasing";
+        //Set Default State
+        currentState = EnemyState.Deactivated;
 
 
 
         //target = PlayerManager.instance.player.transform;
-
         //combat = GetComponent<CharacterCombat>();
         //agent.Warp(gameObject.transform.position + (transform.forward * 2));
-
-
         //agent.enabled = true;
     }
 
@@ -78,50 +61,73 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+    }
 
+    ///////////////////////////////////////////////////////
 
-
-
-
-
+    public enum EnemyState
+    {
+        Deactivated,
+        Idling,
+        Wandering,
+        Patroling,
+        Chasing,
+        Attacking,
+        Blocking,
     }
 
     ///////////////////////////////////////////////////////
 
     private void EnemyState_GetState()
     {
-
+        //Check Current State
         switch (currentState)
         {
-            case "Deactivated":
-                return;
+            case EnemyState.Deactivated:
+                EnemyState_Deactivated();
                 break;
 
-            case "Idling":
+            case EnemyState.Idling:
                 EnemyState_Idling();
                 break;
 
-            case "Wandering":
+            case EnemyState.Wandering:
                 EnemyState_Wandering();
                 break;
 
-            case "Patroling":
-                //EnemyState_Patroling();
+            case EnemyState.Patroling:
+                EnemyState_Patroling();
                 break;
 
-            case "Chasing":
+            case EnemyState.Chasing:
                 EnemyState_Chasing();
                 break;
                 
-            case "Attacking":
-
-
+            case EnemyState.Attacking:
+                EnemyState_Attacking();
                 break;
 
-            default:
-                print("Test Code: OOPS");
+            case EnemyState.Blocking:
+                EnemyState_Blocking();
                 break;
         }
+    }
+
+    ///////////////////////////////////////////////////////
+
+    private void EnemyState_Deactivated()
+    {
+        //Turn On Activations Sript
+        rangeActivator.Deactivate();
+    }
+
+    public void EnemyState_Activated()
+    {
+        //Set animation looking down
+        enemy_Animator.SetBool("IsDisabled", false);
+
+        //Set Default State
+        ChangeToState_Wandering();
     }
 
     ///////////////////////////////////////////////////////
@@ -134,30 +140,31 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
         //Check For State Change
         if (Random.Range(0, 100) == 0)
         {
-            //Change To Idle
-            currentState = "Wandering";
-
+            //Change To Wandering
+            ChangeToState_Wandering();
 
             return;
         }
-
     }
 
     private void EnemyState_Wandering()
     {
-        //!enemy_CC.isGrounded
-
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", true);
+        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
         enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
         enemy_Animator.SetFloat("AttackID", 0f);
 
+        //Get Distance Between Enemy and Player
+        float distanceToPlayer = Vector3.Distance(gameObject.transform.position, TM_PlayerController_Combat.Instance.transform.position);
 
-
-        //enemy_Animator.SetFloat("Speed", 0f);
-
+        //Check if distance is Far Enough to break Chase
+        if (distanceToPlayer < visualRangeRadius)
+        {
+            ChangeToState_Chasing();
+            return;
+        }
 
 
         //Get Distance Between Goal
@@ -172,22 +179,15 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
             //Check For State Change
             if (Random.Range(0, 5) == 0)
             {
-                //Change To Idle
-                currentState = "Idling";
-
-                //Remove Desintation
-                enemyNavAgent.ResetPath();
-
+                ChangeToState_Idling();
                 return;
             }
         }
 
-
-
         if (currentTargetLocation == Vector3.zero)
         {
             //Get New Target Destination
-            if (WanderingDestination(transform.position, wandering_NextNodeDistance, out Vector3 newTargetLocation))
+            if (FindWanderDestination(transform.position, wandering_NextNodeDistance, out Vector3 newTargetLocation))
             {
                 //Set New Target and Set Destination
                 currentTargetLocation = newTargetLocation;
@@ -198,40 +198,48 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
             }
             else
             {
+                //No Spawning Point Hit, Set To Idle For Now
+                ChangeToState_Idling();
 
-                //Change To Idle
-
-
-                print("Test Code: No Hit");
+                print("Test Code: No Raycast Hit");
             }
         }
+    }
+
+    private void EnemyState_Patroling()
+    {
+
+
     }
 
     private void EnemyState_Chasing()
     {
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", true);
+        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
         enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
         enemy_Animator.SetFloat("AttackID", 1f);
 
-
-
-
-
+        //Get Target
         currentChaseTarget = TM_PlayerController_Combat.Instance.transform;
 
-
-
+        //Check For Valid Target
         if (currentChaseTarget == null)
         {
-            EnemyState_Wandering();
-            currentState = "Wandering";
+            ChangeToState_Idling();
             return;
         }
 
+        //Get Distance Between Enemy and Player
+        float distance = Vector3.Distance(gameObject.transform.position, currentChaseTarget.position);
 
+        //Check if distance is Far Enough to break Chase
+        if (distance > visualRangeRadius)
+        {
+            ChangeToState_Wandering();
+            return;
+        }
 
         // Move towards the target
         enemyNavAgent.SetDestination(currentChaseTarget.position);
@@ -239,81 +247,100 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
 
 
 
-        //Get Distance Between Goal
-        float distance = Vector3.Distance(gameObject.transform.position, currentChaseTarget.position);
 
-        //Check if distance is close enough to get a new one
-        if (distance <= 6f)
+
+        //Check if distance is close enough Attack
+        if (distance <= attackingRangeRadius)
         {
 
             //print("Test Code: Attack!");
 
-            enemy_Animator.SetBool("Attack1", true);
+            ChangeToState_AttackQuick();
             
 
         }
-        else
-        {
-            //print("Test Code: Chase!");
-
-            enemy_Animator.SetBool("Attack1", false);
-        }
-
-        /*
-
-            // If inside the lookRadius
-            if (distance <= lookRadius)
-        {
-         
-
-            // If within attacking distance
-            if (distance <= agent.stoppingDistance)
-            {
-                CharacterStats targetStats = target.GetComponent<CharacterStats>();
-                if (targetStats != null)
-                {
-                    combat.Attack(targetStats);
-                }
-
-                FaceTarget();   // Make sure to face towards the target
-            }
-        }
-
-        */
-
     }
 
     private void EnemyState_Attacking()
     {
+        enemyNavAgent.ResetPath();
 
+        enemy_Animator.SetBool("Attack1", true);
 
-        // Distance to the target
-        float distance = Vector3.Distance(target.position, transform.position);
+        //Get Distance Between Enemy and Player
+        float distance = Vector3.Distance(gameObject.transform.position, currentChaseTarget.position);
 
-        // If inside the lookRadius
-        if (distance <= visualRangeRaduis)
+        //Check if distance is close enough Attack
+        if (distance > attackingRangeRadius)
         {
-            // Move towards the target
-            enemyNavAgent.SetDestination(target.position);
-
-            // If within attacking distance
-            if (distance <= enemyNavAgent.stoppingDistance)
-            {
-                //CharacterStats targetStats = target.GetComponent<CharacterStats>();
-                //i//f (targetStats != null)
-                {
-                    //combat.Attack(targetStats);
-                }
-
-                FaceTarget();   // Make sure to face towards the target
-            }
+            //Return To Chase State
+            ChangeToState_Chasing();
+            return;
         }
+
+
+        FaceTarget();
+
+
+
+        //Damage Player
+        TM_PlayerController_Stats.Instance.ChangeHealth_Current(-1);
+
+    }
+
+    private void EnemyState_Blocking()
+    {
+
+
 
     }
 
     ///////////////////////////////////////////////////////
 
-    private bool WanderingDestination(Vector3 originPosition, float distanceFromEnemy, out Vector3 result)
+    private void ChangeToState_Idling()
+    {
+
+        enemy_Animator.SetBool("Attack1", false);
+
+        //Change To Idle
+        EnemyState_Idling();
+        currentState = EnemyState.Idling;
+        enemyNavAgent.ResetPath();
+    }
+
+    private void ChangeToState_Wandering()
+    {
+
+        enemy_Animator.SetBool("Attack1", false);
+
+        //Change To Wandering
+        currentState = EnemyState.Wandering;
+        enemyNavAgent.SetDestination(currentTargetLocation);
+    }
+
+    private void ChangeToState_Chasing()
+    {
+
+        enemy_Animator.SetBool("Attack1", false);
+
+        //Change To Chase
+        EnemyState_Chasing();
+        currentState = EnemyState.Chasing;
+    }
+
+    private void ChangeToState_AttackQuick()
+    {
+        //Change To Chase
+        EnemyState_Attacking();
+        currentState = EnemyState.Attacking;
+    }
+
+
+
+
+    ///////////////////////////////////////////////////////
+
+    private bool FindWanderDestination(Vector3 originPosition, float distanceFromEnemy, out Vector3 result)
     {
         //Nav Mesh Hit By Sampling Position
         NavMeshHit navMeshHit;
@@ -369,28 +396,6 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
 
 
 
-    // Use this for initialization
-    void OnEnable()
-    {
-        timer = wanderTimer;
-    }
-
-    /*
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime;
-
-        if (timer >= wanderTimer)
-        {
-            Vector3 newPos = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(newPos);
-            timer = 0;
-        }
-    }
-    */
-   
-
 
 
     ///////////////////////////////////////////////////////
@@ -398,7 +403,7 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
     // Rotate to face the target
     void FaceTarget()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
+        Vector3 direction = (currentChaseTarget.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
@@ -409,8 +414,10 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
     {
         // Show the lookRadius in editor
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, visualRangeRaduis);
+        Gizmos.DrawWireSphere(transform.position, visualRangeRadius);
     }
 
     ///////////////////////////////////////////////////////
 }
+
+
