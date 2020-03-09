@@ -37,7 +37,7 @@ public class TM_Cycle
 
     ///////////////////////////////////////////////////////
 
-    public TM_Cycle(TM_CycleSO scriptableItem)
+    public TM_Cycle(TM_Cycle_SO scriptableItem)
     {
         //CONTRUCTOR GOES HERE
 
