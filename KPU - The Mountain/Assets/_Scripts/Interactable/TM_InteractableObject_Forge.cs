@@ -37,15 +37,19 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
     public void OnInteractTap()
     {
         //Check If Panel is Already Active
-        if (TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf)
+        if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == true)
         {
             //Close UI
-            TM_PlayerMenuController_UI.Instance.Action_Forge_CloseUI();
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
+        }
+        else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == false)
+        {
+            return;
         }
         else
         {
             //Open UI
-            TM_PlayerMenuController_UI.Instance.Action_Forge_OpenUI();
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI();
         }
     }
 

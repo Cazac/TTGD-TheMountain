@@ -7,7 +7,7 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
     ////////////////////////////////
 
     public float MaxRange { get { return MAXRANGE; } }
-    private const float MAXRANGE = 30f;
+    private const float MAXRANGE = 7f;
 
     ///////////////////////////////////////////////////////
 
@@ -21,68 +21,25 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
         //Get Placed Object Script
         TM_ItemPlaced placedObject = gameObject.GetComponent<TM_ItemPlaced>();
 
-        //Filter Filled Scriptable Type
-        if (placedObject.originalScriptableItem_ConsumableFood != null)
+        //Check If Valid Item Count First
+        if (placedObject.currentStackSize <= 0)
         {
-            //Deep Copy and Convert Item to UI
-            TM_ItemUI_ConsumableFood newItemUI = new TM_ItemUI_ConsumableFood(placedObject.originalScriptableItem_ConsumableFood);
-
-            //Set Item To cursor
-            TM_CursorController.Instance.Cursor_SetItem(newItemUI);
-
-            //Try To Quick Add to INV
-            TM_CursorController.Instance.TryAction_AddItemToInventory(gameObject);
+            print("Test Code: Oops No Stack Size");
+            placedObject.currentStackSize = 1;
         }
-        else if (placedObject.originalScriptableItem_ConsumablePotions != null)
-        {
-            print("Test Code: OOPs");
-        }
-        else if (placedObject.originalScriptableItem_EquiptableWeapons != null)
-        {
-            //Deep Copy and Convert Item to UI
-            TM_ItemUI_EquiptableWeapons newItemUI = new TM_ItemUI_EquiptableWeapons(placedObject.originalScriptableItem_EquiptableWeapons);
 
-            //Set Item To cursor
-            TM_CursorController.Instance.Cursor_SetItem(newItemUI);
+        //Check For Space First
 
-            //Try To Quick Add to INV
-            TM_CursorController.Instance.TryAction_AddItemToInventory(gameObject);
-        }
-        else
-        {
-            print("Test Code: OOPs");
-        }
-            
 
-        /*
 
-        //Filter Object Type
-        if (placedObject.originalScriptableItem.GetType() == typeof(TM_Item_ConsumableFood_SO))
-        {
-            //Cast Type Of Object
-            TM_Item_ConsumableFood_SO newItemScriptable = (TM_Item_ConsumableFood_SO)placedObject.originalScriptableItem;
+        //Deep Copy and Convert Item to UI
+        TM_ItemUI newItemUI = new TM_ItemUI(placedObject.orginalItem_SO);
 
-            //Deep Copy and Convert Item to UI
-            TM_Item_ConsumableFood_UI newItemUI = new TM_Item_ConsumableFood_UI(newItemScriptable);
+        //Set Item To cursor
+        TM_CursorController.Instance.Cursor_SetItem(newItemUI);
 
-            //Set Item To cursor
-            TM_CursorController.Instance.Cursor_SetItem(newItemUI);
-
-            //Try To Quick Add to INV
-            TM_CursorController.Instance.TryAction_AddItemToInventory();
-
-        }
-        else if (placedObject.originalScriptableItem.GetType() == typeof(TM_Item_EquiptableArmor_SO))
-        {
-            //Invalid Needs Other Tpyes
-            print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-        }
-        else
-        {
-            print("Tt Code: OOOOPS NEEDS OTHER TPYES");
-        }
-        */
-
+        //Try To Quick Add to INV
+        TM_CursorController.Instance.TryAction_AddItemToInventory(gameObject);
     }
 
     public void OnInteractHold()
