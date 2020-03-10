@@ -10,7 +10,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
 
     ////////////////////////////////
 
-
+    public GameObject hitboxContainter;
 
 
 
@@ -55,9 +55,28 @@ public class TM_PlayerController_Combat : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
+    public void SpawnAttackHitbox(GameObject hitboxPrefab)
+    {
+        GameObject hitbox_GO = Instantiate(hitboxPrefab, hitboxContainter.transform);
 
 
+        //Set Auto Destruct
 
+        StartCoroutine(AutoDestoryCountdown(0.3f, hitbox_GO));
+
+    }
+
+    private IEnumerator AutoDestoryCountdown(float clipLength, GameObject hitBox)
+    {
+        //Wait Till Clip is over + buffer room
+        yield return new WaitForSeconds(clipLength + 0.1f);
+
+        //Destory Clip
+        Destroy(hitBox);
+
+        //Break Out
+        yield break;
+    }
 
     ///////////////////////////////////////////////////////
 }

@@ -265,7 +265,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     public void PlayerDeath()
     {
-        print("Test Code: You Ded");
+       // print("Test Code: You Ded");
     }
 
     ///////////////////////////////////////////////////////
