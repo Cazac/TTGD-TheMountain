@@ -80,6 +80,8 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
 
     private void EnemyState_GetState()
     {
+        //print("Test Code: Minotaur State: " + currentState);
+
         //Check Current State
         switch (currentState)
         {
@@ -158,6 +160,9 @@ public class TM_EnemyBossMinotaur : MonoBehaviour
 
         //Get Distance Between Enemy and Player
         float distanceToPlayer = Vector3.Distance(gameObject.transform.position, TM_PlayerController_Combat.Instance.transform.position);
+
+        print("Test Code: " + distanceToPlayer);
+        print("Test Code: " + visualRangeRadius);
 
         //Check if distance is Far Enough to break Chase
         if (distanceToPlayer < visualRangeRadius)

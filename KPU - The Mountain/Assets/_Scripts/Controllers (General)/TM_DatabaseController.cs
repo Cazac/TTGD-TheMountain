@@ -37,7 +37,8 @@ public class TM_DatabaseController : MonoBehaviour
     [Header("Cycle Database")]
     public TM_CycleData cycle_DB;
 
-
+    [Header("Hitbox Database")]
+    public TM_HitboxData hitbox_DB;
 
 
 
