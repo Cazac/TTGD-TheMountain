@@ -60,14 +60,14 @@ public class TM_ItemUI
 
     public int weapon_Tier;
     public int weapon_Damage;
-    public int weapon_Range;
-    public int weapon_Speed;
-    public int weapon_Knockback;
+    public float weapon_Range;
+    public float weapon_Speed;
+    public float weapon_Knockback;
     public int weapon_StaminaQuick;
     public int weapon_StaminaPower;
-    public int weapon_BlockSpeed;
+    public float weapon_BlockSpeed;
     public int weapon_BlockNegation;
-    public int weapon_BlockParryTime;
+    public float weapon_BlockParryTime;
 
     ////////////////////////////////
 
