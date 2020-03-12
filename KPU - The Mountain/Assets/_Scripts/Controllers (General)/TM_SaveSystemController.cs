@@ -22,7 +22,7 @@ public class TM_SaveSystemController : MonoBehaviour
 
     ////////////////////////////////
 
-    public int currentSaveSlotID;
+    public int currentSaveSlotID = 135;
 
 
 
@@ -37,43 +37,43 @@ public class TM_SaveSystemController : MonoBehaviour
 
     public void SavePlayerData()
     {
+        print("Test Code: Saving...");
 
-        TM_DatabaseController.Instance.playerSaveData.HealthValue += 5;
 
-        //ES3.Save<string>("PlayerName", name.ToString(), "The Mountain Save " + currentSaveSlotID + ".es3");
+
+        TM_DatabaseController.Instance.playerSaveData.SaveData_FromGame();
+
+
 
         ES3.Save<TM_PlayerSaveData>("PlayerData", TM_DatabaseController.Instance.playerSaveData, "The Mountain Save " + currentSaveSlotID + ".es3");
-        ES3.Save<int>("PlayerInt", TM_DatabaseController.Instance.playerSaveData.HealthValue, "The Mountain Save " + currentSaveSlotID + ".es3");
-
-        print("Test Code: " + TM_DatabaseController.Instance.playerSaveData.HealthValue);
-
-        print("Test Code: Saving");
 
 
 
+
+
+        print("Test Code: ...Saving Done!");
     }
 
 
     public void LoadPlayerData()
     {
-       
+        print("Test Code: Loading...");
 
-
-        //ES3.Save<string>("PlayerName", name.ToString(), "The Mountain Save " + currentSaveSlotID + ".es3");
-
-        ES3File file = new ES3File("The Mountain Save 0.es3");
-        print("Test Code: Loading");
-        print("Test Code: " + file == null);
+        //Get File
+        ES3File file = new ES3File("The Mountain Save " + currentSaveSlotID + ".es3");
 
 
 
-        print("Test Code: " + file.Load<int>("PlayerInt"));
+
         TM_PlayerSaveData data = file.Load<TM_PlayerSaveData>("PlayerData");
 
-        print("Test Code: " + data.HealthValue);
+
+        data.LoadData_ToGame();
+
+        print("Test Code: Health " + data.player_CurrentHealth);
 
 
-
+        print("Test Code: ...Loading Done!");
     }
 
 

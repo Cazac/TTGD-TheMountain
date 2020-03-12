@@ -19,7 +19,7 @@ public class TM_MusicController : MonoBehaviour
 {
     ////////////////////////////////
 
-    public static TM_MusicController Instance;
+    public TM_MusicController Instance;
 
     ////////////////////////////////
 

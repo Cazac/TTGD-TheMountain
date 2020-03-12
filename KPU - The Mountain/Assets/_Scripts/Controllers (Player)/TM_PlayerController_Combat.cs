@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TM_PlayerController_Combat : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class TM_PlayerController_Combat : MonoBehaviour
     public GameObject hitboxContainter;
 
 
-
+    public Image hurtScreen;
+    public int hurtScreenDuration;
 
     ///////////////////////////////////////////////////////
 
@@ -29,6 +31,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
         LookForCombatKeys_Magic();
     }
 
+    ///////////////////////////////////////////////////////
 
     private void LookForCombatKeys_Attack()
     {
@@ -44,13 +47,52 @@ public class TM_PlayerController_Combat : MonoBehaviour
         }
     }
 
-
     private void LookForCombatKeys_Magic()
     {
         if (Input.GetMouseButtonDown(1))
         {
             //TM_PlayerController_Animation.Instance.att
         }
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void AddToHurtScreen(int additionHurting)
+    {
+        if (hurtScreenDuration == 0)
+        {
+            hurtScreenDuration = additionHurting * 3;
+            StartCoroutine(FadeOutHurtScreen());
+        }
+        else
+        {
+            hurtScreenDuration += additionHurting * 3;
+        }
+    }
+
+    public IEnumerator FadeOutHurtScreen()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+
+        while (hurtScreenDuration > 0)
+        {
+
+
+            hurtScreenDuration -= 1;
+
+
+            hurtScreen.color = new Color(1, 1, 1, hurtScreenDuration * 0.01f);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        hurtScreenDuration = 0;
+        hurtScreen.color = new Color(1, 1, 1, 0);
+
+        yield break;
+
+
     }
 
     ///////////////////////////////////////////////////////
