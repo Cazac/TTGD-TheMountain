@@ -52,10 +52,7 @@ public class TM_ButtonController_Title : MonoBehaviour
             play_Panel.SetActive(true);
 
             //Select First Save Slot
-            TM_ButtonController_Play.Instance.Button_SaveSlot(1);
-
-            //Open First Save File
-            TM_ButtonController_Play.Instance.Refresh_SaveIconInfo();
+            TM_ButtonController_Play.Instance.Setup();
         }
     }
 

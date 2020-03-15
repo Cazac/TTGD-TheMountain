@@ -411,6 +411,10 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
         {
             TM_HomeMenuController_Workshop.Instance.WorkshopMenu_CloseUI();
         }
+        if (Bed_Panel.activeSelf == true)
+        {
+            TM_HomeMenuController_Bed.Instance.BedMenu_CloseUI();
+        }
 
         //Prob should be somewhere else
         TM_CursorController.Instance.Cursor_DropItem();

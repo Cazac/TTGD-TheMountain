@@ -7,6 +7,28 @@ public class TM_PlayerSaveData
 {
     ////////////////////////////////
 
+    public Vector3 player_Position;
+    public Quaternion player_Rotation;
+    public Quaternion player_CamerRotation;
+
+
+
+
+
+    //Not Added Yet
+    public float player_PlayTime;
+    //public int player_NotesCollected
+    //public float 
+
+
+
+
+
+
+
+
+    ////////////////////////////////
+
     public string player_Name;
 
     ////////////////////////////////
@@ -97,6 +119,17 @@ public class TM_PlayerSaveData
         //Notes
 
         //
+
+
+        //Player Position / Rotation
+        //player_CamerRotation = Camera.main.gameObject.transform.localRotation;
+        player_Position = TM_PlayerController_Stats.Instance.gameObject.transform.position;
+        //player_Rotation = TM_PlayerController_Stats.Instance.gameObject.transform.rotation;
+
+
+
+
+
     }
 
 
@@ -144,7 +177,10 @@ public class TM_PlayerSaveData
 
 
 
-
+        //Player Position / Rotation
+        //Camera.main.gameObject.transform.localRotation = player_CamerRotation;
+        TM_PlayerController_Stats.Instance.gameObject.transform.position = player_Position;
+        //TM_PlayerController_Stats.Instance.gameObject.transform.rotation = player_Rotation;
 
 
 

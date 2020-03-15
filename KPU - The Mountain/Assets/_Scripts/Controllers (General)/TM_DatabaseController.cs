@@ -42,9 +42,9 @@ public class TM_DatabaseController : MonoBehaviour
 
 
 
-    [Header("Player Saves?????")]
-    public TM_PlayerSaveData playerSaveData;
-
+    [Header("Save Datas")]
+    public TM_PlayerSaveData player_SaveData;
+    public TM_SettingsSaveData settings_SaveData;
 
 
 
@@ -62,7 +62,7 @@ public class TM_DatabaseController : MonoBehaviour
 
 
 
-        playerSaveData = new TM_PlayerSaveData();
+        player_SaveData = new TM_PlayerSaveData();
     }
 
     /////////////////////////////////////////////////////////////////
