@@ -37,7 +37,27 @@ public class TM_PlayerController_Stats : MonoBehaviour
     public int player_MaxFire;
     public int player_BaseFire;
 
+    ////////////////////////////////
 
+    public int player_Level;
+    public int player_Exp;
+
+
+    ////////////////////////////////
+
+    public int player_SkillPointsAvalible;
+    public int player_SkillPointsSpent;
+
+    ////////////////////////////////
+
+    public int player_CurrentStat_STR;
+    public int player_CurrentStat_DEX;
+    public int player_CurrentStat_INT;
+    public int player_CurrentStat_CON;
+
+
+
+    ////////////////////////////////
 
 
     bool continueCoroutine_HungerDrain = true;
@@ -45,6 +65,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     private float secondsPer_HungerDrain = 10f;
     private float secondsPer_FireDrain = 5f;
+
 
 
     ////////////////////////////////
@@ -265,7 +286,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     public void PlayerDeath()
     {
-        print("Test Code: You Ded");
+       // print("Test Code: You Ded");
     }
 
     ///////////////////////////////////////////////////////

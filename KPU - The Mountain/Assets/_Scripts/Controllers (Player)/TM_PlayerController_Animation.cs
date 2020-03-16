@@ -187,4 +187,12 @@ public class TM_PlayerController_Animation : MonoBehaviour
     }
 
     ///////////////////////////////////////////////////////
+
+    public void LoadHitbox_Attack1()
+    {
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.swordSize1_Hitbox);
+
+    }
+
+    ///////////////////////////////////////////////////////
 }

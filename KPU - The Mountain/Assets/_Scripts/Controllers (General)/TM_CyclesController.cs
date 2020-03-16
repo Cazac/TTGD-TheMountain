@@ -35,6 +35,10 @@ public class TM_CyclesController : MonoBehaviour
     //Dictory Of Possible Cycles
     public static Dictionary<GameObject, TM_Cycle> CyclePanelList;
 
+    ////////////////////////////////
+
+    private IEnumerator currentCycleEffect;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -140,6 +144,31 @@ public class TM_CyclesController : MonoBehaviour
 
         //Starts the next cycle timer
         StartCoroutine(CycleClock()); 
+    }
+
+
+
+    ///////////////////////////////////////////////////////
+
+    private IEnumerator CycleEffect_Death()
+    {
+        int damgepePerCycleTick = -1;
+ 
+
+        while (true)
+        {
+
+
+
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick);
+
+            yield return new WaitForSeconds(1f);
+        }
+
+
+
+
+        yield break;
     }
 
     ///////////////////////////////////////////////////////

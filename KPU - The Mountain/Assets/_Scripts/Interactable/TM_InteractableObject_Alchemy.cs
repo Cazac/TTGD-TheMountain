@@ -18,18 +18,26 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
     public float MaxRange { get { return MAXRANGE; } }
     private const float MAXRANGE = 5f;
 
+    ////////////////////////////////
+
+    public TOOL_Outline outlineTool;
+
     ///////////////////////////////////////////////////////
 
     public void OnStartHover()
     {
         //Set Interaction Text On Hover
         TM_InteractionController.Instance.InteractionText_Set("Press (F) to access The Brewery");
+
+        outlineTool.enabled = true;
     }
 
     public void OnEndHover()
     {
         //Remove Interaction Text On Hover Removal
         TM_InteractionController.Instance.InteractionText_Remove();
+
+        outlineTool.enabled = false;
     }
 
     ///////////////////////////////////////////////////////

@@ -19,18 +19,6 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     ////////////////////////////////
 
-    public int skillPoints_Avalible;
-    public int skillPoints_Spent;
-
-    ////////////////////////////////
-
-    public int playerStat_STR;
-    public int playerStat_DEX;
-    public int playerStat_INT;
-    public int playerStat_CON;
-
-    ////////////////////////////////
-
     private int equipmentStat_STR;
     private int equipmentStat_DEX;
     private int equipmentStat_INT;
@@ -77,25 +65,25 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     private void DebugSpawnStats()
     {
-        skillPoints_Avalible = Random.Range(3, 5);
+       TM_PlayerController_Stats.Instance.player_SkillPointsAvalible = Random.Range(3, 5);
 
-        playerStat_STR = Random.Range(2, 8);
-        playerStat_DEX = Random.Range(2, 8);
-        playerStat_INT = Random.Range(2, 8);
-        playerStat_CON = Random.Range(2, 8);
+        TM_PlayerController_Stats.Instance.player_CurrentStat_STR = Random.Range(2, 8);
+        TM_PlayerController_Stats.Instance.player_CurrentStat_DEX = Random.Range(2, 8);
+        TM_PlayerController_Stats.Instance.player_CurrentStat_INT = Random.Range(2, 8);
+        TM_PlayerController_Stats.Instance.player_CurrentStat_CON = Random.Range(2, 8);
     }
 
     ///////////////////////////////////////////////////////
 
     public void Button_AddValue_STR()
     {
-        if (skillPoints_Avalible > 0)
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
         {
             //Add Stat
-            playerStat_STR++;
+            TM_PlayerController_Stats.Instance.player_CurrentStat_STR++;
 
             //Remove Point
-            skillPoints_Avalible--;
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
 
             //Refresh UI
             RefreshStatsUI();
@@ -104,13 +92,13 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     public void Button_AddValue_DEX()
     {
-        if (skillPoints_Avalible > 0)
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
         {
             //Add Stat
-            playerStat_DEX++;
+            TM_PlayerController_Stats.Instance.player_CurrentStat_DEX++;
 
             //Remove Point
-            skillPoints_Avalible--;
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
 
             //Refresh UI
             RefreshStatsUI();
@@ -119,13 +107,13 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     public void Button_AddValue_INT()
     {
-        if (skillPoints_Avalible > 0)
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
         {
             //Add Stat
-            playerStat_INT++;
+            TM_PlayerController_Stats.Instance.player_CurrentStat_INT++;
 
             //Remove Point
-            skillPoints_Avalible--;
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
 
             //Refresh UI
             RefreshStatsUI();
@@ -134,13 +122,13 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     public void Button_AddValue_CON()
     {
-        if (skillPoints_Avalible > 0)
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
         {
             //Add Stat
-            playerStat_CON++;
+            TM_PlayerController_Stats.Instance.player_CurrentStat_CON++;
 
             //Remove Point
-            skillPoints_Avalible--;
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
 
             //Refresh UI
             RefreshStatsUI();
@@ -151,7 +139,7 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
     public void RefreshStatsUI()
     {
-        skillPointAvalible_Text.text = "Skill Points Avalible: " + skillPoints_Avalible;
+        skillPointAvalible_Text.text = "Skill Points Avalible: " + TM_PlayerController_Stats.Instance.player_SkillPointsAvalible;
 
         int additive_STR = equipmentStat_STR + tempStat_STR;
         int additive_DEX = equipmentStat_DEX + tempStat_DEX;
@@ -160,23 +148,23 @@ public class TM_PlayerMenuController_Attributes : MonoBehaviour
 
         if (additive_STR > 0)
         {
-            STR_Text.text = playerStat_STR + " (+<color=#ffff00>" + additive_STR + "</color>)";
+            STR_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (+<color=#ffff00>" + additive_STR + "</color>)";
         }
         else if (additive_STR < 0)
         {
-            STR_Text.text = playerStat_STR + " (-<color=#ffff00>" + additive_STR + "</color>)";
+            STR_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (-<color=#ffff00>" + additive_STR + "</color>)";
         }
         else
         {
-            STR_Text.text = playerStat_STR + " (+0)";
+            STR_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (+0)";
         }
 
-        DEX_Text.text = playerStat_DEX + " (+0)";
-        INT_Text.text = playerStat_INT + " (+0)";
-        CON_Text.text = playerStat_CON + " (+0)";
+        DEX_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_DEX + " (+0)";
+        INT_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_INT + " (+0)";
+        CON_Text.text = TM_PlayerController_Stats.Instance.player_CurrentStat_CON + " (+0)";
 
             
-        if (skillPoints_Avalible <= 0)
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible <= 0)
         {
             STR_Button.SetActive(false);
             DEX_Button.SetActive(false);

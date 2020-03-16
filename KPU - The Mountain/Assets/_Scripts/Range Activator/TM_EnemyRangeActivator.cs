@@ -9,7 +9,7 @@ public class TM_EnemyRangeActivator : MonoBehaviour
     public GameObject enemy_GO;
 
     [Header("Nav Mesh Agent")]
-    public TM_EnemyBossMinotaur enemyManager;
+    public TM_EnemyDirector_Minotaur enemyManager;
 
 
     void OnTriggerEnter(Collider collider)
@@ -40,21 +40,21 @@ public class TM_EnemyRangeActivator : MonoBehaviour
 
     public void Deactivate()
     {
-        print("Test Code: DEACTIVATED");
+        //print("Test Code: DEACTIVATED");
 
         enemyManager.enemy_Animator.SetBool("IsDisabled", true);
         enemyManager.enemy_Animator.Play("Disabled", 0);
-        enemy_GO.GetComponent<TM_EnemyBossMinotaur>().enabled = false;
+        enemy_GO.GetComponent<TM_EnemyDirector_Minotaur>().enabled = false;
         enemy_GO.GetComponent<NavMeshAgent>().enabled = false;
 
     }
 
     public void Activate()
     {
-        print("Test Code: ACTIVATE");
+        //print("Test Code: ACTIVATE");
 
 
-        enemy_GO.GetComponent<TM_EnemyBossMinotaur>().enabled = true;
+        enemy_GO.GetComponent<TM_EnemyDirector_Minotaur>().enabled = true;
         enemy_GO.GetComponent<NavMeshAgent>().enabled = true;
 
         enemyManager.EnemyState_Activated();

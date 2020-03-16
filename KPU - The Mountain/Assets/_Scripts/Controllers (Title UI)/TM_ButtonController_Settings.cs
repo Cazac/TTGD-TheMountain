@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 ///////////////
 /// <summary>
@@ -20,6 +21,12 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     ////////////////////////////////
 
+    [Header("Buttons")]
+    public GameObject settingsKeyBindingButton;
+    public GameObject settingsSoundButton;
+    public GameObject settingsGraphicsButton;
+
+    [Header("Panels")]
     public GameObject settingsKeyBinding_Panel;
     public GameObject settingsSound_Panel;
     public GameObject settingsGraphics_Panel;
@@ -30,6 +37,15 @@ public class TM_ButtonController_Settings : MonoBehaviour
     {
         //Set Static Singleton Self Refference
         Instance = this;
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Setup()
+    {
+        //Open First Panel
+        Button_OpenPanel_KeyBinding();
+        ButtonSelect_PanelChange(settingsKeyBindingButton);
     }
 
     ///////////////////////////////////////////////////////
@@ -102,7 +118,19 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void Slider_TotalVolume()
+    public void ButtonSelect_PanelChange(GameObject panelButton_GO)
+    {
+        //Remove All Selections And Set To Netrual Colors
+        settingsKeyBindingButton.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        settingsSoundButton.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        settingsGraphicsButton.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+
+        panelButton_GO.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void SliderChange_TotalVolume()
     {
 
     }
