@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Gourmet Meat
+  m_Name: Super Potion
   m_EditorClassIdentifier: 
   dropped_Prefab: {fileID: 0}
   placed_Prefab: {fileID: 0}
   held_Prefab: {fileID: 0}
   equipped_Prefab: {fileID: 0}
-  itemName: Gourmet Meat
-  itemDesc: 
+  itemName: Super Potion
+  itemDesc: Restores the user's health by 50 HP
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 2
@@ -25,18 +25,18 @@ MonoBehaviour:
   burn_FireValue: 0
   burn_FireEffect: 0
   isConsumable: 1
-  consumable_Category: Meat
-  consumable_Hunger: 30
-  consumable_Health: 20
+  consumable_Category: Potion
+  consumable_Hunger: 0
+  consumable_Health: 50
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
   consumable_DamageBuffDuration: 0
   consumable_DefenseBuffValue: 0
   consumable_DefenseBuffDuration: 0
-  consumable_SpeedBuffValue: 15
-  consumable_SpeedBuffDuration: 30
-  consumable_StaminaBuffValue: 3
-  consumable_StaminaBuffDuration: 30
+  consumable_SpeedBuffValue: 0
+  consumable_SpeedBuffDuration: 0
+  consumable_StaminaBuffValue: 0
+  consumable_StaminaBuffDuration: 0
   isWeapon: 0
   weapon_Tier: 0
   weapon_Damage: 0

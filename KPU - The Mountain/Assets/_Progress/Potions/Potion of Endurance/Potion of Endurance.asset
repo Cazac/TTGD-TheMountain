@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Strawberry
+  m_Name: Potion of Endurance
   m_EditorClassIdentifier: 
   dropped_Prefab: {fileID: 0}
   placed_Prefab: {fileID: 0}
   held_Prefab: {fileID: 0}
   equipped_Prefab: {fileID: 0}
-  itemName: Strawberry
-  itemDesc: 
+  itemName: Potion of Endurance
+  itemDesc: Increases the stamina recharge rate by 6.0/s for 1 minute
   itemIcon: {fileID: 0}
   maxDurablity: 0
-  maxStackSize: 3
+  maxStackSize: 2
   isBurnable: 0
   burn_FireValue: 0
   burn_FireEffect: 0
   isConsumable: 1
-  consumable_Category: Fruit
-  consumable_Hunger: 8
+  consumable_Category: Potion
+  consumable_Hunger: 0
   consumable_Health: 0
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
@@ -35,8 +35,8 @@ MonoBehaviour:
   consumable_DefenseBuffDuration: 0
   consumable_SpeedBuffValue: 0
   consumable_SpeedBuffDuration: 0
-  consumable_StaminaBuffValue: 2
-  consumable_StaminaBuffDuration: 20
+  consumable_StaminaBuffValue: 6
+  consumable_StaminaBuffDuration: 60
   isWeapon: 0
   weapon_Tier: 0
   weapon_Damage: 0

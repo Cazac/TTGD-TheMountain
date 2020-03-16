@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Unknown Meat
+  m_Name: Hamburger
   m_EditorClassIdentifier: 
   dropped_Prefab: {fileID: 0}
   placed_Prefab: {fileID: 0}
   held_Prefab: {fileID: 0}
   equipped_Prefab: {fileID: 0}
-  itemName: Unknown Meat
+  itemName: Hamburger
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
-  maxStackSize: 0
+  maxStackSize: 2
   isBurnable: 0
   burn_FireValue: 0
   burn_FireEffect: 0
-  isConsumable: 0
-  consumable_Category: 
-  consumable_Hunger: 0
-  consumable_Health: 0
-  consumable_Stamina: 0
+  isConsumable: 1
+  consumable_Category: Meal
+  consumable_Hunger: 40
+  consumable_Health: 30
+  consumable_Stamina: 30
   consumable_DamageBuffValue: 0
   consumable_DamageBuffDuration: 0
   consumable_DefenseBuffValue: 0
   consumable_DefenseBuffDuration: 0
-  consumable_SpeedBuffValue: 0
-  consumable_SpeedBuffDuration: 0
+  consumable_SpeedBuffValue: 10
+  consumable_SpeedBuffDuration: 30
   consumable_StaminaBuffValue: 0
   consumable_StaminaBuffDuration: 0
   isWeapon: 0
