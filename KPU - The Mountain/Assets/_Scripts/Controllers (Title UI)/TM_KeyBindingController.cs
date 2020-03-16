@@ -2,12 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_KeyBindingController 
+/// 
+/// CONTROLLER CLASS
+/// Controller classes are used as a manager of an entire system. 
+/// Each controller is assigned a singleton for easy access.
+/// 
+/// </summary>
+///////////////
+
 public class TM_KeyBindingController : MonoBehaviour
 {
-    public static string KB_PATH; //Uses a persistent data path that will never change because it is based on the system, not the application
+    ////////////////////////////////
+
     public static TM_KeyBindingController Instance;
 
-    public GameObject BindingInputs;//Reference for the initial button text names
+    ////////////////////////////////
+
+    public static string KB_PATH; //Uses a persistent data path that will never change because it is based on the system, not the application
+
+    //Reference for the initial button text names
+    public GameObject BindingInputs;
 
     GameObject currentButton;//Used OnClick() to hold a reference to button that is currently being changed
     KeyCode newKey;//New key to be set
@@ -15,16 +33,20 @@ public class TM_KeyBindingController : MonoBehaviour
 
     public static Dictionary<string, KeyCode> keybindings;
 
-    string jsonFile;//JSON File used to initialize dictionary
+    string jsonFile;
+    //JSON File used to initialize dictionary
     KeyBindingList bindingsInJSON;
+
+
+    ///////////////////////////////////////////////////////
 
     private void Awake()
     {
         Instance = this;
         KB_PATH = Application.persistentDataPath + "/keybindings.json";
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         if (System.IO.File.Exists(KB_PATH))//Tries to find saved JSON file in cache
         {
@@ -56,7 +78,7 @@ public class TM_KeyBindingController : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    private void OnGUI()
     {
         Event e = Event.current; //Captures anything that is happening in game
         if (e.shift && waitingForKey)//If Shift is pressed as key
@@ -77,6 +99,8 @@ public class TM_KeyBindingController : MonoBehaviour
             waitingForKey = false; //Stop waiting for key
         }
     }
+
+    ///////////////////////////////////////////////////////
 
     public void ChangeKeyStart(GameObject button)
     {
