@@ -75,6 +75,7 @@ public class TM_KeyBindingController : MonoBehaviour
         {
             
             GameObject button = BindingInputs.transform.GetChild(i).gameObject;
+            print("Test Code: " + button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().name);
             button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(keybindings[button.name].ToString());
 
             print("Test Code: " + button.name);

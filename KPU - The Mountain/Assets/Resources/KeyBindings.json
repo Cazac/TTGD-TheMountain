@@ -1,25 +1,52 @@
-{
-	"bindings":
-	[
-		{
-			"action": "Forward",
-			"key": "I"
-		},
-		{
-			"action": "Back",
-			"key": "K"
-		},
-		{
-			"action": "Left",
-			"key": "J"
-		},
-		{
-			"action": "Right",
-			"key": "L"
-		},
-		{
-			"action": "Jump",
-			"key": "Space"
-		}
-	]
+{ //Default Bindings in Resources Folder
+  "bindings": [
+    {
+      "action": "Forward",
+      "key": "W"
+    },
+    {
+      "action": "Back",
+      "key": "S"
+    },
+    {
+      "action": "Left",
+      "key": "A"
+    },
+    {
+      "action": "Right",
+      "key": "D"
+    },
+    {
+      "action": "Jump",
+      "key": "Space"
+    },
+    {
+      "action": "Sprint",
+      "key": "LeftShift"
+    },
+    {
+      "action": "Attack",
+      "key": "Mouse0"
+    },
+    {
+      "action": "AltAttack",
+      "key": "Mouse1"
+    },
+    {
+      "action": "Interact",
+      "key": "F"
+    },
+    {
+      "action": "Inventory",
+      "key": "E"
+    },
+    {
+      "action": "Notes",
+      "key": "N"
+    },
+    {
+      "action": "Stats",
+      "key": "L"
+    }
+  ]
 }
