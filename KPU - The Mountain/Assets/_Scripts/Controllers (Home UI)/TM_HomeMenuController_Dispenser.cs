@@ -196,7 +196,7 @@ public class TM_HomeMenuController_Dispenser : MonoBehaviour
         TM_ItemUI[] itemArray = new TM_ItemUI[20];
 
         //Items
-        itemArray[0] = new TM_ItemUI(TM_DatabaseController.Instance.item_DB.apple);
+        itemArray[0] = new TM_ItemUI(TM_DatabaseController.Instance.item_DB.RedApple);
 
 
 
