@@ -412,9 +412,9 @@ RectTransform:
   m_Father: {fileID: 22926754}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 440, y: -110}
   m_SizeDelta: {x: 425, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &19396775
@@ -40478,9 +40478,9 @@ RectTransform:
   m_Father: {fileID: 22926754}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1260, y: -110}
   m_SizeDelta: {x: 425, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1175926654
@@ -52813,7 +52813,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 040e574b1312c414794701f148484ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apple: {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  RedApple: {fileID: 0}
+  Blueberry_SO: {fileID: 0}
+  Grape_SO: {fileID: 0}
+  GreenApple_SO: {fileID: 0}
+  Orange_SO: {fileID: 0}
+  Watermelon_SO: {fileID: 0}
+  IronAxe_SO: {fileID: 0}
+  GimliAxe_SO: {fileID: 0}
+  SilverAxe_SO: {fileID: 0}
+  SteelAxe_SO: {fileID: 0}
+  StoneAxe_SO: {fileID: 0}
+  SilverBroadsword_SO: {fileID: 0}
+  IronScimitar_SO: {fileID: 0}
+  SilverScimitar_SO: {fileID: 0}
+  SteelBroadsword_SO: {fileID: 0}
+  SteelSword_SO: {fileID: 0}
+  IronSword_SO: {fileID: 0}
+  DwarvenSword_SO: {fileID: 0}
+  StoneSword_SO: {fileID: 0}
+  DwarvenMace_SO: {fileID: 0}
+  SilverMace_SO: {fileID: 0}
+  SteelMace_SO: {fileID: 0}
+  IronMace_SO: {fileID: 0}
+  StoneMace_SO: {fileID: 0}
+  EmeraldStaff_SO: {fileID: 0}
+  RubyStaff_SO: {fileID: 0}
+  CobaltStaff_SO: {fileID: 0}
+  HackberryStaff_SO: {fileID: 0}
+  CedarStaff_SO: {fileID: 0}
+  RubyWand_SO: {fileID: 0}
+  EmeraldWand_SO: {fileID: 0}
+  CobaltWand_SO: {fileID: 0}
+  HackberryWand_SO: {fileID: 0}
+  CedarWand_SO: {fileID: 0}
+  LegendaryRubySword_SO: {fileID: 0}
+  LegendaryPoisonSword_SO: {fileID: 0}
+  LegendaryFlameSword_SO: {fileID: 0}
+  LegendaryEmeraldSword_SO: {fileID: 0}
+  Wood_SO: {fileID: 0}
 --- !u!4 &1290971402
 Transform:
   m_ObjectHideFlags: 0
@@ -71957,9 +71995,9 @@ RectTransform:
   m_Father: {fileID: 22926754}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 850, y: -110}
   m_SizeDelta: {x: 425, y: 80}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1908514580
@@ -90329,7 +90367,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &1186423522381700437
 CanvasRenderer:
   m_ObjectHideFlags: 0

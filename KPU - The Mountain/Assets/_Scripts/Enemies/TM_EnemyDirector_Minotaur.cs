@@ -37,9 +37,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     ////////////////////////////////
 
     [Header("Ranges")]
-    private float visualRangeRadius = 20f;
-    private float attackingRangeRadius = 4f;
-    private float wandering_NextNodeDistance = 10f;
+    public float visualRangeRadius;
+    public float attackingRangeRadius;
+    public float wandering_NextNodeDistance;
 
     ////////////////////////////////
 
@@ -287,7 +287,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         if (distance > attackingRangeRadius)
         {
             //Return To Chase State
-            ChangeToState_Chasing();
+            //ChangeToState_Chasing();
             return;
         }
 
@@ -295,9 +295,6 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         FaceTarget();
 
 
-
-        //Damage Player
-        //TM_PlayerController_Stats.Instance.ChangeHealth_Current(-1);
 
     }
 
@@ -337,7 +334,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         enemyNavAgent.SetDestination(currentTargetLocation);
     }
 
-    private void ChangeToState_Chasing()
+    public void ChangeToState_Chasing()
     {
 
         enemy_Animator.SetBool("Attack1", false);
@@ -354,6 +351,18 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //Change To Chase
         EnemyState_Attacking();
         currentState = EnemyState.Attacking;
+    }
+
+    private void ChangeToState_Dying()
+    {
+
+        enemy_Animator.SetBool("Attack1", false);
+
+
+        //Change To Idle
+        EnemyState_Idling();
+        currentState = EnemyState.Dying;
+        enemyNavAgent.ResetPath();
     }
 
     ///////////////////////////////////////////////////////

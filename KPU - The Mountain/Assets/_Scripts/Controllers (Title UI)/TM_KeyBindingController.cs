@@ -73,8 +73,11 @@ public class TM_KeyBindingController : MonoBehaviour
         //Setting initial loaded bindings as button texts
         for(int i = 0; i < BindingInputs.transform.childCount; i++)
         {
+            
             GameObject button = BindingInputs.transform.GetChild(i).gameObject;
             button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(keybindings[button.name].ToString());
+
+            print("Test Code: " + button.name);
         }
     }
 
