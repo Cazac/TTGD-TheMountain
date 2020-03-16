@@ -45,6 +45,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject saveSlot1_Panel;
     public GameObject saveIcon1_NewSave_Panel;
     public GameObject saveIcon1_LoadSave_Panel;
+    public Image saveIcon1_LoadIcon_Image;
     public TextMeshProUGUI saveIcon1_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon1_LoadSaveDesc_Text;
 
@@ -54,6 +55,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject saveSlot2_Panel;
     public GameObject saveIcon2_NewSave_Panel;
     public GameObject saveIcon2_LoadSave_Panel;
+    public Image saveIcon2_LoadIcon_Image;
     public TextMeshProUGUI saveIcon2_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon2_LoadSaveDesc_Text;
 
@@ -63,6 +65,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject saveSlot3_Panel;
     public GameObject saveIcon3_NewSave_Panel;
     public GameObject saveIcon3_LoadSave_Panel;
+    public Image saveIcon3_LoadIcon_Image;
     public TextMeshProUGUI saveIcon3_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon3_LoadSaveDesc_Text;
 
@@ -72,6 +75,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject saveSlot4_Panel;
     public GameObject saveIcon4_NewSave_Panel;
     public GameObject saveIcon4_LoadSave_Panel;
+    public Image saveIcon4_LoadIcon_Image;
     public TextMeshProUGUI saveIcon4_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon4_LoadSaveDesc_Text;
 
@@ -81,6 +85,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject saveSlot5_Panel;
     public GameObject saveIcon5_NewSave_Panel;
     public GameObject saveIcon5_LoadSave_Panel;
+    public Image saveIcon5_LoadIcon_Image;
     public TextMeshProUGUI saveIcon5_LoadSaveTitle_Text;
     public TextMeshProUGUI saveIcon5_LoadSaveDesc_Text;
 
@@ -96,6 +101,8 @@ public class TM_ButtonController_Play : MonoBehaviour
     public GameObject newSave_ClassArcherButton;
     public GameObject newSave_ClassWizardButton;
     public GameObject newSave_ClassTankButton;
+
+    private string newSave_currentClass;
 
     [Header("New Save - Class Text")]
     public TextMeshProUGUI newSave_ClassSTR_Text;
@@ -188,7 +195,7 @@ public class TM_ButtonController_Play : MonoBehaviour
             charecterLoad_Panel.SetActive(false);
 
             //Load Details
-            NewSave_ResetPanel();
+            NewSave_LoadPanel();
         }
     }
 
@@ -217,17 +224,63 @@ public class TM_ButtonController_Play : MonoBehaviour
 
         TM_PlayerSaveData newPlayerSaveData = new TM_PlayerSaveData();
         newPlayerSaveData.player_Name = "";
-        newPlayerSaveData.player_Level = UnityEngine.Random.Range(0, 10);
+        newPlayerSaveData.player_Level = 1;
+
+
+        //Class / Stats
+        if (newSave_currentClass == "Brawler")
+        {
+            //Set Stats
+            newPlayerSaveData.player_Class = "Brawler";
+            newPlayerSaveData.player_CurrentStat_STR = 8;
+            newPlayerSaveData.player_CurrentStat_DEX = 6;
+            newPlayerSaveData.player_CurrentStat_INT = 2;
+            newPlayerSaveData.player_CurrentStat_CON = 4;
+        }
+        else if (newSave_currentClass == "Knight")
+        {
+            //Set Stats
+            newPlayerSaveData.player_Class = "Knight";
+            newPlayerSaveData.player_CurrentStat_STR = 7;
+            newPlayerSaveData.player_CurrentStat_DEX = 5;
+            newPlayerSaveData.player_CurrentStat_INT = 3;
+            newPlayerSaveData.player_CurrentStat_CON = 5;
+        }
+        else if (newSave_currentClass == "Archer")
+        {
+            //Set Stats
+            newPlayerSaveData.player_Class = "Archer";
+            newPlayerSaveData.player_CurrentStat_STR = 3;
+            newPlayerSaveData.player_CurrentStat_DEX = 9;
+            newPlayerSaveData.player_CurrentStat_INT = 4;
+            newPlayerSaveData.player_CurrentStat_CON = 4;
+        }
+        else if (newSave_currentClass == "Wizard")
+        {
+            //Set Stats
+            newPlayerSaveData.player_Class = "Wizard";
+            newPlayerSaveData.player_CurrentStat_STR = 2;
+            newPlayerSaveData.player_CurrentStat_DEX = 4;
+            newPlayerSaveData.player_CurrentStat_INT = 12;
+            newPlayerSaveData.player_CurrentStat_CON = 2;
+        }
+        else if (newSave_currentClass == "Tank")
+        {
+            //Set Stats
+            newPlayerSaveData.player_Class = "Tank";
+            newPlayerSaveData.player_CurrentStat_STR = 7;
+            newPlayerSaveData.player_CurrentStat_DEX = 3;
+            newPlayerSaveData.player_CurrentStat_INT = 0;
+            newPlayerSaveData.player_CurrentStat_CON = 10;
+        }
 
 
 
+        //Name Validation
         if (newPlayerSaveData.player_Name == "" || newPlayerSaveData.player_Name == null)
         {
             newPlayerSaveData.player_Name = "The Mountainer";
         }
-
-        print("Test Code: " + newPlayerSaveData.player_Name);
-        print("Test Code: " + newPlayerSaveData.player_Level);
 
         //Save File
         TM_SaveController.Instance.PlayerData_SaveFile(newPlayerSaveData, TM_SaveController.Instance.currentSaveSlotID);
@@ -250,6 +303,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             newSave_ClassINT_Text.text = "INT: 2";
             newSave_ClassCON_Text.text = "CON: 4";
 
+            newSave_currentClass = "Brawler";
+
         }
         else if (class_GO == newSave_ClassKnightButton)
         {
@@ -258,6 +313,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             newSave_ClassDEX_Text.text = "DEX: 5";
             newSave_ClassINT_Text.text = "INT: 3";
             newSave_ClassCON_Text.text = "CON: 5";
+
+            newSave_currentClass = "Knight";
         }
         else if (class_GO == newSave_ClassArcherButton)
         {
@@ -266,6 +323,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             newSave_ClassDEX_Text.text = "DEX: 9";
             newSave_ClassINT_Text.text = "INT: 4";
             newSave_ClassCON_Text.text = "CON: 4";
+
+            newSave_currentClass = "Archer";
         }
         else if (class_GO == newSave_ClassWizardButton)
         {
@@ -274,6 +333,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             newSave_ClassDEX_Text.text = "DEX: 4";
             newSave_ClassINT_Text.text = "INT: 12";
             newSave_ClassCON_Text.text = "CON: 2";
+
+            newSave_currentClass = "Wizard";
         }
         else if (class_GO == newSave_ClassTankButton)
         {
@@ -282,6 +343,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             newSave_ClassDEX_Text.text = "DEX: 3";
             newSave_ClassINT_Text.text = "INT: 0";
             newSave_ClassCON_Text.text = "CON: 10";
+
+            newSave_currentClass = "Tank";
         }
 
 
@@ -320,9 +383,7 @@ public class TM_ButtonController_Play : MonoBehaviour
         class_GO.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
-  
-
-    /////////////////////////////////////////////////////// - Debug Saving
+    ///////////////////////////////////////////////////////
 
     public void SaveSlots_RefreshVisuals()
     {
@@ -349,7 +410,8 @@ public class TM_ButtonController_Play : MonoBehaviour
             saveIcon1_LoadSaveTitle_Text.text = playerData1.player_Name;
             saveIcon1_LoadSaveDesc_Text.text = "Level " + playerData1.player_Level;
 
-            //ICON
+            //Find Icon From Database
+            saveIcon1_LoadIcon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(playerData1.player_Class);
         }
         else
         {
@@ -370,7 +432,9 @@ public class TM_ButtonController_Play : MonoBehaviour
             //Load Info
             saveIcon2_LoadSaveTitle_Text.text = playerData2.player_Name;
             saveIcon2_LoadSaveDesc_Text.text = "Level " + playerData2.player_Level;
-            //ICON
+
+            //Find Icon From Database
+            saveIcon2_LoadIcon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(playerData2.player_Class);
         }
         else
         {
@@ -391,7 +455,9 @@ public class TM_ButtonController_Play : MonoBehaviour
             //Load Info
             saveIcon3_LoadSaveTitle_Text.text = playerData3.player_Name;
             saveIcon3_LoadSaveDesc_Text.text = "Level " + playerData3.player_Level;
-            //ICON
+
+            //Find Icon From Database
+            saveIcon3_LoadIcon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(playerData3.player_Class);
         }
         else
         {
@@ -412,7 +478,9 @@ public class TM_ButtonController_Play : MonoBehaviour
             //Load Info
             saveIcon4_LoadSaveTitle_Text.text = playerData4.player_Name;
             saveIcon4_LoadSaveDesc_Text.text = "Level " + playerData4.player_Level;
-            //ICON
+
+            //Find Icon From Database
+            saveIcon4_LoadIcon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(playerData4.player_Class);
         }
         else
         {
@@ -433,7 +501,9 @@ public class TM_ButtonController_Play : MonoBehaviour
             //Load Info
             saveIcon5_LoadSaveTitle_Text.text = playerData5.player_Name;
             saveIcon5_LoadSaveDesc_Text.text = "Level " + playerData5.player_Level;
-            //ICON
+
+            //Find Icon From Database
+            saveIcon5_LoadIcon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(playerData5.player_Class);
         }
         else
         {
@@ -445,33 +515,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-
-    private void LoadSave_LoadPanel()
-    {
-        TM_PlayerSaveData currentPlayerSaveData = TM_SaveController.Instance.PlayerData_GetCurrentSaveFile();
-
-        //Set Info
-        charecterLoad_SaveSlot_Text.text = "Save Slot " + TM_SaveController.Instance.currentSaveSlotID;
-        charecterLoad_Name_Text.text = currentPlayerSaveData.player_Name;
-        charecterLoad_Level_Text.text = "Level - " + currentPlayerSaveData.player_Level.ToString();
-
-        charecterLoad_Notes_Text.text = "Notes - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
-        charecterLoad_Bosses_Text.text = "Bosses - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
-        charecterLoad_Time_Text.text = "Cycles - " + currentPlayerSaveData.player_Level.ToString();
-
-  
-        charecterLoad_STR_Text.text = "STR " + currentPlayerSaveData.player_CurrentStat_STR.ToString();
-        charecterLoad_DEX_Text.text = "DEX " + currentPlayerSaveData.player_CurrentStat_DEX.ToString();
-        charecterLoad_INT_Text.text = "INT " + currentPlayerSaveData.player_CurrentStat_INT.ToString();
-        charecterLoad_CON_Text.text = "CON " + currentPlayerSaveData.player_CurrentStat_CON.ToString();
-
-
-        //charecterLoad_Icon_Image.sprite = TM_DatabaseController.Instance.
-    }
-
-    ///////////////////////////////////////////////////////
-
-    private void NewSave_ResetPanel()
+    private void NewSave_LoadPanel()
     {
         //Clear Text
 
@@ -482,10 +526,32 @@ public class TM_ButtonController_Play : MonoBehaviour
         ButtonSelect_ClassSlot(newSave_ClassBrawlerButton);
     }
 
+    ///////////////////////////////////////////////////////
+
+    private void LoadSave_LoadPanel()
+    {
+        TM_PlayerSaveData currentPlayerSaveData = TM_SaveController.Instance.PlayerData_GetCurrentSaveFile();
+
+        //Set Info
+        charecterLoad_SaveSlot_Text.text = "Save Slot " + TM_SaveController.Instance.currentSaveSlotID;
+        charecterLoad_Name_Text.text = currentPlayerSaveData.player_Name;
+        charecterLoad_Level_Text.text = "Level " + currentPlayerSaveData.player_Level.ToString();
+
+        charecterLoad_Notes_Text.text = "Notes - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
+        charecterLoad_Bosses_Text.text = "Bosses - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
+        charecterLoad_Time_Text.text = "Cycles - " + currentPlayerSaveData.player_Level.ToString();
 
 
+        charecterLoad_STR_Text.text = "STR " + currentPlayerSaveData.player_CurrentStat_STR.ToString();
+        charecterLoad_DEX_Text.text = "DEX " + currentPlayerSaveData.player_CurrentStat_DEX.ToString();
+        charecterLoad_INT_Text.text = "INT " + currentPlayerSaveData.player_CurrentStat_INT.ToString();
+        charecterLoad_CON_Text.text = "CON " + currentPlayerSaveData.player_CurrentStat_CON.ToString();
+
+        //Find Icon From Database
+        charecterLoad_Icon_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(currentPlayerSaveData.player_Class);
 
 
+    }
 
     ///////////////////////////////////////////////////////
 }

@@ -19,7 +19,7 @@ public class TM_PlayerSaveData
     public float player_PlayTime;
     //public int player_NotesCollected
     //public float 
-
+    public string player_Class;
 
 
 

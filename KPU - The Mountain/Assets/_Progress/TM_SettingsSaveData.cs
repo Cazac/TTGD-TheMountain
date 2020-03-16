@@ -18,23 +18,5 @@ public class TM_SettingsSaveData
     public bool isAmbienceMute;
     public bool isSFXMute;
 
-    ////////////////////////////////
-
-    //Graphics and Textures
-    public int graphicRenderDistance;
-    public int graphicTextureSize;
-
-    ////////////////////////////////
-
-    //Monitor and Display
-    public int displayType;
-    public int displaySize;
-
-    ////////////////////////////////
-
-    //Input
-    public bool allowMouseInput;
-    public bool allowDataCollection;
-
     /////////////////////////////////////////////////////////////////
 }

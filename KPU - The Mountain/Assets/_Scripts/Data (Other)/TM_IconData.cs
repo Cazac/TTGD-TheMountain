@@ -4,15 +4,48 @@ using UnityEngine;
 
 public class TM_IconData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Debug Sprites")]
+    public Sprite classIcon_Brawler;
+    public Sprite classIcon_Knight;
+    public Sprite classIcon_Archer;
+    public Sprite classIcon_Wizard;
+    public Sprite classIcon_Tank;
+
+
+
+
+
+
+
+
+
+    public Sprite FindData_ClassIcon(string className)
     {
-        
+        if (className == "Brawler")
+        {
+            return classIcon_Brawler;
+        }
+        else if (className == "Knight")
+        {
+            return classIcon_Knight;
+        }
+        else if (className == "Archer")
+        {
+            return classIcon_Archer;
+        }
+        else if (className == "Wizard")
+        {
+            return classIcon_Wizard;
+
+        }
+        else if (className == "Tank")
+        {
+            return classIcon_Tank;
+        }
+        else
+        {
+            return null;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

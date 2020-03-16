@@ -40,6 +40,11 @@ public class TM_DatabaseController : MonoBehaviour
     [Header("Hitbox Database")]
     public TM_HitboxData hitbox_DB;
 
+    [Header("Icon Database")]
+    public TM_IconData icon_DB;
+
+    [Header("Name Database")]
+    public TM_NameData name_DB;
 
 
     [Header("Save Datas")]
@@ -54,13 +59,9 @@ public class TM_DatabaseController : MonoBehaviour
     {
         //Set Static Singleton Self Refference
         Instance = this;
-    }
 
-    private void Update()
-    {
-
-
-
+        //Build Databases
+        name_DB.BuildDatabase();
 
         player_SaveData = new TM_PlayerSaveData();
     }
