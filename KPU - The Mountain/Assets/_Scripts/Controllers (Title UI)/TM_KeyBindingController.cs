@@ -35,7 +35,7 @@ public class TM_KeyBindingController : MonoBehaviour
 
     string jsonFile;
     //JSON File used to initialize dictionary
-    KeyBindingList bindingsInJSON;
+    
 
 
     ///////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ public class TM_KeyBindingController : MonoBehaviour
             Debug.Log("Loaded default bindings");
         }
         keybindings = new Dictionary<string, KeyCode>(); //Initialize keycode dictionary
-        bindingsInJSON = JsonUtility.FromJson<KeyBindingList>(jsonFile);//Convert JSON into serializable strings
+        KeyBindingList bindingsInJSON = JsonUtility.FromJson<KeyBindingList>(jsonFile);//Convert JSON into serializable strings
 
         foreach (KeyBinding k in bindingsInJSON.bindings)
         {
