@@ -21,13 +21,6 @@ public class TM_SaveController : MonoBehaviour
 
     ////////////////////////////////
 
-
-
-
-
-
-    ////////////////////////////////
-
     [Header("Player Save File Data")]
     public int currentSaveSlotID;
     public ES3File[] playerSaveFiles_Array = new ES3File[5];
@@ -39,8 +32,6 @@ public class TM_SaveController : MonoBehaviour
     public ES3File unlocksSaveFile;
     public ES3File morgueSaveFile;
   
-
-
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -186,34 +177,79 @@ public class TM_SaveController : MonoBehaviour
 
 
 
+    /////////////////////////////////////////////////////////////////
+
+    public void SettingsData_LoadSaveFile()
+    {
+        //Load Or Create Save Files
+        settingsSaveFile = new ES3File("The Mountain Settings.es3");
+        TM_SettingsSaveData currentSettingsData = null;
+
+        if (settingsSaveFile.KeyExists("SettingsSaveData"))
+        {
+            currentSettingsData = settingsSaveFile.Load<TM_SettingsSaveData>("SettingsSaveData");
+        }
+        else
+        {
+            currentSettingsData = new TM_SettingsSaveData();
 
 
 
+            //SETUP VALUSE
+            //currentSettingsData
 
 
+            //SAVE VALUE
+        }
 
+        TM_DatabaseController.Instance.settings_SaveData = currentSettingsData;
+    }
+
+    public void SettingsData_SaveFile(TM_SettingsSaveData newSettingsSaveData)
+    {
+        //Save Data To File
+        ES3.Save<TM_SettingsSaveData>("SettingsSaveData", newSettingsSaveData, "The Mountain Settings.es3");
+    }
 
     /////////////////////////////////////////////////////////////////
 
-    public void MorgueData_ReloadSaveFiles()
+    public void MorgueData_LoadSaveFile()
     {
         //Load Or Create Save Files
         morgueSaveFile = new ES3File("The Mountain Morgue.es3");
     }
 
-    public void UnlocksData_ReloadSaveFiles()
+    public void MorgueData_SaveFile(TM_SettingsSaveData newSettingsSaveData)
     {
-        //Load Or Create Save Files
-        unlocksSaveFile = new ES3File("The Mountain Settings.es3");
-    }
-
-    public void SettingsSaveFile_ReloadSaveFiles()
-    {
-        //Load Or Create Save Files
-        settingsSaveFile = new ES3File("The Mountain Unlocks.es3");
+        //Save Data To File
+        //ES3.Save<TM_SettingsSaveData>("SettingsSaveData", newSettingsSaveData, "The Mountain Settings.es3");
     }
 
     /////////////////////////////////////////////////////////////////
+
+    public void UnlocksData_LoadSaveFile()
+    {
+        //Load Or Create Save Files
+        unlocksSaveFile = new ES3File("The Mountain Unlocks.es3"); 
+    }
+
+    public void UnlocksData_SaveFile(TM_SettingsSaveData newSettingsSaveData)
+    {
+        //Save Data To File
+        //ES3.Save<TM_SettingsSaveData>("SettingsSaveData", newSettingsSaveData, "The Mountain Settings.es3");
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
 
 
     /*

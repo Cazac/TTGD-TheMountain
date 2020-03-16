@@ -69,13 +69,13 @@ public class TM_ButtonController_Title : MonoBehaviour
             //Close All Other Panels
             CloseAllPanels();
 
-            //Check if Settings Should Be Saved With A Confim Prompt? ???
-
             //Open Settings Panel
             settings_Panel.SetActive(true);
 
-            //Open First Panel
-            TM_ButtonController_Settings.Instance.Button_OpenPanel_KeyBinding();
+            //Check if Settings Should Be Saved With A Confim Prompt? ???
+
+            //Select First Panel
+            TM_ButtonController_Settings.Instance.Setup();
         }
     }
 

@@ -41,7 +41,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("General - Icon Info 1")]
+    [Header("Save Slot - Icon Info 1")]
     public GameObject saveSlot1_Panel;
     public GameObject saveIcon1_NewSave_Panel;
     public GameObject saveIcon1_LoadSave_Panel;
@@ -51,7 +51,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("General - Icon Info 2")]
+    [Header("Save Slot - Icon Info 2")]
     public GameObject saveSlot2_Panel;
     public GameObject saveIcon2_NewSave_Panel;
     public GameObject saveIcon2_LoadSave_Panel;
@@ -61,7 +61,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("General - Icon Info 3")]
+    [Header("Save Slot - Icon Info 3")]
     public GameObject saveSlot3_Panel;
     public GameObject saveIcon3_NewSave_Panel;
     public GameObject saveIcon3_LoadSave_Panel;
@@ -71,7 +71,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("General - Icon Info 4")]
+    [Header("Save Slot - Icon Info 4")]
     public GameObject saveSlot4_Panel;
     public GameObject saveIcon4_NewSave_Panel;
     public GameObject saveIcon4_LoadSave_Panel;
@@ -81,7 +81,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("General - Icon Info 5")]
+    [Header("Save Slot - Icon Info 5")]
     public GameObject saveSlot5_Panel;
     public GameObject saveIcon5_NewSave_Panel;
     public GameObject saveIcon5_LoadSave_Panel;
@@ -110,6 +110,17 @@ public class TM_ButtonController_Play : MonoBehaviour
     public TextMeshProUGUI newSave_ClassINT_Text;
     public TextMeshProUGUI newSave_ClassCON_Text;
 
+    [Header("New Save - ")]
+    public TMP_InputField newSave_CharecterName_Input;
+    public TMP_InputField newSave_MapSeed_Input;
+
+
+    [Header("New Save - Difficulty")]
+    public List<string> newSave_diffcultyChoices_List;
+    private int newSave_currentDifficulty;
+
+    private TextMeshProUGUI newSave_currentDifficulty_Text;
+
     ////////////////////////////////
 
     ////////////////////////////////
@@ -135,7 +146,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
 
 
-    private GameObject currentSaveSlot_GO;
+
 
     ///////////////////////////////////////////////////////
 
@@ -199,6 +210,67 @@ public class TM_ButtonController_Play : MonoBehaviour
         }
     }
 
+    public void Button_ClassSlot(GameObject class_GO)
+    {
+
+        if (class_GO == newSave_ClassBrawlerButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 8";
+            newSave_ClassDEX_Text.text = "DEX: 6";
+            newSave_ClassINT_Text.text = "INT: 2";
+            newSave_ClassCON_Text.text = "CON: 4";
+
+            newSave_currentClass = "Brawler";
+
+        }
+        else if (class_GO == newSave_ClassKnightButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7";
+            newSave_ClassDEX_Text.text = "DEX: 5";
+            newSave_ClassINT_Text.text = "INT: 3";
+            newSave_ClassCON_Text.text = "CON: 5";
+
+            newSave_currentClass = "Knight";
+        }
+        else if (class_GO == newSave_ClassArcherButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 3";
+            newSave_ClassDEX_Text.text = "DEX: 9";
+            newSave_ClassINT_Text.text = "INT: 4";
+            newSave_ClassCON_Text.text = "CON: 4";
+
+            newSave_currentClass = "Archer";
+        }
+        else if (class_GO == newSave_ClassWizardButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 2";
+            newSave_ClassDEX_Text.text = "DEX: 4";
+            newSave_ClassINT_Text.text = "INT: 12";
+            newSave_ClassCON_Text.text = "CON: 2";
+
+            newSave_currentClass = "Wizard";
+        }
+        else if (class_GO == newSave_ClassTankButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7";
+            newSave_ClassDEX_Text.text = "DEX: 3";
+            newSave_ClassINT_Text.text = "INT: 0";
+            newSave_ClassCON_Text.text = "CON: 10";
+
+            newSave_currentClass = "Tank";
+        }
+
+
+
+
+
+    }
+
     public void Button_DeleteCharecter()
     {
         //Delete Current File
@@ -223,7 +295,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
 
         TM_PlayerSaveData newPlayerSaveData = new TM_PlayerSaveData();
-        newPlayerSaveData.player_Name = "";
+        newPlayerSaveData.player_Name = newSave_CharecterName_Input.text;
         newPlayerSaveData.player_Level = 1;
 
 
@@ -292,66 +364,24 @@ public class TM_ButtonController_Play : MonoBehaviour
         Button_SaveSlot(TM_SaveController.Instance.currentSaveSlotID);
     }
 
-    public void Button_ClassSlot(GameObject class_GO)
+    public void Button_RandomizeCharecterName()
     {
-
-        if (class_GO == newSave_ClassBrawlerButton)
-        {
-            //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 8";
-            newSave_ClassDEX_Text.text = "DEX: 6";
-            newSave_ClassINT_Text.text = "INT: 2";
-            newSave_ClassCON_Text.text = "CON: 4";
-
-            newSave_currentClass = "Brawler";
-
-        }
-        else if (class_GO == newSave_ClassKnightButton)
-        {
-            //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 7";
-            newSave_ClassDEX_Text.text = "DEX: 5";
-            newSave_ClassINT_Text.text = "INT: 3";
-            newSave_ClassCON_Text.text = "CON: 5";
-
-            newSave_currentClass = "Knight";
-        }
-        else if (class_GO == newSave_ClassArcherButton)
-        {
-            //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 3";
-            newSave_ClassDEX_Text.text = "DEX: 9";
-            newSave_ClassINT_Text.text = "INT: 4";
-            newSave_ClassCON_Text.text = "CON: 4";
-
-            newSave_currentClass = "Archer";
-        }
-        else if (class_GO == newSave_ClassWizardButton)
-        {
-            //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 2";
-            newSave_ClassDEX_Text.text = "DEX: 4";
-            newSave_ClassINT_Text.text = "INT: 12";
-            newSave_ClassCON_Text.text = "CON: 2";
-
-            newSave_currentClass = "Wizard";
-        }
-        else if (class_GO == newSave_ClassTankButton)
-        {
-            //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 7";
-            newSave_ClassDEX_Text.text = "DEX: 3";
-            newSave_ClassINT_Text.text = "INT: 0";
-            newSave_ClassCON_Text.text = "CON: 10";
-
-            newSave_currentClass = "Tank";
-        }
-
-
-
-
-
+        newSave_CharecterName_Input.text = TM_DatabaseController.Instance.name_DB.randomName_List[UnityEngine.Random.Range(0, TM_DatabaseController.Instance.name_DB.randomName_List.Count)];
     }
+
+    public void Button_RandomizeMapSeed()
+    {
+        newSave_MapSeed_Input.text = 
+            UnityEngine.Random.Range(0, 10).ToString() + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10);
+    }
+ 
 
     ///////////////////////////////////////////////////////
 

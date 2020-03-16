@@ -61,9 +61,51 @@ public class TM_DatabaseController : MonoBehaviour
         Instance = this;
 
         //Build Databases
+        BuildDatabase();
+    }
+
+    private void Start()
+    {
+        LoadSaveData();
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    private void BuildDatabase()
+    {
+        //Build Databases
         name_DB.BuildDatabase();
 
+
+
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    private void LoadSaveData()
+    {
+
+
+
+
+
         player_SaveData = new TM_PlayerSaveData();
+
+
+
+
+
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
+
+   
+
+        TM_SaveController.Instance.SettingsData_LoadSaveFile();
+        TM_SaveController.Instance.UnlocksData_LoadSaveFile();
+        TM_SaveController.Instance.MorgueData_LoadSaveFile();
+
+     
+
+
     }
 
     /////////////////////////////////////////////////////////////////
