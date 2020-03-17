@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2737718838695278490
+--- !u!1 &6722301952817950970
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2737718838695524434}
-  - component: {fileID: 2737718838696314658}
-  - component: {fileID: 2737718838697301232}
+  - component: {fileID: 3879923163442526022}
+  - component: {fileID: 8527944295875559734}
+  - component: {fileID: 349208189733880357}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: Stamshroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2737718838695524434
+--- !u!4 &3879923163442526022
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695278490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 6722301952817950970}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2737718838695492926}
+  m_Father: {fileID: 2902994514845086527}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2737718838696314658
+--- !u!33 &8527944295875559734
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695278490}
-  m_Mesh: {fileID: 4306746, guid: c11a6f31e3cff0647bc534e4a32152fd, type: 3}
---- !u!23 &2737718838697301232
+  m_GameObject: {fileID: 6722301952817950970}
+  m_Mesh: {fileID: 4364044, guid: 9f857ca47828e63408f8d5e8d323fc05, type: 3}
+--- !u!23 &349208189733880357
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695278490}
+  m_GameObject: {fileID: 6722301952817950970}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2153952, guid: c11a6f31e3cff0647bc534e4a32152fd, type: 3}
+  - {fileID: 2163112, guid: 9f857ca47828e63408f8d5e8d323fc05, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,7 +77,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &2737718838695279450
+--- !u!1 &7250278307670594947
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,65 +85,65 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2737718838695492926}
-  - component: {fileID: 2737718838695279452}
-  - component: {fileID: 2737718838695279453}
-  - component: {fileID: 2737718838008522841}
+  - component: {fileID: 2902994514845086527}
+  - component: {fileID: 9221661523655208765}
+  - component: {fileID: 8676182611675454565}
+  - component: {fileID: 6880680336844060762}
   m_Layer: 0
-  m_Name: Item Placed - Red Apple
+  m_Name: Item Placed - Stamshroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2737718838695492926
+--- !u!4 &2902994514845086527
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695279450}
+  m_GameObject: {fileID: 7250278307670594947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2737718838695524434}
+  - {fileID: 3879923163442526022}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2737718838695279452
+--- !u!65 &9221661523655208765
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695279450}
+  m_GameObject: {fileID: 7250278307670594947}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &2737718838695279453
+--- !u!114 &8676182611675454565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695279450}
+  m_GameObject: {fileID: 7250278307670594947}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc852274c612fd24398142d7ba7f8c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineScript: {fileID: 0}
---- !u!114 &2737718838008522841
+--- !u!114 &6880680336844060762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2737718838695279450}
+  m_GameObject: {fileID: 7250278307670594947}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2331b583426ce8c43be796ca47f19f5b, type: 3}
