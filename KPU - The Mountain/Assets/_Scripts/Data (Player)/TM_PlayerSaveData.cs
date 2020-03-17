@@ -25,7 +25,10 @@ public class TM_PlayerSaveData
 
 
 
-
+    public bool player_HasUnlocked_Brewery;
+    public bool player_HasUnlocked_Forge;
+    public bool player_HasUnlocked_Canteen;
+    public bool player_HasUnlocked_Storage;
 
     ////////////////////////////////
 

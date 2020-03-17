@@ -20,7 +20,14 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
 
     ////////////////////////////////
 
+    [Header("Outline Tool")]
     public TOOL_Outline outlineTool;
+
+    ////////////////////////////////
+
+    [Header("Building Containers")]
+    public GameObject brewery_Built;
+    public GameObject brewery_Broken;
 
     ///////////////////////////////////////////////////////
 
@@ -49,6 +56,7 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
         {
             //Close UI
             TM_HomeMenuController_Brewery.Instance.BreweryMenu_CloseUI();
+
         }
         else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf == false)
         {
@@ -56,8 +64,16 @@ public class TM_InteractableObject_Alchemy : MonoBehaviour, TM_InteractableObjec
         }
         else
         {
-            //Open UI
-            TM_HomeMenuController_Brewery.Instance.BreweryMenu_OpenUI();
+            if (TM_DatabaseController.Instance.player_SaveData.player_HasUnlocked_Brewery)
+            {
+                //Open UI
+                TM_HomeMenuController_Brewery.Instance.BreweryMenu_OpenUI();
+            }
+            else
+            {
+                //Open UI
+                TM_HomeMenuController_Brewery.Instance.BreweryMenu_OpenUI();
+            }
         }
     }
 

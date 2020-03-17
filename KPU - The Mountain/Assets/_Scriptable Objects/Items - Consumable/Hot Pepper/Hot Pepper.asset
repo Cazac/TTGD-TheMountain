@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Pepper
+  m_Name: Hot Pepper
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: Pepper
+  dropped_Prefab: {fileID: 1875760879443909777, guid: c9465a5be8c2f174a9a0182dd2055ad7,
+    type: 3}
+  placed_Prefab: {fileID: 4253041578866747277, guid: 5653370305094224fad0292a344b3f63,
+    type: 3}
+  held_Prefab: {fileID: 492836937580691159, guid: 6b7a85819536b7a4d9c148b7b52097c8,
+    type: 3}
+  equipped_Prefab: {fileID: 492836937580691159, guid: 6b7a85819536b7a4d9c148b7b52097c8,
+    type: 3}
+  itemName: Hot Pepper
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d58906342450735459b8c81473afd06a, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0

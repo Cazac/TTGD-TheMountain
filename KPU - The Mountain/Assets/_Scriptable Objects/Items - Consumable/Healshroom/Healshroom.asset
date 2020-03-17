@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Health Shroom
+  m_Name: Healshroom
   m_EditorClassIdentifier: 
   dropped_Prefab: {fileID: 0}
   placed_Prefab: {fileID: 0}

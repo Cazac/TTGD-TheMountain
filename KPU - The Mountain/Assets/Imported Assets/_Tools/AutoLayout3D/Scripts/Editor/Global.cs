@@ -84,10 +84,12 @@ namespace AutoLayout3D
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
+
             float height = 18.0f;
             SerializedProperty constraintType = property.FindPropertyRelative("constraintType");
             if ((ConstraintType)constraintType.enumValueIndex == ConstraintType.FixedCellCount)  height = 36.0f;
             return height;
+       
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

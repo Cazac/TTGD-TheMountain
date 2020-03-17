@@ -44,8 +44,6 @@ public class TM_KeyBindingController : MonoBehaviour
     {
         Instance = this;
         KB_PATH = Application.persistentDataPath + "/keybindings.json";
-
-        print("Test Code: BLANK" + Application.persistentDataPath);
     }
 
     private void Start()
@@ -53,34 +51,34 @@ public class TM_KeyBindingController : MonoBehaviour
         if (System.IO.File.Exists(KB_PATH))//Tries to find saved JSON file in cache
         {
             jsonFile = System.IO.File.ReadAllText(KB_PATH);
-            Debug.Log("Loaded bindings from saved file");
+            //Debug.Log("Loaded bindings from saved file");
         }
         else //If not, loads default JSON file
         {
             TextAsset jsonAsset = Resources.Load("keybindings") as TextAsset;
             jsonFile = jsonAsset.text;
-            Debug.Log("Loaded default bindings");
+            //Debug.Log("Loaded default bindings");
         }
         keybindings = new Dictionary<string, KeyCode>(); //Initialize keycode dictionary
         KeyBindingList bindingsInJSON = JsonUtility.FromJson<KeyBindingList>(jsonFile);//Convert JSON into serializable strings
 
         foreach (KeyBinding k in bindingsInJSON.bindings)
         {
-            Debug.Log("Found binding: " + k.key + " for  " + k.action);
+            //Debug.Log("Found binding: " + k.key + " for  " + k.action);
 
             keybindings.Add(k.action, (KeyCode)System.Enum.Parse(typeof(KeyCode), k.key));//Adds binding to dictionary
         }
-        Debug.Log("Successfully parsed initial JSON bindings");
+        //Debug.Log("Successfully parsed initial JSON bindings");
 
         //Setting initial loaded bindings as button texts
         for(int i = 0; i < BindingInputs.transform.childCount; i++)
         {
             
             GameObject button = BindingInputs.transform.GetChild(i).gameObject;
-            print("Test Code: " + button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().name);
+            //print("Test Code: " + button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().name);
             button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(keybindings[button.name].ToString());
 
-            print("Test Code: " + button.name);
+            //print("Test Code: " + button.name);
         }
     }
 
