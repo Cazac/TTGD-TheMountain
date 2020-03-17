@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Grape
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 2919407941739989577, guid: 6e80d2182ac8f2f41995e36ae4ac049a,
+    type: 3}
+  placed_Prefab: {fileID: 1151966890042483217, guid: 1242334162d81fc45b25181ac58e802f,
+    type: 3}
+  held_Prefab: {fileID: 4321367448199847082, guid: b3f805872ce068d4391c1e44d7bb0d26,
+    type: 3}
+  equipped_Prefab: {fileID: 4321367448199847082, guid: b3f805872ce068d4391c1e44d7bb0d26,
+    type: 3}
   itemName: Grape
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 6836524d39021f34eaf51cfb9c51f8d5, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0

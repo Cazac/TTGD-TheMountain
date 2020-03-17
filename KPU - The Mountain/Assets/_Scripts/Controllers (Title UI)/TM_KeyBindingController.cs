@@ -44,6 +44,8 @@ public class TM_KeyBindingController : MonoBehaviour
     {
         Instance = this;
         KB_PATH = Application.persistentDataPath + "/keybindings.json";
+
+        print("Test Code: BLANK" + Application.persistentDataPath);
     }
 
     private void Start()

@@ -1,4 +1,4 @@
-{ //Default Bindings in Resources Folder
+{
   "bindings": [
     {
       "action": "Forward",

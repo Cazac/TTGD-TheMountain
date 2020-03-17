@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Blueberry
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 286461550245708624, guid: d33a62a17a09d264c8faf413001a27b7,
+    type: 3}
+  placed_Prefab: {fileID: 4982995095121807448, guid: d12d5e772d7eee24790176568d687479,
+    type: 3}
+  held_Prefab: {fileID: 5454987376590416502, guid: 30ad225bc96c1ea4fa72c6d704d81df3,
+    type: 3}
+  equipped_Prefab: {fileID: 5454987376590416502, guid: 30ad225bc96c1ea4fa72c6d704d81df3,
+    type: 3}
   itemName: Blueberry
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 4d1f6320a4df9784197d92d03ea9a729, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0

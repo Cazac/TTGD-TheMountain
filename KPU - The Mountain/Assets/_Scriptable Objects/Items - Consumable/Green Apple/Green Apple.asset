@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Green Apple
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 6518848311093083918, guid: 41c6a1e6611ca0143b77c4afa9cac3fb,
+    type: 3}
+  placed_Prefab: {fileID: 1081273073409033953, guid: a11b43f015fb4594fbce825d8ae8c395,
+    type: 3}
+  held_Prefab: {fileID: 1571185558321223561, guid: 810c0f80884580f43b3de787bada2d77,
+    type: 3}
+  equipped_Prefab: {fileID: 1571185558321223561, guid: 810c0f80884580f43b3de787bada2d77,
+    type: 3}
   itemName: Green Apple
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 60351fefc6c01a14fbca2c85525b3bb2, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0

@@ -18,5 +18,17 @@ public class TM_SettingsSaveData
     public bool isAmbienceMute;
     public bool isSFXMute;
 
+    [Header("Mute Values")]
+    public KeyCode keycode_MoveForward;
+    public KeyCode keycode_MoveBackward;
+    public KeyCode keycode_MoveLeft;
+    public KeyCode keycode_MoveRight;
+
+
+
+
+
+
+
     /////////////////////////////////////////////////////////////////
 }

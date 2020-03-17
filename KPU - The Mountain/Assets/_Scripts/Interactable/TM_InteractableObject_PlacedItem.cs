@@ -9,11 +9,19 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
     public float MaxRange { get { return MAXRANGE; } }
     private const float MAXRANGE = 7f;
 
+
+    public TOOL_Outline outlineScript;
+
     ///////////////////////////////////////////////////////
 
     public void OnStartHover()
     {
         TM_InteractionController.Instance.InteractionText_Set("Press (F) to pickup object");
+
+        if (outlineScript != null)
+        {
+            outlineScript.enabled = true;
+        }
     }
 
     public void OnInteractTap()
@@ -24,7 +32,7 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
         //Check If Valid Item Count First
         if (placedObject.currentStackSize <= 0)
         {
-            print("Test Code: Oops No Stack Size");
+            print("Test Code: Oops No Stack Size, Adding One");
             placedObject.currentStackSize = 1;
         }
 
@@ -55,6 +63,13 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
     public void OnEndHover()
     {
         TM_InteractionController.Instance.InteractionText_Remove();
+
+        if (outlineScript != null)
+        {
+            outlineScript.enabled = false;
+        }
+
+  
     }
 
     ///////////////////////////////////////////////////////

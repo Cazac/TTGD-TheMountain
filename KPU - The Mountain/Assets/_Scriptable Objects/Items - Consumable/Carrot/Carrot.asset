@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 436609584446727989, guid: 3437748f52cefb748a9e367fabceaf04,
+    type: 3}
+  placed_Prefab: {fileID: 273299525561765355, guid: cfd29d3aabde5574eb91c66a51c9479e,
+    type: 3}
+  held_Prefab: {fileID: 948606836305186032, guid: 7c2ef17bd29345d45ad06c9fe0955f92,
+    type: 3}
+  equipped_Prefab: {fileID: 948606836305186032, guid: 7c2ef17bd29345d45ad06c9fe0955f92,
+    type: 3}
   itemName: Carrot
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 352ec923c546b614e84458bf7bb9c371, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0
