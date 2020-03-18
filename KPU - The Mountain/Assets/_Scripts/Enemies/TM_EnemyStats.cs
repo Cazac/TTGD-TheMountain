@@ -23,8 +23,8 @@ public class TM_EnemyStats : MonoBehaviour
 
     private void SetDebugStats()
     {
-        enemy_CurrentHealth = 100;
-        enemy_MaxHealth = 100;
+        enemy_CurrentHealth = 200;
+        enemy_MaxHealth = 200;
     }
 
     ///////////////////////////////////////////////////////

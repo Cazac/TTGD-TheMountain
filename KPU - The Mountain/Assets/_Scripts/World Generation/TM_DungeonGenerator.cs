@@ -141,9 +141,21 @@ public class TM_DungeonGenerator : MonoBehaviour
 
 
 
+            bool hasHitAnyCollider = false;
 
 
-            if (spawnRoom_SCRIPT.roomGenerator_BoxCollider.GetComponent<TM_RoomCollider>().hasCollided)
+
+            foreach (BoxCollider boxCollider in spawnRoom_SCRIPT.roomGenerator_BoxCollider)
+            {
+
+                if (boxCollider.GetComponent<TM_RoomCollider>().hasCollided)
+                {
+                    hasHitAnyCollider = true;
+                }
+
+            }
+
+            if (hasHitAnyCollider)
             {
                 //print("Test Code: Collision");
 
@@ -201,6 +213,7 @@ public class TM_DungeonGenerator : MonoBehaviour
                 //Add a room to the counter
                 currentRoomAmount++;
             }
+            
         }
 
         //Generate Hallways
