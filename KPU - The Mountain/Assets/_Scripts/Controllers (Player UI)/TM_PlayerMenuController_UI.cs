@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 ///////////////
 /// <summary>
@@ -37,9 +38,13 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     public GameObject Storage_Panel;
     public GameObject Workshop_Panel;
 
+    [Header("Pause Menu")]
+    public GameObject PauseMenu_Panel;
+    public Image PauseMenu_PlayerClass_Image;
+    public TextMeshProUGUI PauseMenu_PlayerName_Text;
+    public TextMeshProUGUI PauseMenu_PlayerCycles_Text;
 
     [Header("System Menus")]
-    public GameObject PauseMenu_Panel;
     public GameObject EventLogMenu_Panel;
 
     ////////////////////////////////
@@ -87,47 +92,42 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     public void Button_Pause_Continue()
     {
         //Close Panel
+        //Close Panel
         PauseMenu_Panel.SetActive(false);
         gameState_IsPasued = false;
         Time.timeScale = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        LockMouse();
     }
 
     public void Button_Pause_Settings()
     {
-        //Save
-
-        //Load Title Screen
-
+        //Settings
+        print("Test Code: Error No Settings Ready");
 
     }
 
     public void Button_Pause_Save()
     {
         //Save
-
-        //Load Title Screen
-
-
+        TM_SaveController.Instance.PlayerData_SaveGameData();
     }
 
     public void Button_Pause_Quit()
     {
         //Save
+        TM_SaveController.Instance.PlayerData_SaveGameData();
 
-        //Load Title Screen
-
-
+        //Quit Editor
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         #else
-            Application.Quit();
+            //Application.Quit();
         #endif
 
-        //Quit Application
-        Application.Quit();
+        Time.timeScale = 1;
 
+        //Quit Application
+        SceneManager.LoadScene("TM_Title");
     }
 
     /////////////////////////////////////////////////////// - Button Inputs (Player Menu)
@@ -193,6 +193,10 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
                 gameState_IsPasued = true;
                 Time.timeScale = 0;
                 UnlockMouse();
+
+                PauseMenu_PlayerName_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name;
+                PauseMenu_PlayerCycles_Text.text = TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived.ToString();
+                PauseMenu_PlayerClass_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(TM_PlayerController_Stats.Instance.playerInfo_Class);
             }
         }
     }

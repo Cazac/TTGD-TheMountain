@@ -7,6 +7,10 @@ using UnityEngine;
 ///     
 /// TM_PlayerController_Camera moves the players camera with the mousemovement when the camera is locked.
 /// 
+/// 
+/// PLAYER LOAD ROTATION COMES FROM THE START OF THIS SCRIPT
+/// 
+/// 
 /// </summary>
 ///////////////
 
@@ -32,6 +36,8 @@ public class TM_PlayerController_Camera : MonoBehaviour
     //private int lastLookFrame;
     //private Vector2 smoothMove;
 
+    public Vector3 startingRotation;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -42,6 +48,8 @@ public class TM_PlayerController_Camera : MonoBehaviour
         //Turn On Camera Lock
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        startingRotation = gameObject.transform.rotation.eulerAngles;
     }
 
     private void Update()
@@ -67,6 +75,7 @@ public class TM_PlayerController_Camera : MonoBehaviour
         //Combine Mouse inputs
         Vector2 currentMouseLook = new Vector2(-mouseY, mouseX);
 
+
         // ???
         lookAngles.x += currentMouseLook.x * sensitivity;
         lookAngles.y += currentMouseLook.y * sensitivity;
@@ -77,9 +86,10 @@ public class TM_PlayerController_Camera : MonoBehaviour
         //camera roll for looking side to side
         //currentRollAngle = Mathf.Lerp(currentRollAngle, mouseX_Raw * rollAngle, rollSpeed * Time.deltaTime);
 
+
         //Set new angles
         Camera.main.gameObject.transform.localRotation = Quaternion.Euler(lookAngles.x, 0f, currentRollAngle);
-        gameObject.transform.localRotation = Quaternion.Euler(0f, lookAngles.y, 0f);
+        gameObject.transform.localRotation = Quaternion.Euler(0f, lookAngles.y + startingRotation.y, 0f);
     }
 
     ///////////////////////////////////////////////////////

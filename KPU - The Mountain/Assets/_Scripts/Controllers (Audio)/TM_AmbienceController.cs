@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+///////////////
+/// <summary>
+///     
+/// TM_AmbienceController is the audio controller for the ambience sound in the game.
+/// 
+/// WORK IN PROGRESS NOT CURRENTLY ACTIVE
+/// 
+/// 
+/// </summary>
+///////////////
+
 public class TM_AmbienceController : MonoBehaviour
 {
     //////////////////////////////// - Singleton Refference

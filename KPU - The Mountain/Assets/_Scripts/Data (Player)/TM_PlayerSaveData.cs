@@ -2,25 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_PlayerSaveData
+/// 
+/// 
+/// 
+/////////////// 
+
 [System.Serializable]
 public class TM_PlayerSaveData 
 {
     ////////////////////////////////
 
+    public bool player_hasLoadedSaveBefore;
+
+    ////////////////////////////////
+
+    public string playerInfo_Name;
+    public string playerInfo_Class;
+    public int playerInfo_CyclesSurvived;
+
+
+    ////////////////////////////////
+
+    [Header("Player - Positions")]
     public Vector3 player_Position;
     public Quaternion player_Rotation;
     public Quaternion player_CamerRotation;
 
+    ////////////////////////////////
 
 
 
 
     //Not Added Yet
-    public float player_PlayTime;
     //public int player_NotesCollected
     //public float 
-    public string player_Class;
-
 
 
 
@@ -30,9 +49,7 @@ public class TM_PlayerSaveData
     public bool player_HasUnlocked_Canteen;
     public bool player_HasUnlocked_Storage;
 
-    ////////////////////////////////
 
-    public string player_Name;
 
     ////////////////////////////////
 
@@ -77,12 +94,25 @@ public class TM_PlayerSaveData
     public TM_ItemUI[] afafas;
 
 
+    ///////////////////////////////////////////////////////
 
-
-    public void SaveData_FromGame()
+    public void ConvertGameData_ToSaveData()
     {
-        //Name
-        //player_Name
+        //Level Has Loaded
+        player_hasLoadedSaveBefore = true;
+
+
+
+
+
+        //Name Info
+        playerInfo_Name = TM_PlayerController_Stats.Instance.playerInfo_Name;
+        playerInfo_Class = TM_PlayerController_Stats.Instance.playerInfo_Class;
+        playerInfo_CyclesSurvived = TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived;
+
+
+
+
 
         //Health
         player_CurrentHealth = TM_PlayerController_Stats.Instance.player_CurrentHealth;
@@ -126,7 +156,7 @@ public class TM_PlayerSaveData
 
         //Player Position / Rotation
         //player_CamerRotation = Camera.main.gameObject.transform.localRotation;
-        player_Position = TM_PlayerController_Stats.Instance.gameObject.transform.position;
+        //player_Position = TM_PlayerController_Stats.Instance.gameObject.transform.position;
         //player_Rotation = TM_PlayerController_Stats.Instance.gameObject.transform.rotation;
 
 
@@ -135,19 +165,20 @@ public class TM_PlayerSaveData
 
     }
 
+    ///////////////////////////////////////////////////////
 
-    
-    public void SaveData_FromTitle()
+    public void ConvertSaveData_ToGameData()
     {
 
-    }
+
+
+        //Name Info
+        TM_PlayerController_Stats.Instance.playerInfo_Name = playerInfo_Name;
+        TM_PlayerController_Stats.Instance.playerInfo_Class = playerInfo_Class;
+        TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived = playerInfo_CyclesSurvived;
 
 
 
-    public void LoadData_ToGame()
-    {
-        //Name
-        //player_Name
 
         //Health
         TM_PlayerController_Stats.Instance.player_CurrentHealth = player_CurrentHealth;
@@ -180,16 +211,34 @@ public class TM_PlayerSaveData
 
 
 
+
+
+
+
+
+
         //Player Position / Rotation
         //Camera.main.gameObject.transform.localRotation = player_CamerRotation;
-        TM_PlayerController_Stats.Instance.gameObject.transform.position = player_Position;
+        //TM_PlayerController_Stats.Instance.gameObject.transform.position = player_Position;
         //TM_PlayerController_Stats.Instance.gameObject.transform.rotation = player_Rotation;
 
 
 
 
+
+
+
+
+
+
+        /////////////////////////////////////////////////////// - Refresh Data
+
         TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
         TM_PlayerMenuController_UI.Instance.UpdateUI_HungerValue();
         TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
+
+        ///////////////////////////////////////////////////////
     }
+
+    ///////////////////////////////////////////////////////
 }

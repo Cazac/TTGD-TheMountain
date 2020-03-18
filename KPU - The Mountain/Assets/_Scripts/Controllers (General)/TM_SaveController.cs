@@ -36,12 +36,22 @@ public class TM_SaveController : MonoBehaviour
 
     private void Awake()
     {
-        //Set Static Singleton Self Refference
-        Instance = this;
+        if (Instance == null)
+        {
+            //Set Static Singleton Self Refference
+            Instance = this;
+
+            //Instance is Set, Do not delete this database
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            //Remove Current Scene Quick Load Database
+            Destroy(gameObject);
+        }
     }
 
-    /////////////////////////////////////////////////////////////////
-
+    ///////////////////////////////////////////////////////////////// - Reload Save Data File Refferences
 
     public void PlayerData_ReloadSaveFiles()
     {
@@ -53,10 +63,14 @@ public class TM_SaveController : MonoBehaviour
         playerSaveFiles_Array[4] = new ES3File("The Mountain Save 5.es3");
     }
 
+    ///////////////////////////////////////////////////////////////// - Set The Current PlayerData Index / Database Value
+
     public void PlayerData_SetCurrentSaveFile(int saveSlot)
     {
         currentSaveSlotID = saveSlot;
     }
+
+    ///////////////////////////////////////////////////////////////// - Get The Playerdata From the Files
 
     public TM_PlayerSaveData PlayerData_GetSaveFile(int saveSlot)
     {
@@ -82,16 +96,15 @@ public class TM_SaveController : MonoBehaviour
         }
     }
 
+    ///////////////////////////////////////////////////////////////// - Save The file to System From A PlayerData
+
     public void PlayerData_SaveFile(TM_PlayerSaveData newPlayerSaveData, int saveSlot)
     {
         //Save Data To File
         ES3.Save<TM_PlayerSaveData>("PlayerSaveData", newPlayerSaveData, "The Mountain Save " + currentSaveSlotID + ".es3");
     }
 
-
-    /////////////////////////////////////////////////////////////////
-
-
+    ///////////////////////////////////////////////////////////////// - Destroy Save Files From System
 
     public void PlayerData_DeleteSaveFile(int saveSlot)
     {
@@ -99,75 +112,49 @@ public class TM_SaveController : MonoBehaviour
         ES3.DeleteFile("The Mountain Save " + saveSlot + ".es3");
     }
 
-
-
-
     /////////////////////////////////////////////////////////////////
 
 
 
-    public void PlayerData_SaveDataTitle()
-    {
-
-    }
-
-    public TM_PlayerSaveData PlayerData_LoadDataTitle(int saveSlot)
-    {
-        //Get File
-        ES3File file = new ES3File("The Mountain Save " + saveSlot + ".es3");
-
-        //Get Player Data
-        TM_PlayerSaveData data = file.Load<TM_PlayerSaveData>("PlayerSaveData");
-
-
-        return data;
-    }
 
 
 
 
-    public void PlayerData_SaveDataGame()
+
+    ///////////////////////////////////////////////////////////////// - Game State Loading And Saving
+
+    public void PlayerData_SaveGameData()
     {
         print("Test Code: Saving...");
 
 
+        //Convert To Savable Data
+        TM_DatabaseController.Instance.player_SaveData.ConvertGameData_ToSaveData();
 
-        TM_DatabaseController.Instance.player_SaveData.SaveData_FromGame();
-
-
-
-        ES3.Save<TM_PlayerSaveData>("PlayerSaveData", TM_DatabaseController.Instance.player_SaveData, "The Mountain Save " + currentSaveSlotID + ".es3");
+        //Save To File
+        PlayerData_SaveFile(TM_DatabaseController.Instance.player_SaveData, currentSaveSlotID);
 
 
         print("Test Code: ...Saving Done!");
     }
 
 
-    /////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-    public void LoadPlayerData()
+    public void PlayerData_LoadGameData()
     {
         print("Test Code: Loading...");
 
-        //Get File
-        ES3File file = new ES3File("The Mountain Save " + currentSaveSlotID + ".es3");
-
-        //Get Player Data
-        TM_PlayerSaveData data = file.Load<TM_PlayerSaveData>("PlayerSaveData");
-
-        //Get Map Data
-
+        //Load Player Data To Database
+        TM_DatabaseController.Instance.player_SaveData = PlayerData_GetCurrentSaveFile();
 
         //Load Data Into Game
-        data.LoadData_ToGame();
+        TM_DatabaseController.Instance.player_SaveData.ConvertSaveData_ToGameData();
 
         print("Test Code: ...Loading Done!");
     }
+
+    /////////////////////////////////////////////////////////////////
+
+
 
 
 

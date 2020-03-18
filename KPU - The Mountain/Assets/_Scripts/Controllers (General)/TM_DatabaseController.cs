@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 ///////////////
 /// <summary>
 ///     
 /// TM_DatabaseController 
+/// 
+/// 
+/// Each Data Class used must container none scene specfic data as the database will be transfered across scenes
 /// 
 /// CONTROLLER CLASS
 /// Controller classes are used as a manager of an entire system. 
@@ -46,19 +50,33 @@ public class TM_DatabaseController : MonoBehaviour
     [Header("Name Database")]
     public TM_NameData name_DB;
 
+    ////////////////////////////////
 
-    [Header("Save Datas")]
+    [Header("Current Player Save Data")]
     public TM_PlayerSaveData player_SaveData;
+
+    [Header("Account Save Data")]
     public TM_SettingsSaveData settings_SaveData;
-
-
+    public TM_MorgueSaveData morgue_SaveData;
+    public TM_UnlocksSaveData unlock_SaveData;
 
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
     {
-        //Set Static Singleton Self Refference
-        Instance = this;
+        if (Instance == null)
+        {
+            //Set Static Singleton Self Refference
+            Instance = this;
+
+            //Instance is Set, Do not delete this database
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            //Remove Current Scene Quick Load Database
+            Destroy(gameObject);
+        }
 
         //Build Databases
         BuildDatabase();
@@ -66,8 +84,17 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Start()
     {
-        LoadSaveData();
+        GetSceneSetup();
     }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (Instance == this)
+        {
+            GetSceneSetup();
+        }
+    }
+
 
     /////////////////////////////////////////////////////////////////
 
@@ -80,31 +107,69 @@ public class TM_DatabaseController : MonoBehaviour
 
     }
 
+    private void GetSceneSetup()
+    {
+        //Get Name Of Current Scene
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        //Check the type by scene
+        if (currentScene == "TM_Title")
+        {
+            Setup_Title();
+        }
+        else if (currentScene == "TM_Zac's Systems Room" || currentScene == "TM_Game")
+        {
+            if (player_SaveData.player_hasLoadedSaveBefore)
+            {
+                //Load Stats From player and start game
+                Setup_GameLoad();
+            }
+            else
+            {
+                //Player has not played before, Setup stats
+                Setup_GameNew();
+            }
+
+        }
+        else if (currentScene == "TM_Credits")
+        {
+            Setup_Credits();
+        }
+    }
+
     /////////////////////////////////////////////////////////////////
 
-    private void LoadSaveData()
+    private void Setup_Title()
     {
-
-
-
-
-
-        player_SaveData = new TM_PlayerSaveData();
-
-
-
-
-
-        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
-
-   
+        print("Test Code: Loading Account Settings");
 
         TM_SaveController.Instance.SettingsData_LoadSaveFile();
         TM_SaveController.Instance.UnlocksData_LoadSaveFile();
         TM_SaveController.Instance.MorgueData_LoadSaveFile();
+    }
 
-     
+    private void Setup_Credits()
+    {
+        return;
+    }
 
+    /////////////////////////////////////////////////////////////////
+
+    private void Setup_GameNew()
+    {
+        print("Test Code: New Game");
+
+        //Assume the data is present already
+        TM_SaveController.Instance.PlayerData_LoadGameData();
+
+    }
+
+    private void Setup_GameLoad()
+    {
+        print("Test Code: Loaded Game");
+
+
+        TM_SaveController.Instance.PlayerData_LoadGameData();
 
     }
 

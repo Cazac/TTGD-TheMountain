@@ -6,11 +6,10 @@ using TMPro;
 ///////////////
 /// <summary>
 ///     
-/// TM_KeyBindingController 
+/// TM_KeyBindingController is the converted version of Shawn's Keybinding with formatting and Savedata 
 /// 
-/// CONTROLLER CLASS
-/// Controller classes are used as a manager of an entire system. 
-/// Each controller is assigned a singleton for easy access.
+/// WORK IN PROGRESS NOT CURRENTLY ACTIVE
+/// 
 /// 
 /// </summary>
 ///////////////

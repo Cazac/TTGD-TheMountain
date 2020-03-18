@@ -21,6 +21,15 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     ////////////////////////////////
 
+    public string playerInfo_Name;
+
+    ////////////////////////////////
+
+    public string playerInfo_Class;
+    public int playerInfo_CyclesSurvived;
+
+    ////////////////////////////////
+
     public int player_CurrentHealth;
     public int player_MaxHealth;
     public int player_BaseHealth;
