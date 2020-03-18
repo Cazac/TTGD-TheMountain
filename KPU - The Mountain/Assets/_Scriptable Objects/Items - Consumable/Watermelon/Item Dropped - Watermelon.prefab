@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e0f4e82aaa3934d918c96bab96c4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalItem_SO: {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  originalItem_SO: {fileID: 11400000, guid: 4010d95ce740fa14b8274c4d6cf440db, type: 2}
   currentStackSize: 1
   currentDurablity: 0
 --- !u!1 &8625118360446211692

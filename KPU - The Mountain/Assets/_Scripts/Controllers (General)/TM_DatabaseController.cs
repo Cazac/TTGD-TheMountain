@@ -101,6 +101,7 @@ public class TM_DatabaseController : MonoBehaviour
     private void BuildDatabase()
     {
         //Build Databases
+        item_DB.BuildDatabase();
         name_DB.BuildDatabase();
 
 

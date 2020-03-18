@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Healshroom
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: Health Shroom
+  dropped_Prefab: {fileID: 9128671886192395370, guid: ea8d46da8a7c22d41afc327a4fd303e2,
+    type: 3}
+  placed_Prefab: {fileID: 6785755033275268078, guid: fea3ec56e27f52b4d857aec27925b948,
+    type: 3}
+  held_Prefab: {fileID: 1059225471094763770, guid: 5e3f9339c316f334c9ecfedf3e872ebd,
+    type: 3}
+  equipped_Prefab: {fileID: 1059225471094763770, guid: 5e3f9339c316f334c9ecfedf3e872ebd,
+    type: 3}
+  itemName: Healshroom
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 856ec409a478df14887ec3cc812cf655, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0

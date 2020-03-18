@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Hamburger
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 4783951731123808842, guid: 50693725a6b71674291ee2674894ee01,
+    type: 3}
+  placed_Prefab: {fileID: 4612826052471077985, guid: 8de404a990b4a0641bd3ddd99ff298df,
+    type: 3}
+  held_Prefab: {fileID: 3088216608164915848, guid: cd4036e81977bb54599534e37bca8318,
+    type: 3}
+  equipped_Prefab: {fileID: 3088216608164915848, guid: cd4036e81977bb54599534e37bca8318,
+    type: 3}
   itemName: Hamburger
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 36876f4cf966dda4da052df1ac72d9ed, type: 3}
   maxDurablity: 0
   maxStackSize: 2
   isBurnable: 0

@@ -23,7 +23,8 @@ public class TM_PlayerSaveData
     public string playerInfo_Name;
     public string playerInfo_Class;
     public int playerInfo_CyclesSurvived;
-
+    public int playerInfo_BossesKilled;
+    public int playerInfo_NotesCollected;
 
     ////////////////////////////////
 
@@ -33,15 +34,6 @@ public class TM_PlayerSaveData
     public Quaternion player_CamerRotation;
 
     ////////////////////////////////
-
-
-
-
-    //Not Added Yet
-    //public int player_NotesCollected
-    //public float 
-
-
 
 
     public bool player_HasUnlocked_Brewery;

@@ -119,7 +119,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public List<string> newSave_diffcultyChoices_List;
     private int newSave_currentDifficulty;
 
-    private TextMeshProUGUI newSave_currentDifficulty_Text;
+    public TextMeshProUGUI newSave_currentDifficulty_Text;
 
     ////////////////////////////////
 
@@ -143,6 +143,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     public Image charecterLoad_Icon_Image;
 
     ////////////////////////////////
+    
 
 
 
@@ -218,10 +219,10 @@ public class TM_ButtonController_Play : MonoBehaviour
         if (class_GO == newSave_ClassBrawlerButton)
         {
             //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 8";
-            newSave_ClassDEX_Text.text = "DEX: 6";
-            newSave_ClassINT_Text.text = "INT: 2";
-            newSave_ClassCON_Text.text = "CON: 4";
+            newSave_ClassSTR_Text.text = "STR: 8<br><color=#19FF00>(+3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 6<br><color=#19FF00>(+1)</color>";
+            newSave_ClassINT_Text.text = "INT: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
 
             newSave_currentClass = "Brawler";
 
@@ -229,40 +230,41 @@ public class TM_ButtonController_Play : MonoBehaviour
         else if (class_GO == newSave_ClassKnightButton)
         {
             //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 7";
-            newSave_ClassDEX_Text.text = "DEX: 5";
-            newSave_ClassINT_Text.text = "INT: 3";
-            newSave_ClassCON_Text.text = "CON: 5";
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 5<br>(+0)";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassCON_Text.text = "CON: 5<br>(+0)";
 
             newSave_currentClass = "Knight";
         }
         else if (class_GO == newSave_ClassArcherButton)
         {
             //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 3";
-            newSave_ClassDEX_Text.text = "DEX: 9";
-            newSave_ClassINT_Text.text = "INT: 4";
-            newSave_ClassCON_Text.text = "CON: 4";
+            newSave_ClassSTR_Text.text = "STR: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 9<br><color=#19FF00>(+4)</color>";
+            newSave_ClassINT_Text.text = "INT: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
 
             newSave_currentClass = "Archer";
         }
         else if (class_GO == newSave_ClassWizardButton)
         {
             //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 2";
-            newSave_ClassDEX_Text.text = "DEX: 4";
-            newSave_ClassINT_Text.text = "INT: 12";
-            newSave_ClassCON_Text.text = "CON: 2";
+            newSave_ClassSTR_Text.text = "STR: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassINT_Text.text = "INT: 12<br><color=#19FF00>(+7)</color>";
+            newSave_ClassCON_Text.text = "CON: 2<br><color=#FF0800>(-3)</color>";
 
             newSave_currentClass = "Wizard";
         }
         else if (class_GO == newSave_ClassTankButton)
         {
             //Set Stats
-            newSave_ClassSTR_Text.text = "STR: 7";
-            newSave_ClassDEX_Text.text = "DEX: 3";
-            newSave_ClassINT_Text.text = "INT: 0";
-            newSave_ClassCON_Text.text = "CON: 10";
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 0<br><color=#FF0800>(-5)</color>";
+            newSave_ClassCON_Text.text = "CON: 10<br><color=#19FF00>(+5)</color>";
 
             newSave_currentClass = "Tank";
         }
@@ -384,6 +386,36 @@ public class TM_ButtonController_Play : MonoBehaviour
             UnityEngine.Random.Range(0, 10);
     }
  
+    public void Button_DifficultyLeft()
+    {
+        //Loop List
+        if (newSave_currentDifficulty > 0)
+        {
+            newSave_currentDifficulty--;
+        }
+        else
+        {
+            newSave_currentDifficulty = (newSave_diffcultyChoices_List.Count - 1);
+        }
+
+        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
+    }
+
+    public void Button_DifficultyRight()
+    {
+        //Loop List
+        if (newSave_currentDifficulty < (newSave_diffcultyChoices_List.Count - 1))
+        {
+            newSave_currentDifficulty++;
+        }
+        else
+        {
+            newSave_currentDifficulty = 0;
+        }
+
+        //Set New Faction
+        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
+    }
 
     ///////////////////////////////////////////////////////
 
@@ -553,6 +585,9 @@ public class TM_ButtonController_Play : MonoBehaviour
         charecterLoad_Name_Text.text = "";
         Button_RandomizeMapSeed();
 
+        newSave_currentDifficulty = 1;
+        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
+
         //Select Button
         Button_ClassSlot(newSave_ClassBrawlerButton);
         ButtonSelect_ClassSlot(newSave_ClassBrawlerButton);
@@ -569,9 +604,9 @@ public class TM_ButtonController_Play : MonoBehaviour
         charecterLoad_Name_Text.text = currentPlayerSaveData.playerInfo_Name;
         charecterLoad_Level_Text.text = "Level " + currentPlayerSaveData.player_Level.ToString();
 
-        charecterLoad_Notes_Text.text = "Notes - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
-        charecterLoad_Bosses_Text.text = "Bosses - " + currentPlayerSaveData.player_Level.ToString() + " / 0";
-        charecterLoad_Time_Text.text = "Cycles - " + currentPlayerSaveData.player_Level.ToString();
+        charecterLoad_Notes_Text.text = "Notes - " + currentPlayerSaveData.playerInfo_NotesCollected.ToString() + " / 0";
+        charecterLoad_Bosses_Text.text = "Bosses - " + currentPlayerSaveData.playerInfo_BossesKilled.ToString() + " / 1";
+        charecterLoad_Time_Text.text = "Cycles - " + currentPlayerSaveData.playerInfo_CyclesSurvived.ToString();
 
 
         charecterLoad_STR_Text.text = "STR " + currentPlayerSaveData.player_CurrentStat_STR.ToString();

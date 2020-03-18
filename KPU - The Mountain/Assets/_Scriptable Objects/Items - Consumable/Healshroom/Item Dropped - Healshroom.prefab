@@ -4929,6 +4929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e0f4e82aaa3934d918c96bab96c4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalItem_SO: {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  originalItem_SO: {fileID: 11400000, guid: 87d3bcf8facd7c944a90fbdc1725fe5f, type: 2}
   currentStackSize: 1
   currentDurablity: 0

@@ -195,16 +195,21 @@ public class TM_HomeMenuController_Dispenser : MonoBehaviour
         //Create The Array
         TM_ItemUI[] itemArray = new TM_ItemUI[20];
 
-        //Items
-        itemArray[0] = new TM_ItemUI(TM_DatabaseController.Instance.item_DB.RedApple);
-        //itemArray[1] = new TM_ItemUI(TM_DatabaseController.Instance.item_DB.);
+        int counter = 0;
 
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.consumableItems_List)
+        {
+            if (counter >= 20)
+            {
+                return itemArray;
+            }
+            else
+            {
+                itemArray[counter] = new TM_ItemUI(itemSO);
+            }
 
-
-
-
-
-
+            counter++;
+        }
 
 
 

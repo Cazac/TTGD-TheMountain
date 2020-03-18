@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Potato
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 513084162345665341, guid: f303752c0dce1784d9166f4765be78de,
+    type: 3}
+  placed_Prefab: {fileID: 8467702160915925226, guid: 70c4b3e44b24dae479f79035f97159ba,
+    type: 3}
+  held_Prefab: {fileID: 7700584467350155738, guid: 7dcc76d674cbde844a27b6cbae240ec4,
+    type: 3}
+  equipped_Prefab: {fileID: 7700584467350155738, guid: 7dcc76d674cbde844a27b6cbae240ec4,
+    type: 3}
   itemName: Potato
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 30274756a0706764aa770ef87cea7d5f, type: 3}
   maxDurablity: 0
   maxStackSize: 5
   isBurnable: 0

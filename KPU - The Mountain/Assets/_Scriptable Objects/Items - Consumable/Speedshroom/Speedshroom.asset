@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Speedshroom
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: Speed Shroom
+  dropped_Prefab: {fileID: 5028804529903517161, guid: 27b6ddb3cb9be8e4b976f5a68e88cfdb,
+    type: 3}
+  placed_Prefab: {fileID: 4081349153741868264, guid: f547e700caba0354aab1eacb446405f7,
+    type: 3}
+  held_Prefab: {fileID: 409213901415627675, guid: b45d947aee97df449ae11137cef00fe7,
+    type: 3}
+  equipped_Prefab: {fileID: 409213901415627675, guid: b45d947aee97df449ae11137cef00fe7,
+    type: 3}
+  itemName: Speedshroom
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 86700daf2270c97419cdba3f9e28e129, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0

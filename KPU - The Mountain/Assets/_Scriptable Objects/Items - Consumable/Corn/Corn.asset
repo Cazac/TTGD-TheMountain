@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Corn
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 8161276847047770025, guid: 5546c08ab99fab74c8dfbd37ddb15cca,
+    type: 3}
+  placed_Prefab: {fileID: 1532890701291704387, guid: 7c48449cda3dbc34f8237ea4988b8234,
+    type: 3}
+  held_Prefab: {fileID: 3662017946515067436, guid: 96e53ba6cf779924eb23f4f137cba349,
+    type: 3}
+  equipped_Prefab: {fileID: 3662017946515067436, guid: 96e53ba6cf779924eb23f4f137cba349,
+    type: 3}
   itemName: Corn
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 90ba283bcefedb449b2d901a2eacea05, type: 3}

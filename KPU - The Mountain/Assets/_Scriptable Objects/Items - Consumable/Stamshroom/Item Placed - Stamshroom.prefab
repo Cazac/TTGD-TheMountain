@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 9221661523655208765}
   - component: {fileID: 8676182611675454565}
   - component: {fileID: 6880680336844060762}
+  - component: {fileID: -2632168057909776689}
   m_Layer: 0
   m_Name: Item Placed - Stamshroom
   m_TagString: Untagged
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc852274c612fd24398142d7ba7f8c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineScript: {fileID: 0}
+  outlineScript: {fileID: -2632168057909776689}
 --- !u!114 &6880680336844060762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2331b583426ce8c43be796ca47f19f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orginalItem_SO: {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  orginalItem_SO: {fileID: 11400000, guid: 0c2570c718ca4c347b459827b0b2967d, type: 2}
   currentStackSize: 0
   currentDurablity: 0
+--- !u!114 &-2632168057909776689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7250278307670594947}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2563dde054ac284db72f6d14f680442, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 6
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

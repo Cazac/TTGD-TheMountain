@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e0f4e82aaa3934d918c96bab96c4cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originalItem_SO: {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  originalItem_SO: {fileID: 11400000, guid: 043fd85a16e025b4caf11ca9b3e4728c, type: 2}
   currentStackSize: 1
   currentDurablity: 0
 --- !u!1 &5164295969198714623

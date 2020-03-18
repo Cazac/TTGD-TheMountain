@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Sandwich
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 5193661303622512369, guid: 15f874f4da51852419edcc97e8251339,
+    type: 3}
+  placed_Prefab: {fileID: 8757180512140152600, guid: 3cd0e41f884b66449b52a2971fa02f13,
+    type: 3}
+  held_Prefab: {fileID: 975976384825096789, guid: 26f07737cad921143ae221a16fdecb45,
+    type: 3}
+  equipped_Prefab: {fileID: 975976384825096789, guid: 26f07737cad921143ae221a16fdecb45,
+    type: 3}
   itemName: Sandwich
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dda951b87111954459e2c6c4af0e1e36, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0

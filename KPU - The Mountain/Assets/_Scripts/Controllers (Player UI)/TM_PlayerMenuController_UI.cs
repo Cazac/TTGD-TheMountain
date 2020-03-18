@@ -195,7 +195,7 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
                 UnlockMouse();
 
                 PauseMenu_PlayerName_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name;
-                PauseMenu_PlayerCycles_Text.text = TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived.ToString();
+                PauseMenu_PlayerCycles_Text.text = "Cycles Survivied " + TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived.ToString();
                 PauseMenu_PlayerClass_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(TM_PlayerController_Stats.Instance.playerInfo_Class);
             }
         }

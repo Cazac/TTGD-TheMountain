@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Lemon
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 6387056646242192819, guid: f6e88387480547b40b0e005be01ce7d6,
+    type: 3}
+  placed_Prefab: {fileID: 1475769803509766108, guid: d3a8d3584eb190a4aa5a28b777adf242,
+    type: 3}
+  held_Prefab: {fileID: 4167382073439851560, guid: 4d700b9ef25e6fc42ae1fae68ec9c797,
+    type: 3}
+  equipped_Prefab: {fileID: 4167382073439851560, guid: 4d700b9ef25e6fc42ae1fae68ec9c797,
+    type: 3}
   itemName: Lemon
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 559e6a4e7eba81d419dae7e7abd1502a, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0

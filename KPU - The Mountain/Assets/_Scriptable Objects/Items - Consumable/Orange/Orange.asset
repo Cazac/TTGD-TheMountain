@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Orange
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 5711755417149242075, guid: 5cc011fb6ed06734ca601a961962235c,
+    type: 3}
+  placed_Prefab: {fileID: 7584515310954485468, guid: 6b4a67e31a2a5e341ae9bff5bf0654e6,
+    type: 3}
+  held_Prefab: {fileID: 3717161524660956258, guid: 0532973627333544e83170ebcda9672e,
+    type: 3}
+  equipped_Prefab: {fileID: 3717161524660956258, guid: 0532973627333544e83170ebcda9672e,
+    type: 3}
   itemName: Orange
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: dfafe385fedfffa4b8256c7f94240b8a, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0

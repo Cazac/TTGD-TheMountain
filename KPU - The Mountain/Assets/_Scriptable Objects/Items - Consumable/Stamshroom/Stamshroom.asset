@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Stamshroom
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: Stamina Shroom
+  dropped_Prefab: {fileID: 1722556872105501663, guid: d25a381963dc6f64e9382904420f9a8f,
+    type: 3}
+  placed_Prefab: {fileID: 7250278307670594947, guid: 42a357ba4abd0484d96a6311bb43380c,
+    type: 3}
+  held_Prefab: {fileID: 3100924957877186480, guid: 0a22898d5bfe27d4dbf2ef90c5bd3c26,
+    type: 3}
+  equipped_Prefab: {fileID: 3100924957877186480, guid: 0a22898d5bfe27d4dbf2ef90c5bd3c26,
+    type: 3}
+  itemName: Stamshroom
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b133c5bcfdf515e44a4105d5dccd48d5, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0
