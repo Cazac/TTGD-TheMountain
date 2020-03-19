@@ -18,7 +18,10 @@ public class TM_SettingsSaveData
     public bool isAmbienceMute;
     public bool isSFXMute;
 
-    [Header("Mute Values")]
+    [Header("Keybinding Values")]
+    public Dictionary<string, KeyCode> keybindings_Dictonary;
+
+
     public KeyCode keycode_MoveForward;
     public KeyCode keycode_MoveBackward;
     public KeyCode keycode_MoveLeft;

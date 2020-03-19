@@ -145,8 +145,6 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
 
     public void Button_Fire_BurnItem()
     {
-        print("Test Code: Burning Item!");
-
         //Add BurnValue
         TM_PlayerController_Stats.Instance.ChangeFire_Current(currentSelectedBurnable_Tab.currentBurnableItem.burn_FireValue);
 
@@ -154,48 +152,11 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
 
 
 
-        //Remove ITem
+        //Remove Item
+        TM_PlayerMenuController_Inventory.Instance.Inventory_FindAndRemoveItem(currentSelectedBurnable_Tab.currentBurnableItem.itemName);
 
-
-
-        //Find Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array)
-        {
-            //Get Slot
-            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
-
-
-            if (slot.ItemSlot_GetItem() != null)
-            {
-                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
-                {
-
-                    slot.ItemSlot_GetItem().currentStackSize--;
-                    slot.ItemSlot_UpdateItem();
-                    Refresh_BurnableItemsList();
-                    return;
-                }
-            }
-        }
-
-        //Find Slots in Inventory
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array)
-        {
-            //Get Slot
-            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
-
-            if (slot.ItemSlot_GetItem() != null)
-            {
-                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
-                {
-
-                    slot.ItemSlot_GetItem().currentStackSize--;
-                    slot.ItemSlot_UpdateItem();
-                    Refresh_BurnableItemsList();
-                    return;
-                }
-            }
-        }
+        //Refresh Fire Burnables
+        Refresh_BurnableItemsList();
     }
 
     ///////////////////////////////////////////////////////

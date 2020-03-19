@@ -353,14 +353,14 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         currentState = EnemyState.Attacking;
     }
 
-    private void ChangeToState_Dying()
+    public void ChangeToState_Dying()
     {
+        enemy_Animator.Play("Death");
 
-        enemy_Animator.SetBool("Attack1", false);
 
 
-        //Change To Idle
-        EnemyState_Idling();
+        //Change To Death
+        EnemyState_Dying();
         currentState = EnemyState.Dying;
         enemyNavAgent.ResetPath();
     }

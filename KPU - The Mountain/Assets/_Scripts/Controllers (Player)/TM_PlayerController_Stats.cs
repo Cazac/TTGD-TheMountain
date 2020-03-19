@@ -173,6 +173,15 @@ public class TM_PlayerController_Stats : MonoBehaviour
         }
     }
 
+    ///////////////////////////////////////////////////////
+
+    public int GetCurrentDamage(TM_Item_SO weaponSO)
+    {
+
+
+
+        return 5;
+    }
 
     ///////////////////////////////////////////////////////
 

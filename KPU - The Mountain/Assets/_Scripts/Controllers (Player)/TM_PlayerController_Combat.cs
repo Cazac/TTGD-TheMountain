@@ -28,7 +28,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
     private void Update()
     {
         LookForCombatKeys_Attack();
-        LookForCombatKeys_Magic();
+        LookForCombatKeys_Action();
     }
 
     ///////////////////////////////////////////////////////
@@ -43,15 +43,39 @@ public class TM_PlayerController_Combat : MonoBehaviour
             }
 
 
-            TM_PlayerController_Animation.Instance.SetAnimationValue_QuickAttack();
+            if (TM_PlayerMenuController_Inventory.Instance.isHoldingItem)
+            {
+                //Get Item Held
+                TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+                //Check If Consumable
+                if (item.isWeapon)
+                {
+                    TM_PlayerController_Animation.Instance.SetAnimationValue_SwordAttack();
+                }
+                else
+                {
+                    TM_PlayerController_Animation.Instance.SetAnimationValue_PunchAttack();
+                }
+            }
+            else
+            {
+                TM_PlayerController_Animation.Instance.SetAnimationValue_PunchAttack();
+            }
         }
     }
 
-    private void LookForCombatKeys_Magic()
+    private void LookForCombatKeys_Action()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButton(1))
         {
-            //TM_PlayerController_Animation.Instance.att
+
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsConsumingItem(true);
+            
+        }
+        else
+        {
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsConsumingItem(false);
         }
     }
 

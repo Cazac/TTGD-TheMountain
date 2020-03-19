@@ -67,7 +67,12 @@ public class TM_EnemyStats : MonoBehaviour
     {
         print("Test Code: Enemy Has Died");
 
-        gameObject.SetActive(false);
+        gameObject.GetComponent<TM_EnemyDirector_Minotaur>().ChangeToState_Dying();
+
+
+
+
+        //gameObject.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////

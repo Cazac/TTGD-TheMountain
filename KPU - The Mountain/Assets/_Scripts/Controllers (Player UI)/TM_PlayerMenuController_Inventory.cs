@@ -26,6 +26,7 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     ////////////////////////////////
 
     public int currentToolbarPosition;
+    public bool isHoldingItem;
 
     ///////////////////////////////////////////////////////
 
@@ -35,6 +36,18 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        //Set First Item By Default
+        Toolbar_MoveSelector_SetHover(0);
+    }
+
+
+    private void Update()
+    {
+        LookForInventoryKeys();
+
+    }
     ///////////////////////////////////////////////////////
 
     public TM_ItemUI[] Inventory_GetItemsToArray()
@@ -92,7 +105,59 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     ///////////////////////////////////////////////////////
 
 
+    private void LookForInventoryKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            //Attept To Drop SIngle Item From Hotbar
+            if (isHoldingItem)
+            {
+                //Drop Item
+                toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_DropItemSingle();
+            }
+        }
+    }
 
+    public void Inventory_FindAndRemoveItem(string itemName)
+    {
+
+        //Find Slots in Toolbar
+        foreach (GameObject itemSlot in toolbarItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+
+            if (slot.ItemSlot_GetItem() != null)
+            {
+                if (slot.ItemSlot_GetItem().itemName == itemName)
+                {
+
+                    slot.ItemSlot_GetItem().currentStackSize--;
+                    slot.ItemSlot_UpdateItem();
+                    return;
+                }
+            }
+        }
+
+        //Find Slots in Inventory
+        foreach (GameObject itemSlot in playerItemSlots_Array)
+        {
+            //Get Slot
+            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            if (slot.ItemSlot_GetItem() != null)
+            {
+                if (slot.ItemSlot_GetItem().itemName == itemName)
+                {
+
+                    slot.ItemSlot_GetItem().currentStackSize--;
+                    slot.ItemSlot_UpdateItem();
+                    return;
+                }
+            }
+        }
+    }
 
     ///////////////////////////////////////////////////////
 
@@ -111,19 +176,21 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
         //Set New Position
         currentToolbarPosition = hoverPosition;
 
+        //Refresh Held Item Status
+        Toolbar_MoveSelector_RefreshCurrent();
+    }
 
-        // ***** DEBUG CODE ******
-
-
-
-
+    public void Toolbar_MoveSelector_RefreshCurrent()
+    {
         //Check If Slot has an Item
-        if (toolbarItemSlots_Array[hoverPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem() != null)
+        if (toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem() != null)
         {
             //Set Animation Value
-            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(true);
+            isHoldingItem = true;
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
 
-            TM_ItemUI item = toolbarItemSlots_Array[hoverPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+            //Get Scriptable To Hold
+            TM_ItemUI item = toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
 
             //Spawn Item
             TM_PlayerController_Animation.Instance.SpawnItemInHand_Hover(item.original_SO);
@@ -131,21 +198,12 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
         else
         {
             //Set Animation Value
-            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(false);
+            isHoldingItem = false;
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
 
             //Remove Old Item
             TM_PlayerController_Animation.Instance.RemoveItemInHand_Right();
         }
-
-
-
-
-
-
-
-
-
-        // ***** DEBUG CODE ******
     }
 
     ///////////////////////////////////////////////////////
