@@ -15,7 +15,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
 
 
     public Image hurtScreen;
-    public int hurtScreenDuration;
+    public float hurtScreenDuration;
 
     ///////////////////////////////////////////////////////
 
@@ -61,7 +61,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
     {
         if (hurtScreenDuration == 0)
         {
-            hurtScreenDuration = additionHurting * 3;
+            hurtScreenDuration = additionHurting * 5;
             StartCoroutine(FadeOutHurtScreen());
         }
         else
@@ -79,7 +79,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
         {
 
 
-            hurtScreenDuration -= 1;
+            hurtScreenDuration -= 1.2f;
 
 
             hurtScreen.color = new Color(1, 1, 1, hurtScreenDuration * 0.01f);

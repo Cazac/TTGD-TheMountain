@@ -107,16 +107,16 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     private void SetDebugStats()
     {
-        player_CurrentHealth = 90;
+        player_CurrentHealth = 100;
         player_MaxHealth = 100;
         player_BaseHealth = 100;
 
-        player_CurrentHunger = 30;
-        player_MaxHunger = 200;
+        player_CurrentHunger = 100;
+        player_MaxHunger = 100;
         player_BaseHunger = 100;
 
-        player_CurrentFire = 150;
-        player_MaxFire = 150;
+        player_CurrentFire = 100;
+        player_MaxFire = 100;
         player_BaseFire = 100;
     }
 
