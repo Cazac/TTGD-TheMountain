@@ -31,11 +31,10 @@ public class TM_KeyBindingController : MonoBehaviour
     KeyCode newKey;//New key to be set
     bool waitingForKey = false;//Flag to wait for the key press
 
-    public static Dictionary<string, KeyCode> keybindings;
 
     string jsonFile;
     //JSON File used to initialize dictionary
-    
+
 
 
     ///////////////////////////////////////////////////////
@@ -59,24 +58,24 @@ public class TM_KeyBindingController : MonoBehaviour
             jsonFile = jsonAsset.text;
             //Debug.Log("Loaded default bindings");
         }
-        keybindings = new Dictionary<string, KeyCode>(); //Initialize keycode dictionary
+        TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary = new Dictionary<string, KeyCode>(); //Initialize keycode dictionary
         KeyBindingList bindingsInJSON = JsonUtility.FromJson<KeyBindingList>(jsonFile);//Convert JSON into serializable strings
 
         foreach (KeyBinding k in bindingsInJSON.bindings)
         {
             //Debug.Log("Found binding: " + k.key + " for  " + k.action);
 
-            keybindings.Add(k.action, (KeyCode)System.Enum.Parse(typeof(KeyCode), k.key));//Adds binding to dictionary
+            TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary.Add(k.action, (KeyCode)System.Enum.Parse(typeof(KeyCode), k.key));//Adds binding to dictionary
         }
         //Debug.Log("Successfully parsed initial JSON bindings");
 
         //Setting initial loaded bindings as button texts
-        for(int i = 0; i < BindingInputs.transform.childCount; i++)
+        for (int i = 0; i < BindingInputs.transform.childCount; i++)
         {
-            
+
             GameObject button = BindingInputs.transform.GetChild(i).gameObject;
             //print("Test Code: " + button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().name);
-            button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(keybindings[button.name].ToString());
+            button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary[button.name].ToString());
 
             //print("Test Code: " + button.name);
         }
@@ -102,6 +101,24 @@ public class TM_KeyBindingController : MonoBehaviour
             newKey = e.keyCode; //Set that key as keycode
             waitingForKey = false; //Stop waiting for key
         }
+        else if (e.isMouse)
+        {
+            if (e.button == 0)
+            {
+                newKey = KeyCode.Mouse0;
+                waitingForKey = false;
+            }
+            else if (e.button == 1)
+            {
+                newKey = KeyCode.Mouse1;
+                waitingForKey = false;
+            }
+            else if (e.button == 2)
+            {
+                newKey = KeyCode.Mouse2;
+                waitingForKey = false;
+            }
+        }
     }
 
     ///////////////////////////////////////////////////////
@@ -111,6 +128,9 @@ public class TM_KeyBindingController : MonoBehaviour
         if (!waitingForKey)//Allows only one binding to be changed at a time
         {
             currentButton = button;
+            string txt = currentButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text;
+            //Set text to red
+            currentButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText("<color=#FF0800>" + txt + "</color>");
             waitingForKey = true;
             StartCoroutine(EditKeyFlag());
         }
@@ -118,28 +138,39 @@ public class TM_KeyBindingController : MonoBehaviour
 
     public void ChangeKeyEnd()
     {
-        if (!keybindings.ContainsValue(newKey))//Checks if binding already exists for a different key (or the current key)
+        if (newKey == KeyCode.Escape)
         {
-            keybindings[currentButton.name] = newKey;//Sets new key as part of binding dictionary
+            newKey = KeyCode.None;
+            TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary[currentButton.name] = newKey;//Sets new key as part of binding dictionary
             SaveToJSON();
-            currentButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(keybindings[currentButton.name].ToString());
         }
+        else
+        {
+            if (!TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary.ContainsValue(newKey))//Checks if binding already exists for a different key (or the current key)
+            {
+                TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary[currentButton.name] = newKey;//Sets new key as part of binding dictionary
+                SaveToJSON();
+            }
+        }
+
+        
+        //Sets text so that it turns back to white regardless of changed key or not
+        currentButton.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().SetText(TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary[currentButton.name].ToString());
         StopCoroutine(EditKeyFlag());//Save potential resources
     }
     //Converts current Dictionary structure into JSON string and saves into file
     public void SaveToJSON()
     {
-        List<string> bindingActions = new List<string>(keybindings.Keys);//Grab only keys
+        List<string> bindingActions = new List<string>(TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary.Keys);//Grab only keys
         List<KeyBinding> bindingKeys = new List<KeyBinding>();//Create list of KeyBinding class/struct
         foreach (string a in bindingActions)
         {
-            bindingKeys.Add(new KeyBinding() {action = a, key = keybindings[a].ToString()});//Add each keybinding from dictionary into a List of struct KeyBinding
+            bindingKeys.Add(new KeyBinding() { action = a, key = TM_DatabaseController.Instance.settings_SaveData.keybindings_Dictonary[a].ToString() });//Add each keybinding from dictionary into a List of struct KeyBinding
         }
-        KeyBindingList saveBindingList = new KeyBindingList(){bindings = bindingKeys.ToArray()};//Convert into KeyBindingList
+        KeyBindingList saveBindingList = new KeyBindingList() { bindings = bindingKeys.ToArray() };//Convert into KeyBindingList
 
         string json = JsonUtility.ToJson(saveBindingList);//Convert to JSON
         System.IO.File.WriteAllText(KB_PATH, json);//Writes to file
-        Debug.Log("Saved to File");
     }
 
     //Coroutine to loop while we wait for a key to be pressed TODO: Maybe add a way to prevent other things from being able to be pressed?

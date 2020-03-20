@@ -58,9 +58,14 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void SetAnimationValue_QuickAttack()
+    public void SetAnimationValue_PunchAttack()
     {
-        playerAnimator.Play("Attack Melee Quick", 0);
+        playerAnimator.Play("Attack Punch");
+    }
+
+    public void SetAnimationValue_SwordAttack()
+    {
+        playerAnimator.Play("Attack Melee Quick");
     }
 
     public void SetAnimationValue_PlayerSpeed(float value)
@@ -80,6 +85,11 @@ public class TM_PlayerController_Animation : MonoBehaviour
     public void SetAnimationValue_IsHoldingItem(bool value)
     {
         playerAnimator.SetBool("IsHoldingToolbarItem", value);
+    }
+
+    public void SetAnimationValue_IsConsumingItem(bool value)
+    {
+        playerAnimator.SetBool("IsConsumingToolbarItem", value);
     }
 
     ///////////////////////////////////////////////////////
@@ -191,6 +201,79 @@ public class TM_PlayerController_Animation : MonoBehaviour
     public void LoadHitbox_Attack1()
     {
         TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.swordSize1_Hitbox);
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+
+
+    public void AnimationEvent_PunchHitbox()
+    {
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.swordSize1_Hitbox);
+
+    }
+
+
+    public void AnimationEvent_ConsumeItem()
+    {
+        //Check If Slot has an Item
+        if (TM_PlayerMenuController_Inventory.Instance.isHoldingItem)
+        {
+            //Get Item Held
+            TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+            //Check If Consumable
+            if (item.isConsumable)
+            {
+
+
+                TM_PlayerController_Stats.Instance.ChangeHealth_Current(item.consumable_Health, "Healing");
+                TM_PlayerController_Stats.Instance.ChangeHunger_Current(item.consumable_Hunger);
+
+
+
+                //EFFECTS??
+
+
+                TM_PlayerMenuController_Inventory.Instance.Inventory_FindAndRemoveItem(item.itemName);
+
+                //Consume SFX?
+
+
+            }
+            else
+            {
+                //Error SFX?
+            }
+        }
+
+
+        //Can consume
+
+        //Consumable
+
+        //remove
+
+        //Refresh
+        TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_RefreshCurrent();
+    }
+
+
+    public void AnimationEvent_HideItem()
+    {
+        //Check If Slot has an Item
+        playerRightHandSpawnPoint_GO.SetActive(false);
+
+
+    }
+
+    public void AnimationEvent_ShowItem()
+    {
+        //Check If Slot has an Item
+        playerRightHandSpawnPoint_GO.SetActive(true);
+
+
 
     }
 

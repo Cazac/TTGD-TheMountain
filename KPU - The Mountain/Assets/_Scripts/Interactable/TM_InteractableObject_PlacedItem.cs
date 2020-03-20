@@ -32,7 +32,7 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
         //Check If Valid Item Count First
         if (placedObject.currentStackSize <= 0)
         {
-            print("Test Code: Oops No Stack Size, Adding One");
+            //print("Test Code: Oops No Stack Size, Adding One");
             placedObject.currentStackSize = 1;
         }
 

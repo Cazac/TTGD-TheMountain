@@ -161,6 +161,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Remove Item
             ItemSlot_RemoveItem();
+            TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_RefreshCurrent();
             return;
         }
 
@@ -204,9 +205,11 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             slotStackSize_GO.SetActive(true);
             slotStackSize_Text.text = "1";
         }
+
+        TM_PlayerMenuController_Inventory.Instance.Toolbar_MoveSelector_RefreshCurrent();
     }
 
-    public void ItemSlot_DropItem()
+    public void ItemSlot_DropItemAll()
     {
         //Check For Item
         if (currentItem != null)
@@ -228,6 +231,34 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
             //Remove Stack From UI
             TM_CursorController.Instance.Cursor_RemoveItem();
+        }
+    }
+
+    public void ItemSlot_DropItemSingle()
+    {
+        //Check For Item
+        if (currentItem != null)
+        {
+            //Create a position infront of the player
+            Vector3 spawnPosition = TM_PlayerController_Movement.Instance.gameObject.transform.position;
+            spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
+            spawnPosition.y += 1;
+
+            //Add Jitter
+            spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.right * Random.Range(-0.1f, 0.1f);
+
+            //Spawn Item as Dropped
+            GameObject newObject = Instantiate(currentItem.original_SO.dropped_Prefab, spawnPosition, Quaternion.identity);
+
+            //Set Stacksize and Durablity 
+            newObject.GetComponent<TM_ItemDropped>().currentStackSize = 1;
+            newObject.GetComponent<TM_ItemDropped>().currentDurablity = currentItem.currentDurablity;
+
+            //Remove Single Item From UI
+            currentItem.currentStackSize--;
+
+            //Update UI
+            ItemSlot_UpdateItem();
         }
     }
 

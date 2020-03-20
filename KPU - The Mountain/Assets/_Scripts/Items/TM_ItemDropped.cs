@@ -15,6 +15,8 @@ public class TM_ItemDropped : MonoBehaviour
     public int currentStackSize;
     public int currentDurablity;
 
+    public bool hasCollided;
+
     ///////////////////////////////////////////////////////
 
     private void OnTriggerEnter(Collider collider)
@@ -33,8 +35,18 @@ public class TM_ItemDropped : MonoBehaviour
         //Check For Player
         if (collider.gameObject.GetComponent<TM_PlayerController_Movement>() != null)
         {
-            //Conversion To UI
-            ItemConversion_UI();
+            if (hasCollided)
+            {
+                return;
+            }
+            else
+            {
+                //Set bool to allow single pickup
+                hasCollided = true;
+
+                //Conversion To UI
+                ItemConversion_UI();
+            }
         }
     }
 

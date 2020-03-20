@@ -18,11 +18,28 @@ public class TM_CycleData : MonoBehaviour
     ////////////////////////////////
 
     [Header("General Cycles")]
-    public TM_Cycle_SO growth_Cycle;
+    public TM_Cycle_SO basic_Cycle;
     public TM_Cycle_SO burning_Cycle;
+    public TM_Cycle_SO darkness_Cycle;
     public TM_Cycle_SO death_Cycle;
+    public TM_Cycle_SO growth_Cycle;
+    public TM_Cycle_SO life_Cycle;
 
+    public List<TM_Cycle_SO> allCycles_List;
 
-    ////////////////////////////////
+    ///////////////////////////////////////////////////////
+
+    public void BuildDatabase()
+    {
+        allCycles_List.Add(basic_Cycle);
+        allCycles_List.Add(burning_Cycle);
+        allCycles_List.Add(darkness_Cycle);
+        allCycles_List.Add(death_Cycle);
+        allCycles_List.Add(growth_Cycle);
+        allCycles_List.Add(life_Cycle);
+    }
+
+    ///////////////////////////////////////////////////////
+
 }
 

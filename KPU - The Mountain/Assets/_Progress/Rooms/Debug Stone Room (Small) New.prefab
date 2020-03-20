@@ -846,7 +846,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2672445539041412293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.97, y: 53, z: 0}
+  m_LocalPosition: {x: -9.97, y: 50, z: 0}
   m_LocalScale: {x: 19, y: 1, z: 14}
   m_Children: []
   m_Father: {fileID: 8116862031469674510}
@@ -11562,7 +11562,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3528305893401291658}
-  - component: {fileID: 3528932415141267127}
   m_Layer: 0
   m_Name: ForgeChimney
   m_TagString: Untagged
@@ -11588,20 +11587,6 @@ Transform:
   m_Father: {fileID: 4266999664270506445}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3528932415141267127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3529992125924998122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
 --- !u!1 &3530234577142775872
 GameObject:
   m_ObjectHideFlags: 0
@@ -12636,7 +12621,6 @@ GameObject:
   - component: {fileID: 6074341558286576538}
   - component: {fileID: 6074341558287891032}
   - component: {fileID: 6074341558288927052}
-  - component: {fileID: 6074341558287059771}
   m_Layer: 0
   m_Name: SM_Prop_Pedestal_01
   m_TagString: Untagged
@@ -12703,20 +12687,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6074341558287059771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6074341558286915074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 1.2753844, z: 0}
-  size: {x: 4.358719, y: 2.5507689, z: 4.35907}
 --- !u!1 &6398014846145842005
 GameObject:
   m_ObjectHideFlags: 0
@@ -12808,7 +12778,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8533097025780875281}
-  - component: {fileID: 3220075419410255954}
   m_Layer: 0
   m_Name: Bucket
   m_TagString: Untagged
@@ -12831,20 +12800,6 @@ Transform:
   m_Father: {fileID: 7007607255358813554}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3220075419410255954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6445043200348195373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
 --- !u!1 &6450496158528128142
 GameObject:
   m_ObjectHideFlags: 0
@@ -12993,7 +12948,6 @@ GameObject:
   - component: {fileID: 6663743722282621049}
   - component: {fileID: 6663743722281313327}
   - component: {fileID: 6663743722280320327}
-  - component: {fileID: 6663743722282457604}
   m_Layer: 0
   m_Name: SM_Prop_BookPile_02 (1)
   m_TagString: Untagged
@@ -13060,20 +13014,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6663743722282457604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663743722282305853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0.7740016, z: 0}
-  size: {x: 1.0945454, y: 1.5480032, z: 1.1121292}
 --- !u!1 &6786051461006234233
 GameObject:
   m_ObjectHideFlags: 0
@@ -13083,7 +13023,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7349021276800909329}
-  - component: {fileID: 184689637204105677}
   m_Layer: 0
   m_Name: Table 1
   m_TagString: Untagged
@@ -13106,20 +13045,6 @@ Transform:
   m_Father: {fileID: 7007607255358813554}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &184689637204105677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6786051461006234233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
 --- !u!1 &6792727973914538118
 GameObject:
   m_ObjectHideFlags: 0
@@ -13208,7 +13133,6 @@ GameObject:
   - component: {fileID: 6890683847706914455}
   - component: {fileID: 6890683847707693761}
   - component: {fileID: 6890683847708724137}
-  - component: {fileID: 6890683847706422506}
   m_Layer: 0
   m_Name: SM_Prop_BookPile_02
   m_TagString: Untagged
@@ -13275,20 +13199,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6890683847706422506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6890683847706607571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0.7740016, z: 0}
-  size: {x: 1.0945454, y: 1.5480032, z: 1.1121292}
 --- !u!1 &6895932633886518721
 GameObject:
   m_ObjectHideFlags: 0
@@ -13334,7 +13244,6 @@ GameObject:
   - component: {fileID: 4836742268043008651}
   - component: {fileID: 3409108500956409158}
   - component: {fileID: 1023626103799826824}
-  - component: {fileID: 7586393852286901298}
   m_Layer: 0
   m_Name: SM_Prop_WallWeapon_03
   m_TagString: Untagged
@@ -13401,20 +13310,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &7586393852286901298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6945471741877377082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 0.9748405, z: 0.09294319}
-  size: {x: 2.2455168, y: 1.9992294, z: 0.18588702}
 --- !u!1 &7101469318188055939
 GameObject:
   m_ObjectHideFlags: 0
@@ -13523,7 +13418,6 @@ GameObject:
   - component: {fileID: 5754976551451484523}
   - component: {fileID: 460549122879294868}
   - component: {fileID: 3910586630925310155}
-  - component: {fileID: 5895064135865945626}
   m_Layer: 0
   m_Name: SM_Prop_Desk_01
   m_TagString: Untagged
@@ -13590,20 +13484,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5895064135865945626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7232092288734307913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f103edb83d24ce84cad3b1658eb89f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  center: {x: 0, y: 1.0075822, z: 0}
-  size: {x: 1.6904951, y: 2.0151644, z: 0.9942829}
 --- !u!1 &7266192837904773413
 GameObject:
   m_ObjectHideFlags: 0
@@ -16044,8 +15924,8 @@ MonoBehaviour:
   themes_LIST:
   - {fileID: 240057021596104610}
   - {fileID: 2775448825036508899}
-  roomGenerator_BoxCollider: {fileID: 2672445539041412295}
-  Biome: Stone Dungeon
+  roomGenerator_BoxCollider:
+  - {fileID: 2672445539041412295}
 --- !u!1 &8116862031534569695
 GameObject:
   m_ObjectHideFlags: 0

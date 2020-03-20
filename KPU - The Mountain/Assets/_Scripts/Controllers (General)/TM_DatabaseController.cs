@@ -64,21 +64,10 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            //Set Static Singleton Self Refference
-            Instance = this;
+        //Check to Delete Singleton
+        CheckSingleton();
 
-            //Instance is Set, Do not delete this database
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            //Remove Current Scene Quick Load Database
-            Destroy(gameObject);
-        }
-
-        //Build Databases
+        //Build Databases Value Lists
         BuildDatabase();
     }
 
@@ -95,15 +84,31 @@ public class TM_DatabaseController : MonoBehaviour
         }
     }
 
-
     /////////////////////////////////////////////////////////////////
+
+    private void CheckSingleton()
+    {
+        if (Instance == null)
+        {
+            //Set Static Singleton Self Refference
+            Instance = this;
+
+            //Instance is Set, Do not delete this database
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            //Remove Current Scene Quick Load Database
+            Destroy(gameObject);
+        }
+    }
 
     private void BuildDatabase()
     {
         //Build Databases
         item_DB.BuildDatabase();
         name_DB.BuildDatabase();
-
+        cycle_DB.BuildDatabase();
 
 
     }
@@ -158,20 +163,30 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_GameNew()
     {
-        print("Test Code: New Game");
+        print("Test Code: New Game...");
+
+
+
+        //Do Eextra Stuff, Rmove this stuff~
+
+
+        //Reload Data For the Systems Room Debug Play
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
 
         //Assume the data is present already
         TM_SaveController.Instance.PlayerData_LoadGameData();
-
     }
 
     private void Setup_GameLoad()
     {
-        print("Test Code: Loaded Game");
+        print("Test Code: Loaded Game...");
 
 
+        //Reload Data For the Systems Room Debug Play
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
+
+        //Assume the data is present already
         TM_SaveController.Instance.PlayerData_LoadGameData();
-
     }
 
     /////////////////////////////////////////////////////////////////

@@ -107,16 +107,16 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     private void SetDebugStats()
     {
-        player_CurrentHealth = 90;
+        player_CurrentHealth = 100;
         player_MaxHealth = 100;
         player_BaseHealth = 100;
 
-        player_CurrentHunger = 30;
-        player_MaxHunger = 200;
+        player_CurrentHunger = 100;
+        player_MaxHunger = 100;
         player_BaseHunger = 100;
 
-        player_CurrentFire = 150;
-        player_MaxFire = 150;
+        player_CurrentFire = 100;
+        player_MaxFire = 100;
         player_BaseFire = 100;
     }
 
@@ -142,7 +142,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             else
             {
                 //Remove Health due to lack of hunger
-                ChangeHealth_Current(-1);
+                ChangeHealth_Current(-1, "Hunger");
 
                 //Wait
                 yield return new WaitForSeconds(secondsPer_HungerDrain);
@@ -164,8 +164,8 @@ public class TM_PlayerController_Stats : MonoBehaviour
             }
             else
             {
-                //Remove Health due to lack of hunger
-                PlayerDeath();
+                //Death
+                TM_PlayerMenuController_Death.Instance.StartDeathAnimation("Fire");
 
                 //Wait
                 yield return new WaitForSeconds(secondsPer_FireDrain);
@@ -173,10 +173,19 @@ public class TM_PlayerController_Stats : MonoBehaviour
         }
     }
 
+    ///////////////////////////////////////////////////////
+
+    public int GetCurrentDamage(TM_Item_SO weaponSO)
+    {
+
+
+
+        return 5;
+    }
 
     ///////////////////////////////////////////////////////
 
-    public void ChangeHealth_Current(int changeValue)
+    public void ChangeHealth_Current(int changeValue, string damageType)
     {
         //Change Value
         player_CurrentHealth += changeValue;
@@ -195,7 +204,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             player_CurrentHealth = 0;
 
             //Death
-            PlayerDeath();
+            TM_PlayerMenuController_Death.Instance.StartDeathAnimation(damageType);
         }
 
         //Update UI
@@ -272,7 +281,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             player_CurrentFire = 0;
 
             //Death
-            PlayerDeath();
+            TM_PlayerMenuController_Death.Instance.StartDeathAnimation("Fire");
         }
 
         //Update UI
@@ -289,13 +298,6 @@ public class TM_PlayerController_Stats : MonoBehaviour
     {
 
 
-    }
-
-    ///////////////////////////////////////////////////////
-
-    public void PlayerDeath()
-    {
-       // print("Test Code: You Ded");
     }
 
     ///////////////////////////////////////////////////////

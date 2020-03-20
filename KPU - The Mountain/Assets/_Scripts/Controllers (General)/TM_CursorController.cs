@@ -83,7 +83,7 @@ public class TM_CursorController : MonoBehaviour
 
     public void Cursor_DropItem()
     {
-        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DropItem();
+        gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DropItemAll();
     }
 
     public void Cursor_DupplicateItem(TM_ItemUI item)
@@ -113,6 +113,8 @@ public class TM_CursorController : MonoBehaviour
             {
                 //Nothing Worked Leave Item Alone
                 gameObject.GetComponent<TM_ItemSlot>().Action_NoAction();
+
+                print("Test Code: Error?");
             }
         }
 

@@ -24,27 +24,53 @@ public class TM_Cycle
     private static readonly Color[] colorList = { Color.yellow, Color.blue, Color.red, Color.green, Color.white };
     private static readonly int[] cycleFrequency = { 1, 1, 1, 1, 1 };
 
+
+    //TESTING WITH SCRIPTALBE OBJS
+
+
     ////////////////////////////////
 
-    public static readonly int NumOfTotalTypes = 5;
+    public static int NumOfTotalTypes;
 
     ////////////////////////////////
 
     //Panel's Current Cycle Color
-    public Color cycleColor; 
+    //public Color cycleColor; 
+    public Sprite cycleSprite;
     //Panel's Current Cycle Name
     public string cycleName;
 
+    public List<TM_Cycle_SO> cycleData;
+    public TM_Cycle_SO cycleSO;
+
     ///////////////////////////////////////////////////////
-
-    public TM_Cycle(TM_Cycle_SO scriptableItem)
+    //Scriptable Object Version
+    public TM_Cycle()
     {
-        //CONTRUCTOR GOES HERE
+        cycleData = TM_DatabaseController.Instance.cycle_DB.allCycles_List;
+        NumOfTotalTypes = cycleData.Count;
 
+        //For now, since there's only 1 of each Cycle Type TODO: Cycle through each type and get a frequency value to add together
+        shuffleBag = new TM_CycleShuffleBag(3);
+
+        for (int x = 0; x < NumOfTotalTypes; x++)
+        {
+            cycleSO = cycleData[x];
+            string name = cycleSO.cycleName;
+            Sprite s = cycleSO.cycleIcon;
+            shuffleBag.AddCycle(new KeyValuePair<string, Sprite>(name, s), 1);
+        }
+    }
+    public void SetRandomCycle()
+    {
+        //Sets a random cycle using the Shuffle Bag technique
+        KeyValuePair<string, Sprite> nextCycle = shuffleBag.NextCycle();
+        cycleName = nextCycle.Key;
+        cycleSprite = nextCycle.Value;
     }
 
-    ///////////////////////////////////////////////////////
-
+    //Default (non-SO)
+    /*
     public TM_Cycle()
     {
         shuffleBag = new TM_CycleShuffleBag(14);
@@ -63,6 +89,7 @@ public class TM_Cycle
         cycleName = nextCycle.Key;
         cycleColor = nextCycle.Value;
     }
+    */
 
     ///////////////////////////////////////////////////////
 }

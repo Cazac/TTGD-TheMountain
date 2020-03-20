@@ -78,6 +78,11 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     
     private void Update()
     {
+        if (TM_PlayerMenuController_Death.Instance.hasDied)
+        {
+            return;
+        }
+
         //Look for key inputs
         LookForMenuKey_Pause();
         LookForMenuKey_Inventory();

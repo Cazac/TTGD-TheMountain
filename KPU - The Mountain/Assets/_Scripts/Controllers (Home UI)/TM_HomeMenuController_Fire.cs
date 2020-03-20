@@ -34,12 +34,16 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("New Stuff")]
+    [Header("Descriptions")]
     public Image selectedIcon_Image;
     public TextMeshProUGUI selectedBurnName_Text;
     public TextMeshProUGUI selectedBurnDesc_Text;
     public TextMeshProUGUI selectedEffect_Text;
+    public TextMeshProUGUI selectedButton_Text;
 
+    [Header("Description Panels")]
+    public GameObject Empty_Panel;
+    public GameObject Full_Panel;
 
     ////////////////////////////////
 
@@ -65,6 +69,12 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
 
         //Enable Mouse
         TM_PlayerMenuController_UI.Instance.UnlockMouse();
+
+        //Remove Items
+        Empty_Panel.SetActive(true);
+        Full_Panel.SetActive(false);
+        currentSelectedBurnable_Tab = null;
+        selectedButton_Text.text = "Burn";
 
         //Setup
         Refresh_BurnableItemsList();
@@ -95,29 +105,38 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
     {
         if (currentSelectedBurnable_Tab == burnableTab)
         {
+            //Remove Items
+            Empty_Panel.SetActive(true);
+            Full_Panel.SetActive(false);
             currentSelectedBurnable_Tab = null;
-
-            //Remove Image
-            selectedIcon_Image.gameObject.SetActive(false);
-            selectedBurnName_Text.text = "";
-            selectedBurnDesc_Text.text = "";
-            selectedEffect_Text.text = "";
+            selectedButton_Text.text = "Burn";
         }
         else
         {
+            //Set Item
+            Empty_Panel.SetActive(false);
+            Full_Panel.SetActive(true);
             currentSelectedBurnable_Tab = burnableTab;
+            selectedButton_Text.text = "Burn " + burnableTab.currentBurnableItem.itemName;
 
-            //Set Image
+            //Set Values
             selectedIcon_Image.gameObject.SetActive(true);
             selectedIcon_Image.sprite = burnableTab.currentBurnableItem.itemIcon;
             selectedBurnName_Text.text = burnableTab.currentBurnableItem.itemName;
             selectedBurnDesc_Text.text = burnableTab.currentBurnableItem.itemDesc;
-            selectedEffect_Text.text = "- ???";
+      
 
 
-
-
-
+            if (burnableTab.currentBurnableItem.burn_FireEffect == 1)
+            {
+                selectedEffect_Text.text = "Heat Value: " + burnableTab.currentBurnableItem.burn_FireValue +
+                   "<br>Effect: Exploding Puppies";
+            }
+            else
+            {
+                selectedEffect_Text.text = "Heat Value: " + burnableTab.currentBurnableItem.burn_FireValue + 
+                    "<br>Effect: None";
+            }
         }
 
         //Refresh Burn Button Status
@@ -126,64 +145,18 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
 
     public void Button_Fire_BurnItem()
     {
-        print("Test Code: Burning!");
-
         //Add BurnValue
+        TM_PlayerController_Stats.Instance.ChangeFire_Current(currentSelectedBurnable_Tab.currentBurnableItem.burn_FireValue);
 
-
-        TM_PlayerController_Stats.Instance.ChangeFire_Current(10);
-
-
-
-
-
-        //Remove ITem
+        //Apply Effect
 
 
 
+        //Remove Item
+        TM_PlayerMenuController_Inventory.Instance.Inventory_FindAndRemoveItem(currentSelectedBurnable_Tab.currentBurnableItem.itemName);
 
-
-
-        //Find Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array)
-        {
-            //Get Slot
-            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
-
-
-            if (slot.ItemSlot_GetItem() != null)
-            {
-                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
-                {
-
-                    slot.ItemSlot_GetItem().currentStackSize--;
-                    slot.ItemSlot_UpdateItem();
-                    Refresh_BurnableItemsList();
-                    return;
-                }
-            }
-        }
-
-        //Find Slots in Inventory
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array)
-        {
-            //Get Slot
-            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
-
-            if (slot.ItemSlot_GetItem() != null)
-            {
-                if (slot.ItemSlot_GetItem().itemName == currentSelectedBurnable_Tab.currentBurnableItem.itemName)
-                {
-
-                    slot.ItemSlot_GetItem().currentStackSize--;
-                    slot.ItemSlot_UpdateItem();
-                    Refresh_BurnableItemsList();
-                    return;
-                }
-            }
-        }
-
-
+        //Refresh Fire Burnables
+        Refresh_BurnableItemsList();
     }
 
     ///////////////////////////////////////////////////////

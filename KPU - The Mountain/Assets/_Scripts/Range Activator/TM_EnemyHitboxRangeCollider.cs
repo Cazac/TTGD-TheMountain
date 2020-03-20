@@ -17,14 +17,14 @@ public class TM_EnemyHitboxRangeCollider : MonoBehaviour
         //Check For Player
         if (collider.gameObject.GetComponent<TM_PlayerController_Combat>() != null)
         {
+            int damage = -15;
+
+            collider.gameObject.GetComponent<TM_PlayerController_Stats>().ChangeHealth_Current(damage, "Minotaur");
+            TM_PlayerController_Combat.Instance.AddToHurtScreen(Mathf.Abs(damage));
 
 
-            collider.gameObject.GetComponent<TM_PlayerController_Stats>().ChangeHealth_Current(-5);
-            TM_PlayerController_Combat.Instance.AddToHurtScreen(5);
 
-
-
-            print("Test Code: Dealing Damage!");
+            //print("Test Code: Dealing Damage!");
             Destroy(gameObject);
         }
     }
