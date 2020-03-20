@@ -64,21 +64,10 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            //Set Static Singleton Self Refference
-            Instance = this;
+        //Check to Delete Singleton
+        CheckSingleton();
 
-            //Instance is Set, Do not delete this database
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            //Remove Current Scene Quick Load Database
-            Destroy(gameObject);
-        }
-
-        //Build Databases
+        //Build Databases Value Lists
         BuildDatabase();
     }
 
@@ -95,15 +84,31 @@ public class TM_DatabaseController : MonoBehaviour
         }
     }
 
-
     /////////////////////////////////////////////////////////////////
+
+    private void CheckSingleton()
+    {
+        if (Instance == null)
+        {
+            //Set Static Singleton Self Refference
+            Instance = this;
+
+            //Instance is Set, Do not delete this database
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            //Remove Current Scene Quick Load Database
+            Destroy(gameObject);
+        }
+    }
 
     private void BuildDatabase()
     {
         //Build Databases
         item_DB.BuildDatabase();
         name_DB.BuildDatabase();
-
+        cycle_DB.BuildDatabase();
 
 
     }

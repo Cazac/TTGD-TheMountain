@@ -228,7 +228,7 @@ public class TM_PlayerController_Animation : MonoBehaviour
             {
 
 
-                TM_PlayerController_Stats.Instance.ChangeHealth_Current(item.consumable_Health);
+                TM_PlayerController_Stats.Instance.ChangeHealth_Current(item.consumable_Health, "Healing");
                 TM_PlayerController_Stats.Instance.ChangeHunger_Current(item.consumable_Hunger);
 
 

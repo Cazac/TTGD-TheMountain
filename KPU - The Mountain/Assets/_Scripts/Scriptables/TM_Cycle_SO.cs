@@ -16,6 +16,9 @@ public class TM_Cycle_SO : ScriptableObject
     public float healthRate;
     public float fireRate;
 
+
+    public string effectType;
+
     
 
 }

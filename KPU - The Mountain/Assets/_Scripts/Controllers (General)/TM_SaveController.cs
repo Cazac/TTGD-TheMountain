@@ -174,20 +174,35 @@ public class TM_SaveController : MonoBehaviour
 
         if (settingsSaveFile.KeyExists("SettingsSaveData"))
         {
+            print("Test Code: Loading Settings");
+
             currentSettingsData = settingsSaveFile.Load<TM_SettingsSaveData>("SettingsSaveData");
         }
         else
         {
+            print("Test Code: Saving Settings");
+
             currentSettingsData = new TM_SettingsSaveData();
 
+            //Setup Values
+            currentSettingsData.volumeTotal = 0.5f;
+            currentSettingsData.volumeMusic = 0.5f;
+            currentSettingsData.volumeAmbience = 0.5f;
+            currentSettingsData.volumeSFX = 0.5f;
+
+            currentSettingsData.isMusicMute = false;
+            currentSettingsData.isAmbienceMute = false;
+            currentSettingsData.isSFXMute = false;
+
+            currentSettingsData.keybindings_Dictonary = new Dictionary<string, KeyCode>();
+            //currentSettingsData.keybindings_Dictonary.Add();
 
 
-            //SETUP VALUSE
-            //currentSettingsData
-
-
-            //SAVE VALUE
+            //Save It
+            SettingsData_SaveFile(currentSettingsData);
         }
+
+
 
         TM_DatabaseController.Instance.settings_SaveData = currentSettingsData;
     }

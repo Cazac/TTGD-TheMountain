@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TM_MorgueSaveData : MonoBehaviour
+[System.Serializable]
+public class TM_MorgueSaveData
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    ////////////////////////////////
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("Dead Players")]
+    public List<TM_PlayerSaveData> charectersInMorgue_List;
+
+    ////////////////////////////////
 }

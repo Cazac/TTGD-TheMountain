@@ -30,14 +30,18 @@ public class TM_CyclesController : MonoBehaviour
 
     //Number of Panels to be used
     public static readonly int NumOfPanels = 6;
+
     //Cycle time in seconds
-    private readonly float cycleDuration = 60f;
+    private readonly float cycleDuration = 20f;
+
     //Dictory Of Possible Cycles
-    public static Dictionary<GameObject, TM_Cycle> CyclePanelList;
+    private Dictionary<GameObject, TM_Cycle> CyclePanelList;
+
+
 
     ////////////////////////////////
 
-    private IEnumerator currentCycleEffect;
+    private Coroutine currentCycleEffect_Enum;
 
     ///////////////////////////////////////////////////////
 
@@ -52,31 +56,14 @@ public class TM_CyclesController : MonoBehaviour
         Setup();
     }
 
-    private void Update()
-    {
-        /*numCycles++;
-        foreach (GameObject g in CyclePanelList)
-        {
-            float panelWidth = g.GetComponent<RectTransform>().rect.width; //Grabs width of the particular panel (I just realized this would be useless, because they all need to stay linked side by side)
-            float movingDist = (panelWidth / cycleDuration) * Time.deltaTime;
-            //Debug.Log(movingDist);
-            g.transform.localPosition += new Vector3(movingDist, 0, 0);
-        }
-        
-        if(numCycles == 60)
-        {
-            Time.timeScale = 0;
-            Debug.Log(numCycles);
-        }
-        //Debug.Log(Time.time);*/
-    }
-
     ///////////////////////////////////////////////////////
 
-    private void Setup()
+    private void Setup() 
     {
-        //Randomly sets the seed for the timer based on system clock
-        Random.InitState(System.DateTime.Now.Millisecond);
+        //Randomly sets the seed
+        Random.InitState(TM_DatabaseController.Instance.player_SaveData.playerInfo_MapSeed);
+
+
         //Initialize a dictionary/mapping to hold all the cycles
         CyclePanelList = new Dictionary<GameObject, TM_Cycle>();
 
@@ -88,14 +75,24 @@ public class TM_CyclesController : MonoBehaviour
             cycle.SetRandomCycle();
             panel.GetComponent<Image>().color = cycle.cycleColor;
             panel.name = cycle.cycleName;
+
             //Sets the initial panel and its cycle type
             CyclePanelList.Add(panel, cycle); 
-            //Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
+
+            Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
         }
 
+        //Start Current Cycle Effect
+        currentCycleEffect_Enum = StartCoroutine(CycleEffect_Death());
+
         //Starts the first cycle
-        StartCoroutine(CycleClock()); 
+        StartCoroutine(CycleClock());
     }
+
+    ///////////////////////////////////////////////////////
+
+
+
 
     private IEnumerator CycleClock()
     {
@@ -116,8 +113,6 @@ public class TM_CyclesController : MonoBehaviour
             }
         }
 
-        //Debug.Log("Cycle Complete");
-        //Debug.Log(Time.time);
         //Sets the next cycle
         NextCycle();
     }
@@ -125,22 +120,34 @@ public class TM_CyclesController : MonoBehaviour
     private void NextCycle()
     {
         //Stops the previous cycle timer
-        StopCoroutine(CycleClock()); 
+        StopCoroutine(CycleClock());
+
+        //Stop Current Cycle Effect
+        if (currentCycleEffect_Enum != null)
+        {
+            StopCoroutine(currentCycleEffect_Enum);
+        }
+
 
         //Grabs the fore-most panel
-        GameObject g = cycleContainer.transform.GetChild(0).gameObject;
+        GameObject cycleGO = cycleContainer.transform.GetChild(0).gameObject;
         //Grabs the related TM_Cycle object
-        TM_Cycle c = CyclePanelList[g]; 
+        TM_Cycle cycle = CyclePanelList[cycleGO];
 
         //Sets new random cycle type for that panel
-        c.SetRandomCycle();
+        cycle.SetRandomCycle();
         //Sets panel name as cycle type/name
-        g.name = c.cycleName; 
+        cycleGO.name = cycle.cycleName;
         //Sets new color for panel corresponding to the cycle type/name
-        g.GetComponent<Image>().color = c.cycleColor; 
-        //Debug.Log(string.Concat("Cycle Name: ", c.cycleName, " Cycle Color: ", c.cycleColor.ToString()));
+        cycleGO.GetComponent<Image>().color = cycle.cycleColor;
+
+        Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
+
         //Moves panel to the end of the line   
-        g.transform.SetAsLastSibling();  
+        cycleGO.transform.SetAsLastSibling();
+
+        //Start Current Cycle Effect
+        currentCycleEffect_Enum = StartCoroutine(CycleEffect_Death());
 
         //Starts the next cycle timer
         StartCoroutine(CycleClock()); 
@@ -153,14 +160,41 @@ public class TM_CyclesController : MonoBehaviour
     private IEnumerator CycleEffect_Death()
     {
         int damgepePerCycleTick = -1;
- 
+
+
+        print("Test Code: Starting Death Cycle");
+
+        //Effect Icons
+
+
 
         while (true)
         {
 
 
 
-            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick);
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
+
+            yield return new WaitForSeconds(1f);
+        }
+
+
+
+
+        yield break;
+    }
+
+    private IEnumerator CycleEffect_Life()
+    {
+        int damgepePerCycleTick = -1;
+
+
+        while (true)
+        {
+
+
+
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
 
             yield return new WaitForSeconds(1f);
         }

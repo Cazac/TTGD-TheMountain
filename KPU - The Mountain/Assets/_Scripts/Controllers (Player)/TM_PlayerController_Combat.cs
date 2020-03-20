@@ -85,12 +85,25 @@ public class TM_PlayerController_Combat : MonoBehaviour
     {
         if (hurtScreenDuration == 0)
         {
-            hurtScreenDuration = additionHurting * 5;
+            hurtScreenDuration = additionHurting * 4;
+
+            //Cap Hurt Timer
+            if (hurtScreenDuration > 90)
+            {
+                hurtScreenDuration = 90;
+            }
+
             StartCoroutine(FadeOutHurtScreen());
         }
         else
         {
-            hurtScreenDuration += additionHurting * 3;
+            hurtScreenDuration += additionHurting * 2;
+
+            //Cap Hurt Timer
+            if (hurtScreenDuration > 90)
+            {
+                hurtScreenDuration = 90;
+            }
         }
     }
 

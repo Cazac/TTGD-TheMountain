@@ -22,9 +22,11 @@ public class TM_PlayerSaveData
 
     public string playerInfo_Name;
     public string playerInfo_Class;
+    public int playerInfo_MapSeed;
     public int playerInfo_CyclesSurvived;
     public int playerInfo_BossesKilled;
     public int playerInfo_NotesCollected;
+
 
     ////////////////////////////////
 

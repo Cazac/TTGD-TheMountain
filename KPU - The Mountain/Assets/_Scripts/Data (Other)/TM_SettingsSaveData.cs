@@ -21,17 +21,5 @@ public class TM_SettingsSaveData
     [Header("Keybinding Values")]
     public Dictionary<string, KeyCode> keybindings_Dictonary;
 
-
-    public KeyCode keycode_MoveForward;
-    public KeyCode keycode_MoveBackward;
-    public KeyCode keycode_MoveLeft;
-    public KeyCode keycode_MoveRight;
-
-
-
-
-
-
-
     /////////////////////////////////////////////////////////////////
 }

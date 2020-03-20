@@ -236,8 +236,6 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void ItemSlot_DropItemSingle()
     {
-        print("Test Code: Drop!");
-
         //Check For Item
         if (currentItem != null)
         {

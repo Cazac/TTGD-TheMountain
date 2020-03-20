@@ -31,6 +31,12 @@ public class TM_ButtonController_Settings : MonoBehaviour
     public GameObject settingsSound_Panel;
     public GameObject settingsGraphics_Panel;
 
+    [Header("Audio Values")]
+    public Slider settingsSound_TotalVolume_Slider;
+    public Slider settingsSound_MusicVolume_Slider;
+    public Slider settingsSound_AmbienceVolume_Slider;
+    public Slider settingsSound_SFXVolume_Slider;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -128,12 +134,82 @@ public class TM_ButtonController_Settings : MonoBehaviour
         panelButton_GO.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
     }
 
-    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////// - Sliders
 
     public void SliderChange_TotalVolume()
     {
 
+        print("Test Code: " + settingsSound_TotalVolume_Slider.value);
+
+        print("Test Code: " + TM_DatabaseController.Instance.settings_SaveData);
+
+
+        //Update Database With Total
+        TM_DatabaseController.Instance.settings_SaveData.volumeTotal = settingsSound_TotalVolume_Slider.value;
+
+        //Update Controllers Current Audio Levels
+        TM_MusicController.Instance.VolumeLevels_UpdateAll();
+        TM_SFXController.Instance.VolumeLevels_UpdateAll();
+        TM_AmbienceController.Instance.VolumeLevels_UpdateAll();
     }
+
+    public void SliderChange_MusicVolume()
+    {
+        //Update Database With Music
+        TM_DatabaseController.Instance.settings_SaveData.volumeMusic = settingsSound_MusicVolume_Slider.value;
+
+        //Update Controllers Current Audio Levels
+        TM_MusicController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    public void SliderChange_AmbienceVolume()
+    {
+        //Update Database With Ambience
+        TM_DatabaseController.Instance.settings_SaveData.volumeAmbience = settingsSound_AmbienceVolume_Slider.value;
+
+        //Update Controllers Current Audio Levels
+        TM_AmbienceController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    public void SliderChange_SFXVolume()
+    {
+        //Update Database With SFX
+        TM_DatabaseController.Instance.settings_SaveData.volumeSFX = settingsSound_SFXVolume_Slider.value;
+
+        //Update Controllers Current Audio Levels
+        TM_SFXController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    ///////////////////////////////////////////////////////////////// - Toggles
+
+    public void ToggleChange_MuteMusic(Toggle toggle)
+    {
+        //Update Database
+        TM_DatabaseController.Instance.settings_SaveData.isMusicMute = toggle.isOn;
+
+        //Update Controllers Current Audio Levels
+        TM_MusicController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    public void ToggleChange_MuteAmbience(Toggle toggle)
+    {
+        //Update Database
+        TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute = toggle.isOn;
+
+        //Update Controllers Current Audio Levels
+        TM_AmbienceController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    public void ToggleChange_MuteSFX(Toggle toggle)
+    {
+        //Update Database
+        TM_DatabaseController.Instance.settings_SaveData.isSFXMute = toggle.isOn;
+
+        //Update Controllers Current Audio Levels
+        TM_SFXController.Instance.VolumeLevels_UpdateAll();
+    }
+
+    ///////////////////////////////////////////////////////
 
 
     public void OpenConfirmDialog_Settings()

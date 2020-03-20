@@ -22,7 +22,23 @@ public class TM_CycleData : MonoBehaviour
     public TM_Cycle_SO burning_Cycle;
     public TM_Cycle_SO death_Cycle;
 
+    public List<TM_Cycle_SO> allCycles_List;
 
-    ////////////////////////////////
+    ///////////////////////////////////////////////////////
+
+
+
+
+
+    public void BuildDatabase()
+    {
+        allCycles_List.Add(growth_Cycle);
+        allCycles_List.Add(burning_Cycle);
+        allCycles_List.Add(death_Cycle);
+       
+    }
+
+    ///////////////////////////////////////////////////////
+
 }
 

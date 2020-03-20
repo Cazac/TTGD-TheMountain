@@ -142,7 +142,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             else
             {
                 //Remove Health due to lack of hunger
-                ChangeHealth_Current(-1);
+                ChangeHealth_Current(-1, "Hunger");
 
                 //Wait
                 yield return new WaitForSeconds(secondsPer_HungerDrain);
@@ -164,8 +164,8 @@ public class TM_PlayerController_Stats : MonoBehaviour
             }
             else
             {
-                //Remove Health due to lack of hunger
-                PlayerDeath();
+                //Death
+                TM_PlayerMenuController_Death.Instance.StartDeathAnimation("Fire");
 
                 //Wait
                 yield return new WaitForSeconds(secondsPer_FireDrain);
@@ -185,7 +185,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void ChangeHealth_Current(int changeValue)
+    public void ChangeHealth_Current(int changeValue, string damageType)
     {
         //Change Value
         player_CurrentHealth += changeValue;
@@ -204,7 +204,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             player_CurrentHealth = 0;
 
             //Death
-            PlayerDeath();
+            TM_PlayerMenuController_Death.Instance.StartDeathAnimation(damageType);
         }
 
         //Update UI
@@ -281,7 +281,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
             player_CurrentFire = 0;
 
             //Death
-            PlayerDeath();
+            TM_PlayerMenuController_Death.Instance.StartDeathAnimation("Fire");
         }
 
         //Update UI
@@ -298,13 +298,6 @@ public class TM_PlayerController_Stats : MonoBehaviour
     {
 
 
-    }
-
-    ///////////////////////////////////////////////////////
-
-    public void PlayerDeath()
-    {
-       // print("Test Code: You Ded");
     }
 
     ///////////////////////////////////////////////////////
