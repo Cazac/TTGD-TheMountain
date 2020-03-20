@@ -154,7 +154,10 @@ public class TM_CyclesController : MonoBehaviour
         print("Test Code: SETUP HERE");
 
         //Starts the next cycle timer
-        StartCoroutine(CycleClock()); 
+        StartCoroutine(CycleClock());
+
+
+
     }
 
 
