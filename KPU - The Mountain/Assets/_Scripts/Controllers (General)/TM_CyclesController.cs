@@ -78,12 +78,14 @@ public class TM_CyclesController : MonoBehaviour
 
             //Sets the initial panel and its cycle type
             CyclePanelList.Add(panel, cycle); 
-
-            Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
         }
 
         //Start Current Cycle Effect
-        currentCycleEffect_Enum = StartCoroutine(CycleEffect_Death());
+
+        print("Test Code: SETUP HERE");
+        //SetCycle();
+        print("Test Code: SETUP HERE");
+
 
         //Starts the first cycle
         StartCoroutine(CycleClock());
@@ -125,6 +127,7 @@ public class TM_CyclesController : MonoBehaviour
         //Stop Current Cycle Effect
         if (currentCycleEffect_Enum != null)
         {
+            //Stop Old Cycle
             StopCoroutine(currentCycleEffect_Enum);
         }
 
@@ -141,13 +144,14 @@ public class TM_CyclesController : MonoBehaviour
         //Sets new color for panel corresponding to the cycle type/name
         cycleGO.GetComponent<Image>().color = cycle.cycleColor;
 
-        Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
+        //Debug.Log(string.Concat("Cycle Name: ", cycle.cycleName, " Cycle Color: ", cycle.cycleColor.ToString()));
 
         //Moves panel to the end of the line   
         cycleGO.transform.SetAsLastSibling();
 
-        //Start Current Cycle Effect
-        currentCycleEffect_Enum = StartCoroutine(CycleEffect_Death());
+        print("Test Code: SETUP HERE");
+        //SetCycle();
+        print("Test Code: SETUP HERE");
 
         //Starts the next cycle timer
         StartCoroutine(CycleClock()); 
@@ -156,6 +160,50 @@ public class TM_CyclesController : MonoBehaviour
 
 
     ///////////////////////////////////////////////////////
+
+    private void SetCycle(TM_Cycle_SO cycleSO)
+    {
+        switch (cycleSO.cycleName)
+        {
+            case "Basic":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Basic());
+                break;
+
+            case "Death":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Death());
+                break;
+
+            case "Life":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Life());
+                break;
+
+            case "Darkness":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Burning());
+                break;
+
+            case "Growth":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Darkness());
+                break;
+
+            case "Burning":
+                currentCycleEffect_Enum = StartCoroutine(CycleEffect_Growth());
+                break;
+        }
+    }
+
+    private IEnumerator CycleEffect_Basic()
+    {
+        int damgepePerCycleTick = -1;
+
+        while (true)
+        {
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield break;
+    }
 
     private IEnumerator CycleEffect_Death()
     {
@@ -188,19 +236,54 @@ public class TM_CyclesController : MonoBehaviour
     {
         int damgepePerCycleTick = -1;
 
-
         while (true)
         {
-
-
-
             TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
 
             yield return new WaitForSeconds(1f);
         }
 
+        yield break;
+    }
 
+    private IEnumerator CycleEffect_Burning()
+    {
+        int damgepePerCycleTick = -1;
 
+        while (true)
+        {
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield break;
+    }
+
+    private IEnumerator CycleEffect_Darkness()
+    {
+        int damgepePerCycleTick = -1;
+
+        while (true)
+        {
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield break;
+    }
+
+    private IEnumerator CycleEffect_Growth()
+    {
+        int damgepePerCycleTick = -1;
+
+        while (true)
+        {
+            TM_PlayerController_Stats.Instance.ChangeHealth_Current(damgepePerCycleTick, "DeathCycle");
+
+            yield return new WaitForSeconds(1f);
+        }
 
         yield break;
     }

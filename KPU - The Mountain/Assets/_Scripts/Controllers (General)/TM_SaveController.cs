@@ -125,7 +125,7 @@ public class TM_SaveController : MonoBehaviour
 
     public void PlayerData_SaveGameData()
     {
-        print("Test Code: Saving...");
+        print("Test Code: Saving Game Data...");
 
 
         //Convert To Savable Data
@@ -135,13 +135,13 @@ public class TM_SaveController : MonoBehaviour
         PlayerData_SaveFile(TM_DatabaseController.Instance.player_SaveData, currentSaveSlotID);
 
 
-        print("Test Code: ...Saving Done!");
+        print("Test Code: ...Saving Game Data Done!");
     }
 
 
     public void PlayerData_LoadGameData()
     {
-        print("Test Code: Loading...");
+        print("Test Code: Loading Game Data...");
 
         //Load Player Data To Database
         TM_DatabaseController.Instance.player_SaveData = PlayerData_GetCurrentSaveFile();
@@ -149,7 +149,7 @@ public class TM_SaveController : MonoBehaviour
         //Load Data Into Game
         TM_DatabaseController.Instance.player_SaveData.ConvertSaveData_ToGameData();
 
-        print("Test Code: ...Loading Done!");
+        print("Test Code: ...Loading Game Data Done!");
     }
 
     /////////////////////////////////////////////////////////////////

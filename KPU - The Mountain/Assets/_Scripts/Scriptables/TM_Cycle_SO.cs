@@ -5,20 +5,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Cycle", menuName = "Scriptables/New Cycle")]
 public class TM_Cycle_SO : ScriptableObject
 {
+    ////////////////////////////////
 
-
-
-
+    [Header("Cycle Info")]
     public string cycleName;
     public Sprite cycleIcon;
 
-    public float hungerRate;
-    public float healthRate;
-    public float fireRate;
+    ////////////////////////////////
 
 
-    public string effectType;
 
-    
 
+
+    ///////////////////////////////////////////////////////
 }

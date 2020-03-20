@@ -163,20 +163,30 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_GameNew()
     {
-        print("Test Code: New Game");
+        print("Test Code: New Game...");
+
+
+
+        //Do Eextra Stuff, Rmove this stuff~
+
+
+        //Reload Data For the Systems Room Debug Play
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
 
         //Assume the data is present already
         TM_SaveController.Instance.PlayerData_LoadGameData();
-
     }
 
     private void Setup_GameLoad()
     {
-        print("Test Code: Loaded Game");
+        print("Test Code: Loaded Game...");
 
 
+        //Reload Data For the Systems Room Debug Play
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
+
+        //Assume the data is present already
         TM_SaveController.Instance.PlayerData_LoadGameData();
-
     }
 
     /////////////////////////////////////////////////////////////////

@@ -35,13 +35,7 @@ public class TM_Cycle
     //Panel's Current Cycle Name
     public string cycleName;
 
-    ///////////////////////////////////////////////////////
-
-    public TM_Cycle(TM_Cycle_SO scriptableItem)
-    {
-        //CONTRUCTOR GOES HERE
-
-    }
+    public TM_Cycle_SO cycleSO;
 
     ///////////////////////////////////////////////////////
 
