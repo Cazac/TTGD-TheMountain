@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cycle - Life
   m_EditorClassIdentifier: 
   cycleName: Life
-  cycleIcon: {fileID: 0}
+  cycleIcon: {fileID: 21300000, guid: 04afbefb32a460e40a842f153b9e617f, type: 3}

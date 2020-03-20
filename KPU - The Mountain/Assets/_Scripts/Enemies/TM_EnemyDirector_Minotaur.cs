@@ -28,6 +28,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     [Header("Hitbox")]
     public GameObject enemyHitboxContainter;
 
+    [Header("Loots!")]
+    public TM_MonsterLootTable_SO monsterLootTable;
+
     ////////////////////////////////
 
     [Header("Travel Points")]
@@ -368,6 +371,43 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     ///////////////////////////////////////////////////////
 
 
+    public void SpawnLoot()
+    {
+
+        List<TM_Item_SO> itemSO_List = monsterLootTable.GetLootDrops();
+
+
+        int raduisChange = 360 / itemSO_List.Count;
+    
+
+        //Loop Foreach Drop Count
+        for (int i = 0; i < itemSO_List.Count; i++)
+        {
+            //Get Angle
+            float currentAngle = raduisChange * i;
+
+            //Get ItemSO
+            TM_Item_SO itemSO = itemSO_List[i];
+
+
+            //Create a position infront of the player
+            Vector3 spawnPosition = gameObject.transform.position;
+            spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
+
+
+
+
+
+
+            spawnPosition.y += 1;
+
+            //Spawn Item as Dropped
+            GameObject newObject = Instantiate(itemSO.dropped_Prefab, spawnPosition, Quaternion.identity);
+
+            //Set Stacksize and Durablity 
+            newObject.GetComponent<TM_ItemDropped>().currentStackSize = 1;
+        }
+    }
 
     public void SpawnAttackHitbox(GameObject hitboxPrefab)
     {

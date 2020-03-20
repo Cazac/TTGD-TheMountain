@@ -70,7 +70,7 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
         {
             case "Fire":
                 death_Cause_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name +
-                    "has died Fire";
+                    " has failed to protect the fire, it has extiguished and with it your soul.";
                 break;
 
             case "Hunger":
@@ -90,7 +90,7 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
 
             case "DeathCycle":
                 death_Cause_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name +
-                    " fell outside of the map, OOOPS!";
+                    " The Mountain has claimed your soul, the enviroment was too tough to endure.";
                 break;
 
                     

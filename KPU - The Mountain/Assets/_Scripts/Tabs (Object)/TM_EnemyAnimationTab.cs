@@ -49,6 +49,9 @@ public class TM_EnemyAnimationTab : MonoBehaviour
         //Speed
         var main = particule.GetComponent<ParticleSystem>().main;
         main.simulationSpeed = 10f;
+
+        enemyDirector.SpawnLoot();
+
     }
 
 }

@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Monster LootTable
   m_EditorClassIdentifier: 
   commonChance: 100
-  commonRolls: 3
+  commonRolls: 2
   commonItems:
   - {fileID: 11400000, guid: 0dc7260eacc9b554aa774cd3594925f9, type: 2}
   - {fileID: 11400000, guid: 30306b217b9d7e948808d48c82e9e27a, type: 2}
-  uncommonChance: 50
-  uncommonRolls: 1
+  uncommonChance: 0
+  uncommonRolls: 0
   uncommonItems: []
-  rareChance: 10
+  rareChance: 0
   rareRolls: 0
   rareItems: []
