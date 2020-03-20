@@ -10,7 +10,7 @@ using UnityEngine;
 /// </summary>
 ///////////////
 
-[CreateAssetMenu(fileName = "Chest LootTable", menuName = "Scriptable Objects/Chest LootTable")]
+[CreateAssetMenu(fileName = "LootTable Chest", menuName = "Scriptables/LootTable Chest")]
 public class TM_ChestTable_SO : ScriptableObject
 {
 
