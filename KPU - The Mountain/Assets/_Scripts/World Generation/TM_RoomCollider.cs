@@ -18,8 +18,9 @@ public class TM_RoomCollider : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collider)
     {
+        print("Test Code: COLLISION");
         hasCollided = true;
     }
 

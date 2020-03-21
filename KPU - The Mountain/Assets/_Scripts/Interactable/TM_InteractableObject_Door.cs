@@ -36,7 +36,7 @@ public class TM_InteractableObject_Door : MonoBehaviour, TM_InteractableObject_B
 
     public void OnInteractTap()
     {
-        gameObject.GetComponent<TM_DoorTab>().ActivateDoor();
+        gameObject.GetComponent<TM_DoorAnimationTab>().ActivateDoor();
     }
 
     ///////////////////////////////////////////////////////
