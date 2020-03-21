@@ -145,8 +145,6 @@ public class TM_NewDungeonGenerator : MonoBehaviour
             //Loop All Colliders of the spawned room
             foreach (TM_RoomCollider generationCollider in spawnedRoom_Room.generationColliderContainer.generationColliders_List)
             {
-                //print("Test Code: Checking Collider " + generationCollider.gameObject.name);
-
                 //Check For Collision with Other Colliders
                 if (generationCollider.hasCollided)
                 {
@@ -159,8 +157,6 @@ public class TM_NewDungeonGenerator : MonoBehaviour
             //Check For Collision
             if (hasHitAnyCollider)
             {
-                print("Test Code: Collision Found");
-
                 //Debug Visuals Of Generation
                 yield return new WaitForSeconds(generatorWaitSpeed);
 
@@ -172,11 +168,11 @@ public class TM_NewDungeonGenerator : MonoBehaviour
 
                 //Remove Door And Connection Nodes
                 avalibleDoor_Doorway.doorFrame_Small.gameObject.SetActive(false);
-
+                avalibleDoor_Doorway.doorExit_Small.gameObject.SetActive(false);
 
 
                 //Destory Later, Try Again ???
-      
+
 
 
                 //Door Did Not Spawn, Remove it
@@ -184,22 +180,23 @@ public class TM_NewDungeonGenerator : MonoBehaviour
             }
             else
             {
-                //print("Test Code: No Collision");
-
                 //Add New Doors To Avalible Doors Pool
                 AddDoorsFromRoom(spawnedRoom_Room);
 
                 //Set Doors
                 avalibleDoor_Doorway.doorFrame_Small.gameObject.SetActive(true);
+                avalibleDoor_Doorway.doorExit_Small.gameObject.SetActive(false);
+
+                //Set Doors
                 spawnedDoor_Doorway.doorFrame_Small.gameObject.SetActive(false);
+                spawnedDoor_Doorway.doorExit_Small.gameObject.SetActive(true);
 
                 //Remove Walls
                 avalibleDoor_Doorway.doorFrame_Wall.SetActive(false);
                 spawnedDoor_Doorway.doorFrame_Wall.SetActive(false);
 
-                //Remove Connection Nodes On Doors
+                //Remove Connection Nodes On Door
                 avalibleDoor_Doorway.doorFrame_Small.doorConnectionSpot.SetActive(false);
-                spawnedDoor_Doorway.doorFrame_Small.doorConnectionSpot.SetActive(false);
 
                 //Remove Doors From Spawn Pool
                 avalibleDoorways_List.Remove(avalibleDoor_Doorway);
