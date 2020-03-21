@@ -8563,12 +8563,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Biome: 
-  doorContainer: {fileID: 0}
-  lightContainer: {fileID: 0}
-  resourceContainer: {fileID: 0}
-  itemSpawnContainer: {fileID: 0}
-  enemySpawnContainer: {fileID: 0}
-  generationColliderContainer: {fileID: 0}
+  doorContainer: {fileID: 1377768846406079623}
+  lightContainer: {fileID: 1377768846543495366}
+  resourceContainer: {fileID: 1377768846123860006}
+  itemSpawnContainer: {fileID: 1377768846290485688}
+  enemySpawnContainer: {fileID: 1377768846107484455}
+  generationColliderContainer: {fileID: 1377768846767066278}
 --- !u!1 &1377768845993330265
 GameObject:
   m_ObjectHideFlags: 0
@@ -8946,6 +8946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0d7a45dc3838f419c2f0028e39de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnContainer_GO: {fileID: 1377768847102610857}
   enemySpawnTabs_List: []
 --- !u!1 &1377768846123860004
 GameObject:
@@ -9688,6 +9689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb5232e1210c284cb705fe613083c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSpawnContainer_GO: {fileID: 1377768845058702521}
   itemSpawnTabs_List: []
 --- !u!1 &1377768846291533327
 GameObject:
