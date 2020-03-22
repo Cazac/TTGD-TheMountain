@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 4708113237542604746}
   - component: {fileID: 415555700354421879}
   - component: {fileID: 8910897327465407991}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ Transform:
   m_GameObject: {fileID: 555238730797787118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -424.2, y: 50, z: 812.1}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 10, z: 5}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 7
@@ -1867,7 +1867,7 @@ GameObject:
   - component: {fileID: 3425764061487859097}
   - component: {fileID: 5803400796263520873}
   - component: {fileID: 7877788570154966110}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1883,7 +1883,7 @@ Transform:
   m_GameObject: {fileID: 1767133814522493079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -395.7, y: 50, z: 841.2}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 10, z: 5}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 8
@@ -2664,7 +2664,7 @@ GameObject:
   - component: {fileID: 8400792334015552789}
   - component: {fileID: 5258552270414986034}
   - component: {fileID: 6538144237360732634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2680,7 +2680,7 @@ Transform:
   m_GameObject: {fileID: 2232818905271009787}
   m_LocalRotation: {x: -0, y: 0.92387944, z: -0, w: 0.38268384}
   m_LocalPosition: {x: -381.28494, y: 50, z: 798.50507}
-  m_LocalScale: {x: 30, y: 1, z: 10}
+  m_LocalScale: {x: 30, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 4
@@ -18072,7 +18072,7 @@ GameObject:
   - component: {fileID: 6125428255498814348}
   - component: {fileID: 7910197768363987232}
   - component: {fileID: 1969503842052562238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18088,7 +18088,7 @@ Transform:
   m_GameObject: {fileID: 3327404946955823449}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -410.28, y: 50, z: 798.49}
-  m_LocalScale: {x: 30, y: 1, z: 10}
+  m_LocalScale: {x: 30, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 1
@@ -19432,7 +19432,7 @@ GameObject:
   - component: {fileID: 1545668345653513411}
   - component: {fileID: 2967868352519719986}
   - component: {fileID: 4422856311195907611}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19448,7 +19448,7 @@ Transform:
   m_GameObject: {fileID: 5310374220940941924}
   m_LocalRotation: {x: -0, y: 0.92387944, z: -0, w: 0.38268384}
   m_LocalPosition: {x: -410.29504, y: 50, z: 827.485}
-  m_LocalScale: {x: 30, y: 1, z: 10}
+  m_LocalScale: {x: 30, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 3
@@ -19645,7 +19645,7 @@ GameObject:
   - component: {fileID: 4049223551519986334}
   - component: {fileID: 724364726790653029}
   - component: {fileID: 9211975823919391102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19661,7 +19661,7 @@ Transform:
   m_GameObject: {fileID: 5459222541951751463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -395.7, y: 50, z: 783.1}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 10, z: 5}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 5
@@ -19949,7 +19949,7 @@ GameObject:
   - component: {fileID: 3784722982973774129}
   - component: {fileID: 6872594306981055174}
   - component: {fileID: 3486279806585866817}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19965,7 +19965,7 @@ Transform:
   m_GameObject: {fileID: 5878715653024250597}
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
   m_LocalPosition: {x: -381.3, y: 50, z: 827.5}
-  m_LocalScale: {x: 30, y: 1, z: 10}
+  m_LocalScale: {x: 30, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 2
@@ -64595,7 +64595,7 @@ GameObject:
   - component: {fileID: 5295264675023886707}
   - component: {fileID: 5557805083805804766}
   - component: {fileID: 1012999767529265724}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Room Collider Cube '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64611,7 +64611,7 @@ Transform:
   m_GameObject: {fileID: 8968382684699922878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -366, y: 50, z: 811.6}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 10, z: 5}
   m_Children: []
   m_Father: {fileID: 8847345384522158628}
   m_RootOrder: 6

@@ -163,7 +163,7 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_GameNew()
     {
-        print("Test Code: New Game...");
+        //print("Test Code: New Game...");
 
 
 
