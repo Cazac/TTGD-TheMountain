@@ -38,6 +38,12 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     public GameObject Storage_Panel;
     public GameObject Workshop_Panel;
 
+    [Header("Home Base Repair Menus")]
+    public GameObject BreweryRepair_Panel;
+    public GameObject CanteenRepair_Panel;
+    public GameObject ForgeRepair_Panel;
+    public GameObject StorageRepair_Panel;
+
     [Header("Pause Menu")]
     public GameObject PauseMenu_Panel;
     public Image PauseMenu_PlayerClass_Image;

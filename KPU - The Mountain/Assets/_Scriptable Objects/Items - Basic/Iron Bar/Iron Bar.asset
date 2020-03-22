@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Iron Bar
   itemDesc: 
-  itemIcon: {fileID: 21300000, guid: e1a1cf930460ccd42a984b89afc78140, type: 3}
+  itemIcon: {fileID: 21300000, guid: 2890c99350005c6409d4a0b02c14a20c, type: 3}
   maxDurablity: 0
   maxStackSize: 10
   isBurnable: 0

@@ -32,7 +32,7 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
         Instance = this;
     }
 
-    /////////////////////////////////////////////////////// - Fire UI
+    /////////////////////////////////////////////////////// - Forge UI
 
     public void ForgeMenu_OpenUI()
     {
@@ -64,6 +64,48 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
         TM_ItemUI[] itemArray = Player_GetItemsToArray();
         TM_PlayerMenuController_Inventory.Instance.Inventory_SetItemsFromArray(itemArray);
     }
+
+    ///////////////////////////////////////////////////////
+    
+    public void ForgeRepairMenu_OpenUI()
+    {
+        //Turn On Panel
+        TM_PlayerMenuController_UI.Instance.ForgeRepair_Panel.SetActive(true);
+
+        //Change Game State
+        TM_PlayerMenuController_UI.Instance.gameState_IsMenu = true;
+
+        //Enable Mouse
+        TM_PlayerMenuController_UI.Instance.UnlockMouse();
+
+        //Setup
+        //LoadInventory_Player();
+    }
+
+    public void ForgeRepairMenu_CloseUI()
+    {
+        //Tunr Off Panel
+        TM_PlayerMenuController_UI.Instance.ForgeRepair_Panel.SetActive(false);
+
+        //Change Game State
+        TM_PlayerMenuController_UI.Instance.gameState_IsMenu = false;
+
+        //Disable Mouse
+        TM_PlayerMenuController_UI.Instance.LockMouse();
+
+        //Save To Inventory
+        //TM_ItemUI[] itemArray = Player_GetItemsToArray();
+        //TM_PlayerMenuController_Inventory.Instance.Inventory_SetItemsFromArray(itemArray);
+    }
+
+
+
+
+
+
+
+
+
 
     ///////////////////////////////////////////////////////
 
