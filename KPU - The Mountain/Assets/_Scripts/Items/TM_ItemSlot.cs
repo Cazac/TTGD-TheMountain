@@ -457,9 +457,12 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void TryAction_QuickmoveStack()
     {
+        print("Test Code: " + isInventorySlot);
+
         //Slot Type
         if (isInventorySlot)
         {
+            //Attempt a Quickstack if failed no Action
             if (!Action_Toolbar_QuickStack())
             {
                 Action_NoAction();
@@ -467,12 +470,38 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (isToolbarSlot)
         {
-            if (!Action_Inventory_QuickStack()) 
+            if (TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf)
             {
-                Action_NoAction();
+                //Attempt a Quickstack if failed no Action
+                if (!Action_Inventory_QuickStack(TM_HomeMenuController_Forge.Instance.forge_PlayerItemSlots_Array))
+                {
+                    Action_NoAction();
+                }
             }
-
-
+            else  if (TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Dispenser_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Storage_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf)
+            {
+                return;
+            }
+            else
+            {
+                //Attempt a Quickstack if failed no Action
+                if (!Action_Inventory_QuickStack(TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array))
+                {
+                    Action_NoAction();
+                }
+            }
         }
     }
 
@@ -746,7 +775,8 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         TM_CursorController.Instance.Cursor_UpdateItem();
     }
 
-    public bool Action_Inventory_QuickStack()
+    //Overload witha  simple transofmation for input, could be reduced later??
+    public bool Action_Inventory_QuickStack(GameObject[] currentInventory_List)
     {
         //List of Possible Merges
         List<TM_ItemSlot> possibleEmptySpots_List = new List<TM_ItemSlot>();
@@ -755,10 +785,116 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ///////////////////////////////////////////////////////
 
         //Find Empty Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array)
+        foreach (GameObject itemSlot in currentInventory_List)
         {
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
+
+            //Search Empty Spots
+            if (slot.currentItem == null)
+            {
+                //Add to Empty Spots
+                possibleEmptySpots_List.Add(slot);
+            }
+            else
+            {
+                //Check For Matching Names
+                if (slot.currentItem.itemName == currentItem.itemName)
+                {
+                    //Check For Non-Max Values
+                    if (slot.currentItem.currentStackSize < slot.currentItem.maxStackSize)
+                    {
+                        //Add to Mergable Spots
+                        possibleMerges_List.Add(slot);
+                    }
+                }
+            }
+        }
+
+        ///////////////////////////////////////////////////////
+
+        for (int i = 0; i < possibleMerges_List.Count; i++)
+        {
+            //Calculate Max Item Recivable / Passable
+            int maxAllowedItems_TOL = possibleMerges_List[i].currentItem.maxStackSize - possibleMerges_List[i].currentItem.currentStackSize;
+            int maxPassableItems_INV = currentItem.currentStackSize;
+
+            //Check for extra values
+            if (maxPassableItems_INV >= maxAllowedItems_TOL)
+            {
+                //Give Some Values
+                possibleMerges_List[i].currentItem.currentStackSize += maxAllowedItems_TOL;
+
+                //Remove Some Values
+                currentItem.currentStackSize -= maxAllowedItems_TOL;
+
+                //Set Items Again To Refresh Stats
+                ItemSlot_SetItem(currentItem);
+                possibleMerges_List[i].ItemSlot_SetItem(possibleMerges_List[i].currentItem);
+
+                //If SetItem Removed the currentItem, break out
+                if (currentItem == null)
+                {
+                    //Return True the transfer was successful
+                    return true;
+                }
+            }
+            else
+            {
+                //Deposit All Values
+                possibleMerges_List[i].currentItem.currentStackSize += currentItem.currentStackSize;
+
+                //Clear the INV Item
+                ItemSlot_RemoveItem();
+
+                //Set Items Again To Refresh Stats (INV was already removed)
+                possibleMerges_List[i].ItemSlot_SetItem(possibleMerges_List[i].currentItem);
+
+                //Return True the transfer was successful
+                return true;
+            }
+        }
+
+        ///////////////////////////////////////////////////////
+
+        if (possibleEmptySpots_List.Count > 0)
+        {
+            //???
+            if (currentItem != null)
+            {
+                //Move Stack
+                possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
+
+                print("Test Code: FOunds");
+
+                //Remove Stack
+                ItemSlot_RemoveItem();
+            }
+
+            //Return True the transfer was successful
+            return true;
+        }
+
+        ///////////////////////////////////////////////////////
+
+        //Nothing Avalible Return False
+        return false;
+    }
+
+    //Overload witha  simple transofmation for input, could be reduced later??
+    public bool Action_Inventory_QuickStack(TM_ItemSlot[] currentInventory_List)
+    {
+        //List of Possible Merges
+        List<TM_ItemSlot> possibleEmptySpots_List = new List<TM_ItemSlot>();
+        List<TM_ItemSlot> possibleMerges_List = new List<TM_ItemSlot>();
+
+        ///////////////////////////////////////////////////////
+
+        //Find Empty Slots in Toolbar
+        foreach (TM_ItemSlot slot in currentInventory_List)
+        {
+            //Get Slot
+            //TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
 
             //Search Empty Spots
             if (slot.currentItem == null)

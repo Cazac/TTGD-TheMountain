@@ -95,8 +95,10 @@ public class TM_CursorController : MonoBehaviour
 
     public void TryAction_AddItemToInventory(GameObject interactedItem)
     {
+        TM_ItemSlot itemSlot = gameObject.GetComponent<TM_ItemSlot>();
+
         //Looking For Possible Merges In Toolbar
-        if (gameObject.GetComponent<TM_ItemSlot>().Action_Toolbar_QuickStack())
+        if (itemSlot.Action_Toolbar_QuickStack())
         {
             //All Good, Destory Me!
             Destroy(interactedItem);
@@ -104,7 +106,7 @@ public class TM_CursorController : MonoBehaviour
         else
         {
             //Looking For Possible Merges In Inventory
-            if (gameObject.GetComponent<TM_ItemSlot>().Action_Inventory_QuickStack())
+            if (itemSlot.Action_Inventory_QuickStack(TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array))
             {
                 //All Good, Destory Me!
                 Destroy(interactedItem);
@@ -112,7 +114,7 @@ public class TM_CursorController : MonoBehaviour
             else
             {
                 //Nothing Worked Leave Item Alone
-                gameObject.GetComponent<TM_ItemSlot>().Action_NoAction();
+                itemSlot.Action_NoAction();
 
                 print("Test Code: Error?");
             }

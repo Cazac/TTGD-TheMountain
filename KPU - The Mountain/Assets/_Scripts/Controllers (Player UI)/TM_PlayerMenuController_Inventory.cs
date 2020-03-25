@@ -120,7 +120,6 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
     public void Inventory_FindAndRemoveItem(string itemName)
     {
-
         //Find Slots in Toolbar
         foreach (GameObject itemSlot in toolbarItemSlots_Array)
         {
@@ -132,7 +131,6 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
             {
                 if (slot.ItemSlot_GetItem().itemName == itemName)
                 {
-
                     slot.ItemSlot_GetItem().currentStackSize--;
                     slot.ItemSlot_UpdateItem();
                     return;

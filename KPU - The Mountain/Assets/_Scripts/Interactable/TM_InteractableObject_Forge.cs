@@ -22,6 +22,11 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
 
     public TOOL_Outline outlineTool;
 
+    public bool isFixed;
+
+    public GameObject forge_Broken;
+    public GameObject forge_Fixed;
+
     ///////////////////////////////////////////////////////
 
     public void OnStartHover()
@@ -44,42 +49,20 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
 
     public void OnInteractTap()
     {
-        //Check If Forge Is Unlocked
-        if (TM_PlayerController_Stats.Instance.player_HasUnlocked_Forge)
+        //Check If Panel is Already Active
+        if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == true)
         {
-            //Check If Panel is Already Active
-            if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == true)
-            {
-                //Close UI
-                TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
-            }
-            else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == false)
-            {
-                return;
-            }
-            else
-            {
-                //Open UI
-                TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI();
-            }
+            //Close UI
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
+        }
+        else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf == false)
+        {
+            return;
         }
         else
         {
-            //Check If Panel is Already Active
-            if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.ForgeRepair_Panel.activeSelf == true)
-            {
-                //Close UI
-                TM_HomeMenuController_Forge.Instance.ForgeRepairMenu_CloseUI();
-            }
-            else if (TM_PlayerMenuController_UI.Instance.gameState_IsMenu && TM_PlayerMenuController_UI.Instance.ForgeRepair_Panel.activeSelf == false)
-            {
-                return;
-            }
-            else
-            {
-                //Open UI
-                TM_HomeMenuController_Forge.Instance.ForgeRepairMenu_OpenUI();
-            }
+            //Open UI
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI(this);
         }
     }
 
@@ -95,6 +78,26 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
     {
         //Does Not Support Hold Interaction
         return;
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void BreakStructureForge()
+    {
+        isFixed = false;
+
+        //Turn On Visable GO
+        forge_Fixed.SetActive(false);
+        forge_Broken.SetActive(true);
+    }
+
+    public void RepairStructureForge()
+    {
+        isFixed = true;
+
+        //Turn On Visable GO
+        forge_Fixed.SetActive(true);
+        forge_Broken.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////

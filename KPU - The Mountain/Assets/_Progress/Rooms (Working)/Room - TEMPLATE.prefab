@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803087008348664571}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -57,12 +57,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Biome: 
-  doorContainer: {fileID: 0}
-  lightContainer: {fileID: 0}
-  resourceContainer: {fileID: 0}
-  itemSpawnContainer: {fileID: 0}
-  enemySpawnContainer: {fileID: 0}
-  generationColliderContainer: {fileID: 0}
+  doorContainer: {fileID: 8928574020619791591}
+  lightContainer: {fileID: 8928574022025291629}
+  resourceContainer: {fileID: 8928574021373325244}
+  itemSpawnContainer: {fileID: 8928574021463511658}
+  enemySpawnContainer: {fileID: 8928574021662243334}
+  generationColliderContainer: {fileID: 8928574021056178859}
 --- !u!1 &2403239365627279123
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb5232e1210c284cb705fe613083c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSpawnContainer_GO: {fileID: 0}
   itemSpawnTabs_List: []
 --- !u!1 &8928574021567583512
 GameObject:
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f0d7a45dc3838f419c2f0028e39de26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySpawnContainer_GO: {fileID: 0}
   enemySpawnTabs_List: []
 --- !u!1 &8928574021907154172
 GameObject:

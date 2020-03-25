@@ -225,27 +225,25 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
                             removalItem_Basic = item;
                             removalItem_Listed = itemsBurnable_List[i];
 
-
-
-
-                   
-
-
-
-
-
-
-                            mergingItem = item;
+                            mergingItem = new TM_ItemUI(item.original_SO);
+                            mergingItem.currentStackSize = item.currentStackSize;
                             mergingItem.currentStackSize += itemsBurnable_List[i].currentStackSize;
+
+                            //itemsBurnableFiltered_List.Add(mergingItem);
+
+                
 
                             //Skip Loops, A Match Was Found
                             goto BreakLoops;
                         }
                     }
                 }
+
+                //Clear For next round
+                mergingItem = null;
             }
 
-            //Made the Full Loop, Break Out
+            //Made the Full Loop, without using the goto, Break Out of loop
             canPass = true;
 
             //Goto Pointer
