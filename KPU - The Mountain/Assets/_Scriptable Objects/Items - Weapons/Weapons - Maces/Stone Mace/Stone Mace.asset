@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Stone Mace
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 628756705682366211, guid: 6cd248f56d4212340a3db7da337227f2,
+    type: 3}
+  placed_Prefab: {fileID: 6547521869239716661, guid: 749333e71c880184cbeb1fb36a250463,
+    type: 3}
+  held_Prefab: {fileID: 4982672476180934453, guid: 05941b61bae54fb4eb118ca1e5dc5188,
+    type: 3}
+  equipped_Prefab: {fileID: 4982672476180934453, guid: 05941b61bae54fb4eb118ca1e5dc5188,
+    type: 3}
   itemName: 
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: e1a1cf930460ccd42a984b89afc78140, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0

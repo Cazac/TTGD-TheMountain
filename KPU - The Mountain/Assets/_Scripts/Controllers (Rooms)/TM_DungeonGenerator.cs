@@ -31,10 +31,13 @@ public class TM_DungeonGenerator : MonoBehaviour
     [Header("List Of All Possible Rooms To Spawn Randomly")]
     public List<GameObject> spawnableRooms_List;
 
+    [Header("List Of Counts Of Spawned Rooms")]
+    List<int> spawnableRoomsCount_List;
+
     ////////////////////////////////
 
     [Header("Variables Controlling the Generator")]
-    private int maxRoomAmount = 100;
+    private int maxRoomAmount = 5;
     private int currentRoomAmount = 0;
     private float generatorWaitSpeed = 0.2f;
 
@@ -65,7 +68,6 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-
     public IEnumerator GenerateDungeon()
     {
         print("Test Code: Starting Dungeon Generator...");
@@ -75,6 +77,14 @@ public class TM_DungeonGenerator : MonoBehaviour
 
         //Reset the Doorway List
         avalibleDoorways_List = new List<TM_DoorwayTab>();
+        spawnableRoomsCount_List = new List<int>();
+
+        //Add Default Room Spawn Rates
+        for (int i = 0; i < spawnableRooms_List.Count; i++)
+        {
+            //Starting Value Of 1
+            spawnableRoomsCount_List.Add(1);
+        }
 
         //Add doors from the start room
         AddDoorsFromRoom(startingRoom_Room);
@@ -88,7 +98,8 @@ public class TM_DungeonGenerator : MonoBehaviour
             TM_DoorwayTab avalibleDoor_Doorway = GetRandomDoorway_Avalible();
 
             //Get Random Room
-            GameObject nextRoom_GO = GetRandomRoom();
+            int currentRoomNo = GetRandomRoom();  
+            GameObject nextRoom_GO = spawnableRooms_List[currentRoomNo];
 
             ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -158,7 +169,7 @@ public class TM_DungeonGenerator : MonoBehaviour
             if (hasHitAnyCollider)
             {
                 //Debug Visuals Of Generation
-                yield return new WaitForSeconds(generatorWaitSpeed);
+                //yield return new WaitForSeconds(generatorWaitSpeed);
 
                 //Set Inactive, Will Be Destroyed Later
                 spawnedRoom_GO.SetActive(false);
@@ -202,8 +213,12 @@ public class TM_DungeonGenerator : MonoBehaviour
                 avalibleDoorways_List.Remove(avalibleDoor_Doorway);
                 avalibleDoorways_List.Remove(spawnedDoor_Doorway);
 
+                //Succeded, Increase Room Type count for spawnrate
+                spawnableRoomsCount_List[currentRoomNo] += 1;
+
                 //Wait for the player to look at the current model (DEBUG)
-                yield return new WaitForSeconds(generatorWaitSpeed);
+                //yield return new WaitForSeconds(generatorWaitSpeed);
+
 
                 //Add a room to the counter
                 currentRoomAmount++;
@@ -305,6 +320,13 @@ public class TM_DungeonGenerator : MonoBehaviour
             Room_SetLootNodes(currentRoom_Room);
             Room_SetEnemyNodes(currentRoom_Room);
             Room_SetResourceNodes(currentRoom_Room);
+
+
+            if (currentRoom_Room.roomRangeActivator != null)
+            {
+                //Refreash Range Actiavation
+                currentRoom_Room.roomRangeActivator.RefreshFromRange();
+            }
         }
     }
 
@@ -339,10 +361,50 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public GameObject GetRandomRoom()
+    public int GetRandomRoom()
     {
-        GameObject room_GO = spawnableRooms_List[Random.Range(0, spawnableRooms_List.Count)];
-        return room_GO;
+
+        List<float> spawnableRoomsRate_List = new List<float>();
+       
+        float totalValue = 0;
+        float currentValue = 0;
+
+
+        foreach (int roomCount in spawnableRoomsCount_List)
+        {
+            float spawnRate = Mathf.Pow(0.8f, roomCount);
+            spawnableRoomsRate_List.Add(spawnRate);
+   
+        }
+
+        foreach (float roomSpawnValue in spawnableRoomsRate_List)
+        {
+            totalValue += roomSpawnValue;
+        }
+
+
+
+        float randomValue = Random.Range(0f, totalValue);
+
+
+
+        for (int i = 0; i < spawnableRooms_List.Count; i++)
+        {
+            currentValue += spawnableRoomsRate_List[i];
+
+            if (currentValue >= randomValue)
+            {
+                //Yay
+                return i;
+            }
+        }
+
+
+
+
+        print("Test Code: Error");
+
+        return 0;
     }
 
     public TM_DoorwayTab GetRandomDoorway_Avalible()

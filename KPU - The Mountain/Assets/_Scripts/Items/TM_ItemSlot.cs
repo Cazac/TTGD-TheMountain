@@ -865,7 +865,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Move Stack
                 possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
 
-                print("Test Code: FOunds");
+                print("Test Code: Found Free Slot");
 
                 //Remove Stack
                 ItemSlot_RemoveItem();

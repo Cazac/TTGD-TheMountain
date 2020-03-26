@@ -87,9 +87,19 @@ public class TM_PlayerController_Animation : MonoBehaviour
         playerAnimator.SetBool("IsHoldingToolbarItem", value);
     }
 
+    public void SetAnimationValue_IsHoldingWeapon(bool value)
+    {
+        playerAnimator.SetBool("IsHoldingToolbarWeapon", value);
+    }
+
     public void SetAnimationValue_IsConsumingItem(bool value)
     {
         playerAnimator.SetBool("IsConsumingToolbarItem", value);
+    }
+
+    public void SetAnimationValue_IsBlockingWeapon(bool value)
+    {
+        playerAnimator.SetBool("IsBlockingToolbarWeapon", value);
     }
 
     ///////////////////////////////////////////////////////
@@ -122,7 +132,18 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SpawnItemInHand_Combat(TM_Item_SO original_SO)
     {
-        throw new NotImplementedException();
+        //Remove Old Item
+        RemoveItemInHand_Right();
+
+
+        if (original_SO.held_Prefab != null)
+        {
+            Instantiate(original_SO.held_Prefab, playerRightHandSpawnPoint_GO.transform);
+        }
+        else
+        {
+            print("Test Code: Oops");
+        }
     }
 
     ///////////////////////////////////////////////////////

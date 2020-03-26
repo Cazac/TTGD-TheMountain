@@ -38,5 +38,8 @@ public class TM_RoomContainer : MonoBehaviour
     [Header("GenerationCollider Script")]
     public TM_GenerationColliderContainer generationColliderContainer;
 
+    [Header("Range Activator")]
+    public TM_RoomRangeActivator roomRangeActivator;
+
     ////////////////////////////////
 }

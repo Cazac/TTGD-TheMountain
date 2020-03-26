@@ -26,7 +26,10 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     ////////////////////////////////
 
     public int currentToolbarPosition;
+
+    [Header("Bools")]
     public bool isHoldingItem;
+    public bool isHoldingWeapon;
 
     ///////////////////////////////////////////////////////
 
@@ -115,6 +118,11 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
                 //Drop Item
                 toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_DropItemSingle();
             }
+            else if (isHoldingWeapon)
+            {
+                //Drop Item
+                toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_DropItemSingle();
+            }
         }
     }
 
@@ -183,21 +191,46 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
         //Check If Slot has an Item
         if (toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem() != null)
         {
-            //Set Animation Value
-            isHoldingItem = true;
-            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
+            //Check If Weapon
+            if (toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem().isWeapon)
+            {
+                //Set Animation Value
+                isHoldingItem = false;
+                isHoldingWeapon = true;
 
-            //Get Scriptable To Hold
-            TM_ItemUI item = toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+                TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
+                TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingWeapon(isHoldingWeapon);
 
-            //Spawn Item
-            TM_PlayerController_Animation.Instance.SpawnItemInHand_Hover(item.original_SO);
+                //Get Scriptable To Hold
+                TM_ItemUI item = toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+                //Spawn Item
+                TM_PlayerController_Animation.Instance.SpawnItemInHand_Combat(item.original_SO);
+            }
+            else
+            {
+                //Set Animation Value
+                isHoldingItem = true;
+                isHoldingWeapon = false;
+
+                TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
+                TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingWeapon(isHoldingWeapon);
+
+                //Get Scriptable To Hold
+                TM_ItemUI item = toolbarItemSlots_Array[currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+                //Spawn Item
+                TM_PlayerController_Animation.Instance.SpawnItemInHand_Hover(item.original_SO);
+            }
         }
         else
         {
             //Set Animation Value
             isHoldingItem = false;
+            isHoldingWeapon = false;
+
             TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingItem(isHoldingItem);
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsHoldingWeapon(isHoldingWeapon);
 
             //Remove Old Item
             TM_PlayerController_Animation.Instance.RemoveItemInHand_Right();
