@@ -37,7 +37,7 @@ public class TM_DungeonGenerator : MonoBehaviour
     ////////////////////////////////
 
     [Header("Variables Controlling the Generator")]
-    private int maxRoomAmount = 5;
+    private int maxRoomAmount = 50;
     private int currentRoomAmount = 0;
     private float generatorWaitSpeed = 0.2f;
 
