@@ -32,7 +32,7 @@ public class TM_CyclesController : MonoBehaviour
     public static readonly int NumOfPanels = 6;
 
     //Cycle time in seconds
-    private readonly float cycleDuration = 20f;
+    private readonly float cycleDuration = 60f;
 
     //Dictory Of Possible Cycles
     private Dictionary<GameObject, TM_Cycle> CyclePanelList;

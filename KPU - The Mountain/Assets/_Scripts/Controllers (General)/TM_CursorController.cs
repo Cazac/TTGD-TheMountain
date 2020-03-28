@@ -98,7 +98,7 @@ public class TM_CursorController : MonoBehaviour
         TM_ItemSlot itemSlot = gameObject.GetComponent<TM_ItemSlot>();
 
         //Looking For Possible Merges In Toolbar
-        if (itemSlot.Action_Toolbar_QuickStack())
+        if (itemSlot.Action_QuickStack(TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array))
         {
             //All Good, Destory Me!
             Destroy(interactedItem);
@@ -106,7 +106,7 @@ public class TM_CursorController : MonoBehaviour
         else
         {
             //Looking For Possible Merges In Inventory
-            if (itemSlot.Action_Inventory_QuickStack(TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array))
+            if (itemSlot.Action_QuickStack(TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array))
             {
                 //All Good, Destory Me!
                 Destroy(interactedItem);

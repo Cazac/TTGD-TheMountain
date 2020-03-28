@@ -71,6 +71,12 @@ public class TM_Item_SO : ScriptableObject
     public int weapon_BlockNegation;
     public float weapon_BlockParryTime;
 
+    public TM_Item_SO weaponUpgrade_Mat1;
+    public TM_Item_SO weaponUpgrade_Mat2;
+    public TM_Item_SO weaponUpgrade_Mat3;
+
+    public TM_Item_SO weaponUpgrade_UpgradedWeapon;
+
     ////////////////////////////////
 
     [Header("Armor Status")]

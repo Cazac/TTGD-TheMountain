@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class TM_IconData : MonoBehaviour
 {
-    [Header("Debug Sprites")]
+    ////////////////////////////////
+
+    [Header("Class Sprites")]
     public Sprite classIcon_Brawler;
     public Sprite classIcon_Knight;
     public Sprite classIcon_Archer;
     public Sprite classIcon_Wizard;
     public Sprite classIcon_Tank;
 
+    ////////////////////////////////
+
+    [Header("Debug Sprites")]
+    public Sprite forgeIcon_Cross;
+    public Sprite forgeIcon_Question;
+    public Sprite forgeIcon_Weapon;
 
 
 
@@ -18,6 +26,7 @@ public class TM_IconData : MonoBehaviour
 
 
 
+    ///////////////////////////////////////////////////////
 
     public Sprite FindData_ClassIcon(string className)
     {
@@ -48,4 +57,5 @@ public class TM_IconData : MonoBehaviour
         }
     }
 
+    ///////////////////////////////////////////////////////
 }

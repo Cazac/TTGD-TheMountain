@@ -43,7 +43,24 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
     ////////////////////////////////
 
     public Button forgeRepair_Button;
-    
+
+    ////////////////////////////////
+
+
+    [Header("Info")]
+    public TextMeshProUGUI upgradeItemTitle_Text;
+    public TextMeshProUGUI upgradeItemDesc_Text;
+
+
+
+    [Header("Info")]
+    public TM_ItemSlot upgradeItemInput_Slot;
+    public TM_ItemSlot upgradeItemIngredient1_Slot;
+    public TM_ItemSlot upgradeItemIngredient2_Slot;
+    public TM_ItemSlot upgradeItemIngredient3_Slot;
+
+    public TM_ItemSlot upgradeItemOutput_Slot;
+
     ////////////////////////////////
 
     [Header("Forge")]
@@ -55,6 +72,20 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
     {
         //Set Static Singleton Self Refference
         Instance = this;
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Button_RepairForge()
+    {
+        //Build Forge
+        currentlyOpenForge.RepairStructureForge();
+
+        //Remove Items
+        ForgeMenuRepair_RemoveRepairItems();
+
+        //Close UI
+        ForgeMenu_CloseUI();
     }
 
     /////////////////////////////////////////////////////// - Forge UI
@@ -81,6 +112,7 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
             forgeRepair_Container.SetActive(false);
 
             //Setup
+            ForgeMenuFixed_Setup();
             PlayerFixed_LoadInventory();
         }
         else
@@ -241,16 +273,104 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void Button_RepairForge()
+    public void ForgeMenuFixed_Setup()
     {
-        //Build Forge
-        currentlyOpenForge.RepairStructureForge();
+        ForgeMenuFixed_UpdateInputItems(null);
+    }
 
-        //Remove Items
-        ForgeMenuRepair_RemoveRepairItems();
+    public void ForgeMenuFixed_UpdateInputItems(TM_Item_SO itemSO)
+    {
+        if (itemSO == null)
+        {
+            upgradeItemTitle_Text.text = "Select a Weapon";
+            upgradeItemDesc_Text.text = "";
 
-        //Close UI
-        ForgeMenu_CloseUI();
+            upgradeItemInput_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Weapon);
+
+            upgradeItemIngredient1_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Question);
+            upgradeItemIngredient2_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Question);
+            upgradeItemIngredient3_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Question);
+
+            upgradeItemIngredient1_Slot.ItemSlot_Disable();
+            upgradeItemIngredient2_Slot.ItemSlot_Disable();
+            upgradeItemIngredient3_Slot.ItemSlot_Disable();
+        }
+        else
+        {
+            upgradeItemTitle_Text.text = itemSO.itemName;
+            upgradeItemDesc_Text.text = itemSO.itemDesc;
+
+            upgradeItemInput_Slot.ItemSlot_SetItemFade(null);
+
+            if (itemSO.weaponUpgrade_Mat1 != null)
+            {
+                upgradeItemIngredient1_Slot.ItemSlot_SetItemFade(itemSO.weaponUpgrade_Mat1.itemIcon);
+                upgradeItemIngredient2_Slot.ItemSlot_SetItemFade(itemSO.weaponUpgrade_Mat2.itemIcon);
+                upgradeItemIngredient3_Slot.ItemSlot_SetItemFade(itemSO.weaponUpgrade_Mat3.itemIcon);
+
+                upgradeItemIngredient1_Slot.singleTypeItemSO = itemSO.weaponUpgrade_Mat1;
+                upgradeItemIngredient2_Slot.singleTypeItemSO = itemSO.weaponUpgrade_Mat2;
+                upgradeItemIngredient3_Slot.singleTypeItemSO = itemSO.weaponUpgrade_Mat3;
+
+                upgradeItemIngredient1_Slot.ItemSlot_Enable();
+                upgradeItemIngredient2_Slot.ItemSlot_Enable();
+                upgradeItemIngredient3_Slot.ItemSlot_Enable();
+
+                upgradeItemOutput_Slot.ItemSlot_SetItemFade(upgradeItemInput_Slot.ItemSlot_GetItem().itemIcon);
+            }
+            else
+            {
+                upgradeItemIngredient1_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Cross);
+                upgradeItemIngredient2_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Cross);
+                upgradeItemIngredient3_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Cross);
+
+
+                upgradeItemIngredient1_Slot.ItemSlot_Disable();
+                upgradeItemIngredient2_Slot.ItemSlot_Disable();
+                upgradeItemIngredient3_Slot.ItemSlot_Disable();
+
+                upgradeItemOutput_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Cross);
+            }
+
+        }
+    }
+
+    public void ForgeMenuFixed_UpdateOutputItems()
+    {
+
+
+
+        if (upgradeItemIngredient1_Slot.ItemSlot_GetItem() != null &&
+            upgradeItemIngredient2_Slot.ItemSlot_GetItem() != null &&
+            upgradeItemIngredient3_Slot.ItemSlot_GetItem() != null)
+        {
+
+            upgradeItemOutput_Slot.ItemSlot_SetItemFade(null);
+
+
+            TM_ItemUI upgradedItem = new TM_ItemUI(upgradeItemInput_Slot.ItemSlot_GetItem().original_SO);
+            upgradeItemOutput_Slot.ItemSlot_SetItem(upgradedItem);
+        }
+        else
+        {
+            upgradeItemOutput_Slot.ItemSlot_RemoveItem();
+            upgradeItemOutput_Slot.ItemSlot_SetItemFade(upgradeItemInput_Slot.ItemSlot_GetItem().itemIcon);
+        }
+
+
+
+
+    }
+
+    public void ForgeMenuFixed_ConsumeItems()
+    {
+        upgradeItemIngredient1_Slot.ItemSlot_RemoveItem();
+        upgradeItemIngredient2_Slot.ItemSlot_RemoveItem();
+        upgradeItemIngredient3_Slot.ItemSlot_RemoveItem();
+
+        upgradeItemInput_Slot.ItemSlot_RemoveItem();
+
+        ForgeMenuFixed_UpdateInputItems(null);
     }
 
     ///////////////////////////////////////////////////////

@@ -134,24 +134,19 @@ public class TM_MusicController : MonoBehaviour
         //Loop All Current Music Tracks
         foreach (Transform child in musicTrack_Container.transform)
         {
-            //ReQUIRES SETTINGS DATABSE MUTING
-
-
-            /*
-            //Get Tab
-            TM_AudioTab sfxTab = child.gameObject.GetComponent<TM_AudioTab>();
+            //Get Music Tab
+            TM_AudioTab audioTab = child.gameObject.GetComponent<TM_AudioTab>();
 
             //Set Volume
-            if (TC_DatabaseController.Instance.player_DB.settings.isSFXMute)
+            if (TM_DatabaseController.Instance.settings_SaveData.isMusicMute)
             {
-                sfxTab.audioSource.volume = 0;
+                audioTab.audioSource.volume = 0;
             }
             else
             {
-                float volumeMutiplyer = TC_DatabaseController.Instance.player_DB.settings.volumeTotal * TC_DatabaseController.Instance.player_DB.settings.volumeSFX;
-                sfxTab.audioSource.volume = (sfxTab.audioSource.volume * volumeMutiplyer);
+                float volumeMutiplyer = TM_DatabaseController.Instance.settings_SaveData.volumeTotal * TM_DatabaseController.Instance.settings_SaveData.volumeMusic;
+                audioTab.audioSource.volume = (audioTab.currentAudio_SO.volume * volumeMutiplyer);
             }
-            */
         }
     }
 

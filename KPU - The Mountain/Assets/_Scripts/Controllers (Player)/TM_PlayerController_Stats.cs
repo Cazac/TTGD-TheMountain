@@ -97,44 +97,11 @@ public class TM_PlayerController_Stats : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SetDebugStats();
-
-        //Refresh the current values at first chance when systems are setup
-        TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
-        TM_PlayerMenuController_UI.Instance.UpdateUI_HungerValue();
-        TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
-
-        StartCoroutine(HungerDrain());
-        StartCoroutine(FireDrain());
-    }
-
     ///////////////////////////////////////////////////////
 
     public void LoadStats()
     {
 
-    }
-
-    private void SetDebugStats()
-    {
-        player_CurrentHealth = 100;
-        player_MaxHealth = 100;
-        player_BaseHealth = 100;
-
-        player_CurrentHunger = 100;
-        player_MaxHunger = 100;
-        player_BaseHunger = 100;
-
-        player_CurrentFire = 100;
-        player_MaxFire = 100;
-        player_BaseFire = 100;
-    }
-
-    private void FixedUpdate()
-    {
-        //ChangeHealth_Current(-1);
     }
 
     ///////////////////////////////////////////////////////

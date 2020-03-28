@@ -114,27 +114,24 @@ public class TM_SFXController : MonoBehaviour
 
     public void VolumeLevels_UpdateAll()
     {
-        //Loop All Current Music Tracks
+        //Loop All Current SFX Tracks
         foreach (Transform child in sfxTrack_Container.transform)
         {
-            //ReQUIRES SETTINGS DATABSE MUTING
-
-
-            /*
             //Get Tab
-            TM_AudioTab sfxTab = child.gameObject.GetComponent<TM_AudioTab>();
+            TM_AudioTab audioTab = child.gameObject.GetComponent<TM_AudioTab>();
 
             //Set Volume
-            if (TC_DatabaseController.Instance.player_DB.settings.isSFXMute)
+            if (TM_DatabaseController.Instance.settings_SaveData.isSFXMute)
             {
-                sfxTab.audioSource.volume = 0;
+                //Mute
+                audioTab.audioSource.volume = 0;
             }
             else
             {
-                float volumeMutiplyer = TC_DatabaseController.Instance.player_DB.settings.volumeTotal * TC_DatabaseController.Instance.player_DB.settings.volumeSFX;
-                sfxTab.audioSource.volume = (sfxTab.audioSource.volume * volumeMutiplyer);
+                //Update Volume
+                float volumeMutiplyer = TM_DatabaseController.Instance.settings_SaveData.volumeTotal * TM_DatabaseController.Instance.settings_SaveData.volumeSFX;
+                audioTab.audioSource.volume = (audioTab.currentAudio_SO.volume * volumeMutiplyer);
             }
-            */
         }
     }
 

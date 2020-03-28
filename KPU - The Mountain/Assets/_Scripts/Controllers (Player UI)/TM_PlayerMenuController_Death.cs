@@ -43,6 +43,8 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
 
     public void StartDeathAnimation(string causeOfDeath)
     {
+        print("Test Code: Death");
+
         //Check If Death has been triggered already
         if (hasDied)
         {

@@ -147,7 +147,7 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_Title()
     {
-        print("Test Code: Loading Account Settings");
+        print("Test Code: Loading All Settings Files...");
 
         TM_SaveController.Instance.SettingsData_LoadSaveFile();
         TM_SaveController.Instance.UnlocksData_LoadSaveFile();
@@ -163,11 +163,12 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_GameNew()
     {
-        //print("Test Code: New Game...");
+        print("Test Code: ...New Game Found");
 
 
 
         //Do Eextra Stuff, Rmove this stuff~
+
 
 
         //Reload Data For the Systems Room Debug Play
@@ -179,7 +180,7 @@ public class TM_DatabaseController : MonoBehaviour
 
     private void Setup_GameLoad()
     {
-        print("Test Code: Loaded Game...");
+        print("Test Code: ...Loaded Game Found");
 
 
         //Reload Data For the Systems Room Debug Play

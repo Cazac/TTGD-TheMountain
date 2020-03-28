@@ -268,11 +268,6 @@ public class TM_ButtonController_Play : MonoBehaviour
 
             newSave_currentClass = "Tank";
         }
-
-
-
-
-
     }
 
     public void Button_DeleteCharecter()
@@ -289,18 +284,29 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_CreateNewCharecter()
     {
-        //Get Stats From Page
+
 
 
         //Check Null Values
 
 
-        //Set Null Values
 
 
-        TM_PlayerSaveData newPlayerSaveData = new TM_PlayerSaveData();
+        TM_PlayerSaveData newPlayerSaveData = TM_SaveController.Instance.PlayerData_CreateDefault();
         newPlayerSaveData.playerInfo_Name = newSave_CharecterName_Input.text;
-        newPlayerSaveData.player_Level = 1;
+
+        newPlayerSaveData.player_CurrentHealth = 10;
+        newPlayerSaveData.player_MaxHealth = 10;
+        newPlayerSaveData.player_BaseHealth = 10;
+
+        newPlayerSaveData.player_CurrentHunger = 10;
+        newPlayerSaveData.player_MaxHunger = 10;
+        newPlayerSaveData.player_BaseHunger = 10;
+
+        newPlayerSaveData.player_CurrentFire = 10;
+        newPlayerSaveData.player_MaxFire = 10;
+        newPlayerSaveData.player_BaseFire = 10;
+
 
 
         //Class / Stats
@@ -360,6 +366,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
         //Save File
         TM_SaveController.Instance.PlayerData_SaveFile(newPlayerSaveData, TM_SaveController.Instance.currentSaveSlotID);
+
+        //Reload Data
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
 
         //Refresh Icon / Info Data
         SaveSlots_RefreshVisuals();
