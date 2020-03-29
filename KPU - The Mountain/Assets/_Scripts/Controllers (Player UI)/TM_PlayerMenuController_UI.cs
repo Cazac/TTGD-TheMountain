@@ -23,10 +23,8 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     ////////////////////////////////
     
     [Header("Player Menus")]
-    public GameObject PlayerMenu_Panel;
     public GameObject InventoryMenu_Panel;
     public GameObject NotesMenu_Panel;
-    public GameObject StatsMenu_Panel;
 
     [Header("Home Base Menus")]
     public GameObject Bed_Panel;
@@ -137,44 +135,6 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Button Inputs (Player Menu)
 
-    public void Button_InventoryTab()
-    {
-        //Turn Off All Panels
-        PlayerMenu_TurnOffPanels();
-
-        //Open Panel
-        PlayerMenu_Panel.SetActive(true);
-        InventoryMenu_Panel.SetActive(true);
-        gameState_IsMenu = true;
-        UnlockMouse();
-    }
-
-    public void Button_StatsTab()
-    {
-        //Turn Off All Panels
-        PlayerMenu_TurnOffPanels();
-
-        //Open Panel
-        PlayerMenu_Panel.SetActive(true);
-        StatsMenu_Panel.SetActive(true);
-        gameState_IsMenu = true;
-        UnlockMouse();
-
-        //Setup Panel
-        TM_PlayerMenuController_Attributes.Instance.RefreshStatsUI();
-    }
-
-    public void Button_NotesTab()
-    {
-        //Turn Off All Panels
-        PlayerMenu_TurnOffPanels();
-
-        //Open Panel
-        PlayerMenu_Panel.SetActive(true);
-        NotesMenu_Panel.SetActive(true);
-        gameState_IsMenu = true;
-        UnlockMouse();
-    }
 
     /////////////////////////////////////////////////////// - Look For Key Inputs
 
@@ -216,7 +176,7 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
                 PlayerMenu_TurnOffPanels();
 
                 //Close Panel
-                PlayerMenu_Panel.SetActive(false);
+                InventoryMenu_Panel.SetActive(false);
                 gameState_IsMenu = false;
                 LockMouse();
             }
@@ -226,7 +186,7 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
                 PlayerMenu_TurnOffPanels();
 
                 //Close Panel
-                PlayerMenu_Panel.SetActive(false);
+                InventoryMenu_Panel.SetActive(false);
                 gameState_IsMenu = false;
                 LockMouse();
             }
@@ -236,10 +196,11 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
                 PlayerMenu_TurnOffPanels();
 
                 //Open Panel
-                PlayerMenu_Panel.SetActive(true);
                 InventoryMenu_Panel.SetActive(true);
                 gameState_IsMenu = true;
                 UnlockMouse();
+
+                TM_PlayerMenuController_Inventory.Instance.Setup();
             }
         }
     }
@@ -250,15 +211,6 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
         {
 
           
-        }
-    }
-
-    private void LookForMenuKey_Stats()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-
-       
         }
     }
 
@@ -388,7 +340,6 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
     {
         //Basic Menus
         InventoryMenu_Panel.SetActive(false);
-        StatsMenu_Panel.SetActive(false);
         NotesMenu_Panel.SetActive(false);
 
         //Other Menus

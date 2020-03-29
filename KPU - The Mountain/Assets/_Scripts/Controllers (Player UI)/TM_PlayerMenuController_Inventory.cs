@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,6 +32,23 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     public bool isHoldingItem;
     public bool isHoldingWeapon;
 
+    ////////////////////////////////
+
+    [Header("Buttons")]
+    public GameObject STR_Button;
+    public GameObject DEX_Button;
+    public GameObject INT_Button;
+    public GameObject CON_Button;
+
+    ////////////////////////////////
+
+    [Header("Text")]
+    public TextMeshProUGUI skillPointAvalible_Text;
+    public TextMeshProUGUI STR_Text;
+    public TextMeshProUGUI DEX_Text;
+    public TextMeshProUGUI INT_Text;
+    public TextMeshProUGUI CON_Text;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -43,14 +61,138 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     {
         //Set First Item By Default
         Toolbar_MoveSelector_SetHover(0);
-    }
 
+
+    }
 
     private void Update()
     {
-        LookForInventoryKeys();
+        LookForItemDropKeys();
 
     }
+
+    ///////////////////////////////////////////////////////
+
+    public void Setup()
+    {
+  
+        DebugSpawnStats();
+        Stats_RefreshUI();
+    }
+
+    private void DebugSpawnStats()
+    {
+        TM_PlayerController_Stats.Instance.player_SkillPointsAvalible += Random.Range(3, 5);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Button_AddValue_STR()
+    {
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
+        {
+            //Add Stat
+            TM_PlayerController_Stats.Instance.player_CurrentStat_STR++;
+
+            //Remove Point
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
+
+            //Refresh UI
+            Stats_RefreshUI();
+        }
+    }
+
+    public void Button_AddValue_DEX()
+    {
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
+        {
+            //Add Stat
+            TM_PlayerController_Stats.Instance.player_CurrentStat_DEX++;
+
+            //Remove Point
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
+
+            //Refresh UI
+            Stats_RefreshUI();
+        }
+    }
+
+    public void Button_AddValue_INT()
+    {
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
+        {
+            //Add Stat
+            TM_PlayerController_Stats.Instance.player_CurrentStat_INT++;
+
+            //Remove Point
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
+
+            //Refresh UI
+            Stats_RefreshUI();
+        }
+    }
+
+    public void Button_AddValue_CON()
+    {
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible > 0)
+        {
+            //Add Stat
+            TM_PlayerController_Stats.Instance.player_CurrentStat_CON++;
+
+            //Remove Point
+            TM_PlayerController_Stats.Instance.player_SkillPointsAvalible--;
+
+            //Refresh UI
+            Stats_RefreshUI();
+        }
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Stats_RefreshUI()
+    {
+        skillPointAvalible_Text.text = "Skill Points: " + TM_PlayerController_Stats.Instance.player_SkillPointsAvalible;
+
+        int additive_STR = TM_PlayerController_Stats.Instance.equipmentStat_STR + TM_PlayerController_Stats.Instance.tempStat_STR;
+        int additive_DEX = TM_PlayerController_Stats.Instance.equipmentStat_DEX + TM_PlayerController_Stats.Instance.tempStat_DEX;
+        int additive_INT = TM_PlayerController_Stats.Instance.equipmentStat_INT + TM_PlayerController_Stats.Instance.tempStat_INT;
+        int additive_CON = TM_PlayerController_Stats.Instance.equipmentStat_CON + TM_PlayerController_Stats.Instance.tempStat_CON;
+
+        if (additive_STR > 0)
+        {
+            STR_Text.text = "STR: " + TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (+<color=#ffff00>STR:" + additive_STR + "</color>)";
+        }
+        else if (additive_STR < 0)
+        {
+            STR_Text.text = "STR: " + TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (-<color=#ffff00>STR:" + additive_STR + "</color>)";
+        }
+        else
+        {
+            STR_Text.text = "STR: " + TM_PlayerController_Stats.Instance.player_CurrentStat_STR + " (+0)";
+        }
+
+        DEX_Text.text = "DEX: " + TM_PlayerController_Stats.Instance.player_CurrentStat_DEX + " (+0)";
+        INT_Text.text = "INT: " + TM_PlayerController_Stats.Instance.player_CurrentStat_INT + " (+0)";
+        CON_Text.text = "CON: " + TM_PlayerController_Stats.Instance.player_CurrentStat_CON + " (+0)";
+
+
+        if (TM_PlayerController_Stats.Instance.player_SkillPointsAvalible <= 0)
+        {
+            STR_Button.SetActive(false);
+            DEX_Button.SetActive(false);
+            INT_Button.SetActive(false);
+            CON_Button.SetActive(false);
+        }
+        else
+        {
+            STR_Button.SetActive(true);
+            DEX_Button.SetActive(true);
+            INT_Button.SetActive(true);
+            CON_Button.SetActive(true);
+        }
+    }
+
+
     ///////////////////////////////////////////////////////
 
     public TM_ItemUI[] Inventory_GetItemsToArray()
@@ -108,7 +250,7 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     ///////////////////////////////////////////////////////
 
 
-    private void LookForInventoryKeys()
+    private void LookForItemDropKeys()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {

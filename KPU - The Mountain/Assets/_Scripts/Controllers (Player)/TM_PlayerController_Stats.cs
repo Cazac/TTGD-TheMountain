@@ -89,6 +89,25 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
 
 
+
+
+
+    [Header("NOT USED YET")]
+    public int equipmentStat_STR;
+    public int equipmentStat_DEX;
+    public int equipmentStat_INT;
+    public int equipmentStat_CON;
+
+    ////////////////////////////////
+
+    [Header("NOT USED YET")]
+    public int tempStat_STR;
+    public int tempStat_DEX;
+    public int tempStat_INT;
+    public int tempStat_CON;
+
+
+
     ////////////////////////////////
 
     private void Awake()
