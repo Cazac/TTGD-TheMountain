@@ -28,13 +28,13 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
     public int currentToolbarPosition;
 
-    [Header("Bools")]
+    [Header("Toolbar - Bools")]
     public bool isHoldingItem;
     public bool isHoldingWeapon;
 
     ////////////////////////////////
 
-    [Header("Buttons")]
+    [Header("Stats - Buttons")]
     public GameObject STR_Button;
     public GameObject DEX_Button;
     public GameObject INT_Button;
@@ -42,12 +42,21 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("Text")]
+    [Header("Stats - Text")]
     public TextMeshProUGUI skillPointAvalible_Text;
     public TextMeshProUGUI STR_Text;
     public TextMeshProUGUI DEX_Text;
     public TextMeshProUGUI INT_Text;
     public TextMeshProUGUI CON_Text;
+
+    [Header("Stats - Text")]
+    public TextMeshProUGUI stats_Attack_Text;
+    public TextMeshProUGUI stats_Magic_Text;
+    public TextMeshProUGUI stats_Defense_Text;
+    public TextMeshProUGUI stats_Resistance_Text;
+    public TextMeshProUGUI stats_Speed_Text;
+    public TextMeshProUGUI stats_Health_Text;
+    public TextMeshProUGUI stats_Stamina_Text;
 
     ///////////////////////////////////////////////////////
 
@@ -82,7 +91,7 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
     private void DebugSpawnStats()
     {
-        TM_PlayerController_Stats.Instance.player_SkillPointsAvalible += Random.Range(3, 5);
+        TM_PlayerController_Stats.Instance.player_SkillPointsAvalible += 1;
     }
 
     ///////////////////////////////////////////////////////
@@ -153,10 +162,10 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
     {
         skillPointAvalible_Text.text = "Skill Points: " + TM_PlayerController_Stats.Instance.player_SkillPointsAvalible;
 
-        int additive_STR = TM_PlayerController_Stats.Instance.equipmentStat_STR + TM_PlayerController_Stats.Instance.tempStat_STR;
-        int additive_DEX = TM_PlayerController_Stats.Instance.equipmentStat_DEX + TM_PlayerController_Stats.Instance.tempStat_DEX;
-        int additive_INT = TM_PlayerController_Stats.Instance.equipmentStat_INT + TM_PlayerController_Stats.Instance.tempStat_INT;
-        int additive_CON = TM_PlayerController_Stats.Instance.equipmentStat_CON + TM_PlayerController_Stats.Instance.tempStat_CON;
+        int additive_STR = TM_PlayerController_Stats.Instance.tempStat_STR; //TM_PlayerController_Stats.Instance.equipmentStat_STR +
+        int additive_DEX = TM_PlayerController_Stats.Instance.tempStat_DEX; //TM_PlayerController_Stats.Instance.equipmentStat_DEX + 
+        int additive_INT = TM_PlayerController_Stats.Instance.tempStat_INT; //TM_PlayerController_Stats.Instance.equipmentStat_INT + 
+        int additive_CON = TM_PlayerController_Stats.Instance.tempStat_CON; //TM_PlayerController_Stats.Instance.equipmentStat_CON + 
 
         if (additive_STR > 0)
         {
@@ -190,6 +199,24 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
             INT_Button.SetActive(true);
             CON_Button.SetActive(true);
         }
+
+
+        TM_PlayerController_Stats.Instance.CalculateAttack_NoWep();
+        TM_PlayerController_Stats.Instance.CalculateMagic_NoSpell();
+        TM_PlayerController_Stats.Instance.CalculateDefense();
+        TM_PlayerController_Stats.Instance.CalculateResistance();
+        TM_PlayerController_Stats.Instance.CalculateSpeed();
+        TM_PlayerController_Stats.Instance.CalculateHealth();
+        TM_PlayerController_Stats.Instance.CalculateStamina();
+
+        stats_Attack_Text.text = "Attack: " + TM_PlayerController_Stats.Instance.player_CurrentAttack;
+        stats_Magic_Text.text = "Magic: " + 0;
+        stats_Defense_Text.text = "Defense: " + TM_PlayerController_Stats.Instance.player_CurrentDefense;
+        stats_Resistance_Text.text = "Resistance: " + 0;
+        stats_Speed_Text.text = "Speed: " + 0;
+        stats_Health_Text.text = "Health: " + TM_PlayerController_Stats.Instance.player_MaxHealth;
+        stats_Stamina_Text.text = "Stamina: " + 0;
+
     }
 
 

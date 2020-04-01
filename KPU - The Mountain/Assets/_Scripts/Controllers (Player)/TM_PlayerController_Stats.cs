@@ -66,6 +66,13 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
 
 
+
+
+
+
+
+
+
     ////////////////////////////////
 
 
@@ -93,10 +100,14 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
 
     [Header("NOT USED YET")]
-    public int equipmentStat_STR;
-    public int equipmentStat_DEX;
-    public int equipmentStat_INT;
-    public int equipmentStat_CON;
+    public int playerEquipmentStat_Health;
+    public int playerEquipmentStat_Defense;
+    public int playerEquipmentStat_Speed;
+
+    public int player_CurrentAttack;
+    public int player_CurrentDefense;
+    public int player_CurrentSpeed;
+    public int player_CurrentStamina;
 
     ////////////////////////////////
 
@@ -105,6 +116,11 @@ public class TM_PlayerController_Stats : MonoBehaviour
     public int tempStat_DEX;
     public int tempStat_INT;
     public int tempStat_CON;
+
+
+
+
+
 
 
 
@@ -295,6 +311,47 @@ public class TM_PlayerController_Stats : MonoBehaviour
     public void ChangeFire_Base()
     {
 
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void CalculateAttack_NoWep()
+    {
+        int totalSTR= player_CurrentStat_STR + tempStat_STR;
+        player_CurrentAttack = 15 + (totalSTR * 10);
+    }
+
+    public void CalculateMagic_NoSpell()
+    {
+        
+    }
+
+    public void CalculateDefense()
+    {
+        player_CurrentDefense = 0 + playerEquipmentStat_Defense;
+    }
+
+    public void CalculateResistance()
+    {
+ 
+    }
+
+    public void CalculateSpeed()
+    {
+        int totalDEX = player_CurrentStat_DEX + tempStat_DEX;
+        playerEquipmentStat_Speed = 15 + (totalDEX * 10);
+    }
+
+
+    public void CalculateHealth()
+    {
+        int totalCON = player_CurrentStat_CON + tempStat_CON;
+        player_MaxHealth = 50 + playerEquipmentStat_Health + (totalCON * 10);
+    }
+
+    public void CalculateStamina()
+    {
 
     }
 
