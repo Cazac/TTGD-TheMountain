@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cedar Wand
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 8056772753372398826, guid: 43d96346b3e56494eaba2e9b4f05ef68,
+    type: 3}
+  placed_Prefab: {fileID: 2653637591357464646, guid: 542a822394a4f1f4290fc3a3cf269c41,
+    type: 3}
+  held_Prefab: {fileID: 4612046052948039538, guid: 1ebd8eb7d2a52004e9a72c365df4490d,
+    type: 3}
+  equipped_Prefab: {fileID: 4612046052948039538, guid: 1ebd8eb7d2a52004e9a72c365df4490d,
+    type: 3}
+  itemName: Cedar Wand
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

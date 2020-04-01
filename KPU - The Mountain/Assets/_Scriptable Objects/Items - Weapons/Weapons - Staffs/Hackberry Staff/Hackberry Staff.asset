@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Hackberry Staff
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 1242715386261602672, guid: eddb8251504d241448c7ef27f504bf46,
+    type: 3}
+  placed_Prefab: {fileID: 3558323545952198379, guid: 5dd8e54b9112af246898d3d75889a1d9,
+    type: 3}
+  held_Prefab: {fileID: 7843816925572530729, guid: 6624d7095bf4df94e93033133bf01513,
+    type: 3}
+  equipped_Prefab: {fileID: 7843816925572530729, guid: 6624d7095bf4df94e93033133bf01513,
+    type: 3}
+  itemName: Hackberry Staff
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

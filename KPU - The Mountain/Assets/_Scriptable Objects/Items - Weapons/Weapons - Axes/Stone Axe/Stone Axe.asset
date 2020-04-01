@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Stone Axe
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 6174485653585077102, guid: a0b6840661b01ab458f0d410a349f524,
+    type: 3}
+  placed_Prefab: {fileID: 3100945307606096960, guid: 61cf14fb333b2f64288dad30fd246f43,
+    type: 3}
+  held_Prefab: {fileID: 6134106740009482836, guid: fa4c2e1394b2c5f46a5f1fb72b0aae96,
+    type: 3}
+  equipped_Prefab: {fileID: 6134106740009482836, guid: fa4c2e1394b2c5f46a5f1fb72b0aae96,
+    type: 3}
+  itemName: Stone Axe
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

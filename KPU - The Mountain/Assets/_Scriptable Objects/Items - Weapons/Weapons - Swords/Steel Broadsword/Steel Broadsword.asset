@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Steel Broadsword
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 9205116666160362348, guid: 0254c84135b3b284dbee7bd112a528b9,
+    type: 3}
+  placed_Prefab: {fileID: 150806148471311447, guid: bd3e3f9e243cdc14cbebc88312ce72ae,
+    type: 3}
+  held_Prefab: {fileID: 3617750245051526408, guid: c9251f0e84343724782113e954585d2f,
+    type: 3}
+  equipped_Prefab: {fileID: 3617750245051526408, guid: c9251f0e84343724782113e954585d2f,
+    type: 3}
+  itemName: Steel Broadsword
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

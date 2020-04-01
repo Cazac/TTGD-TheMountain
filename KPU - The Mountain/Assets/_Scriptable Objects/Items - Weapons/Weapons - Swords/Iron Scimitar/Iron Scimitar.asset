@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Iron Scimitar
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 5791818587241204430, guid: ae1a7426390b092408483026ecf18142,
+    type: 3}
+  placed_Prefab: {fileID: 4790844705574561268, guid: 714149efe2306704abec16ce085a3833,
+    type: 3}
+  held_Prefab: {fileID: 2262760508889948792, guid: 2634d4764872c4d4ebab3a1f2b6cd7b4,
+    type: 3}
+  equipped_Prefab: {fileID: 2262760508889948792, guid: 2634d4764872c4d4ebab3a1f2b6cd7b4,
+    type: 3}
+  itemName: Iron Scimitar
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0
