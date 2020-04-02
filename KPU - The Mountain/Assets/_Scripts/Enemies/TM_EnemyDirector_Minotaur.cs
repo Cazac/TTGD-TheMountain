@@ -11,7 +11,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     public Animator enemy_Animator;
 
     [Header("Charecter Controller")]
-    public CharacterController enemy_CC;
+    //public CharacterController enemy_CC;
 
     [Header("Nav Mesh Agent")]
     public NavMeshAgent enemyNavAgent;
@@ -102,6 +102,13 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+    }
+
+    public void Knockback(Vector3 Direction)
+    {
+
+        gameObject.GetComponent<Rigidbody>().AddForce(Direction.normalized * 20, ForceMode.Impulse);
+
     }
 
     public IEnumerator DamagedVisualFlash()
@@ -239,7 +246,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     private void EnemyState_Wandering()
     {
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
+        enemy_Animator.SetBool("OnGround", true);
         enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
@@ -304,7 +311,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     private void EnemyState_Chasing()
     {
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
+        enemy_Animator.SetBool("OnGround", true);
         enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
