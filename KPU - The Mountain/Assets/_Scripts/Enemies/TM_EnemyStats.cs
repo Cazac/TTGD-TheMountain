@@ -32,6 +32,10 @@ public class TM_EnemyStats : MonoBehaviour
 
     public void ChangeHealth_Current(int changeValue)
     {
+
+        StartCoroutine(gameObject.GetComponent<TM_EnemyDirector_Minotaur>().DamagedVisualFlash());
+
+
         //Change Value
         enemy_CurrentHealth += changeValue;
 
@@ -65,7 +69,7 @@ public class TM_EnemyStats : MonoBehaviour
 
     public void EnemyDeath()
     {
-        print("Test Code: Enemy Has Died");
+        //print("Test Code: Enemy Has Died");
 
         gameObject.GetComponent<TM_EnemyDirector_Minotaur>().ChangeToState_Dying();
 

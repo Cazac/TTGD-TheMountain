@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6510249872533238814}
   - component: {fileID: 3333337048580030518}
   m_Layer: 0
-  m_Name: SwordSize1 Hitbox
+  m_Name: Hitbox - Player Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6510249872533238812}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

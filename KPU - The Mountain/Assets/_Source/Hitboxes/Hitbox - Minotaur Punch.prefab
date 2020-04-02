@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3700247349374930715}
   - component: {fileID: -8171010442651942762}
   m_Layer: 0
-  m_Name: Minotaur Attack 1 Hitbox
+  m_Name: Hitbox - Minotaur Punch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7688251905037119818}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

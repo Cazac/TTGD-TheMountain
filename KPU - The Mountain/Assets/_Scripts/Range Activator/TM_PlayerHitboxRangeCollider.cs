@@ -21,7 +21,7 @@ public class TM_PlayerHitboxRangeCollider : MonoBehaviour
 
 
 
-            print("Test Code: Damaged!");
+            //print("Test Code: Damaged!");
             Destroy(gameObject);
         }
     }

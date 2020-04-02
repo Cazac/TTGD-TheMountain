@@ -44,6 +44,38 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     public float attackingRangeRadius;
     public float wandering_NextNodeDistance;
 
+    [Header("Monster State Renderers")]
+    public MeshRenderer monsterParts_Head_MeshRend;
+    public MeshRenderer monsterParts_Body_MeshRend;
+    public MeshRenderer monsterParts_LegRight_MeshRend;
+    public MeshRenderer monsterParts_LegLeft_MeshRend;
+    public MeshRenderer monsterParts_FootRight_MeshRend;
+    public MeshRenderer monsterParts_FootLeft_MeshRend;
+    public MeshRenderer monsterParts_ArmRight_MeshRend;
+    public MeshRenderer monsterParts_ArmLeft_MeshRend;
+    public MeshRenderer monsterParts_HandRight_MeshRend;
+    public MeshRenderer monsterParts_HandLeft_MeshRend;
+
+    [Header("Monster State Mats")]
+    public Material monsterPartsHurt_Head_Mat;
+    public Material monsterPartsPlain_Head_Mat;
+
+    public Material monsterPartsHurt_Body_Mat;
+    public Material monsterPartsPlain_Body_Mat;
+
+    public Material monsterPartsHurt_Leg_Mat;
+    public Material monsterPartsPlain_Leg_Mat;
+
+    public Material monsterPartsHurt_Foot_Mat;
+    public Material monsterPartsPlain_Foot_Mat;
+
+    public Material monsterPartsHurt_Arm_Mat;
+    public Material monsterPartsPlain_Arm_Mat;
+
+    public Material monsterPartsHurt_Hand_Mat;
+    public Material monsterPartsPlain_Hand_Mat;
+
+
     ////////////////////////////////
 
 
@@ -70,6 +102,47 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+    }
+
+    public IEnumerator DamagedVisualFlash()
+    {
+        //Red Color
+        monsterParts_Head_MeshRend.material = monsterPartsHurt_Head_Mat;
+        monsterParts_Body_MeshRend.material = monsterPartsHurt_Body_Mat;
+        
+        monsterParts_LegRight_MeshRend.material = monsterPartsHurt_Leg_Mat;
+        monsterParts_LegLeft_MeshRend.material = monsterPartsHurt_Leg_Mat;
+
+        monsterParts_FootRight_MeshRend.material = monsterPartsHurt_Foot_Mat;
+        monsterParts_FootLeft_MeshRend.material = monsterPartsHurt_Foot_Mat;
+
+        monsterParts_ArmRight_MeshRend.material = monsterPartsHurt_Arm_Mat;
+        monsterParts_ArmLeft_MeshRend.material = monsterPartsHurt_Arm_Mat;
+
+        monsterParts_HandRight_MeshRend.material = monsterPartsHurt_Hand_Mat;
+        monsterParts_HandLeft_MeshRend.material = monsterPartsHurt_Hand_Mat;
+
+        //Wait For 0.15 Seconds
+        yield return new WaitForSeconds(0.3f);
+
+        //Plain Color
+        monsterParts_Head_MeshRend.material = monsterPartsPlain_Head_Mat;
+        monsterParts_Body_MeshRend.material = monsterPartsPlain_Body_Mat;
+
+        monsterParts_LegRight_MeshRend.material = monsterPartsPlain_Leg_Mat;
+        monsterParts_LegLeft_MeshRend.material = monsterPartsPlain_Leg_Mat;
+
+        monsterParts_FootRight_MeshRend.material = monsterPartsPlain_Foot_Mat;
+        monsterParts_FootLeft_MeshRend.material = monsterPartsPlain_Foot_Mat;
+
+        monsterParts_ArmRight_MeshRend.material = monsterPartsPlain_Arm_Mat;
+        monsterParts_ArmLeft_MeshRend.material = monsterPartsPlain_Arm_Mat;
+
+        monsterParts_HandRight_MeshRend.material = monsterPartsPlain_Hand_Mat;
+        monsterParts_HandLeft_MeshRend.material = monsterPartsPlain_Hand_Mat;
+
+        //Break Out
+        yield break;
     }
 
     ///////////////////////////////////////////////////////

@@ -135,14 +135,14 @@ public class TM_PlayerController_Combat : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void SpawnAttackHitbox(GameObject hitboxPrefab)
+    public void SpawnAttackHitbox(GameObject hitboxPrefab, float duration)
     {
         GameObject hitbox_GO = Instantiate(hitboxPrefab, hitboxContainter.transform);
 
 
         //Set Auto Destruct
 
-        StartCoroutine(AutoDestoryCountdown(0.3f, hitbox_GO));
+        StartCoroutine(AutoDestoryCountdown(duration, hitbox_GO));
 
     }
 

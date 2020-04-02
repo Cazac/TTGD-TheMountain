@@ -219,22 +219,39 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void LoadHitbox_Attack1()
-    {
-        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox);
-
-    }
-
-    ///////////////////////////////////////////////////////
-
 
 
     public void AnimationEvent_PunchHitbox()
     {
-        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox);
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox, 0.2f);
 
     }
 
+    public void AnimationEvent_WeaponHitbox()
+    {
+        //Get Item Held
+        TM_ItemUI heldItem = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+
+        /*
+        if (heldItem != null)
+        {
+            if (heldItem.isWeapon)
+            {
+                
+            }
+
+        }
+        */
+
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox, 0.1f);
+
+
+
+
+    }
+
+    ///////////////////////////////////////////////////////
 
     public void AnimationEvent_ConsumeItem()
     {
