@@ -79,6 +79,10 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     ////////////////////////////////
 
 
+    [Header("DEUG TEST")]
+    public GameObject popupDamageText;
+    public GameObject Canavas;
+
     //Loot?
 
 
@@ -102,6 +106,16 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+    }
+
+    public void DamagePopup(int damage)
+    {
+
+        GameObject popupText = Instantiate(popupDamageText, Canavas.transform);
+
+        popupText.GetComponent<RectTransform>().localPosition = new Vector3(0, 0.5f, -1.8f);
+
+        popupText.GetComponent<TM_DamagePopup>().Setup(damage);
     }
 
     public void Knockback(Vector3 Direction)

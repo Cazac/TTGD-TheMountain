@@ -217,6 +217,10 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
         stats_Health_Text.text = "Health: " + TM_PlayerController_Stats.Instance.player_MaxHealth;
         stats_Stamina_Text.text = "Stamina: " + 0;
 
+
+
+        //Update UI
+        TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
     }
 
 

@@ -322,6 +322,22 @@ public class TM_PlayerController_Stats : MonoBehaviour
         player_CurrentAttack = 15 + (totalSTR * 10);
     }
 
+    public int CalculateAttack_WithWep(TM_ItemUI itemUI)
+    {
+        int totalSTR = player_CurrentStat_STR + tempStat_STR;
+        player_CurrentAttack = 15 + (totalSTR * 10);
+
+
+        if (itemUI != null)
+        {
+            return player_CurrentAttack + itemUI.original_SO.weapon_Damage;
+        }
+        else
+        {
+            return player_CurrentAttack;
+        }
+    }
+
     public void CalculateMagic_NoSpell()
     {
         
