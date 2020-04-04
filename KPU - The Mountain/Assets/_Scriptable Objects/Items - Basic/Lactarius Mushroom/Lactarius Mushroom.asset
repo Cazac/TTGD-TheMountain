@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Lactarius Mushroom
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 6612551990871544904, guid: e76dd638be4f200458e09245a2d84060,
+    type: 3}
+  placed_Prefab: {fileID: 494906947543599436, guid: d00e43fa974420e4e8a387cc5e86211c,
+    type: 3}
+  held_Prefab: {fileID: 5024108087201885688, guid: 0309301390fc19749a273564e5d1c82c,
+    type: 3}
+  equipped_Prefab: {fileID: 5024108087201885688, guid: 0309301390fc19749a273564e5d1c82c,
+    type: 3}
+  itemName: Lactarius Mushroom
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 984338789339674453, guid: 7ce5b917b5fd3094386fe3d31467ca72,
+    type: 3}
+  placed_Prefab: {fileID: 2824716166191238071, guid: bf539172c17952842b15817114cedc04,
+    type: 3}
+  held_Prefab: {fileID: 2006786667190896731, guid: a3948f9f709fd4d49a7d32b66fe1c780,
+    type: 3}
+  equipped_Prefab: {fileID: 2006786667190896731, guid: a3948f9f709fd4d49a7d32b66fe1c780,
+    type: 3}
+  itemName: Stone
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

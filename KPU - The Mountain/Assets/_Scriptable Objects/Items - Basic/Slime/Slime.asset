@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
-  itemDesc: 
+  dropped_Prefab: {fileID: 5990846999421016388, guid: c75543b5896d281428f1572dadf6bec3,
+    type: 3}
+  placed_Prefab: {fileID: 5702868664109452148, guid: f465aff58fb8a9f45ac943ce00134bed,
+    type: 3}
+  held_Prefab: {fileID: 5100957028728486347, guid: 86bae039a2d2dc44fba4b31b0dd696b0,
+    type: 3}
+  equipped_Prefab: {fileID: 5100957028728486347, guid: 86bae039a2d2dc44fba4b31b0dd696b0,
+    type: 3}
+  itemName: Slime
+  itemDesc: Gross and sticky fluid type thing. Why are you touching it? That's really
+    disgusting. Kind smells weird too. Burning it might be the only way to truly dispose
+    of it. Yuck
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 16
@@ -48,6 +54,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

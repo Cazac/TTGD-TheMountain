@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Scrapwood
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
-  itemDesc: 
+  dropped_Prefab: {fileID: 3567774451973246650, guid: 66e4cbba50426c04f97ba43c6392ed7d,
+    type: 3}
+  placed_Prefab: {fileID: 6945148959908772747, guid: 37bbda40f52a6164caa328f1c6a3a5b6,
+    type: 3}
+  held_Prefab: {fileID: 8670219101922201292, guid: ed222192d20e952418d517d1ac32ac58,
+    type: 3}
+  equipped_Prefab: {fileID: 8670219101922201292, guid: ed222192d20e952418d517d1ac32ac58,
+    type: 3}
+  itemName: Scrapwood
+  itemDesc: Scraps of wood. Pretty self explanatory. Can be burned
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 32
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

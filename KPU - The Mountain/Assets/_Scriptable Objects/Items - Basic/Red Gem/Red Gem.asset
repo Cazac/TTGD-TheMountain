@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Red Gem
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 4504353341117711194, guid: 18617ac1396ce7241841df45b8c35f24,
+    type: 3}
+  placed_Prefab: {fileID: 3984973750266123096, guid: 39c8f921cf2037341bd1e2777c8c4c21,
+    type: 3}
+  held_Prefab: {fileID: 2114944443640469978, guid: 7ca81c12fdb59e146afd7196af82ef2d,
+    type: 3}
+  equipped_Prefab: {fileID: 2114944443640469978, guid: 7ca81c12fdb59e146afd7196af82ef2d,
+    type: 3}
+  itemName: Red Gem
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0
