@@ -46,7 +46,7 @@ public class TM_DamagePopup : MonoBehaviour
         //sortingOrder++;
         //textMesh. = sortingOrder;
 
-        // ???
+        //Setup Amount To move per frame
         moveVector = new Vector3(.8f, 1.2f) * 60f;
     }
 
@@ -87,8 +87,5 @@ public class TM_DamagePopup : MonoBehaviour
         }
     }
 
-
-
-
-
+    /////////////////////////////////////////////////////////////////
 }

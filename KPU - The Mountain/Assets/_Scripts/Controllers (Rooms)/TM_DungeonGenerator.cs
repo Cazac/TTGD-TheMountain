@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 ///////////////
 /// <summary>
@@ -312,6 +313,10 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     private void Room_Setup()
     {
+        print("Test Code: Nav Building");
+
+        TM_PlayerMenuController_Intro.Instance.GetComponent<NavMeshSurface>().BuildNavMesh();
+
         foreach (Transform roomGO in WorldGen_Container.transform)
         {
             TM_RoomContainer currentRoom_Room = roomGO.GetComponent<TM_RoomContainer>();

@@ -50,6 +50,8 @@ public class TM_EnemyAnimationTab : MonoBehaviour
         var main = particule.GetComponent<ParticleSystem>().main;
         main.simulationSpeed = 10f;
 
+        particule.GetComponent<TM_AutoDestoryTab>().Setup(3f);
+
         enemyDirector.SpawnLoot();
 
     }
