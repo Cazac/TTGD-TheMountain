@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Emerald Wand
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 7726207673833530150, guid: 8aa247202dc978f4f80f239b39b81708,
+    type: 3}
+  placed_Prefab: {fileID: 6633790820849953962, guid: 34313f4fedbf1414eaa62d8a0d8c2853,
+    type: 3}
+  held_Prefab: {fileID: 3321750249073360446, guid: 308f85153ef190e4096fff4fea513089,
+    type: 3}
+  equipped_Prefab: {fileID: 3321750249073360446, guid: 308f85153ef190e4096fff4fea513089,
+    type: 3}
   itemName: 
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

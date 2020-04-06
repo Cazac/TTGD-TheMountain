@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gold Bar
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 6776599188129097537, guid: 9e6987a6bfc879c4e9c49b733fc77e78,
+    type: 3}
+  placed_Prefab: {fileID: 5598724012992781701, guid: 979868447ce1794408aa7cc9515597ea,
+    type: 3}
+  held_Prefab: {fileID: 9090908212169164690, guid: 22702e77ac805d449abc3c50c71590d0,
+    type: 3}
+  equipped_Prefab: {fileID: 9090908212169164690, guid: 22702e77ac805d449abc3c50c71590d0,
+    type: 3}
+  itemName: Gold Bar
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

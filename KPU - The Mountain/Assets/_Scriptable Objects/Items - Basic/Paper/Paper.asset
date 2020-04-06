@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Paper
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
-  itemDesc: 
+  dropped_Prefab: {fileID: 4420024779134484209, guid: cd4d0dce4c5b4954bad259bd6c4882ad,
+    type: 3}
+  placed_Prefab: {fileID: 1140231160042143076, guid: c88dfe9b8d0c3164abde5476ed9afc74,
+    type: 3}
+  held_Prefab: {fileID: 2496127994757560647, guid: c729423a83fa5b148b7eeb43bc71bf68,
+    type: 3}
+  equipped_Prefab: {fileID: 2496127994757560647, guid: c729423a83fa5b148b7eeb43bc71bf68,
+    type: 3}
+  itemName: Paper
+  itemDesc: 'Thin material made from wood. There are so many uses for paper. You could
+    construct the most beautiful love poem. You could draw a picture on it. You could
+    write an important document that could change the fate of the world, uniting people
+    together. Or you could just set it on fire. '
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 64
@@ -48,6 +55,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

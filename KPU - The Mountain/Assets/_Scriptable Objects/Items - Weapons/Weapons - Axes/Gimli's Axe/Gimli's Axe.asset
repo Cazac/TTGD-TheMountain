@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gimli's Axe
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 3013672832286252633, guid: 8a42d6c9b397ef142b0dd27566314e19,
+    type: 3}
+  placed_Prefab: {fileID: 3772280018256365073, guid: 13886e00f92ebe84cbb33efc34d919de,
+    type: 3}
+  held_Prefab: {fileID: 671773550097464978, guid: f5169fad5d875004484ac848e00d3f14,
+    type: 3}
+  equipped_Prefab: {fileID: 671773550097464978, guid: f5169fad5d875004484ac848e00d3f14,
+    type: 3}
   itemName: 
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

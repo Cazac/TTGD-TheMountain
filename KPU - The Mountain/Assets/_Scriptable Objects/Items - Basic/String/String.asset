@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: String
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
-  itemDesc: 
+  dropped_Prefab: {fileID: 748339100513768888, guid: d43403cd0ac310a418a66341775abf25,
+    type: 3}
+  placed_Prefab: {fileID: 6094319781639636203, guid: 4ee75c2d37ed36e4e8296d38b3fb41fa,
+    type: 3}
+  held_Prefab: {fileID: 5146939136399101605, guid: bdc329167e319b541afa96c3819f2385,
+    type: 3}
+  equipped_Prefab: {fileID: 5146939136399101605, guid: bdc329167e319b541afa96c3819f2385,
+    type: 3}
+  itemName: String
+  itemDesc: It's like mini rope. Not as strong though. Wanna see if it burns? (Yes
+    it does)
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 64
@@ -48,6 +53,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

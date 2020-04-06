@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 5676978327293762409, guid: 90c00c31a33a4144783e438f485bea73,
+    type: 3}
+  placed_Prefab: {fileID: 2060141464581624177, guid: a8d8573e65e626c4394a6c013dccafa1,
+    type: 3}
+  held_Prefab: {fileID: 2699692314058896407, guid: 701af937f3b7dfc4696462296d533047,
+    type: 3}
+  equipped_Prefab: {fileID: 2699692314058896407, guid: 701af937f3b7dfc4696462296d533047,
+    type: 3}
+  itemName: Pickaxe
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

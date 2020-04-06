@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Creature Soul
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 294545665551458720, guid: 30b5dbd2d2c3bc3469da29e1505c9a60,
+    type: 3}
+  placed_Prefab: {fileID: 8815087828838688211, guid: 63690347b42d6ae43bba42cf8ecfb347,
+    type: 3}
+  held_Prefab: {fileID: 4610072091939191400, guid: 0e046990d0b79de418aa6d7d14468ca0,
+    type: 3}
+  equipped_Prefab: {fileID: 4610072091939191400, guid: 0e046990d0b79de418aa6d7d14468ca0,
+    type: 3}
+  itemName: Creature Soul
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

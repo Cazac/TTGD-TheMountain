@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 2095578217400381717, guid: cdbcaf7b5c488dc42aeb681d05eb8e65,
+    type: 3}
+  placed_Prefab: {fileID: 2120744162864320597, guid: 75ede1292d5914b4c9881b6b662f39f9,
+    type: 3}
+  held_Prefab: {fileID: 1734535357825901070, guid: dc3440cb5c2bcbf4196f7fcfc8bdfed1,
+    type: 3}
+  equipped_Prefab: {fileID: 1734535357825901070, guid: dc3440cb5c2bcbf4196f7fcfc8bdfed1,
+    type: 3}
+  itemName: Iron
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

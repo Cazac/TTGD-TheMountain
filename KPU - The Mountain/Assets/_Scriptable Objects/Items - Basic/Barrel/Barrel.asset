@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Barrel
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
-  itemDesc: 
+  dropped_Prefab: {fileID: 3504224347274465086, guid: d3a939afcb70b1f48a05b72cf6c67d6a,
+    type: 3}
+  placed_Prefab: {fileID: 7469112534471463277, guid: 2e64ed2da1db9f74a881b7824b72ad53,
+    type: 3}
+  held_Prefab: {fileID: 7812552670995637805, guid: d47b2c232c82aa34ca98374c00e4382b,
+    type: 3}
+  equipped_Prefab: {fileID: 7812552670995637805, guid: d47b2c232c82aa34ca98374c00e4382b,
+    type: 3}
+  itemName: Barrel
+  itemDesc: The elegant barrel. Has a robust and round figure. It might take a while
+    but it can be burned.
   itemIcon: {fileID: 0}
   maxDurablity: 0
   maxStackSize: 1
@@ -48,6 +53,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Dwarven Sword
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 1950180130366576688, guid: 9d199a780c70e1041a88886b94591448,
+    type: 3}
+  placed_Prefab: {fileID: 1806733350563630348, guid: 5ba1d6d7de3e2e0429b85541c87ec6c4,
+    type: 3}
+  held_Prefab: {fileID: 138313921807227718, guid: 1ea696c6897dcbc4c92b94adfa20f628,
+    type: 3}
+  equipped_Prefab: {fileID: 138313921807227718, guid: 1ea696c6897dcbc4c92b94adfa20f628,
+    type: 3}
+  itemName: Dwarven Sword
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

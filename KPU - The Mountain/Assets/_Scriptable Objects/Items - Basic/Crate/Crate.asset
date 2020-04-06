@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Crate
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 2406295757660267837, guid: 505988716584dc441bac90e1d12b8de1,
+    type: 3}
+  placed_Prefab: {fileID: 1090373801038769244, guid: 1dd42445d8540f6448efd200698333da,
+    type: 3}
+  held_Prefab: {fileID: 1976418252492247457, guid: 5c309235760a5ba49ac9a6a9cb24c102,
+    type: 3}
+  equipped_Prefab: {fileID: 1976418252492247457, guid: 5c309235760a5ba49ac9a6a9cb24c102,
+    type: 3}
   itemName: 
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0
