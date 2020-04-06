@@ -295,17 +295,7 @@ public class TM_ButtonController_Play : MonoBehaviour
         TM_PlayerSaveData newPlayerSaveData = TM_SaveController.Instance.PlayerData_CreateDefault();
         newPlayerSaveData.playerInfo_Name = newSave_CharecterName_Input.text;
 
-        newPlayerSaveData.player_CurrentHealth = 10;
-        newPlayerSaveData.player_MaxHealth = 10;
-        newPlayerSaveData.player_BaseHealth = 10;
 
-        newPlayerSaveData.player_CurrentHunger = 10;
-        newPlayerSaveData.player_MaxHunger = 10;
-        newPlayerSaveData.player_BaseHunger = 10;
-
-        newPlayerSaveData.player_CurrentFire = 10;
-        newPlayerSaveData.player_MaxFire = 10;
-        newPlayerSaveData.player_BaseFire = 10;
 
 
 
@@ -356,6 +346,20 @@ public class TM_ButtonController_Play : MonoBehaviour
             newPlayerSaveData.player_CurrentStat_CON = 10;
         }
 
+        //Calculate Health Based On CON
+        int calculatedHealth = 50 + newPlayerSaveData.player_CurrentStat_CON;
+
+        newPlayerSaveData.player_CurrentHealth = calculatedHealth;
+        newPlayerSaveData.player_MaxHealth = calculatedHealth;
+        newPlayerSaveData.player_BaseHealth = calculatedHealth;
+
+        newPlayerSaveData.player_CurrentHunger = 100;
+        newPlayerSaveData.player_MaxHunger = 100;
+        newPlayerSaveData.player_BaseHunger = 100;
+
+        newPlayerSaveData.player_CurrentFire = 100;
+        newPlayerSaveData.player_MaxFire = 100;
+        newPlayerSaveData.player_BaseFire = 100;
 
 
         //Name Validation

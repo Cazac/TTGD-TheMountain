@@ -300,6 +300,21 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
         //Update UI
         TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
+
+
+
+
+        //Update Fire Light Levels
+        foreach (Transform roomChild in TM_DungeonGenerator.Instance.WorldGen_Container.transform)
+        {
+            TM_RoomContainer currentRoom_Room = roomChild.GetComponent<TM_RoomContainer>();
+
+            foreach (TM_LightTab lightTab in currentRoom_Room.lightContainer.lightTabs_List)
+            {
+                float ratio = (float)player_CurrentFire / player_MaxFire;
+                lightTab.RefreshLightValues(ratio);
+            }
+        }
     }
 
     public void ChangeFire_Max()
@@ -358,8 +373,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
         int totalDEX = player_CurrentStat_DEX + tempStat_DEX;
         playerEquipmentStat_Speed = 15 + (totalDEX * 10);
     }
-
-
+    
     public void CalculateHealth()
     {
         int totalCON = player_CurrentStat_CON + tempStat_CON;

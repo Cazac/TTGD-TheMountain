@@ -45,6 +45,11 @@ public class TM_EnemyRangeActivator : MonoBehaviour
 
     public void Activate()
     {
+        if (TM_DungeonGenerator.Instance.hasNavMeshBeenBuilt == false)
+        {
+            return;
+        }
+
         enemy_GO.GetComponent<TM_EnemyDirector_Minotaur>().enabled = true;
         enemy_GO.GetComponent<NavMeshAgent>().enabled = true;
 

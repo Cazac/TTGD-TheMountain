@@ -38,7 +38,7 @@ public class TM_DungeonGenerator : MonoBehaviour
     ////////////////////////////////
 
     [Header("Variables Controlling the Generator")]
-    private int maxRoomAmount = 5;
+    private int maxRoomAmount = 50;
     private int currentRoomAmount = 0;
     private float generatorWaitSpeed = 0.2f;
 
@@ -55,6 +55,7 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     //public System.Random seededRandomGen;
 
+    public bool hasNavMeshBeenBuilt;
 
     ///////////////////////////////////////////////////////
 
@@ -313,9 +314,10 @@ public class TM_DungeonGenerator : MonoBehaviour
 
     private void Room_Setup()
     {
-        print("Test Code: Nav Building");
+        print("Test Code: Building Surface Nav Mesh");
 
         TM_PlayerMenuController_Intro.Instance.GetComponent<NavMeshSurface>().BuildNavMesh();
+        hasNavMeshBeenBuilt = true;
 
         foreach (Transform roomGO in WorldGen_Container.transform)
         {

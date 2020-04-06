@@ -12,5 +12,44 @@ using UnityEngine;
 
 public class TM_LightTab : MonoBehaviour
 {
-    List<Light> lightSources_List;
+    ////////////////////////////////
+
+    [Header("Starting Values")]
+    public float lightIntensity_BaseValue;
+    public float lightRange_BaseValue;
+
+    [Header("List Of Lights")]
+    public List<Light> lightSources_List;
+
+    ///////////////////////////////////////////////////////
+
+    public void RefreshLightValues(float lightRatio)
+    {
+        foreach (Light light in lightSources_List)
+        {
+            //Set Light Intensity as a Ratio
+            light.intensity = lightIntensity_BaseValue * lightRatio;
+
+            //
+        }
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void SetBlinkingLights()
+    {
+
+    }
+
+    public void RemoveBlinkingLights()
+    {
+        StopAllCoroutines();
+    }
+
+    private IEnumerator BlinkingLights()
+    {
+        yield break;
+    }
+
+    ///////////////////////////////////////////////////////
 }
