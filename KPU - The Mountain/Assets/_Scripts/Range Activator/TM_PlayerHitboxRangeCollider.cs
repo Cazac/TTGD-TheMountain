@@ -11,6 +11,9 @@ public class TM_PlayerHitboxRangeCollider : MonoBehaviour
         //Check For Player
         if (collider.gameObject.GetComponent<TM_EnemyStats>() != null)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurDamaged1_SFX);
+
             //Get Item Held and Get Damage
             TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
             int damage = TM_PlayerController_Stats.Instance.CalculateAttack_WithWep(item);

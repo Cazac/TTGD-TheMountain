@@ -153,6 +153,9 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
             }
             else
             {
+                //Turn Off All Panels
+                PlayerMenu_TurnOffPanels();
+
                 //Open Panel
                 PauseMenu_Panel.SetActive(true);
                 gameState_IsPasued = true;

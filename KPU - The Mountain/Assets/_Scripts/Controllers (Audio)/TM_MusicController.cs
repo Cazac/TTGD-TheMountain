@@ -31,6 +31,12 @@ public class TM_MusicController : MonoBehaviour
 
     ////////////////////////////////
 
+
+
+
+    public GameObject currentMusicRange_GO;
+
+
     [Header("Current Scene")]
     private bool isTitleScene;
     private bool isGameScene;
@@ -81,20 +87,21 @@ public class TM_MusicController : MonoBehaviour
         //Stop Other Music
         StopTrackMusic_All();
 
-        //Spawn SFX
-        GameObject newSFXTrack;
+        //Instantiate New Audio Source At Location
+        GameObject newSFXTrack = Instantiate(musicTrack_Prefab, locationalParent.transform);
 
-        //Sort By Location Parent
-        if (locationalParent == null)
-        {
-            //Instantiate New Audio Source Unser Container
-            newSFXTrack = Instantiate(musicTrack_Prefab, musicTrack_Container.transform);
-        }
-        else
-        {
-            //Instantiate New Audio Source At Location
-            newSFXTrack = Instantiate(musicTrack_Prefab, locationalParent.transform);
-        }
+        //Music Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+    }
+
+
+    public void PlayTrackMusic(TM_Audio_SO audioSO)
+    {
+        //Stop Other Music
+        StopTrackMusic_All();
+
+        //Instantiate New Audio Source User Container
+        GameObject newSFXTrack = Instantiate(musicTrack_Prefab, musicTrack_Container.transform);
 
         //Music Setup
         newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);

@@ -410,6 +410,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
     public void ChangeToState_Dying()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurDeath_SFX);
+
         enemy_Animator.Play("Death");
 
 

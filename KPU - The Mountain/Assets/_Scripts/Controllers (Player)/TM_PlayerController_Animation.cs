@@ -75,6 +75,18 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SetAnimationValue_SwordAttack()
     {
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack Melee Quick"))
+        {
+            return;
+        }
+        else
+        {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerSword_SFX);
+
+            playerAnimator.Play("Attack Punch");
+        }
+
         playerAnimator.Play("Attack Melee Quick");
     }
 

@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class TM_MusicRangeActivator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<TM_Audio_SO> musicOnActivate_List;
+    private bool canPlayMusic;
+
+    private void Awake()
     {
-        
+        canPlayMusic = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider collider)
     {
-        
+        if (collider.GetComponent<TM_PlayerController_Movement>() != null)
+        {
+            if (TM_MusicController.Instance.currentMusicRange_GO == gameObject)
+            {
+                //This Range Activator is already playing here
+                return;
+            }
+
+
+            if (canPlayMusic == true)
+            {
+  
+               
+                int randomChoice = Random.Range(0, musicOnActivate_List.Count);
+                TM_MusicController.Instance.PlayTrackMusic(musicOnActivate_List[randomChoice]);
+                TM_MusicController.Instance.currentMusicRange_GO = gameObject;
+                StartCoroutine(WaitToAllowNewMusicOnReentry());
+                
+
+            }
+        }
     }
+
+    private IEnumerator WaitToAllowNewMusicOnReentry()
+    {
+        canPlayMusic = false;
+        yield return new WaitForSeconds(10f);
+        canPlayMusic = true;
+
+        yield break;
+    }
+
 }

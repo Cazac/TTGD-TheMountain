@@ -56,6 +56,9 @@ public class TM_EnemyStats : MonoBehaviour
 
     public void ChangeHealth_Current(int changeValue)
     {
+     
+
+
         //Set Visual Red Blink / Set Damage Popup
         SetVisualFlash_Typed();
         SetDamagePopup_Typed(changeValue);
