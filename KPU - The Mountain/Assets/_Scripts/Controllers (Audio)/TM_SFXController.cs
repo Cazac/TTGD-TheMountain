@@ -67,20 +67,57 @@ public class TM_SFXController : MonoBehaviour
         //Spawn SFX
         GameObject newSFXTrack;
 
-        //Sort By Location Parent
-        if (locationalParent == null)
-        {
-            //Instantiate New Audio Source Unser Container
-            newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
-        }
-        else
-        {
-            //Instantiate New Audio Source At Location
-            newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
-        }
+        //Instantiate New Audio Source At Location
+        newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
 
         //SFX Setup
         newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+    }
+
+    public void PlayTrackSFX(TM_Audio_SO audioSO)
+    {
+        print("Test Code: Play");
+
+        //Spawn SFX
+        GameObject newSFXTrack;
+
+        //Instantiate New Audio Source Unser Container
+        newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    public void PlayTrackSFX(List<TM_Audio_SO> audioSO_List, GameObject locationalParent)
+    {
+        //Spawn SFX
+        GameObject newSFXTrack;
+
+        //Instantiate New Audio Source At Location
+        newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
+
+        //Random Choice
+        int randomChoice = Random.Range(0, audioSO_List.Count);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice]);
+    }
+
+    public void PlayTrackSFX(List<TM_Audio_SO> audioSO_List)
+    {
+        //Spawn SFX
+        GameObject newSFXTrack;
+
+        //Instantiate New Audio Source Unser Container
+        newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+
+        //Random Choice
+        int randomChoice = Random.Range(0, audioSO_List.Count);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice]);
     }
 
     /////////////////////////////////////////////////////////////////
@@ -133,23 +170,6 @@ public class TM_SFXController : MonoBehaviour
                 audioTab.audioSource.volume = (audioTab.currentAudio_SO.volume * volumeMutiplyer);
             }
         }
-    }
-
-    /////////////////////////////////////////////////////////////////
-
-    public void PlayTrack_ButtonHover()
-    {
-        //PlayTrack_SFX(database, null);
-    }
-
-    public void PlaySFX_ButtonClick()
-    {
-        //PlayTrack_SFX(database, null);
-    }
-
-    public void PlaySFX_ButtonBack()
-    {
-        //PlayTrack_SFX(database, null);
     }
 
     /////////////////////////////////////////////////////////////////

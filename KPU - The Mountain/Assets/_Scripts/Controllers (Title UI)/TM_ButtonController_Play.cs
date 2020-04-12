@@ -175,6 +175,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_Load_Play()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         TM_DatabaseController.Instance.player_SaveData = TM_SaveController.Instance.PlayerData_GetCurrentSaveFile();
 
         //Load Game Scene
@@ -183,6 +186,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_SaveSlot(int saveSlot)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Reload the Save Data
         TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
 
@@ -215,6 +221,8 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_ClassSlot(GameObject class_GO)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
 
         if (class_GO == newSave_ClassBrawlerButton)
         {
@@ -284,8 +292,7 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_CreateNewCharecter()
     {
-
-
+ 
 
         //Check Null Values
 
@@ -383,11 +390,17 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_RandomizeCharecterName()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         newSave_CharecterName_Input.text = TM_DatabaseController.Instance.name_DB.randomName_List[UnityEngine.Random.Range(0, TM_DatabaseController.Instance.name_DB.randomName_List.Count)];
     }
 
     public void Button_RandomizeMapSeed()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         newSave_MapSeed_Input.text = 
             UnityEngine.Random.Range(0, 10).ToString() + 
             UnityEngine.Random.Range(0, 10) + 
@@ -401,6 +414,9 @@ public class TM_ButtonController_Play : MonoBehaviour
  
     public void Button_DifficultyLeft()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Loop List
         if (newSave_currentDifficulty > 0)
         {
@@ -416,6 +432,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_DifficultyRight()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Loop List
         if (newSave_currentDifficulty < (newSave_diffcultyChoices_List.Count - 1))
         {
@@ -461,6 +480,94 @@ public class TM_ButtonController_Play : MonoBehaviour
     }
 
     ///////////////////////////////////////////////////////
+
+    public void Manual_RandomizeMapSeed()
+    {
+        newSave_MapSeed_Input.text =
+            UnityEngine.Random.Range(0, 10).ToString() +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10);
+    }
+
+    public void Manual_ClassSlot(GameObject class_GO)
+    {
+
+        if (class_GO == newSave_ClassBrawlerButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 8<br><color=#19FF00>(+3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 6<br><color=#19FF00>(+1)</color>";
+            newSave_ClassINT_Text.text = "INT: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
+
+            newSave_currentClass = "Brawler";
+
+        }
+        else if (class_GO == newSave_ClassKnightButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 5<br>(+0)";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassCON_Text.text = "CON: 5<br>(+0)";
+
+            newSave_currentClass = "Knight";
+        }
+        else if (class_GO == newSave_ClassArcherButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 9<br><color=#19FF00>(+4)</color>";
+            newSave_ClassINT_Text.text = "INT: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
+
+            newSave_currentClass = "Archer";
+        }
+        else if (class_GO == newSave_ClassWizardButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassINT_Text.text = "INT: 12<br><color=#19FF00>(+7)</color>";
+            newSave_ClassCON_Text.text = "CON: 2<br><color=#FF0800>(-3)</color>";
+
+            newSave_currentClass = "Wizard";
+        }
+        else if (class_GO == newSave_ClassTankButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 0<br><color=#FF0800>(-5)</color>";
+            newSave_ClassCON_Text.text = "CON: 10<br><color=#19FF00>(+5)</color>";
+
+            newSave_currentClass = "Tank";
+        }
+    }
+
+    public void ManualSelect_ClassSlot(GameObject class_GO)
+    {
+
+
+        //Remove all buttons
+        newSave_ClassBrawlerButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassKnightButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassArcherButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassWizardButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassTankButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
+        //Select This Button
+        class_GO.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    ///////////////////////////////////////////////////////
+
 
     public void SaveSlots_RefreshVisuals()
     {
@@ -596,14 +703,14 @@ public class TM_ButtonController_Play : MonoBehaviour
     {
         //Clear Text
         charecterLoad_Name_Text.text = "";
-        Button_RandomizeMapSeed();
+        Manual_RandomizeMapSeed();
 
         newSave_currentDifficulty = 1;
         newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
 
         //Select Button
-        Button_ClassSlot(newSave_ClassBrawlerButton);
-        ButtonSelect_ClassSlot(newSave_ClassBrawlerButton);
+        Manual_ClassSlot(newSave_ClassBrawlerButton);
+        ManualSelect_ClassSlot(newSave_ClassBrawlerButton);
     }
 
     ///////////////////////////////////////////////////////

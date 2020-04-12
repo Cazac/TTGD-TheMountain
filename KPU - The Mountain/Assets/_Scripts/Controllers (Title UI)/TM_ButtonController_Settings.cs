@@ -70,6 +70,11 @@ public class TM_ButtonController_Settings : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        UpdateSettingsVisuals();
+    }
+
     ///////////////////////////////////////////////////////
 
     public void Setup()
@@ -85,6 +90,10 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void Button_OpenPanel_KeyBinding()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+
         //Check For Changed Settings in current panel before switching
 
 
@@ -103,6 +112,10 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void Button_OpenPanel_Sound()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+
         //Check For Changed Settings in current panel before switching
 
 
@@ -222,6 +235,9 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void ToggleChange_MuteMusic(Toggle toggle)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Update Database
         TM_DatabaseController.Instance.settings_SaveData.isMusicMute = toggle.isOn;
         TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
@@ -232,6 +248,9 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void ToggleChange_MuteAmbience(Toggle toggle)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Update Database
         TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute = toggle.isOn;
         TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
@@ -248,6 +267,9 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
         //Update Controllers Current Audio Levels
         TM_SFXController.Instance.VolumeLevels_UpdateAll();
+
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
     }
 
     ///////////////////////////////////////////////////////

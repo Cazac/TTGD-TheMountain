@@ -60,7 +60,17 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SetAnimationValue_PunchAttack()
     {
-        playerAnimator.Play("Attack Punch");
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack Punch"))
+        {
+            return;
+        }
+        else
+        {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerPunch_SFX);
+
+            playerAnimator.Play("Attack Punch");
+        }
     }
 
     public void SetAnimationValue_SwordAttack()
@@ -223,6 +233,7 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void AnimationEvent_PunchHitbox()
     {
+
         TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox, 0.2f);
 
     }

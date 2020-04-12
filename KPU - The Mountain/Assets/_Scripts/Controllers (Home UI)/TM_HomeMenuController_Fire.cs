@@ -148,6 +148,9 @@ public class TM_HomeMenuController_Fire : MonoBehaviour
         //Add BurnValue
         TM_PlayerController_Stats.Instance.ChangeFire_Current(currentSelectedBurnable_Tab.currentBurnableItem.burn_FireValue);
 
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.burningItem_SFX);
+
         //Apply Effect
 
 
