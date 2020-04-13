@@ -6,6 +6,7 @@ public class TM_MusicRangeActivator : MonoBehaviour
 {
     public List<TM_Audio_SO> musicOnActivate_List;
     private bool canPlayMusic;
+    public bool isOneTimeUse;
 
     private void Awake()
     {
@@ -30,9 +31,15 @@ public class TM_MusicRangeActivator : MonoBehaviour
                 int randomChoice = Random.Range(0, musicOnActivate_List.Count);
                 TM_MusicController.Instance.PlayTrackMusic(musicOnActivate_List[randomChoice]);
                 TM_MusicController.Instance.currentMusicRange_GO = gameObject;
-                StartCoroutine(WaitToAllowNewMusicOnReentry());
-                
 
+                if (isOneTimeUse == true)
+                {
+                    canPlayMusic = false;
+                }
+                else
+                {
+                    StartCoroutine(WaitToAllowNewMusicOnReentry());
+                }
             }
         }
     }

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Music - Exploration 3
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 9eb52b734909016489808ceb9293b7aa, type: 3}
-  volume: 0.3
+  volume: 0.2
   pitch: 1
   pitchRange: 0
   canLoop: 1
   canFadeIn: 1
-  fadeInSpeed: 1
+  fadeInSpeed: 0.25
   canFadeOut: 1
-  fadeOutSpeed: 1
+  fadeOutSpeed: 0.25

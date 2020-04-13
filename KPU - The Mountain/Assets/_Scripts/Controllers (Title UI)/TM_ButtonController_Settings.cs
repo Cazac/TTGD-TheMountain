@@ -70,11 +70,6 @@ public class TM_ButtonController_Settings : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        UpdateSettingsVisuals();
-    }
-
     ///////////////////////////////////////////////////////
 
     public void Setup()

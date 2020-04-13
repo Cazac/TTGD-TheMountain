@@ -43,8 +43,6 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
 
     public void StartDeathAnimation(string causeOfDeath)
     {
-        print("Test Code: Death");
-
         //Check If Death has been triggered already
         if (hasDied)
         {
@@ -52,7 +50,11 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
             return;
         }
 
+        //Play SFX
+        //TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerDeath_SFX);
 
+        //Play Music 
+        TM_MusicController.Instance.PlayTrackMusic(TM_DatabaseController.Instance.music_DB.deathMusic_Theme1);
 
         //Set Panel Active To Set Animation CLip
         deathPanel.SetActive(true);

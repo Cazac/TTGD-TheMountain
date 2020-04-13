@@ -17,7 +17,7 @@ MonoBehaviour:
   pitch: 0.8
   pitchRange: 0
   canLoop: 1
-  canFadeIn: 0
-  fadeInSpeed: 0
+  canFadeIn: 1
+  fadeInSpeed: 0.25
   canFadeOut: 1
-  fadeOutSpeed: 1
+  fadeOutSpeed: 0.25

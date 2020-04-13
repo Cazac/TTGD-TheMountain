@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b3d8a3845b64ea42bcfaacf95de5718, type: 3}
-  m_Name: Audio SFX - Minotaur Footsteps 2
+  m_Name: Audio SFX - Player Footstep 1
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 58002c97a4458914e8e4d211ca519447, type: 3}
-  volume: 0
-  pitch: 0
-  pitchRange: 0
+  audioClip: {fileID: 8300000, guid: 39207733b8c85e943a5841949ae9450e, type: 3}
+  volume: 0.4
+  pitch: 1.4
+  pitchRange: 0.2
   canLoop: 0
   canFadeIn: 0
   fadeInSpeed: 0

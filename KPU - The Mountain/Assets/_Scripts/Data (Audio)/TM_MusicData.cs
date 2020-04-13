@@ -43,6 +43,11 @@ public class TM_MusicData : MonoBehaviour
 
     ////////////////////////////////
 
+    [Header("Death Music")]
+    public TM_Audio_SO deathMusic_Theme1;
+
+    ////////////////////////////////
+
     [Header("Exploring Music - Singles")]
     public TM_Audio_SO exploringMusic_Theme1;
     public TM_Audio_SO exploringMusic_Theme2;

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Music - Home 1
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 1a0c79f4d09d9024dbaa5045a8e59ab3, type: 3}
-  volume: 0.3
+  volume: 0.2
   pitch: 1
   pitchRange: 0
   canLoop: 1
   canFadeIn: 1
-  fadeInSpeed: 1
+  fadeInSpeed: 0.25
   canFadeOut: 1
-  fadeOutSpeed: 1
+  fadeOutSpeed: 0.25

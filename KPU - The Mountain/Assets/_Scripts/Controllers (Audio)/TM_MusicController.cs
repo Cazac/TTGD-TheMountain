@@ -91,7 +91,7 @@ public class TM_MusicController : MonoBehaviour
         GameObject newSFXTrack = Instantiate(musicTrack_Prefab, locationalParent.transform);
 
         //Music Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 1, TM_DatabaseController.Instance.settings_SaveData.volumeMusic, TM_DatabaseController.Instance.settings_SaveData.isMusicMute);
     }
 
 
@@ -104,7 +104,7 @@ public class TM_MusicController : MonoBehaviour
         GameObject newSFXTrack = Instantiate(musicTrack_Prefab, musicTrack_Container.transform);
 
         //Music Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 0, TM_DatabaseController.Instance.settings_SaveData.volumeMusic, TM_DatabaseController.Instance.settings_SaveData.isMusicMute);
     }
 
     /////////////////////////////////////////////////////////////////

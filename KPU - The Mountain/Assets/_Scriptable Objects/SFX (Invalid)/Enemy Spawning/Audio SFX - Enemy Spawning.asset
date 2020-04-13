@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3d8a3845b64ea42bcfaacf95de5718, type: 3}
   m_Name: Audio SFX - Enemy Spawning
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
-  volume: 0
-  pitch: 0
+  audioClip: {fileID: 8300000, guid: c8c07e310aa63b54494a76588fb0e20c, type: 3}
+  volume: 0.2
+  pitch: 1.2
   pitchRange: 0
   canLoop: 0
   canFadeIn: 0

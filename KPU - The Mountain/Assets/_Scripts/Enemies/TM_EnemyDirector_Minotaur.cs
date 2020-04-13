@@ -81,6 +81,12 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
     public int STARTING_HEALTH = 200;
 
+
+
+    [Header("Footsteps")]
+    float distancePerFootstep = 4;
+    float currentFootstepDistance;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -93,6 +99,25 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+
+        //Footstep SFX
+        EnemyFootsteps();
+    }
+
+    private void EnemyFootsteps()
+    {
+        currentFootstepDistance += enemy_Rigidbody.velocity.magnitude * Time.deltaTime;
+        currentFootstepDistance += enemy_NavAgent.velocity.magnitude * Time.deltaTime;
+
+
+        if (currentFootstepDistance >= distancePerFootstep)
+        {
+            //Remove Distance
+            currentFootstepDistance -= distancePerFootstep;
+
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurFootsteps_List, gameObject);
+        }
     }
 
     ///////////////////////////////////////////////////////
@@ -179,6 +204,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //Check For State Change
         if (Random.Range(0, 100) == 0)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurRoar_SFX, gameObject);
+
             //Change To Wandering
             ChangeToState_Wandering();
 
@@ -216,6 +244,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
                 if (path.status != NavMeshPathStatus.PathPartial)
                 {
+                    //Play SFX
+                    TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurRoar_SFX, gameObject);
+
                     //Chase towards the target
                     ChangeToState_Chasing();
                     return;

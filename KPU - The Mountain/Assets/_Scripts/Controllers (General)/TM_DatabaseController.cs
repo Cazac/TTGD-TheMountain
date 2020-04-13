@@ -109,7 +109,7 @@ public class TM_DatabaseController : MonoBehaviour
         item_DB.BuildDatabase();
         name_DB.BuildDatabase();
         cycle_DB.BuildDatabase();
-
+        sfx_DB.BuildDatabase();
 
     }
 
@@ -169,7 +169,7 @@ public class TM_DatabaseController : MonoBehaviour
 
         //Do Eextra Stuff, Rmove this stuff~
 
-
+        TM_SaveController.Instance.SettingsData_LoadSaveFile();
 
         //Reload Data For the Systems Room Debug Play
         TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
@@ -182,6 +182,7 @@ public class TM_DatabaseController : MonoBehaviour
     {
         print("Test Code: ...Loaded Game Found");
 
+        TM_SaveController.Instance.SettingsData_LoadSaveFile();
 
         //Reload Data For the Systems Room Debug Play
         TM_SaveController.Instance.PlayerData_ReloadSaveFiles();

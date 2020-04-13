@@ -30,6 +30,9 @@ public class TM_EnemySpawner : MonoBehaviour
     public List<TM_SpawnerCandlesTab> spawner_Candles_List;
     public int spawner_CandlesBurningCount;
 
+    [Header("Sound Effects")]
+    private GameObject spawnerIdle_DeletableSFX;
+
     ///////////////////////////////////////////////////////
 
     public void AnimationChange_FadeOut()
@@ -65,6 +68,9 @@ public class TM_EnemySpawner : MonoBehaviour
 
     public void RelightCandles()
     {
+        //Play SFX
+        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawnGlow_SFX, gameObject);
+
         AnimationChange_Idle();
 
         foreach (TM_SpawnerCandlesTab candleTab in spawner_Candles_List)
@@ -123,6 +129,11 @@ public class TM_EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(10f);
         }
 
+        if (spawnerIdle_DeletableSFX != null)
+        {
+            Destroy(spawnerIdle_DeletableSFX);
+        }
+
         AnimationChange_FadeOut();
 
         //Break Out
@@ -133,6 +144,9 @@ public class TM_EnemySpawner : MonoBehaviour
 
     public void AnimationEvent_SpawnEnemy()
     {
+        //Play SFX
+        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawn_SFX, gameObject);
+
         //Start Spawning Coroutine
         StartCoroutine(SpawningEnemy());
     }

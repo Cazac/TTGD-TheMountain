@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Audio SFX - Enemy Death
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 0fe6e0e8c6cebb24892165a580bf2aee, type: 3}
-  volume: 2
+  volume: 0.4
   pitch: 1.5
   pitchRange: 0.2
   canLoop: 0
-  canFadeIn: 0
-  fadeInSpeed: 0
+  canFadeIn: 1
+  fadeInSpeed: 1
   canFadeOut: 0
   fadeOutSpeed: 0

@@ -62,62 +62,56 @@ public class TM_SFXController : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void PlayTrackSFX(TM_Audio_SO audioSO, GameObject locationalParent)
+    public GameObject PlayTrackSFX(TM_Audio_SO audioSO, GameObject locationalParent)
     {
-        //Spawn SFX
-        GameObject newSFXTrack;
-
         //Instantiate New Audio Source At Location
-        newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
 
         //SFX Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 1, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
     }
 
-    public void PlayTrackSFX(TM_Audio_SO audioSO)
+    public GameObject PlayTrackSFX(TM_Audio_SO audioSO)
     {
-        print("Test Code: Play");
-
-        //Spawn SFX
-        GameObject newSFXTrack;
-
         //Instantiate New Audio Source Unser Container
-        newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
 
         //SFX Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 0, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
     }
 
     /////////////////////////////////////////////////////////////////
 
-    public void PlayTrackSFX(List<TM_Audio_SO> audioSO_List, GameObject locationalParent)
+    public GameObject PlayTrackSFX(List<TM_Audio_SO> audioSO_List, GameObject locationalParent)
     {
-        //Spawn SFX
-        GameObject newSFXTrack;
-
         //Instantiate New Audio Source At Location
-        newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
 
         //Random Choice
         int randomChoice = Random.Range(0, audioSO_List.Count);
 
         //SFX Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice]);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice], 1, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
     }
 
-    public void PlayTrackSFX(List<TM_Audio_SO> audioSO_List)
+    public GameObject PlayTrackSFX(List<TM_Audio_SO> audioSO_List)
     {
-        //Spawn SFX
-        GameObject newSFXTrack;
-
         //Instantiate New Audio Source Unser Container
-        newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
 
         //Random Choice
         int randomChoice = Random.Range(0, audioSO_List.Count);
 
         //SFX Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice]);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice], 0, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
     }
 
     /////////////////////////////////////////////////////////////////

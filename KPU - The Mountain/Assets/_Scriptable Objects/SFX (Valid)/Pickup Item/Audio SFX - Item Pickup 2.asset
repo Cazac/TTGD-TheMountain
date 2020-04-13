@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b3d8a3845b64ea42bcfaacf95de5718, type: 3}
-  m_Name: Audio SFX - Player Consume Item
+  m_Name: Audio SFX - Item Pickup 2
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 8f7a84290e6518b46af6cc17bb6b86ac, type: 3}
-  volume: 0.5
+  audioClip: {fileID: 8300000, guid: a4dc1c589fc1ede4783d105525f24baa, type: 3}
+  volume: 0.3
   pitch: 1
-  pitchRange: 0
+  pitchRange: 0.25
   canLoop: 0
   canFadeIn: 0
   fadeInSpeed: 0

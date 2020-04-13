@@ -43,6 +43,11 @@ public class TM_PlayerController_Movement : MonoBehaviour
     [Header("Player's Charecter Controller")]
     private CharacterController player_CC;
 
+
+    [Header("Footsteps")]
+    float distancePerFootstep = 6;
+    float currentFootstepDistance;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -77,12 +82,14 @@ public class TM_PlayerController_Movement : MonoBehaviour
 
 
 
+        PlayerFootsteps();
+
 
 
 
         //Debug Dodge
-        DoubleTap_Left();
-        DoubleTap_Right();
+        //DoubleTap_Left();
+        //DoubleTap_Right();
 
 
 
@@ -175,6 +182,30 @@ public class TM_PlayerController_Movement : MonoBehaviour
     }
 
     ///////////////////////////////////////////////////////
+
+    private void PlayerFootsteps()
+    {
+        //Check If player is on the ground
+        if (player_CC.isGrounded)
+        {
+            currentFootstepDistance += player_CC.velocity.magnitude * Time.deltaTime;
+            //print("Test Code: " + player_CC.velocity.magnitude);
+            //print("Test Code: " + currentFootstepDistance);
+
+            //If 0 reset????\\
+
+            if (currentFootstepDistance >= distancePerFootstep)
+            {
+                currentFootstepDistance -= distancePerFootstep;
+
+                //Play SFX
+                TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerFootsteps_List);
+            }
+
+        }
+
+
+    }
 
 
     ///////////////////////////////////////////////////////
