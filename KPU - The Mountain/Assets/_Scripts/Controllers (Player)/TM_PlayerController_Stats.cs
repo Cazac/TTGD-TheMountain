@@ -66,6 +66,13 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
 
 
+
+
+
+
+
+
+
     ////////////////////////////////
 
 
@@ -77,6 +84,46 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
 
 
+
+
+
+
+    public bool player_HasUnlocked_Brewery;
+    public bool player_HasUnlocked_Forge;
+    public bool player_HasUnlocked_Canteen;
+    public bool player_HasUnlocked_Storage;
+
+
+
+
+
+
+
+    [Header("NOT USED YET")]
+    public int playerEquipmentStat_Health;
+    public int playerEquipmentStat_Defense;
+    public int playerEquipmentStat_Speed;
+
+    public int player_CurrentAttack;
+    public int player_CurrentDefense;
+    public int player_CurrentSpeed;
+    public int player_CurrentStamina;
+
+    ////////////////////////////////
+
+    [Header("NOT USED YET")]
+    public int tempStat_STR;
+    public int tempStat_DEX;
+    public int tempStat_INT;
+    public int tempStat_CON;
+
+
+
+
+
+
+
+
     ////////////////////////////////
 
     private void Awake()
@@ -85,44 +132,11 @@ public class TM_PlayerController_Stats : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        SetDebugStats();
-
-        //Refresh the current values at first chance when systems are setup
-        TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
-        TM_PlayerMenuController_UI.Instance.UpdateUI_HungerValue();
-        TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
-
-        StartCoroutine(HungerDrain());
-        StartCoroutine(FireDrain());
-    }
-
     ///////////////////////////////////////////////////////
 
     public void LoadStats()
     {
 
-    }
-
-    private void SetDebugStats()
-    {
-        player_CurrentHealth = 100;
-        player_MaxHealth = 100;
-        player_BaseHealth = 100;
-
-        player_CurrentHunger = 100;
-        player_MaxHunger = 100;
-        player_BaseHunger = 100;
-
-        player_CurrentFire = 100;
-        player_MaxFire = 100;
-        player_BaseFire = 100;
-    }
-
-    private void FixedUpdate()
-    {
-        //ChangeHealth_Current(-1);
     }
 
     ///////////////////////////////////////////////////////
@@ -286,6 +300,21 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
         //Update UI
         TM_PlayerMenuController_UI.Instance.UpdateUI_FireValue();
+
+
+
+
+        //Update Fire Light Levels
+        foreach (Transform roomChild in TM_DungeonGenerator.Instance.WorldGen_Container.transform)
+        {
+            TM_RoomContainer currentRoom_Room = roomChild.GetComponent<TM_RoomContainer>();
+
+            foreach (TM_LightTab lightTab in currentRoom_Room.lightContainer.lightTabs_List)
+            {
+                float ratio = (float)player_CurrentFire / player_MaxFire;
+                lightTab.RefreshLightValues(ratio);
+            }
+        }
     }
 
     public void ChangeFire_Max()
@@ -297,6 +326,62 @@ public class TM_PlayerController_Stats : MonoBehaviour
     public void ChangeFire_Base()
     {
 
+
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void CalculateAttack_NoWep()
+    {
+        int totalSTR= player_CurrentStat_STR + tempStat_STR;
+        player_CurrentAttack = 15 + (totalSTR * 10);
+    }
+
+    public int CalculateAttack_WithWep(TM_ItemUI itemUI)
+    {
+        int totalSTR = player_CurrentStat_STR + tempStat_STR;
+        player_CurrentAttack = 15 + (totalSTR * 10);
+
+
+        if (itemUI != null)
+        {
+            return player_CurrentAttack + itemUI.original_SO.weapon_Damage;
+        }
+        else
+        {
+            return player_CurrentAttack;
+        }
+    }
+
+    public void CalculateMagic_NoSpell()
+    {
+        
+    }
+
+    public void CalculateDefense()
+    {
+        player_CurrentDefense = 0 + playerEquipmentStat_Defense;
+    }
+
+    public void CalculateResistance()
+    {
+ 
+    }
+
+    public void CalculateSpeed()
+    {
+        int totalDEX = player_CurrentStat_DEX + tempStat_DEX;
+        playerEquipmentStat_Speed = 15 + (totalDEX * 10);
+    }
+    
+    public void CalculateHealth()
+    {
+        int totalCON = player_CurrentStat_CON + tempStat_CON;
+        player_MaxHealth = 50 + playerEquipmentStat_Health + (totalCON * 10);
+    }
+
+    public void CalculateStamina()
+    {
 
     }
 

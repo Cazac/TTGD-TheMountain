@@ -40,6 +40,10 @@ public class TM_ButtonController_Title : MonoBehaviour
         //Check if already opened
         if (play_Panel.activeSelf == true)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+
             //Open Settings Panel
             play_Panel.SetActive(false);
         }
@@ -63,6 +67,9 @@ public class TM_ButtonController_Title : MonoBehaviour
         {
             //Open Settings Panel
             settings_Panel.SetActive(false);
+
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
         }
         else
         {
@@ -81,6 +88,9 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     public void Button_Notes()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Check if already opened
         if (notes_Panel.activeSelf == true)
         {
@@ -105,7 +115,10 @@ public class TM_ButtonController_Title : MonoBehaviour
     }
 
     public void Button_Morgue()
-    {
+    {    
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Check if already opened
         if (morgue_Panel.activeSelf == true)
         {
@@ -131,12 +144,18 @@ public class TM_ButtonController_Title : MonoBehaviour
 
     public void Button_Credits()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Load Credits Scene
         SceneManager.LoadScene("TM_Credits");
     }
 
     public void Button_Quit()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

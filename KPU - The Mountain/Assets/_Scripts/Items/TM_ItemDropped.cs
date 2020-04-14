@@ -44,6 +44,9 @@ public class TM_ItemDropped : MonoBehaviour
                 //Set bool to allow single pickup
                 hasCollided = true;
 
+                //Play SFX
+                TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerPickup1_SFX);
+
                 //Conversion To UI
                 ItemConversion_UI();
             }

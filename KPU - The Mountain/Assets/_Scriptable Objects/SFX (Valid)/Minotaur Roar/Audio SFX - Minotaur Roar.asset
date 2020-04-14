@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3d8a3845b64ea42bcfaacf95de5718, type: 3}
+  m_Name: Audio SFX - Minotaur Roar
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 8300000, guid: c248427c03a0467468ec1b033465dc8c, type: 3}
+  volume: 0.9
+  pitch: 1
+  pitchRange: 0.1
+  canLoop: 0
+  canFadeIn: 0
+  fadeInSpeed: 0
+  canFadeOut: 0
+  fadeOutSpeed: 0

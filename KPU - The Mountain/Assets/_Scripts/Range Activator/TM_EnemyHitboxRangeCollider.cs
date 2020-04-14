@@ -17,6 +17,9 @@ public class TM_EnemyHitboxRangeCollider : MonoBehaviour
         //Check For Player
         if (collider.gameObject.GetComponent<TM_PlayerController_Combat>() != null)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerHurt_SFX);
+
             int damage = -15;
 
             collider.gameObject.GetComponent<TM_PlayerController_Stats>().ChangeHealth_Current(damage, "Minotaur");

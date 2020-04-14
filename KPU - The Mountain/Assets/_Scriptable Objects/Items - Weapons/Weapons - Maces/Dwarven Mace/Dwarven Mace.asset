@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Dwarven Mace
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 8493196668778996091, guid: 54d0faf549c97f940800eb37ef7b2f52,
+    type: 3}
+  placed_Prefab: {fileID: 1921893137371853260, guid: ff105bf7d585ab742981c0aff5bc24b8,
+    type: 3}
+  held_Prefab: {fileID: 3001554313195365892, guid: c96d7385a2a3ade458ab9864497b1e6f,
+    type: 3}
+  equipped_Prefab: {fileID: 3001554313195365892, guid: c96d7385a2a3ade458ab9864497b1e6f,
+    type: 3}
+  itemName: Dwarven Mace
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

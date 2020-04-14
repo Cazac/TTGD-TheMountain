@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Enhanced Steampunk Leg Guard
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 5285731813451197476, guid: fbb8bde73c67efd4d81ca179f0bc5220,
+    type: 3}
+  placed_Prefab: {fileID: 6061644159605489885, guid: 9d02e7cda2479ce4ca7c00c14c85b875,
+    type: 3}
+  held_Prefab: {fileID: 3697898587777852384, guid: 80169bc06adaeec48b5f590cf142cdc6,
+    type: 3}
+  equipped_Prefab: {fileID: 3697898587777852384, guid: 80169bc06adaeec48b5f590cf142cdc6,
+    type: 3}
   itemName: Enhanced Steampunk Leg Guard
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

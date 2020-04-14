@@ -27,7 +27,7 @@ public class TM_AudioTab : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void SetupAudioTrack(TM_Audio_SO audioSO)
+    public void SetupAudioTrack(TM_Audio_SO audioSO, float spatialBlending, float specficTypeVolume, bool isMuted)
     {
         //Save Scriptable 
         currentAudio_SO = audioSO;
@@ -36,30 +36,23 @@ public class TM_AudioTab : MonoBehaviour
         audioSource.clip = audioSO.audioClip;
         audioSource.loop = audioSO.canLoop;
         audioSource.pitch = audioSO.pitch + (Random.Range(-audioSO.pitchRange, audioSO.pitchRange));
-
-
+        audioSource.spatialBlend = spatialBlending;
         audioSource.volume = currentAudio_SO.volume;
 
 
-        //REQUIRES DATABASE SETTINGS VALUES
+        //A PROBLEM FOR ANOTHER TIME
 
-        /*
         //Volume
-        if (TC_DatabaseController.Instance.player_DB.settings.isSFXMute)
+        //if (isMuted)
         {
-            audioSource.volume = 0;
+            //audioSource.volume = 0;
         }
-        else
+       // else
         {
-            float volumeMutiplyer = TC_DatabaseController.Instance.player_DB.settings.volumeTotal * TC_DatabaseController.Instance.player_DB.settings.volumeSFX;
-            audioSource.volume = (currentAudio_SO.volume * volumeMutiplyer);
+            //float volumeMutiplyer = TM_DatabaseController.Instance.settings_SaveData.volumeTotal * specficTypeVolume;
+           // print("Test Code: " + currentAudio_SO.volume * volumeMutiplyer);
+           // audioSource.volume = (currentAudio_SO.volume * volumeMutiplyer);
         }
-        */
-
-
-
-
-
 
         //Play Audio
         audioSource.Play();
@@ -68,7 +61,7 @@ public class TM_AudioTab : MonoBehaviour
         if (audioSO.canFadeIn == true)
         {
             //Begin lerping volume of sound
-            StartCoroutine(AudioVolumeDampeningOnLoad((currentAudio_SO.volume / 60), currentAudio_SO.volume, currentAudio_SO.fadeInSpeed));
+            StartCoroutine(AudioVolumeDampeningOnLoad((audioSource.volume / 60), audioSource.volume, currentAudio_SO.fadeInSpeed));
         }
 
         //Begin Audio Destruction Countdown

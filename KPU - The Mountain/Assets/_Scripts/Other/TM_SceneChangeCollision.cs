@@ -15,9 +15,13 @@ public class TM_SceneChangeCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        //Check For Player
+        if (collider.gameObject.GetComponent<TM_PlayerController_Movement>() != null)
+        {
 
+            print("Test Code: Change Scene!");
 
-        print("Test Code: Change Scene!");
+        }
 
         //SceneManager.LoadScene(sceneChange.name);
     }

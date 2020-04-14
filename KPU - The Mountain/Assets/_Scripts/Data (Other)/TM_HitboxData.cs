@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TM_HitboxData : MonoBehaviour
 {
+    ////////////////////////////////
 
-    public GameObject swordSize1_Hitbox;
+    [Header("Player Hitboxes")]
+    public GameObject playerPunch_Hitbox;
+    public GameObject playerWeapon_Hitbox;
 
-
-
+    [Header("Enemy Hitboxes")]
     public GameObject minotaur_Hitbox;
 
+    ///////////////////////////////////////////////////////
 }

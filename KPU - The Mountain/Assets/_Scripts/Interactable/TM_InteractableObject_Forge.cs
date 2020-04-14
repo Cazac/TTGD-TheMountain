@@ -22,6 +22,11 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
 
     public TOOL_Outline outlineTool;
 
+    public bool isFixed;
+
+    public GameObject forge_Broken;
+    public GameObject forge_Fixed;
+
     ///////////////////////////////////////////////////////
 
     public void OnStartHover()
@@ -57,7 +62,7 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
         else
         {
             //Open UI
-            TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI();
+            TM_HomeMenuController_Forge.Instance.ForgeMenu_OpenUI(this);
         }
     }
 
@@ -73,6 +78,26 @@ public class TM_InteractableObject_Forge : MonoBehaviour, TM_InteractableObject_
     {
         //Does Not Support Hold Interaction
         return;
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void BreakStructureForge()
+    {
+        isFixed = false;
+
+        //Turn On Visable GO
+        forge_Fixed.SetActive(false);
+        forge_Broken.SetActive(true);
+    }
+
+    public void RepairStructureForge()
+    {
+        isFixed = true;
+
+        //Turn On Visable GO
+        forge_Fixed.SetActive(true);
+        forge_Broken.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////

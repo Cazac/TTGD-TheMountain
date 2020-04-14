@@ -32,8 +32,7 @@ public class TM_PlayerSaveData
 
     [Header("Player - Positions")]
     public Vector3 player_Position;
-    public Quaternion player_Rotation;
-    public Quaternion player_CamerRotation;
+    //public Quaternion player_Rotation;
 
     ////////////////////////////////
 
@@ -85,7 +84,8 @@ public class TM_PlayerSaveData
 
     ////////////////////////////////
 
-    public TM_ItemUI[] afafas;
+    public TM_ItemUI[] player_Inventory;
+    public TM_ItemUI[] player_Storage;
 
 
     ///////////////////////////////////////////////////////
@@ -149,11 +149,7 @@ public class TM_PlayerSaveData
 
 
         //Player Position / Rotation
-        //player_CamerRotation = Camera.main.gameObject.transform.localRotation;
-        //player_Position = TM_PlayerController_Stats.Instance.gameObject.transform.position;
-        //player_Rotation = TM_PlayerController_Stats.Instance.gameObject.transform.rotation;
-
-
+        player_Position = TM_PlayerController_Stats.Instance.gameObject.transform.position;
 
 
 
@@ -163,9 +159,6 @@ public class TM_PlayerSaveData
 
     public void ConvertSaveData_ToGameData()
     {
-
-
-
         //Name Info
         TM_PlayerController_Stats.Instance.playerInfo_Name = playerInfo_Name;
         TM_PlayerController_Stats.Instance.playerInfo_Class = playerInfo_Class;
@@ -212,9 +205,7 @@ public class TM_PlayerSaveData
 
 
         //Player Position / Rotation
-        //Camera.main.gameObject.transform.localRotation = player_CamerRotation;
-        //TM_PlayerController_Stats.Instance.gameObject.transform.position = player_Position;
-        //TM_PlayerController_Stats.Instance.gameObject.transform.rotation = player_Rotation;
+        TM_PlayerController_Stats.Instance.gameObject.transform.position = player_Position;
 
 
 

@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class TM_PlayerHitboxRangeCollider : MonoBehaviour
 {
+    ///////////////////////////////////////////////////////
 
-
-
-    void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider collider)
     {
-
-
-
         //Check For Player
         if (collider.gameObject.GetComponent<TM_EnemyStats>() != null)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurDamaged1_SFX);
 
+            //Get Item Held and Get Damage
+            TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+            int damage = TM_PlayerController_Stats.Instance.CalculateAttack_WithWep(item);
 
-            collider.gameObject.GetComponent<TM_EnemyStats>().ChangeHealth_Current(-40);
+            //Get Stats Of Hit Enemy
+            TM_EnemyStats enemyStats = collider.gameObject.GetComponent<TM_EnemyStats>();
 
+            //Invert value for Neagtive Value
+            damage = damage * -1;
 
+            //Change Health Value
+            enemyStats.ChangeHealth_Current(damage);
 
-            print("Test Code: Damaged!");
+            //Get Direction Of Attack
+            Vector3 direction = collider.transform.position - transform.position;
+            direction.y = 0;
+
+            //Set Knockback
+            enemyStats.SetKnockback_Typed(direction);
+
+            //Remove Hitbox
             Destroy(gameObject);
         }
     }
 
+    ///////////////////////////////////////////////////////
 }

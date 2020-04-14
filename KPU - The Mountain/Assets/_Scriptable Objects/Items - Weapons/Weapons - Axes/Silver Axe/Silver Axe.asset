@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Silver Axe
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 7633705155923172443, guid: 2f5cbbf72d7fc614ab151dd8d47ba7da,
+    type: 3}
+  placed_Prefab: {fileID: 6975009195520818645, guid: 0b1e106b1701b544ebaa4a8c714261bf,
+    type: 3}
+  held_Prefab: {fileID: 6948126309724391817, guid: ca38dcb285ee3584f9c4dc1f7eeede98,
+    type: 3}
+  equipped_Prefab: {fileID: 6948126309724391817, guid: ca38dcb285ee3584f9c4dc1f7eeede98,
+    type: 3}
+  itemName: Silver Axe
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

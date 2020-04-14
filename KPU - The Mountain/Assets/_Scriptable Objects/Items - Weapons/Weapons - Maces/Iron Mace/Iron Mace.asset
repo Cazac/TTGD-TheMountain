@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Iron Mace
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 383892911728641165, guid: 522106cc124ade74f8c61c5649f30cae,
+    type: 3}
+  placed_Prefab: {fileID: 7004949747936114637, guid: 2a129eb869a05f44c87c1d2dc3bf82c6,
+    type: 3}
+  held_Prefab: {fileID: 7272293078907081444, guid: 0d81dd02cd24dc849a03666fb690d77f,
+    type: 3}
+  equipped_Prefab: {fileID: 7272293078907081444, guid: 0d81dd02cd24dc849a03666fb690d77f,
+    type: 3}
+  itemName: Iron Mace
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

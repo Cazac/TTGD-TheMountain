@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Agaric Mushroom
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 5173955659364813962, guid: 1c3aaf8288323ee448db271e255c1cdd,
+    type: 3}
+  placed_Prefab: {fileID: 7501220210001758540, guid: fa027e39dff7a1d44a7c63a50440255f,
+    type: 3}
+  held_Prefab: {fileID: 374105810188426637, guid: 52da87e7ff2072d41bfc919e55a62ac4,
+    type: 3}
+  equipped_Prefab: {fileID: 374105810188426637, guid: 52da87e7ff2072d41bfc919e55a62ac4,
+    type: 3}
+  itemName: Agaric Mushroom
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

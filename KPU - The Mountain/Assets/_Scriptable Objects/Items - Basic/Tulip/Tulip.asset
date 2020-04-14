@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Tulip
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 7198165983269257973, guid: 3a028b3153fd60e4d9c2d88c2f28ed20,
+    type: 3}
+  placed_Prefab: {fileID: 7582847136471967732, guid: f102c03cfbba39d429e8e7816d4f2c38,
+    type: 3}
+  held_Prefab: {fileID: 4883097987029183025, guid: 7278756e99ff76f45a38a0da5e04e651,
+    type: 3}
+  equipped_Prefab: {fileID: 4883097987029183025, guid: 7278756e99ff76f45a38a0da5e04e651,
+    type: 3}
+  itemName: Tulip
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

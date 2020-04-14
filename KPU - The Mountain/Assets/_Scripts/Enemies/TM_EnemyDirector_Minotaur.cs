@@ -10,26 +10,26 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     [Header("Animator")]
     public Animator enemy_Animator;
 
-    [Header("Charecter Controller")]
-    public CharacterController enemy_CC;
-
     [Header("Nav Mesh Agent")]
-    public NavMeshAgent enemyNavAgent;
+    public NavMeshAgent enemy_NavAgent;
+
+    [Header("Rigidbody")]
+    public Rigidbody enemy_Rigidbody;
 
     [Header("Range Activator")]
-    public TM_EnemyRangeActivator rangeActivator;
+    public TM_EnemyRangeActivator enemy_RangeActivator;
 
     [Header("Current State")]
-    public EnemyState currentState;
+    public EnemyState enemy_CurrentState;
 
     [Header("Current Stats")]
-    public TM_EnemyStats currentStats;
+    public TM_EnemyStats enemy_CurrentStats;
 
     [Header("Hitbox")]
-    public GameObject enemyHitboxContainter;
+    public GameObject enemy_HitboxContainter;
 
     [Header("Loots!")]
-    public TM_MonsterLootTable_SO monsterLootTable;
+    public TM_MonsterLootTable_SO enemy_LootTable;
 
     ////////////////////////////////
 
@@ -46,30 +46,78 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
     ////////////////////////////////
 
+    [Header("Monster State Renderers")]
+    public MeshRenderer monsterParts_Head_MeshRend;
+    public MeshRenderer monsterParts_Body_MeshRend;
+    public MeshRenderer monsterParts_LegRight_MeshRend;
+    public MeshRenderer monsterParts_LegLeft_MeshRend;
+    public MeshRenderer monsterParts_FootRight_MeshRend;
+    public MeshRenderer monsterParts_FootLeft_MeshRend;
+    public MeshRenderer monsterParts_ArmRight_MeshRend;
+    public MeshRenderer monsterParts_ArmLeft_MeshRend;
+    public MeshRenderer monsterParts_HandRight_MeshRend;
+    public MeshRenderer monsterParts_HandLeft_MeshRend;
 
-    //Loot?
+    [Header("Monster State Mats")]
+    public Material monsterPartsHurt_Head_Mat;
+    public Material monsterPartsPlain_Head_Mat;
+    public Material monsterPartsHurt_Body_Mat;
+    public Material monsterPartsPlain_Body_Mat;
+    public Material monsterPartsHurt_Leg_Mat;
+    public Material monsterPartsPlain_Leg_Mat;
+    public Material monsterPartsHurt_Foot_Mat;
+    public Material monsterPartsPlain_Foot_Mat;
+    public Material monsterPartsHurt_Arm_Mat;
+    public Material monsterPartsPlain_Arm_Mat;
+    public Material monsterPartsHurt_Hand_Mat;
+    public Material monsterPartsPlain_Hand_Mat;
+
+    ////////////////////////////////
+
+    [Header("Popup Damage TEST")]
+    public GameObject popupDamageText;
+    public GameObject enemy_Canvas;
+
+
+    public int STARTING_HEALTH = 200;
 
 
 
+    [Header("Footsteps")]
+    float distancePerFootstep = 4;
+    float currentFootstepDistance;
 
     ///////////////////////////////////////////////////////
 
     private void Awake()
     {
         //Set Default State
-        currentState = EnemyState.Deactivated;
-
-
-        //target = PlayerManager.instance.player.transform;
-        //combat = GetComponent<CharacterCombat>();
-        //agent.Warp(gameObject.transform.position + (transform.forward * 2));
-        //agent.enabled = true;
+        enemy_CurrentState = EnemyState.Deactivated;
     }
 
     private void Update()
     {
         //Get Current State and Prefrom Action
         EnemyState_GetState();
+
+        //Footstep SFX
+        EnemyFootsteps();
+    }
+
+    private void EnemyFootsteps()
+    {
+        currentFootstepDistance += enemy_Rigidbody.velocity.magnitude * Time.deltaTime;
+        currentFootstepDistance += enemy_NavAgent.velocity.magnitude * Time.deltaTime;
+
+
+        if (currentFootstepDistance >= distancePerFootstep)
+        {
+            //Remove Distance
+            currentFootstepDistance -= distancePerFootstep;
+
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurFootsteps_List, gameObject);
+        }
     }
 
     ///////////////////////////////////////////////////////
@@ -93,7 +141,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //print("Test Code: Minotaur State: " + currentState);
 
         //Check Current State
-        switch (currentState)
+        switch (enemy_CurrentState)
         {
             case EnemyState.Deactivated:
                 EnemyState_Deactivated();
@@ -134,7 +182,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     private void EnemyState_Deactivated()
     {
         //Turn On Activations Sript
-        rangeActivator.Deactivate();
+        enemy_RangeActivator.Deactivate();
     }
 
     public void EnemyState_Activated()
@@ -156,6 +204,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //Check For State Change
         if (Random.Range(0, 100) == 0)
         {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurRoar_SFX, gameObject);
+
             //Change To Wandering
             ChangeToState_Wandering();
 
@@ -166,8 +217,8 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     private void EnemyState_Wandering()
     {
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
-        enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
+        enemy_Animator.SetBool("OnGround", true);
+        enemy_Animator.SetFloat("Speed", enemy_NavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
         enemy_Animator.SetFloat("AttackID", 0f);
@@ -175,11 +226,32 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //Get Distance Between Enemy and Player
         float distanceToPlayer = Vector3.Distance(gameObject.transform.position, TM_PlayerController_Combat.Instance.transform.position);
 
+        //Get Target
+        currentChaseTarget = TM_PlayerController_Combat.Instance.transform;
+
         //Check if distance is Far Enough to break Chase
         if (distanceToPlayer < visualRangeRadius)
         {
-            ChangeToState_Chasing();
-            return;
+            //Nav Mesh Hit By Sampling Position
+            NavMeshHit navMeshHit;
+
+            //Try To Sample Forwards Direction
+            if (NavMesh.SamplePosition(currentChaseTarget.position, out navMeshHit, 1f, NavMesh.AllAreas))
+            {
+                //Check If Path To Location Is Valid
+                NavMeshPath path = new NavMeshPath();
+                bool possiblePath = enemy_NavAgent.CalculatePath(currentChaseTarget.position, path);
+
+                if (path.status != NavMeshPathStatus.PathPartial)
+                {
+                    //Play SFX
+                    TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurRoar_SFX, gameObject);
+
+                    //Chase towards the target
+                    ChangeToState_Chasing();
+                    return;
+                }
+            }
         }
 
 
@@ -207,7 +279,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
             {
                 //Set New Target and Set Destination
                 currentTargetLocation = newTargetLocation;
-                enemyNavAgent.SetDestination(currentTargetLocation);
+                enemy_NavAgent.SetDestination(currentTargetLocation);
 
                 //Debug Gizmo
                 Debug.DrawRay(currentTargetLocation, Vector3.up, Color.blue, 2f);
@@ -216,8 +288,6 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
             {
                 //No Spawning Point Hit, Set To Idle For Now
                 ChangeToState_Idling();
-
-                print("Test Code: No Raycast Hit");
             }
         }
     }
@@ -231,8 +301,8 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     private void EnemyState_Chasing()
     {
         //Set Animation Values
-        enemy_Animator.SetBool("OnGround", !enemy_CC.isGrounded);
-        enemy_Animator.SetFloat("Speed", enemyNavAgent.velocity.magnitude * 0.8f);
+        enemy_Animator.SetBool("OnGround", true);
+        enemy_Animator.SetFloat("Speed", enemy_NavAgent.velocity.magnitude * 0.8f);
         enemy_Animator.SetFloat("MovementID", 0f);
         //enemy_Animator.SetFloat("RunWalkID", 2f);
         enemy_Animator.SetFloat("AttackID", 1f);
@@ -257,29 +327,42 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
             return;
         }
 
-        // Move towards the target
-        enemyNavAgent.SetDestination(currentChaseTarget.position);
-
-
-
-
-
-
         //Check if distance is close enough Attack
         if (distance <= attackingRangeRadius)
         {
-
-            //print("Test Code: Attack!");
-
+            //Ignore All and Attack
             ChangeToState_AttackQuick();
-            
+            return;
+        }
 
+        //Nav Mesh Hit By Sampling Position
+        NavMeshHit navMeshHit;
+
+        //Try To Sample Forwards Direction
+        if (NavMesh.SamplePosition(currentChaseTarget.position, out navMeshHit, 1f, NavMesh.AllAreas))
+        {
+            //Check If Path To Location Is Valid
+            NavMeshPath path = new NavMeshPath();
+            bool possiblePath = enemy_NavAgent.CalculatePath(currentChaseTarget.position, path);
+
+            if (path.status != NavMeshPathStatus.PathPartial)
+            {
+                //Chase towards the target
+                enemy_NavAgent.SetDestination(currentChaseTarget.position);
+                return;
+            }
+            else
+            {
+                //Can't Reach Idle It
+                ChangeToState_Idling();
+                return;
+            }
         }
     }
 
     private void EnemyState_Attacking()
     {
-        enemyNavAgent.ResetPath();
+        enemy_NavAgent.ResetPath();
 
         enemy_Animator.SetBool("Attack1", true);
 
@@ -323,8 +406,8 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
         //Change To Idle
         EnemyState_Idling();
-        currentState = EnemyState.Idling;
-        enemyNavAgent.ResetPath();
+        enemy_CurrentState = EnemyState.Idling;
+        enemy_NavAgent.ResetPath();
     }
 
     private void ChangeToState_Wandering()
@@ -333,8 +416,8 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         enemy_Animator.SetBool("Attack1", false);
 
         //Change To Wandering
-        currentState = EnemyState.Wandering;
-        enemyNavAgent.SetDestination(currentTargetLocation);
+        enemy_CurrentState = EnemyState.Wandering;
+        enemy_NavAgent.SetDestination(currentTargetLocation);
     }
 
     public void ChangeToState_Chasing()
@@ -344,7 +427,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
         //Change To Chase
         EnemyState_Chasing();
-        currentState = EnemyState.Chasing;
+        enemy_CurrentState = EnemyState.Chasing;
     }
 
     private void ChangeToState_AttackQuick()
@@ -353,28 +436,91 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
         //Change To Chase
         EnemyState_Attacking();
-        currentState = EnemyState.Attacking;
+        enemy_CurrentState = EnemyState.Attacking;
     }
 
     public void ChangeToState_Dying()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.minotaurDeath_SFX);
+
         enemy_Animator.Play("Death");
 
 
 
         //Change To Death
         EnemyState_Dying();
-        currentState = EnemyState.Dying;
-        enemyNavAgent.ResetPath();
+        enemy_CurrentState = EnemyState.Dying;
+        enemy_NavAgent.ResetPath();
     }
 
     ///////////////////////////////////////////////////////
 
+    public void DamagePopup(int damage)
+    {
+        //Create New Popup
+        GameObject popupText = Instantiate(popupDamageText, enemy_Canvas.transform);
+
+        //Set Starting Position
+        popupText.GetComponent<RectTransform>().localPosition = new Vector3(0, 0.5f, -1.8f);
+
+        //Setup Values
+        popupText.GetComponent<TM_DamagePopup>().Setup(damage);
+    }
+
+    public void Knockback(Vector3 direction, float power)
+    {
+        //Impluse the enemy with knockback
+        enemy_Rigidbody.AddForce(direction.normalized * power, ForceMode.Impulse);
+    }
+
+    public IEnumerator DamagedVisualFlash()
+    {
+        //Red Color
+        monsterParts_Head_MeshRend.material = monsterPartsHurt_Head_Mat;
+        monsterParts_Body_MeshRend.material = monsterPartsHurt_Body_Mat;
+
+        monsterParts_LegRight_MeshRend.material = monsterPartsHurt_Leg_Mat;
+        monsterParts_LegLeft_MeshRend.material = monsterPartsHurt_Leg_Mat;
+
+        monsterParts_FootRight_MeshRend.material = monsterPartsHurt_Foot_Mat;
+        monsterParts_FootLeft_MeshRend.material = monsterPartsHurt_Foot_Mat;
+
+        monsterParts_ArmRight_MeshRend.material = monsterPartsHurt_Arm_Mat;
+        monsterParts_ArmLeft_MeshRend.material = monsterPartsHurt_Arm_Mat;
+
+        monsterParts_HandRight_MeshRend.material = monsterPartsHurt_Hand_Mat;
+        monsterParts_HandLeft_MeshRend.material = monsterPartsHurt_Hand_Mat;
+
+        //Wait For 0.15 Seconds
+        yield return new WaitForSeconds(0.3f);
+
+        //Plain Color
+        monsterParts_Head_MeshRend.material = monsterPartsPlain_Head_Mat;
+        monsterParts_Body_MeshRend.material = monsterPartsPlain_Body_Mat;
+
+        monsterParts_LegRight_MeshRend.material = monsterPartsPlain_Leg_Mat;
+        monsterParts_LegLeft_MeshRend.material = monsterPartsPlain_Leg_Mat;
+
+        monsterParts_FootRight_MeshRend.material = monsterPartsPlain_Foot_Mat;
+        monsterParts_FootLeft_MeshRend.material = monsterPartsPlain_Foot_Mat;
+
+        monsterParts_ArmRight_MeshRend.material = monsterPartsPlain_Arm_Mat;
+        monsterParts_ArmLeft_MeshRend.material = monsterPartsPlain_Arm_Mat;
+
+        monsterParts_HandRight_MeshRend.material = monsterPartsPlain_Hand_Mat;
+        monsterParts_HandLeft_MeshRend.material = monsterPartsPlain_Hand_Mat;
+
+        //Break Out
+        yield break;
+    }
+
+    ///////////////////////////////////////////////////////
 
     public void SpawnLoot()
     {
 
-        List<TM_Item_SO> itemSO_List = monsterLootTable.GetLootDrops();
+        List<TM_Item_SO> itemSO_List = enemy_LootTable.GetLootDrops();
 
 
         int raduisChange = 360 / itemSO_List.Count;
@@ -411,7 +557,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
     public void SpawnAttackHitbox(GameObject hitboxPrefab)
     {
-        GameObject hitbox_GO = Instantiate(hitboxPrefab, enemyHitboxContainter.transform);
+        GameObject hitbox_GO = Instantiate(hitboxPrefab, enemy_HitboxContainter.transform);
 
 
         //Set Auto Destruct
@@ -432,9 +578,6 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         yield break;
     }
 
-
-
-
     ///////////////////////////////////////////////////////
 
     private bool FindWanderDestination(Vector3 originPosition, float distanceFromEnemy, out Vector3 result)
@@ -454,17 +597,32 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         //Try To Sample Forwards Direction
         if (NavMesh.SamplePosition(randomPoint_Forward, out navMeshHit, 1f, NavMesh.AllAreas))
         {
-            //Return True, Out Position
-            result = navMeshHit.position;
-            return true;
+            //Check If Path To Location Is Valid
+            NavMeshPath path = new NavMeshPath();
+            bool possiblePath = enemy_NavAgent.CalculatePath(navMeshHit.position, path);
+
+            if (path.status != NavMeshPathStatus.PathPartial)
+            {
+                //Return True, Out Position
+                result = navMeshHit.position;
+                return true;
+            }
         }
+
 
         //Try To Sample Backwards Direction
         if (NavMesh.SamplePosition(randomPoint_Backwards, out navMeshHit, 1f, NavMesh.AllAreas))
         {
-            //Return True, Out Position
-            result = navMeshHit.position;
-            return true;
+            //Check If Path To Location Is Valid
+            NavMeshPath path = new NavMeshPath();
+            bool possiblePath = enemy_NavAgent.CalculatePath(navMeshHit.position, path);
+
+            if (path.status != NavMeshPathStatus.PathPartial)
+            {
+                //Return True, Out Position
+                result = navMeshHit.position;
+                return true;
+            }
         }
 
         //Attempt a valid location 10 times
@@ -476,9 +634,16 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
             //Try To Sample Random Direction
             if (NavMesh.SamplePosition(randomPoint, out navMeshHit, 3f, NavMesh.AllAreas))
             {
-                //Return True, Out Position
-                result = navMeshHit.position;
-                return true;
+                //Check If Path To Location Is Valid
+                NavMeshPath path = new NavMeshPath();
+                bool possiblePath = enemy_NavAgent.CalculatePath(navMeshHit.position, path);
+
+                if (path.status != NavMeshPathStatus.PathPartial)
+                {
+                    //Return True, Out Position
+                    result = navMeshHit.position;
+                    return true;
+                }
             }
         }
 
@@ -487,19 +652,9 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
         return false;
     }
 
-
-    
-
-
-
-
-
-
-    ///////////////////////////////////////////////////////
-
-    // Rotate to face the target
-    void FaceTarget()
+    private void FaceTarget()
     {
+        // Rotate to face the target
         Vector3 direction = (currentChaseTarget.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
@@ -507,9 +662,17 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////
+
     private void OnDrawGizmosSelected()
     {
-        // Show the lookRadius in editor
+        // Show the look Radius in editor for visual distance
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, visualRangeRadius);
     }

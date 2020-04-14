@@ -10,8 +10,12 @@ using UnityEngine;
 /// </summary>
 ///////////////
 
-[CreateAssetMenu(fileName = "Resource LootTable", menuName = "Scriptable Objects/Resource LootTable")]
+[CreateAssetMenu(fileName = "LootTable Resource", menuName = "Scriptables/LootTable Resource")]
 public class TC_ResourceLootTable_SO : ScriptableObject
 {
+
+
+
+
     
 }

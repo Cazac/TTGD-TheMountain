@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gold Chest Guard
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 7573818300307798040, guid: c4a029e9433de6c499516333137733d5,
+    type: 3}
+  placed_Prefab: {fileID: 5290087637967552588, guid: 476eebc0d7ac25349b46a9bb77b92239,
+    type: 3}
+  held_Prefab: {fileID: 650857522657150633, guid: 48a83bd2a01579b4c9e60c2adf120d67,
+    type: 3}
+  equipped_Prefab: {fileID: 650857522657150633, guid: 48a83bd2a01579b4c9e60c2adf120d67,
+    type: 3}
   itemName: Gold Chest Guard
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 1
   isArmorArm: 0

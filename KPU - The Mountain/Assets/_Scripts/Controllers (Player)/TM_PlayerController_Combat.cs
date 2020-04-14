@@ -48,15 +48,16 @@ public class TM_PlayerController_Combat : MonoBehaviour
                 //Get Item Held
                 TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
 
-                //Check If Consumable
-                if (item.isWeapon)
-                {
-                    TM_PlayerController_Animation.Instance.SetAnimationValue_SwordAttack();
-                }
-                else
-                {
-                    TM_PlayerController_Animation.Instance.SetAnimationValue_PunchAttack();
-                }
+                //Use a Basic Punch
+                TM_PlayerController_Animation.Instance.SetAnimationValue_PunchAttack();
+            }
+            else if (TM_PlayerMenuController_Inventory.Instance.isHoldingWeapon)
+            {
+                //Get Item Held
+                TM_ItemUI item = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+                //Get Weapon Animation Attack
+                TM_PlayerController_Animation.Instance.SetAnimationValue_SwordAttack();
             }
             else
             {
@@ -69,13 +70,13 @@ public class TM_PlayerController_Combat : MonoBehaviour
     {
         if (Input.GetMouseButton(1))
         {
-
             TM_PlayerController_Animation.Instance.SetAnimationValue_IsConsumingItem(true);
-            
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsBlockingWeapon(true);
         }
         else
         {
             TM_PlayerController_Animation.Instance.SetAnimationValue_IsConsumingItem(false);
+            TM_PlayerController_Animation.Instance.SetAnimationValue_IsBlockingWeapon(false);
         }
     }
 
@@ -85,7 +86,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
     {
         if (hurtScreenDuration == 0)
         {
-            hurtScreenDuration = additionHurting * 4;
+            hurtScreenDuration = additionHurting * 2.5f;
 
             //Cap Hurt Timer
             if (hurtScreenDuration > 90)
@@ -97,7 +98,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
         }
         else
         {
-            hurtScreenDuration += additionHurting * 2;
+            hurtScreenDuration += additionHurting * 1.5f;
 
             //Cap Hurt Timer
             if (hurtScreenDuration > 90)
@@ -134,14 +135,14 @@ public class TM_PlayerController_Combat : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void SpawnAttackHitbox(GameObject hitboxPrefab)
+    public void SpawnAttackHitbox(GameObject hitboxPrefab, float duration)
     {
         GameObject hitbox_GO = Instantiate(hitboxPrefab, hitboxContainter.transform);
 
 
         //Set Auto Destruct
 
-        StartCoroutine(AutoDestoryCountdown(0.3f, hitbox_GO));
+        StartCoroutine(AutoDestoryCountdown(duration, hitbox_GO));
 
     }
 

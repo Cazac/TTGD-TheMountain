@@ -37,6 +37,31 @@ public class TM_ButtonController_Settings : MonoBehaviour
     public Slider settingsSound_AmbienceVolume_Slider;
     public Slider settingsSound_SFXVolume_Slider;
 
+    public Toggle settingsSound_MusicMute_Toggle;
+    public Toggle settingsSound_AmbienceMute_Toggle;
+    public Toggle settingsSound_SFXMute_Toggle;
+
+    [Header("Keybinding")]
+    //Reference for the initial button text names
+    public GameObject BindingInputs;
+
+
+    public Button forward_Button;
+    public Button backwards_Button;
+    public Button left_Button;
+    public Button right_Button;
+
+    //Used OnClick() to hold a reference to button that is currently being changed
+    private Button currentButton;
+
+    //New key to be set
+    KeyCode newKey;
+
+    //Flag to wait for the key press
+    bool waitingForKey = false;
+
+
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -52,12 +77,18 @@ public class TM_ButtonController_Settings : MonoBehaviour
         //Open First Panel
         Button_OpenPanel_KeyBinding();
         ButtonSelect_PanelChange(settingsKeyBindingButton);
+
+        UpdateSettingsVisuals();
     }
 
     ///////////////////////////////////////////////////////
 
     public void Button_OpenPanel_KeyBinding()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+
         //Check For Changed Settings in current panel before switching
 
 
@@ -76,6 +107,10 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void Button_OpenPanel_Sound()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+
         //Check For Changed Settings in current panel before switching
 
 
@@ -136,14 +171,22 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     ///////////////////////////////////////////////////////////////// - Sliders
 
+    public void UpdateSettingsVisuals()
+    {
+        settingsSound_TotalVolume_Slider.value = TM_DatabaseController.Instance.settings_SaveData.volumeTotal;
+        settingsSound_MusicVolume_Slider.value = TM_DatabaseController.Instance.settings_SaveData.volumeMusic;
+        settingsSound_AmbienceVolume_Slider.value = TM_DatabaseController.Instance.settings_SaveData.volumeAmbience;
+        settingsSound_SFXVolume_Slider.value = TM_DatabaseController.Instance.settings_SaveData.volumeSFX;
+
+        settingsSound_MusicMute_Toggle.isOn = TM_DatabaseController.Instance.settings_SaveData.isMusicMute;
+        settingsSound_AmbienceMute_Toggle.isOn = TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute;
+        settingsSound_SFXMute_Toggle.isOn = TM_DatabaseController.Instance.settings_SaveData.isSFXMute;
+    }
+
+    /////////////////////////////////////////////////////////////////
+
     public void SliderChange_TotalVolume()
     {
-
-        print("Test Code: " + settingsSound_TotalVolume_Slider.value);
-
-        print("Test Code: " + TM_DatabaseController.Instance.settings_SaveData);
-
-
         //Update Database With Total
         TM_DatabaseController.Instance.settings_SaveData.volumeTotal = settingsSound_TotalVolume_Slider.value;
 
@@ -157,6 +200,7 @@ public class TM_ButtonController_Settings : MonoBehaviour
     {
         //Update Database With Music
         TM_DatabaseController.Instance.settings_SaveData.volumeMusic = settingsSound_MusicVolume_Slider.value;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_MusicController.Instance.VolumeLevels_UpdateAll();
@@ -166,6 +210,7 @@ public class TM_ButtonController_Settings : MonoBehaviour
     {
         //Update Database With Ambience
         TM_DatabaseController.Instance.settings_SaveData.volumeAmbience = settingsSound_AmbienceVolume_Slider.value;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_AmbienceController.Instance.VolumeLevels_UpdateAll();
@@ -175,6 +220,7 @@ public class TM_ButtonController_Settings : MonoBehaviour
     {
         //Update Database With SFX
         TM_DatabaseController.Instance.settings_SaveData.volumeSFX = settingsSound_SFXVolume_Slider.value;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_SFXController.Instance.VolumeLevels_UpdateAll();
@@ -184,8 +230,12 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void ToggleChange_MuteMusic(Toggle toggle)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Update Database
         TM_DatabaseController.Instance.settings_SaveData.isMusicMute = toggle.isOn;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_MusicController.Instance.VolumeLevels_UpdateAll();
@@ -193,8 +243,12 @@ public class TM_ButtonController_Settings : MonoBehaviour
 
     public void ToggleChange_MuteAmbience(Toggle toggle)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Update Database
         TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute = toggle.isOn;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_AmbienceController.Instance.VolumeLevels_UpdateAll();
@@ -204,9 +258,13 @@ public class TM_ButtonController_Settings : MonoBehaviour
     {
         //Update Database
         TM_DatabaseController.Instance.settings_SaveData.isSFXMute = toggle.isOn;
+        TM_SaveController.Instance.SettingsData_SaveFile(TM_DatabaseController.Instance.settings_SaveData);
 
         //Update Controllers Current Audio Levels
         TM_SFXController.Instance.VolumeLevels_UpdateAll();
+
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
     }
 
     ///////////////////////////////////////////////////////

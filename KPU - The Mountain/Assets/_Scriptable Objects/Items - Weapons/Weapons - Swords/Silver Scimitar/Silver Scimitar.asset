@@ -12,11 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Silver Scimitar
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 7223609468455866282, guid: 28c01705f7aa44f42a3e0a6afb4810ff,
+    type: 3}
+  placed_Prefab: {fileID: 6856467974590634882, guid: da65659b78f0f9b49ba7c4d36513c114,
+    type: 3}
+  held_Prefab: {fileID: 2649541850335104597, guid: 72c914b730cda9f468b94d0184b2abe9,
+    type: 3}
+  equipped_Prefab: {fileID: 2649541850335104597, guid: 72c914b730cda9f468b94d0184b2abe9,
+    type: 3}
+  itemName: Silver Scimitar
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

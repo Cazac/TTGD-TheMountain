@@ -62,25 +62,56 @@ public class TM_SFXController : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
-    public void PlayTrackSFX(TM_Audio_SO audioSO, GameObject locationalParent)
+    public GameObject PlayTrackSFX(TM_Audio_SO audioSO, GameObject locationalParent)
     {
-        //Spawn SFX
-        GameObject newSFXTrack;
-
-        //Sort By Location Parent
-        if (locationalParent == null)
-        {
-            //Instantiate New Audio Source Unser Container
-            newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
-        }
-        else
-        {
-            //Instantiate New Audio Source At Location
-            newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
-        }
+        //Instantiate New Audio Source At Location
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
 
         //SFX Setup
-        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 1, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
+    }
+
+    public GameObject PlayTrackSFX(TM_Audio_SO audioSO)
+    {
+        //Instantiate New Audio Source Unser Container
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 0, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
+    }
+
+    /////////////////////////////////////////////////////////////////
+
+    public GameObject PlayTrackSFX(List<TM_Audio_SO> audioSO_List, GameObject locationalParent)
+    {
+        //Instantiate New Audio Source At Location
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, locationalParent.transform);
+
+        //Random Choice
+        int randomChoice = Random.Range(0, audioSO_List.Count);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice], 1, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
+    }
+
+    public GameObject PlayTrackSFX(List<TM_Audio_SO> audioSO_List)
+    {
+        //Instantiate New Audio Source Unser Container
+        GameObject newSFXTrack = Instantiate(sfxTrack_Prefab, sfxTrack_Container.transform);
+
+        //Random Choice
+        int randomChoice = Random.Range(0, audioSO_List.Count);
+
+        //SFX Setup
+        newSFXTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO_List[randomChoice], 0, TM_DatabaseController.Instance.settings_SaveData.volumeSFX, TM_DatabaseController.Instance.settings_SaveData.isSFXMute);
+
+        return newSFXTrack;
     }
 
     /////////////////////////////////////////////////////////////////
@@ -114,45 +145,25 @@ public class TM_SFXController : MonoBehaviour
 
     public void VolumeLevels_UpdateAll()
     {
-        //Loop All Current Music Tracks
+        //Loop All Current SFX Tracks
         foreach (Transform child in sfxTrack_Container.transform)
         {
-            //ReQUIRES SETTINGS DATABSE MUTING
-
-
-            /*
             //Get Tab
-            TM_AudioTab sfxTab = child.gameObject.GetComponent<TM_AudioTab>();
+            TM_AudioTab audioTab = child.gameObject.GetComponent<TM_AudioTab>();
 
             //Set Volume
-            if (TC_DatabaseController.Instance.player_DB.settings.isSFXMute)
+            if (TM_DatabaseController.Instance.settings_SaveData.isSFXMute)
             {
-                sfxTab.audioSource.volume = 0;
+                //Mute
+                audioTab.audioSource.volume = 0;
             }
             else
             {
-                float volumeMutiplyer = TC_DatabaseController.Instance.player_DB.settings.volumeTotal * TC_DatabaseController.Instance.player_DB.settings.volumeSFX;
-                sfxTab.audioSource.volume = (sfxTab.audioSource.volume * volumeMutiplyer);
+                //Update Volume
+                float volumeMutiplyer = TM_DatabaseController.Instance.settings_SaveData.volumeTotal * TM_DatabaseController.Instance.settings_SaveData.volumeSFX;
+                audioTab.audioSource.volume = (audioTab.currentAudio_SO.volume * volumeMutiplyer);
             }
-            */
         }
-    }
-
-    /////////////////////////////////////////////////////////////////
-
-    public void PlayTrack_ButtonHover()
-    {
-        //PlayTrack_SFX(database, null);
-    }
-
-    public void PlaySFX_ButtonClick()
-    {
-        //PlayTrack_SFX(database, null);
-    }
-
-    public void PlaySFX_ButtonBack()
-    {
-        //PlayTrack_SFX(database, null);
     }
 
     /////////////////////////////////////////////////////////////////

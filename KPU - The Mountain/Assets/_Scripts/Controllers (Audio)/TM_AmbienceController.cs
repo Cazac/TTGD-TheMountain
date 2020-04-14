@@ -75,23 +75,20 @@ public class TM_AmbienceController : MonoBehaviour
 
     public void PlayTrackAmbience(TM_Audio_SO audioSO, GameObject locationalParent)
     {
-        //Spawn SFX
-        GameObject newAmbienceTrack;
+        //Instantiate New Audio Source At Location
+        GameObject newAmbienceTrack = Instantiate(ambienceTrack_Prefab, locationalParent.transform);
 
-        //Sort By Location Parent
-        if (locationalParent == null)
-        {
-            //Instantiate New Audio Source Unser Container
-            newAmbienceTrack = Instantiate(ambienceTrack_Prefab, ambienceTrack_Container.transform);
-        }
-        else
-        {
-            //Instantiate New Audio Source At Location
-            newAmbienceTrack = Instantiate(ambienceTrack_Prefab, locationalParent.transform);
-        }
+        //Ambience Setup
+        newAmbienceTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 1, TM_DatabaseController.Instance.settings_SaveData.volumeAmbience, TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute);
+    }
 
-        //SFX Setup
-        newAmbienceTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO);
+    public void PlayTrackAmbience(TM_Audio_SO audioSO)
+    {
+        //Instantiate New Audio Source Unser Container
+        GameObject newAmbienceTrack = Instantiate(ambienceTrack_Prefab, ambienceTrack_Container.transform);
+
+        //Ambience Setup
+        newAmbienceTrack.GetComponent<TM_AudioTab>().SetupAudioTrack(audioSO, 0, TM_DatabaseController.Instance.settings_SaveData.volumeAmbience, TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute);
     }
 
     /////////////////////////////////////////////////////////////////
@@ -125,27 +122,24 @@ public class TM_AmbienceController : MonoBehaviour
 
     public void VolumeLevels_UpdateAll()
     {
-        //Loop All Current Music Tracks
+        //Loop All Current Ambience Tracks
         foreach (Transform child in ambienceTrack_Container.transform)
         {
-            //ReQUIRES SETTINGS DATABSE MUTING
-
-
-            /*
             //Get Tab
-            TM_AudioTab sfxTab = child.gameObject.GetComponent<TM_AudioTab>();
+            TM_AudioTab audioTab = child.gameObject.GetComponent<TM_AudioTab>();
 
             //Set Volume
-            if (TC_DatabaseController.Instance.player_DB.settings.isSFXMute)
+            if (TM_DatabaseController.Instance.settings_SaveData.isAmbienceMute)
             {
-                sfxTab.audioSource.volume = 0;
+                //Mute
+                audioTab.audioSource.volume = 0;
             }
             else
             {
-                float volumeMutiplyer = TC_DatabaseController.Instance.player_DB.settings.volumeTotal * TC_DatabaseController.Instance.player_DB.settings.volumeSFX;
-                sfxTab.audioSource.volume = (sfxTab.audioSource.volume * volumeMutiplyer);
+                //Update Volume
+                float volumeMutiplyer = TM_DatabaseController.Instance.settings_SaveData.volumeTotal * TM_DatabaseController.Instance.settings_SaveData.volumeAmbience;
+                audioTab.audioSource.volume = (audioTab.currentAudio_SO.volume * volumeMutiplyer);
             }
-            */
         }
     }
 

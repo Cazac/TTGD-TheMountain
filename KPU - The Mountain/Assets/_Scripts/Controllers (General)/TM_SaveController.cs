@@ -86,13 +86,22 @@ public class TM_SaveController : MonoBehaviour
 
     public TM_PlayerSaveData PlayerData_GetCurrentSaveFile()
     {
-        if (playerSaveFiles_Array[currentSaveSlotID - 1].KeyExists("PlayerSaveData"))
+        if (currentSaveSlotID == 0)
         {
+            //print("Test Code: Deafult Save File");
+            //Return Default
+            return PlayerData_CreateDefault();
+        }
+        else if (playerSaveFiles_Array[currentSaveSlotID - 1].KeyExists("PlayerSaveData"))
+        {
+            //print("Test Code: Loaded Save File");
             return playerSaveFiles_Array[currentSaveSlotID - 1].Load<TM_PlayerSaveData>("PlayerSaveData");
         }
         else
         {
-            return null;
+            //print("Test Code: Deafult Save File");
+            //Return Default
+            return PlayerData_CreateDefault();
         }
     }
 
@@ -114,7 +123,67 @@ public class TM_SaveController : MonoBehaviour
 
     /////////////////////////////////////////////////////////////////
 
+    public TM_PlayerSaveData PlayerData_CreateDefault()
+    {
+        TM_PlayerSaveData saveData = new TM_PlayerSaveData();
 
+
+        saveData.player_hasLoadedSaveBefore = false;
+
+        //Player Info
+        saveData.playerInfo_Name = "The Mountainer";
+        saveData.playerInfo_Class = "Brawler";
+
+        //World Info
+        saveData.playerInfo_MapSeed = 99999999;
+        saveData.playerInfo_CyclesSurvived = 0;
+        saveData.playerInfo_BossesKilled = 0;
+        saveData.playerInfo_NotesCollected = 0;
+
+        //Unlocks
+        saveData.player_HasUnlocked_Brewery = false;
+        saveData.player_HasUnlocked_Forge = false;
+        saveData.player_HasUnlocked_Canteen = false;
+        saveData.player_HasUnlocked_Storage = false;
+
+        //Leveling
+        saveData.player_Level = 1;
+        saveData.player_Exp = 0;
+        saveData.player_SkillPointsAvalible = 0;
+        saveData.player_SkillPointsSpent = 0;
+
+
+        saveData.player_CurrentStat_STR = 5;
+        saveData.player_CurrentStat_DEX = 5;
+        saveData.player_CurrentStat_INT = 5;
+        saveData.player_CurrentStat_CON = 5;
+
+        saveData.player_CurrentHealth = 100;
+        saveData.player_MaxHealth = 100;
+        saveData.player_BaseHealth = 100;
+
+        saveData.player_CurrentHunger = 100;
+        saveData.player_MaxHunger = 100;
+        saveData.player_BaseHunger = 100;
+
+        saveData.player_CurrentFire = 100;
+        saveData.player_MaxFire = 100;
+        saveData.player_BaseFire = 100;
+
+
+        saveData.player_Position = new Vector3(-29f, 8.5f, 0.2f);
+        //saveData.player_Rotation = Quaternion.Euler(0f, -90f, 0f);
+           
+
+
+
+
+        saveData.player_Inventory = new TM_ItemUI[20];
+        saveData.player_Storage = new TM_ItemUI[20];
+
+
+        return saveData;
+    }
 
 
 
@@ -138,7 +207,6 @@ public class TM_SaveController : MonoBehaviour
         print("Test Code: ...Saving Game Data Done!");
     }
 
-
     public void PlayerData_LoadGameData()
     {
         print("Test Code: Loading Game Data...");
@@ -149,7 +217,7 @@ public class TM_SaveController : MonoBehaviour
         //Load Data Into Game
         TM_DatabaseController.Instance.player_SaveData.ConvertSaveData_ToGameData();
 
-        print("Test Code: ...Loading Game Data Done!");
+        print("Test Code: ...Game Data Loaded!");
     }
 
     /////////////////////////////////////////////////////////////////
@@ -174,36 +242,23 @@ public class TM_SaveController : MonoBehaviour
 
         if (settingsSaveFile.KeyExists("SettingsSaveData"))
         {
-            print("Test Code: Loading Settings");
+            //print("Test Code: ...Settings Found, Loading!");
 
+            //Load Settings From File
             currentSettingsData = settingsSaveFile.Load<TM_SettingsSaveData>("SettingsSaveData");
         }
         else
         {
-            print("Test Code: Saving Settings");
+            //print("Test Code: Settings NOT FOUND, Creating!");
 
-            currentSettingsData = new TM_SettingsSaveData();
-
-            //Setup Values
-            currentSettingsData.volumeTotal = 0.5f;
-            currentSettingsData.volumeMusic = 0.5f;
-            currentSettingsData.volumeAmbience = 0.5f;
-            currentSettingsData.volumeSFX = 0.5f;
-
-            currentSettingsData.isMusicMute = false;
-            currentSettingsData.isAmbienceMute = false;
-            currentSettingsData.isSFXMute = false;
-
-            currentSettingsData.keybindings_Dictonary = new Dictionary<string, KeyCode>();
-            //currentSettingsData.keybindings_Dictonary.Add();
-
+            //Create New defualt Settings
+            currentSettingsData = SettingsData_CreateDefault();
 
             //Save It
             SettingsData_SaveFile(currentSettingsData);
         }
 
-
-
+        //Set Settings In Database
         TM_DatabaseController.Instance.settings_SaveData = currentSettingsData;
     }
 
@@ -211,6 +266,47 @@ public class TM_SaveController : MonoBehaviour
     {
         //Save Data To File
         ES3.Save<TM_SettingsSaveData>("SettingsSaveData", newSettingsSaveData, "The Mountain Settings.es3");
+    }
+
+    public TM_SettingsSaveData SettingsData_CreateDefault()
+    {
+        print("Test Code: Creating New Settings");
+
+
+        TM_SettingsSaveData saveData = new TM_SettingsSaveData();
+
+
+        saveData.isMusicMute = false;
+        saveData.isAmbienceMute = false;
+        saveData.isSFXMute = false;
+
+        saveData.volumeTotal = 0.5f;
+        saveData.volumeMusic = 0.5f;
+        saveData.volumeAmbience = 0.5f;
+        saveData.volumeSFX = 0.5f;
+
+
+        saveData.keybindings_Dictonary = new Dictionary<string, KeyCode>();
+
+        saveData.keybindings_Dictonary.Add("Forward", KeyCode.W);
+        saveData.keybindings_Dictonary.Add("Backwards", KeyCode.S);
+        saveData.keybindings_Dictonary.Add("Left", KeyCode.A);
+        saveData.keybindings_Dictonary.Add("Right", KeyCode.D);
+
+        saveData.keybindings_Dictonary.Add("Jump", KeyCode.Space);
+        saveData.keybindings_Dictonary.Add("Sprint", KeyCode.LeftShift);
+
+        saveData.keybindings_Dictonary.Add("Attack", KeyCode.Mouse0);
+        saveData.keybindings_Dictonary.Add("Use", KeyCode.Mouse1);
+
+        saveData.keybindings_Dictonary.Add("Interact", KeyCode.F);
+        saveData.keybindings_Dictonary.Add("Inventory", KeyCode.E);
+        saveData.keybindings_Dictonary.Add("Notes", KeyCode.N);
+        saveData.keybindings_Dictonary.Add("Stats", KeyCode.L);
+
+
+
+        return saveData;
     }
 
     /////////////////////////////////////////////////////////////////

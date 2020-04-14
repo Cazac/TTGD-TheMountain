@@ -60,11 +60,33 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SetAnimationValue_PunchAttack()
     {
-        playerAnimator.Play("Attack Punch");
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack Punch"))
+        {
+            return;
+        }
+        else
+        {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerPunch_SFX);
+
+            playerAnimator.Play("Attack Punch");
+        }
     }
 
     public void SetAnimationValue_SwordAttack()
     {
+        if (playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Attack Melee Quick"))
+        {
+            return;
+        }
+        else
+        {
+            //Play SFX
+            TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerSword_SFX);
+
+            playerAnimator.Play("Attack Punch");
+        }
+
         playerAnimator.Play("Attack Melee Quick");
     }
 
@@ -87,9 +109,19 @@ public class TM_PlayerController_Animation : MonoBehaviour
         playerAnimator.SetBool("IsHoldingToolbarItem", value);
     }
 
+    public void SetAnimationValue_IsHoldingWeapon(bool value)
+    {
+        playerAnimator.SetBool("IsHoldingToolbarWeapon", value);
+    }
+
     public void SetAnimationValue_IsConsumingItem(bool value)
     {
         playerAnimator.SetBool("IsConsumingToolbarItem", value);
+    }
+
+    public void SetAnimationValue_IsBlockingWeapon(bool value)
+    {
+        playerAnimator.SetBool("IsBlockingToolbarWeapon", value);
     }
 
     ///////////////////////////////////////////////////////
@@ -122,7 +154,18 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     public void SpawnItemInHand_Combat(TM_Item_SO original_SO)
     {
-        throw new NotImplementedException();
+        //Remove Old Item
+        RemoveItemInHand_Right();
+
+
+        if (original_SO.held_Prefab != null)
+        {
+            Instantiate(original_SO.held_Prefab, playerRightHandSpawnPoint_GO.transform);
+        }
+        else
+        {
+            print("Test Code: Oops");
+        }
     }
 
     ///////////////////////////////////////////////////////
@@ -198,22 +241,40 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
     ///////////////////////////////////////////////////////
 
-    public void LoadHitbox_Attack1()
-    {
-        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.swordSize1_Hitbox);
-
-    }
-
-    ///////////////////////////////////////////////////////
-
 
 
     public void AnimationEvent_PunchHitbox()
     {
-        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.swordSize1_Hitbox);
+
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox, 0.2f);
 
     }
 
+    public void AnimationEvent_WeaponHitbox()
+    {
+        //Get Item Held
+        TM_ItemUI heldItem = TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array[TM_PlayerMenuController_Inventory.Instance.currentToolbarPosition].GetComponent<TM_ItemSlot>().ItemSlot_GetItem();
+
+
+        /*
+        if (heldItem != null)
+        {
+            if (heldItem.isWeapon)
+            {
+                
+            }
+
+        }
+        */
+
+        TM_PlayerController_Combat.Instance.SpawnAttackHitbox(TM_DatabaseController.Instance.hitbox_DB.playerPunch_Hitbox, 0.1f);
+
+
+
+
+    }
+
+    ///////////////////////////////////////////////////////
 
     public void AnimationEvent_ConsumeItem()
     {

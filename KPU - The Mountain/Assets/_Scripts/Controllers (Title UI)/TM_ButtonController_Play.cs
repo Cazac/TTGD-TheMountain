@@ -175,6 +175,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_Load_Play()
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         TM_DatabaseController.Instance.player_SaveData = TM_SaveController.Instance.PlayerData_GetCurrentSaveFile();
 
         //Load Game Scene
@@ -183,6 +186,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
     public void Button_SaveSlot(int saveSlot)
     {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
         //Reload the Save Data
         TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
 
@@ -214,6 +220,281 @@ public class TM_ButtonController_Play : MonoBehaviour
     }
 
     public void Button_ClassSlot(GameObject class_GO)
+    {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+        if (class_GO == newSave_ClassBrawlerButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 8<br><color=#19FF00>(+3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 6<br><color=#19FF00>(+1)</color>";
+            newSave_ClassINT_Text.text = "INT: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
+
+            newSave_currentClass = "Brawler";
+
+        }
+        else if (class_GO == newSave_ClassKnightButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 5<br>(+0)";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassCON_Text.text = "CON: 5<br>(+0)";
+
+            newSave_currentClass = "Knight";
+        }
+        else if (class_GO == newSave_ClassArcherButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 9<br><color=#19FF00>(+4)</color>";
+            newSave_ClassINT_Text.text = "INT: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassCON_Text.text = "CON: 4<br><color=#FF0800>(-1)</color>";
+
+            newSave_currentClass = "Archer";
+        }
+        else if (class_GO == newSave_ClassWizardButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 2<br><color=#FF0800>(-3)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 4<br><color=#FF0800>(-1)</color>";
+            newSave_ClassINT_Text.text = "INT: 12<br><color=#19FF00>(+7)</color>";
+            newSave_ClassCON_Text.text = "CON: 2<br><color=#FF0800>(-3)</color>";
+
+            newSave_currentClass = "Wizard";
+        }
+        else if (class_GO == newSave_ClassTankButton)
+        {
+            //Set Stats
+            newSave_ClassSTR_Text.text = "STR: 7<br><color=#19FF00>(+2)</color>";
+            newSave_ClassDEX_Text.text = "DEX: 3<br><color=#FF0800>(-2)</color>";
+            newSave_ClassINT_Text.text = "INT: 0<br><color=#FF0800>(-5)</color>";
+            newSave_ClassCON_Text.text = "CON: 10<br><color=#19FF00>(+5)</color>";
+
+            newSave_currentClass = "Tank";
+        }
+    }
+
+    public void Button_DeleteCharecter()
+    {
+        //Delete Current File
+        TM_SaveController.Instance.PlayerData_DeleteSaveFile(TM_SaveController.Instance.currentSaveSlotID);
+
+        //Refresh Icon / Info Data
+        SaveSlots_RefreshVisuals();
+
+        //Reselect Button To Reload Stats
+        Button_SaveSlot(TM_SaveController.Instance.currentSaveSlotID);
+    }
+
+    public void Button_CreateNewCharecter()
+    {
+ 
+
+        //Check Null Values
+
+
+
+
+        TM_PlayerSaveData newPlayerSaveData = TM_SaveController.Instance.PlayerData_CreateDefault();
+        newPlayerSaveData.playerInfo_Name = newSave_CharecterName_Input.text;
+
+
+
+
+
+        //Class / Stats
+        if (newSave_currentClass == "Brawler")
+        {
+            //Set Stats
+            newPlayerSaveData.playerInfo_Class = "Brawler";
+            newPlayerSaveData.player_CurrentStat_STR = 8;
+            newPlayerSaveData.player_CurrentStat_DEX = 6;
+            newPlayerSaveData.player_CurrentStat_INT = 2;
+            newPlayerSaveData.player_CurrentStat_CON = 4;
+        }
+        else if (newSave_currentClass == "Knight")
+        {
+            //Set Stats
+            newPlayerSaveData.playerInfo_Class = "Knight";
+            newPlayerSaveData.player_CurrentStat_STR = 7;
+            newPlayerSaveData.player_CurrentStat_DEX = 5;
+            newPlayerSaveData.player_CurrentStat_INT = 3;
+            newPlayerSaveData.player_CurrentStat_CON = 5;
+        }
+        else if (newSave_currentClass == "Archer")
+        {
+            //Set Stats
+            newPlayerSaveData.playerInfo_Class = "Archer";
+            newPlayerSaveData.player_CurrentStat_STR = 3;
+            newPlayerSaveData.player_CurrentStat_DEX = 9;
+            newPlayerSaveData.player_CurrentStat_INT = 4;
+            newPlayerSaveData.player_CurrentStat_CON = 4;
+        }
+        else if (newSave_currentClass == "Wizard")
+        {
+            //Set Stats
+            newPlayerSaveData.playerInfo_Class = "Wizard";
+            newPlayerSaveData.player_CurrentStat_STR = 2;
+            newPlayerSaveData.player_CurrentStat_DEX = 4;
+            newPlayerSaveData.player_CurrentStat_INT = 12;
+            newPlayerSaveData.player_CurrentStat_CON = 2;
+        }
+        else if (newSave_currentClass == "Tank")
+        {
+            //Set Stats
+            newPlayerSaveData.playerInfo_Class = "Tank";
+            newPlayerSaveData.player_CurrentStat_STR = 7;
+            newPlayerSaveData.player_CurrentStat_DEX = 3;
+            newPlayerSaveData.player_CurrentStat_INT = 0;
+            newPlayerSaveData.player_CurrentStat_CON = 10;
+        }
+
+        //Calculate Health Based On CON
+        int calculatedHealth = 50 + newPlayerSaveData.player_CurrentStat_CON;
+
+        newPlayerSaveData.player_CurrentHealth = calculatedHealth;
+        newPlayerSaveData.player_MaxHealth = calculatedHealth;
+        newPlayerSaveData.player_BaseHealth = calculatedHealth;
+
+        newPlayerSaveData.player_CurrentHunger = 100;
+        newPlayerSaveData.player_MaxHunger = 100;
+        newPlayerSaveData.player_BaseHunger = 100;
+
+        newPlayerSaveData.player_CurrentFire = 100;
+        newPlayerSaveData.player_MaxFire = 100;
+        newPlayerSaveData.player_BaseFire = 100;
+
+
+        //Name Validation
+        if (newPlayerSaveData.playerInfo_Name == "" || newPlayerSaveData.playerInfo_Name == null)
+        {
+            newPlayerSaveData.playerInfo_Name = "The Mountainer";
+        }
+
+        //Save File
+        TM_SaveController.Instance.PlayerData_SaveFile(newPlayerSaveData, TM_SaveController.Instance.currentSaveSlotID);
+
+        //Reload Data
+        TM_SaveController.Instance.PlayerData_ReloadSaveFiles();
+
+        //Refresh Icon / Info Data
+        SaveSlots_RefreshVisuals();
+
+        //Reselect Button To Reload Stats
+        Button_SaveSlot(TM_SaveController.Instance.currentSaveSlotID);
+    }
+
+    public void Button_RandomizeCharecterName()
+    {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+        newSave_CharecterName_Input.text = TM_DatabaseController.Instance.name_DB.randomName_List[UnityEngine.Random.Range(0, TM_DatabaseController.Instance.name_DB.randomName_List.Count)];
+    }
+
+    public void Button_RandomizeMapSeed()
+    {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+        newSave_MapSeed_Input.text = 
+            UnityEngine.Random.Range(0, 10).ToString() + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10) + 
+            UnityEngine.Random.Range(0, 10);
+    }
+ 
+    public void Button_DifficultyLeft()
+    {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+        //Loop List
+        if (newSave_currentDifficulty > 0)
+        {
+            newSave_currentDifficulty--;
+        }
+        else
+        {
+            newSave_currentDifficulty = (newSave_diffcultyChoices_List.Count - 1);
+        }
+
+        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
+    }
+
+    public void Button_DifficultyRight()
+    {
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.clickUI_SFX);
+
+        //Loop List
+        if (newSave_currentDifficulty < (newSave_diffcultyChoices_List.Count - 1))
+        {
+            newSave_currentDifficulty++;
+        }
+        else
+        {
+            newSave_currentDifficulty = 0;
+        }
+
+        //Set New Faction
+        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void ButtonSelect_SaveSlot(GameObject saveSlot_GO)
+    {
+        //Remove All Selections And Set To Netrual Colors
+        saveSlot1_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        saveSlot2_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        saveSlot3_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        saveSlot4_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+        saveSlot5_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
+
+
+        saveSlot_GO.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
+    }
+
+    public void ButtonSelect_ClassSlot(GameObject class_GO)
+    {
+
+
+        //Remove all buttons
+        newSave_ClassBrawlerButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassKnightButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassArcherButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassWizardButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        newSave_ClassTankButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
+        //Select This Button
+        class_GO.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Manual_RandomizeMapSeed()
+    {
+        newSave_MapSeed_Input.text =
+            UnityEngine.Random.Range(0, 10).ToString() +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10) +
+            UnityEngine.Random.Range(0, 10);
+    }
+
+    public void Manual_ClassSlot(GameObject class_GO)
     {
 
         if (class_GO == newSave_ClassBrawlerButton)
@@ -268,171 +549,9 @@ public class TM_ButtonController_Play : MonoBehaviour
 
             newSave_currentClass = "Tank";
         }
-
-
-
-
-
     }
 
-    public void Button_DeleteCharecter()
-    {
-        //Delete Current File
-        TM_SaveController.Instance.PlayerData_DeleteSaveFile(TM_SaveController.Instance.currentSaveSlotID);
-
-        //Refresh Icon / Info Data
-        SaveSlots_RefreshVisuals();
-
-        //Reselect Button To Reload Stats
-        Button_SaveSlot(TM_SaveController.Instance.currentSaveSlotID);
-    }
-
-    public void Button_CreateNewCharecter()
-    {
-        //Get Stats From Page
-
-
-        //Check Null Values
-
-
-        //Set Null Values
-
-
-        TM_PlayerSaveData newPlayerSaveData = new TM_PlayerSaveData();
-        newPlayerSaveData.playerInfo_Name = newSave_CharecterName_Input.text;
-        newPlayerSaveData.player_Level = 1;
-
-
-        //Class / Stats
-        if (newSave_currentClass == "Brawler")
-        {
-            //Set Stats
-            newPlayerSaveData.playerInfo_Class = "Brawler";
-            newPlayerSaveData.player_CurrentStat_STR = 8;
-            newPlayerSaveData.player_CurrentStat_DEX = 6;
-            newPlayerSaveData.player_CurrentStat_INT = 2;
-            newPlayerSaveData.player_CurrentStat_CON = 4;
-        }
-        else if (newSave_currentClass == "Knight")
-        {
-            //Set Stats
-            newPlayerSaveData.playerInfo_Class = "Knight";
-            newPlayerSaveData.player_CurrentStat_STR = 7;
-            newPlayerSaveData.player_CurrentStat_DEX = 5;
-            newPlayerSaveData.player_CurrentStat_INT = 3;
-            newPlayerSaveData.player_CurrentStat_CON = 5;
-        }
-        else if (newSave_currentClass == "Archer")
-        {
-            //Set Stats
-            newPlayerSaveData.playerInfo_Class = "Archer";
-            newPlayerSaveData.player_CurrentStat_STR = 3;
-            newPlayerSaveData.player_CurrentStat_DEX = 9;
-            newPlayerSaveData.player_CurrentStat_INT = 4;
-            newPlayerSaveData.player_CurrentStat_CON = 4;
-        }
-        else if (newSave_currentClass == "Wizard")
-        {
-            //Set Stats
-            newPlayerSaveData.playerInfo_Class = "Wizard";
-            newPlayerSaveData.player_CurrentStat_STR = 2;
-            newPlayerSaveData.player_CurrentStat_DEX = 4;
-            newPlayerSaveData.player_CurrentStat_INT = 12;
-            newPlayerSaveData.player_CurrentStat_CON = 2;
-        }
-        else if (newSave_currentClass == "Tank")
-        {
-            //Set Stats
-            newPlayerSaveData.playerInfo_Class = "Tank";
-            newPlayerSaveData.player_CurrentStat_STR = 7;
-            newPlayerSaveData.player_CurrentStat_DEX = 3;
-            newPlayerSaveData.player_CurrentStat_INT = 0;
-            newPlayerSaveData.player_CurrentStat_CON = 10;
-        }
-
-
-
-        //Name Validation
-        if (newPlayerSaveData.playerInfo_Name == "" || newPlayerSaveData.playerInfo_Name == null)
-        {
-            newPlayerSaveData.playerInfo_Name = "The Mountainer";
-        }
-
-        //Save File
-        TM_SaveController.Instance.PlayerData_SaveFile(newPlayerSaveData, TM_SaveController.Instance.currentSaveSlotID);
-
-        //Refresh Icon / Info Data
-        SaveSlots_RefreshVisuals();
-
-        //Reselect Button To Reload Stats
-        Button_SaveSlot(TM_SaveController.Instance.currentSaveSlotID);
-    }
-
-    public void Button_RandomizeCharecterName()
-    {
-        newSave_CharecterName_Input.text = TM_DatabaseController.Instance.name_DB.randomName_List[UnityEngine.Random.Range(0, TM_DatabaseController.Instance.name_DB.randomName_List.Count)];
-    }
-
-    public void Button_RandomizeMapSeed()
-    {
-        newSave_MapSeed_Input.text = 
-            UnityEngine.Random.Range(0, 10).ToString() + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10) + 
-            UnityEngine.Random.Range(0, 10);
-    }
- 
-    public void Button_DifficultyLeft()
-    {
-        //Loop List
-        if (newSave_currentDifficulty > 0)
-        {
-            newSave_currentDifficulty--;
-        }
-        else
-        {
-            newSave_currentDifficulty = (newSave_diffcultyChoices_List.Count - 1);
-        }
-
-        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
-    }
-
-    public void Button_DifficultyRight()
-    {
-        //Loop List
-        if (newSave_currentDifficulty < (newSave_diffcultyChoices_List.Count - 1))
-        {
-            newSave_currentDifficulty++;
-        }
-        else
-        {
-            newSave_currentDifficulty = 0;
-        }
-
-        //Set New Faction
-        newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
-    }
-
-    ///////////////////////////////////////////////////////
-
-    public void ButtonSelect_SaveSlot(GameObject saveSlot_GO)
-    {
-        //Remove All Selections And Set To Netrual Colors
-        saveSlot1_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
-        saveSlot2_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
-        saveSlot3_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
-        saveSlot4_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
-        saveSlot5_Panel.GetComponent<Image>().color = new Color32(180, 180, 180, 255);
-
-
-        saveSlot_GO.GetComponent<Image>().color = new Color32(120, 120, 120, 255);
-    }
-
-    public void ButtonSelect_ClassSlot(GameObject class_GO)
+    public void ManualSelect_ClassSlot(GameObject class_GO)
     {
 
 
@@ -448,6 +567,7 @@ public class TM_ButtonController_Play : MonoBehaviour
     }
 
     ///////////////////////////////////////////////////////
+
 
     public void SaveSlots_RefreshVisuals()
     {
@@ -583,14 +703,14 @@ public class TM_ButtonController_Play : MonoBehaviour
     {
         //Clear Text
         charecterLoad_Name_Text.text = "";
-        Button_RandomizeMapSeed();
+        Manual_RandomizeMapSeed();
 
         newSave_currentDifficulty = 1;
         newSave_currentDifficulty_Text.text = newSave_diffcultyChoices_List[newSave_currentDifficulty];
 
         //Select Button
-        Button_ClassSlot(newSave_ClassBrawlerButton);
-        ButtonSelect_ClassSlot(newSave_ClassBrawlerButton);
+        Manual_ClassSlot(newSave_ClassBrawlerButton);
+        ManualSelect_ClassSlot(newSave_ClassBrawlerButton);
     }
 
     ///////////////////////////////////////////////////////

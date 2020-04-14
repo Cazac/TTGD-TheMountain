@@ -18,6 +18,9 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     ////////////////////////////////
 
     [Header("Slot Type")]
+    public bool isDisabledSlot;
+
+    [Header("Slot Type")]
     public bool isCursorSlot;
     public bool isInventorySlot;
     public bool isToolbarSlot;
@@ -29,6 +32,16 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public bool isEquipFootSlot;
     public bool isEquipRingSlot;
 
+    [Header("Single Item Slot Type")]
+    public bool isSingleTypeSlot;
+    public TM_Item_SO singleTypeItemSO;
+
+    [Header("Home Menu Slot Type")]
+    public bool isForgeInputSlot;
+    public bool isForgeMatSlot;
+    public bool isForgeOutputLeftSlot;
+    public bool isForgeOutputRightSlot;
+
     ////////////////////////////////
 
     //[Header("Current Item Selected")]
@@ -38,6 +51,9 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("Slot Icon")]
     public Image slotIcon;
+
+    [Header("Slot Fade Icon")]
+    public Image slotFadeIcon;
 
     [Header("Slot Durablity")]
     public GameObject slotDurablityBar_GO;
@@ -63,6 +79,13 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //Check Slot Disabled Status
+        if (isDisabledSlot)
+        {
+            print("Test Code: Disabled");
+            return;
+        }
+
         //Look For Mouse Click Type
         if (eventData.button == PointerEventData.InputButton.Left)
         {
@@ -132,6 +155,26 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
         //Update UI
         ItemSlot_UpdateItem();
+    }
+
+    public void ItemSlot_SetItemFade(Sprite newFadeIcon)
+    {
+        if (slotFadeIcon != null)
+        {
+            if (newFadeIcon != null)
+            {
+                slotFadeIcon.gameObject.SetActive(true);
+                slotFadeIcon.sprite = newFadeIcon;
+            }
+            else
+            {
+                slotFadeIcon.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            print("Test Code: Error, Fade Icon Was Not Set!");
+        }
     }
 
     public void ItemSlot_DupplicateItem(TM_ItemUI orignalItem)
@@ -262,6 +305,34 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
+    public void ItemSlot_Disable()
+    {
+        isDisabledSlot = true;
+
+        if (isInventorySlot || isToolbarSlot)
+        {
+            gameObject.GetComponent<Image>().color = new Color32(40, 40, 40, 255);
+        }
+        else
+        {
+            gameObject.GetComponent<Image>().color = new Color32(80, 80, 80, 255);
+        }
+    }
+
+    public void ItemSlot_Enable()
+    {
+        isDisabledSlot = false;
+
+        if (isInventorySlot || isToolbarSlot)
+        {
+            gameObject.GetComponent<Image>().color = new Color32(170, 170, 170, 255);
+        }
+        else 
+        {
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+    }
+
     ///////////////////////////////////////////////////////
 
     public void TryAction_DetachHalf()
@@ -276,7 +347,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Set stack to Inventory
-                    Action_Inventory_PlaceSingle();
+                    Action_PlaceSingle();
                 }
                 else
                 {
@@ -292,18 +363,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
-                        Action_Inventory_PickupSingle();
+                        Action_PickupSingle();
                     }
                     else
                     {
                         //Switch Stacks
-                        Action_Inventory_SwitchStacks();
+                        Action_SwitchStacks();
                     }
                 }
                 else
                 {
                     //Pickup the stack and give to cursor
-                    Action_Inventory_PickupSingle();
+                    Action_PickupSingle();
                 }
             }
         }
@@ -316,7 +387,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Set stack to Inventory
-                    Action_Toolbar_PlaceSingle();
+                    Action_PlaceSingle();
                 }
                 else
                 {
@@ -332,18 +403,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
-                        Action_Toolbar_PickupSingle();
+                        Action_PickupSingle();
                     }
                     else
                     {
                         //Switch Stacks
-                        Action_Toolbar_SwitchStacks();
+                        Action_SwitchStacks();
                     }
                 }
                 else
                 {
                     //Pickup the stack and give to cursor
-                    Action_Toolbar_PickupSingle();
+                    Action_PickupSingle();
                 }
             }
         }
@@ -365,7 +436,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Set stack to Inventory
-                    Action_Inventory_PlaceSingle();
+                    Action_PlaceSingle();
                 }
                 else
                 {
@@ -381,18 +452,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
-                        Action_Inventory_PickupSingle();
+                        Action_PickupSingle();
                     }
                     else
                     {
                         //Switch Stacks
-                        Action_Inventory_SwitchStacks();
+                        Action_SwitchStacks();
                     }
                 }
                 else
                 {
                     //Pickup the stack and give to cursor
-                    Action_Inventory_PickupSingle();
+                    Action_PickupSingle();
                 }
             }
         }
@@ -405,7 +476,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 if (TM_CursorController.Instance.Cursor_GetItem() != null)
                 {
                     //Set stack to Inventory
-                    Action_Toolbar_PlaceSingle();
+                    Action_PlaceSingle();
                 }
                 else
                 {
@@ -421,18 +492,18 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
                     {
                         //Attempt To Merge Stacks
-                        Action_Toolbar_PickupSingle();
+                        Action_PickupSingle();
                     }
                     else
                     {
                         //Switch Stacks
-                        Action_Toolbar_SwitchStacks();
+                        Action_SwitchStacks();
                     }
                 }
                 else
                 {
                     //Pickup the stack and give to cursor
-                    Action_Toolbar_PickupSingle();
+                    Action_PickupSingle();
                 }
             }
         }
@@ -460,19 +531,46 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         //Slot Type
         if (isInventorySlot)
         {
-            if (!Action_Toolbar_QuickStack())
+            //Attempt a Quickstack if failed no Action
+            if (!Action_QuickStack(TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array))
             {
                 Action_NoAction();
             }
         }
         else if (isToolbarSlot)
         {
-            if (!Action_Inventory_QuickStack()) 
+            if (TM_PlayerMenuController_UI.Instance.Forge_Panel.activeSelf)
             {
-                Action_NoAction();
+                //Attempt a Quickstack if failed no Action
+                if (!Action_QuickStack(TM_HomeMenuController_Forge.Instance.forge_PlayerItemSlots_Array))
+                {
+                    Action_NoAction();
+                }
             }
-
-
+            else  if (TM_PlayerMenuController_UI.Instance.Brewery_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Dispenser_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Storage_Panel.activeSelf)
+            {
+                return;
+            }
+            else  if (TM_PlayerMenuController_UI.Instance.Workshop_Panel.activeSelf)
+            {
+                return;
+            }
+            else
+            {
+                //Attempt a Quickstack if failed no Action
+                if (!Action_QuickStack(TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array))
+                {
+                    Action_NoAction();
+                }
+            }
         }
     }
 
@@ -481,137 +579,32 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         //Slot Type
         if (isInventorySlot)
         {
-            //Current Item
-            if (currentItem == null)
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    //Set stack to Inventory
-                    Action_Inventory_PlaceStack();
-                }
-                else
-                {
-                    //No Action
-                    Action_NoAction();
-                }
-            }
-            else
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
-                    {
-                        //Attempt To Merge Stacks
-                        Action_Inventory_CombineStacks();
-                    }
-                    else
-                    {
-                        //Switch Stacks
-                        Action_Inventory_SwitchStacks();
-                    }
-                }
-                else
-                {
-                    //Pickup the stack and give to cursor
-                    Action_Inventory_PickupStack();
-                }
-            }
+            //Inventory
+            SelectType_IsInventory();
         }
         else if (isToolbarSlot)
         {
-            //Current Item
-            if (currentItem == null)
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    //Set stack to Inventory
-                    Action_Toolbar_PlaceStack();
-                }
-                else
-                {
-                    //No Action
-                    Action_NoAction();
-                }
-            }
-            else
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
-                    {
-                        //Attempt To Merge Stacks
-                        Action_Toolbar_CombineStacks();
-                    }
-                    else
-                    {
-                        //Switch Stacks
-                        Action_Toolbar_SwitchStacks();
-                    }
-                }
-                else
-                {
-                    //Pickup the stack and give to cursor
-                    Action_Toolbar_PickupStack();
-                }
-            }
-        }
-        else if (isContainerSlot)
-        {
-            print("Test Code: Oops, you forgot to set a slot tag!");
+            //Toolbar
+            SelectType_IsToolbarSlot();
         }
         else if (isEquipHandSlot)
         {
-            //Current Item
-            if (currentItem == null)
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    //Filter Object Type
-                    if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
-                    {
-                        //Set stack to Inventory
-                        Action_Equipment_PlaceStack();
-                    }
-                    else
-                    {
-                        //No Action
-                        Action_NoAction();
-                    }
-                }
-                else
-                {
-                    //No Action
-                    Action_NoAction();
-                }
-            }
-            else
-            {
-                //Cursor Item
-                if (TM_CursorController.Instance.Cursor_GetItem() != null)
-                {
-                    //Filter Object Type
-                    if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
-                    {
-                        //Switch Stacks
-                        Action_Equipment_SwitchStacks();
-                    }
-                    else
-                    {
-                        //No Action
-                        Action_NoAction();
-                    }
-                }
-                else
-                {
-                    //Pickup the stack and give to cursor
-                    Action_Equipment_PickupStack();
-                }
-            }
+            //Hand Equipment
+            SelectType_IsEquipHandSlot();
+        }
+        else if (isForgeMatSlot && isSingleTypeSlot)
+        {
+            //Forge Mat + Single Input
+            SelectType_IsForgeMatSlot_IsSingleTypeSlot();
+        }
+        else if (isForgeInputSlot)
+        {
+            //Forge Input
+            SelectType_IsForgeInput();
+        }
+        else if (isForgeOutputLeftSlot)
+        {
+            SelectType_IsForgeOutputLeftSlot();
         }
         else
         {
@@ -619,6 +612,283 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
 
 
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void SelectType_IsInventory()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Set stack to Inventory
+                Action_PlaceStack();
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
+                {
+                    //Attempt To Merge Stacks
+                    Action_CombineStacks();
+                }
+                else
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+            }
+        }
+    }
+
+    public void SelectType_IsToolbarSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Set stack to Inventory
+                Action_PlaceStack();
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                if (TM_CursorController.Instance.Cursor_GetItem().itemName == currentItem.itemName)
+                {
+                    //Attempt To Merge Stacks
+                    Action_CombineStacks();
+                }
+                else
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+            }
+        }
+    }
+
+    public void SelectType_IsEquipHandSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+            }
+        }
+    }
+
+    public void SelectType_IsForgeInput()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(currentItem.original_SO);
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(currentItem.original_SO);
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(null);
+            }
+        }
+    }
+
+    public void SelectType_IsForgeMatSlot_IsSingleTypeSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().original_SO == singleTypeItemSO)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().original_SO == singleTypeItemSO)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
+            }
+        }
+    }
+
+    public void SelectType_IsForgeOutputLeftSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //No Action
+                Action_NoAction();
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //No Action
+                Action_NoAction();
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_ConsumeItems();
+            }
+        }
     }
 
     ///////////////////////////////////////////////////////
@@ -630,7 +900,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     ///////////////////////////////////////////////////////
 
-    private void Action_Inventory_PickupStack()
+    private void Action_PickupStack()
     {
         //Give Item
         TM_CursorController.Instance.Cursor_SetItem(currentItem);
@@ -639,7 +909,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ItemSlot_RemoveItem();
     }
 
-    private void Action_Inventory_PlaceStack()
+    private void Action_PlaceStack()
     {
         //Give Item
         ItemSlot_SetItem(TM_CursorController.Instance.Cursor_GetItem());
@@ -648,7 +918,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         TM_CursorController.Instance.Cursor_RemoveItem();
     }
 
-    private void Action_Inventory_SwitchStacks()
+    private void Action_SwitchStacks()
     {
         //Get Items
         TM_ItemUI inventoryItem = currentItem;
@@ -659,7 +929,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ItemSlot_SetItem(cursorItem);
     }
 
-    private void Action_Inventory_CombineStacks()
+    private void Action_CombineStacks()
     {
         if (currentItem.currentStackSize < currentItem.maxStackSize)
         {
@@ -695,11 +965,11 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else
         {
             //Go back and just swap stacks
-            Action_Inventory_SwitchStacks();
+            Action_SwitchStacks();
         }
     }
 
-    private void Action_Inventory_PickupSingle()
+    private void Action_PickupSingle()
     {
         //Check If Not Empty
         if (TM_CursorController.Instance.Cursor_GetItem() == null)
@@ -724,7 +994,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ItemSlot_UpdateItem();
     }
 
-    private void Action_Inventory_PlaceSingle()
+    private void Action_PlaceSingle()
     {
         //Check If Not Empty
         if (currentItem == null)
@@ -746,7 +1016,10 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         TM_CursorController.Instance.Cursor_UpdateItem();
     }
 
-    public bool Action_Inventory_QuickStack()
+    ///////////////////////////////////////////////////////
+
+    //Overload witha  simple transofmation for input, could be reduced later??
+    public bool Action_QuickStack(GameObject[] currentInventory_List)
     {
         //List of Possible Merges
         List<TM_ItemSlot> possibleEmptySpots_List = new List<TM_ItemSlot>();
@@ -755,7 +1028,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ///////////////////////////////////////////////////////
 
         //Find Empty Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.playerItemSlots_Array)
+        foreach (GameObject itemSlot in currentInventory_List)
         {
             //Get Slot
             TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
@@ -835,7 +1108,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Move Stack
                 possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
 
-                print("Test Code: FOunds");
+                //print("Test Code: Found Free Slot");
 
                 //Remove Stack
                 ItemSlot_RemoveItem();
@@ -851,132 +1124,9 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         return false;
     }
 
-    ///////////////////////////////////////////////////////
-
-    private void Action_Toolbar_PickupStack()
+    //Overload witha  simple transofmation for input, could be reduced later??
+    public bool Action_QuickStack(TM_ItemSlot[] currentInventory_List)
     {
-        //Give Item
-        TM_CursorController.Instance.Cursor_SetItem(currentItem);
-
-        //Remove Item
-        ItemSlot_RemoveItem();
-    }
-
-    private void Action_Toolbar_PlaceStack()
-    {
-        //Give Item
-        ItemSlot_SetItem(TM_CursorController.Instance.Cursor_GetItem());
-
-        //Remove Item
-        TM_CursorController.Instance.Cursor_RemoveItem();
-    }
-
-    private void Action_Toolbar_SwitchStacks()
-    {
-        //Get Items
-        TM_ItemUI inventoryItem = currentItem;
-        TM_ItemUI cursorItem = TM_CursorController.Instance.Cursor_GetItem();
-
-        //Switch Values
-        TM_CursorController.Instance.Cursor_SetItem(inventoryItem);
-        ItemSlot_SetItem(cursorItem);
-    }
-
-    private void Action_Toolbar_CombineStacks()
-    {
-        if (currentItem.currentStackSize < currentItem.maxStackSize)
-        {
-            //Get Max Values For Passing and Incoming
-            int maxAllowedItems_INV = currentItem.maxStackSize - currentItem.currentStackSize;
-            int maxPassableItems_CUR = TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
-
-            //Check for extra values
-            if (maxPassableItems_CUR >= maxAllowedItems_INV)
-            {
-                //Give Some Values
-                currentItem.currentStackSize += maxAllowedItems_INV;
-
-                //Remove Some Values
-                TM_CursorController.Instance.Cursor_GetItem().currentStackSize -= maxAllowedItems_INV;
-
-                //Set Items Again To Refresh Stats
-                ItemSlot_SetItem(currentItem);
-                TM_CursorController.Instance.Cursor_SetItem(TM_CursorController.Instance.Cursor_GetItem());
-            }
-            else
-            {
-                //Deposit All Values
-                currentItem.currentStackSize += TM_CursorController.Instance.Cursor_GetItem().currentStackSize;
-
-                //Clear the Cursor
-                TM_CursorController.Instance.Cursor_RemoveItem();
-
-                //Set Items Again To Refresh Stats (Cursor was already removed)
-                ItemSlot_SetItem(currentItem);
-            }
-        }
-        else
-        {
-            //Go back and just swap stacks
-            Action_Inventory_SwitchStacks();
-        }
-    }
-
-    private void Action_Toolbar_PickupSingle()
-    {
-        //Check If Not Empty
-        if (TM_CursorController.Instance.Cursor_GetItem() == null)
-        {
-            //Give an Item and Make it Single
-            TM_CursorController.Instance.Cursor_DupplicateItem(currentItem);
-            TM_CursorController.Instance.Cursor_GetItem().currentStackSize = 1;
-            TM_CursorController.Instance.Cursor_UpdateItem();
-        }
-        else
-        {
-            //Add an Item
-            TM_CursorController.Instance.Cursor_GetItem().currentStackSize++;
-            TM_CursorController.Instance.Cursor_UpdateItem();
-        }
-
-
-
-
-        //Remove a Single Item
-        currentItem.currentStackSize--;
-        ItemSlot_UpdateItem();
-    }
-
-    private void Action_Toolbar_PlaceSingle()
-    {
-        //Check If Not Empty
-        if (currentItem == null)
-        {
-            //Give an Item and Make it Single
-            ItemSlot_DupplicateItem(TM_CursorController.Instance.Cursor_GetItem());
-            currentItem.currentStackSize = 1;
-            ItemSlot_UpdateItem();
-        }
-        else
-        {
-            //Add an Item
-            currentItem.currentStackSize++;
-            ItemSlot_UpdateItem();
-        }
-
-        //Remove a Single Item
-        TM_CursorController.Instance.Cursor_GetItem().currentStackSize--;
-        TM_CursorController.Instance.Cursor_UpdateItem();
-    }
-
-    public bool Action_Toolbar_QuickStack()
-    {
-        if (currentItem == null)
-        {
-            print("Test Code: Failed Toolbar");
-            return false;
-        }
-
         //List of Possible Merges
         List<TM_ItemSlot> possibleEmptySpots_List = new List<TM_ItemSlot>();
         List<TM_ItemSlot> possibleMerges_List = new List<TM_ItemSlot>();
@@ -984,18 +1134,15 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         ///////////////////////////////////////////////////////
 
         //Find Empty Slots in Toolbar
-        foreach (GameObject itemSlot in TM_PlayerMenuController_Inventory.Instance.toolbarItemSlots_Array)
+        foreach (TM_ItemSlot slot in currentInventory_List)
         {
-            //Get Slot
-            TM_ItemSlot slot = itemSlot.GetComponent<TM_ItemSlot>();
-
             //Search Empty Spots
             if (slot.currentItem == null)
             {
                 //Add to Empty Spots
                 possibleEmptySpots_List.Add(slot);
             }
-            else 
+            else
             {
                 //Check For Matching Names
                 if (slot.currentItem.itemName == currentItem.itemName)
@@ -1060,14 +1207,14 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //???
             if (currentItem != null)
-            {       
+            {
                 //Move Stack
                 possibleEmptySpots_List[0].ItemSlot_SetItem(currentItem);
 
                 //Remove Stack
                 ItemSlot_RemoveItem();
             }
-  
+
             //Return True the transfer was successful
             return true;
         }
@@ -1078,80 +1225,5 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         return false;
     }
 
-    ///////////////////////////////////////////////////////
-
-    public void Action_Equipment_PickupStack()
-    {
-        //Give Item
-        TM_CursorController.Instance.Cursor_SetItem(currentItem);
-
-        //Remove Item
-        ItemSlot_RemoveItem();
-    }
-
-    public void Action_Equipment_PlaceStack()
-    {
-        //Give Item
-        ItemSlot_SetItem(TM_CursorController.Instance.Cursor_GetItem());
-
-        //Remove Item
-        TM_CursorController.Instance.Cursor_RemoveItem();
-    }
-
-    public void Action_Equipment_SwitchStacks()
-    {
-        //Get Items
-        TM_ItemUI inventoryItem = currentItem;
-        TM_ItemUI cursorItem = TM_CursorController.Instance.Cursor_GetItem();
-
-        //Switch Values
-        TM_CursorController.Instance.Cursor_SetItem(inventoryItem);
-        ItemSlot_SetItem(cursorItem);
-    }
-
- 
-    
-
-
-    /*
-
-    ///////////////////////////////////////////////////////
-
-    void Action_PickupStack_InventoryToCursor();
-
-    ///////////////////////////////////////////////////////
-
-    void Action_PlaceStack_CursorToInventory();
-
-    void Action_PlaceStack_CursorToContainer();
-
-    ///////////////////////////////////////////////////////
-
-    void Action_MergeStack_CursorToInventory();
-
-    void Action_SwapStacks_CursorToInventory();
-
-    ///////////////////////////////////////////////////////
-
-    void Action_DiscardStack_CursorToGround();
-
-    void Action_DiscardSingle_CursorToGround();
-
-    ///////////////////////////////////////////////////////
-
-    void Action_QuickmoveStack_InventoryToToolbar();
-
-    void Action_QuickmoveStack_InventoryToContainer();
-
-    void Action_QuickmoveStack_ToolbarToInventory();
-
-    void Action_QuickmoveStack_ToolbarToContainer();
-
-    void Action_QuickmoveStack_ContainerToInventory();
-
-    void Action_QuickmoveStack_ContainerToToolbar();
-
-
-    */
     ///////////////////////////////////////////////////////
 }

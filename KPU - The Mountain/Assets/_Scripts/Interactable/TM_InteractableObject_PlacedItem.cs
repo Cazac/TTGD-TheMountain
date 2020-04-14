@@ -36,9 +36,8 @@ public class TM_InteractableObject_PlacedItem : MonoBehaviour, TM_InteractableOb
             placedObject.currentStackSize = 1;
         }
 
-        //Check For Space First
-
-
+        //Play SFX
+        TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerPickup2_SFX);
 
         //Deep Copy and Convert Item to UI
         TM_ItemUI newItemUI = new TM_ItemUI(placedObject.orginalItem_SO);

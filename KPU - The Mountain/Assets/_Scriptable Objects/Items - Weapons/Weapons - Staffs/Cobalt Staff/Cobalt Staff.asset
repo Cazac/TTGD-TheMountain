@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cobalt Staff
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
-  itemName: 
+  dropped_Prefab: {fileID: 79182650638101159, guid: 62c47d602405f6646b662ae2dfb33c7a,
+    type: 3}
+  placed_Prefab: {fileID: 5038756541024996957, guid: dd8761d341cd57c49a69fc23b0a7364d,
+    type: 3}
+  held_Prefab: {fileID: 3738357295989976562, guid: 223e633d9a23c07429704de2d9bf50b3,
+    type: 3}
+  equipped_Prefab: {fileID: 3738357295989976562, guid: 223e633d9a23c07429704de2d9bf50b3,
+    type: 3}
+  itemName: Cobalt Staff
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 44018dbf8bcb4a3418fa0c979c6731e7, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0.1
   weapon_BlockNegation: 100
   weapon_BlockParryTime: 0.1
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

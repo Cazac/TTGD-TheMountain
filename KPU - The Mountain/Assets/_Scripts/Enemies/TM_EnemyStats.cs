@@ -6,33 +6,64 @@ public class TM_EnemyStats : MonoBehaviour
 {
     ////////////////////////////////
 
-
-    //Health
+    [Header("Health")]
     public int enemy_CurrentHealth;
     public int enemy_MaxHealth;
 
+    [Header("Enemy Type")]
+    public TM_EnemyDirector_Minotaur minotaurDirector;
+    public TM_EnemyDirector_Skeleton skeletonDirector;
 
     ///////////////////////////////////////////////////////
 
-    private void Start()
+    private void Awake()
     {
-        SetDebugStats();
+        GetEnemy_Typed();
+        SetStats_Typed();
     }
 
     ///////////////////////////////////////////////////////
 
-    private void SetDebugStats()
+    private void GetEnemy_Typed()
     {
-        enemy_CurrentHealth = 200;
-        enemy_MaxHealth = 200;
+        minotaurDirector = gameObject.GetComponent<TM_EnemyDirector_Minotaur>();
+        skeletonDirector = gameObject.GetComponent<TM_EnemyDirector_Skeleton>();
+    }
+
+    private void SetStats_Typed()
+    {
+        if (minotaurDirector != null)
+        {
+            enemy_CurrentHealth = minotaurDirector.STARTING_HEALTH;
+            enemy_MaxHealth = minotaurDirector.STARTING_HEALTH;
+            return;
+        }
+        else if (skeletonDirector != null)
+        {
+            //enemy_CurrentHealth = skeletonDirector.STARTING_HEALTH;
+            //enemy_MaxHealth = skeletonDirector.STARTING_HEALTH;
+            return;
+        }
+        else
+        {
+            print("Test Code: Error");
+            return;
+        }
+
     }
 
     ///////////////////////////////////////////////////////
-
 
     public void ChangeHealth_Current(int changeValue)
     {
-        //Change Value
+     
+
+
+        //Set Visual Red Blink / Set Damage Popup
+        SetVisualFlash_Typed();
+        SetDamagePopup_Typed(changeValue);
+
+        //Change Health Value
         enemy_CurrentHealth += changeValue;
 
         //Check For Overload
@@ -49,30 +80,107 @@ public class TM_EnemyStats : MonoBehaviour
             enemy_CurrentHealth = 0;
 
             //Death
-            EnemyDeath();
+            EnemyDeath_Typed();
         }
 
 
-
-
-        //Update UI
+        //Update Enemy UI Bar
         //TM_PlayerMenuController_UI.Instance.UpdateUI_HealthValue();
     }
 
+    ///////////////////////////////////////////////////////
+    
+    private void SetVisualFlash_Typed()
+    {
+        if (minotaurDirector != null)
+        {
+            //Minotaur
+            StartCoroutine(minotaurDirector.DamagedVisualFlash());
+            return;
+        }
+        else if (skeletonDirector != null)
+        {
+            //enemy_CurrentHealth = skeletonDirector.STARTING_HEALTH;
+            //enemy_MaxHealth = skeletonDirector.STARTING_HEALTH;
+            return;
+        }
+        else
+        {
+            print("Test Code: Error");
+            return;
+        }
 
+    }
+
+    public void SetKnockback_Typed(Vector3 direction)
+    {
+        //Get Type
+        if (minotaurDirector != null)
+        {
+            //Minotaur
+            minotaurDirector.Knockback(direction.normalized, 20f);
+            return;
+        }
+        else if (skeletonDirector != null)
+        {
+            //enemy_CurrentHealth = skeletonDirector.STARTING_HEALTH;
+            //enemy_MaxHealth = skeletonDirector.STARTING_HEALTH;
+            return;
+        }
+        else
+        {
+            print("Test Code: Error");
+            return;
+        }
+    }
+
+    private void SetDamagePopup_Typed(int damage)
+    {
+        //Invert Chnaged Value to Damage for Positive Value
+        damage = damage * -1;
+
+        //Get Type
+        if (minotaurDirector != null)
+        {
+            //Minotaur
+            minotaurDirector.DamagePopup(damage);
+            return;
+        }
+        else if (skeletonDirector != null)
+        {
+            //enemy_CurrentHealth = skeletonDirector.STARTING_HEALTH;
+            //enemy_MaxHealth = skeletonDirector.STARTING_HEALTH;
+            return;
+        }
+        else
+        {
+            print("Test Code: Error");
+            return;
+        }
+    }
 
     ///////////////////////////////////////////////////////
 
-    public void EnemyDeath()
+    public void EnemyDeath_Typed()
     {
-        print("Test Code: Enemy Has Died");
-
-        gameObject.GetComponent<TM_EnemyDirector_Minotaur>().ChangeToState_Dying();
-
-
-
-
-        //gameObject.SetActive(false);
+        //Get Type
+        if (minotaurDirector != null)
+        {
+            //Minotaur
+            minotaurDirector.ChangeToState_Dying();
+            return;
+        }
+        else if (skeletonDirector != null)
+        {
+            //enemy_CurrentHealth = skeletonDirector.STARTING_HEALTH;
+            //enemy_MaxHealth = skeletonDirector.STARTING_HEALTH;
+            return;
+        }
+        else
+        {
+            print("Test Code: Error");
+            return;
+        }
     }
 
     ///////////////////////////////////////////////////////
