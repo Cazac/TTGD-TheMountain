@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gold Helmet
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 2289242271184812980, guid: 2603949b281b555498f4e5b3b1503300,
+    type: 3}
+  placed_Prefab: {fileID: 2884751574255619862, guid: 2cb453467330db64a97dbff6520719f1,
+    type: 3}
+  held_Prefab: {fileID: 3174050813389999741, guid: c2078b7e950140a47bd51e35cb4dbc8c,
+    type: 3}
+  equipped_Prefab: {fileID: 3174050813389999741, guid: c2078b7e950140a47bd51e35cb4dbc8c,
+    type: 3}
   itemName: Gold Helmet
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 1
   isArmorChest: 0
   isArmorArm: 0

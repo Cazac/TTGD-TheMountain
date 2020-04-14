@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gold Arm Guard
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 6921762391977830247, guid: bcfe8fbff5cf3bd4484948d62ba249b7,
+    type: 3}
+  placed_Prefab: {fileID: 8179350929954786609, guid: 60b8e29c8e977384dbe706f94f74ebe0,
+    type: 3}
+  held_Prefab: {fileID: 3041938526158421506, guid: eb0be4760dac87b4db3aad6919033138,
+    type: 3}
+  equipped_Prefab: {fileID: 3041938526158421506, guid: eb0be4760dac87b4db3aad6919033138,
+    type: 3}
   itemName: Gold Arm Guard
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 1

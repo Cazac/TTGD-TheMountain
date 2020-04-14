@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Gold Leg Guard
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 8677032112270649827, guid: 00fbca30673026d4f846a4c7172c6683,
+    type: 3}
+  placed_Prefab: {fileID: 7587657897288256611, guid: da3bad7dd54284d4aa771502185b619c,
+    type: 3}
+  held_Prefab: {fileID: 52828706903492876, guid: 9f3fca78ea3c461428014c9b449af76b,
+    type: 3}
+  equipped_Prefab: {fileID: 52828706903492876, guid: 9f3fca78ea3c461428014c9b449af76b,
+    type: 3}
   itemName: Gold Leg Guard
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

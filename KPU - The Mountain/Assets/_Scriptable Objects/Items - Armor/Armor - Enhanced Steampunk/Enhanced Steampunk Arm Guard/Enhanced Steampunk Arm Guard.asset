@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Enhanced Steampunk Arm Guard
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 5740609043723131349, guid: ff040d5dd7670964a992df74945ec567,
+    type: 3}
+  placed_Prefab: {fileID: 7115386895132399795, guid: 861fadd9b353b08428319685d21300c4,
+    type: 3}
+  held_Prefab: {fileID: 3549540958860368949, guid: ee0aba26bc9331c49a9979515c1805af,
+    type: 3}
+  equipped_Prefab: {fileID: 3549540958860368949, guid: ee0aba26bc9331c49a9979515c1805af,
+    type: 3}
   itemName: Enhanced Steampunk Arm Guard
   itemDesc: 
   itemIcon: {fileID: 0}
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 1
