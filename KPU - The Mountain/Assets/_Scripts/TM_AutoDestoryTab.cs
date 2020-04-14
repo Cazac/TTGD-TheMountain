@@ -20,6 +20,12 @@ public class TM_AutoDestoryTab : MonoBehaviour
 
 
 
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+        StartCoroutine(AutoDestoryCountdown(1f));
+    }
+
     ///////////////////////////////////////////////////////
 
     public void Setup(float clipLength)

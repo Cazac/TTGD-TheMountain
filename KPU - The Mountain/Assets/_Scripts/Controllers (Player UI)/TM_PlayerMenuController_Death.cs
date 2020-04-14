@@ -50,6 +50,9 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
             return;
         }
 
+        //Boost the player 200ft in the air so no one can attack them lol
+        TM_PlayerController_Movement.Instance.gameObject.transform.position += new Vector3(0, 200f, 0);
+
         //Play SFX
         //TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerDeath_SFX);
 

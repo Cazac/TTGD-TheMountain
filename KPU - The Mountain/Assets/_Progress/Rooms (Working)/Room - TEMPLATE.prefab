@@ -52,6 +52,7 @@ MonoBehaviour:
   itemSpawnContainer: {fileID: 8928574021463511658}
   enemySpawnContainer: {fileID: 8928574021662243334}
   generationColliderContainer: {fileID: 8928574021056178859}
+  roomRangeActivator: {fileID: 276535209}
 --- !u!1 &2403239365627279123
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +92,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2290322169576638837}
+  - component: {fileID: 276535210}
+  - component: {fileID: 276535209}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Room - Range Activatior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,6 +115,32 @@ Transform:
   m_Father: {fileID: 5063866738169647564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &276535210
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631436610978490909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 100
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &276535209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631436610978490909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c336b3164de653544b78691b5526f50f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeRoom_GO: {fileID: 8945191306176900002}
 --- !u!1 &8928574020619791589
 GameObject:
   m_ObjectHideFlags: 0

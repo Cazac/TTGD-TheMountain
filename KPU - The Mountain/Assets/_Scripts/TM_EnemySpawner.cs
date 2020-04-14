@@ -33,6 +33,8 @@ public class TM_EnemySpawner : MonoBehaviour
     [Header("Sound Effects")]
     private GameObject spawnerIdle_DeletableSFX;
 
+    public bool isSpawnerFixedRangeActivation;
+
     ///////////////////////////////////////////////////////
 
     public void AnimationChange_FadeOut()
@@ -55,7 +57,12 @@ public class TM_EnemySpawner : MonoBehaviour
     private void Start()
     {
         RelightCandles();
-        StartCoroutine(AttemptEnemySpawnLoop());
+
+        if (isSpawnerFixedRangeActivation)
+        {
+            StopAllCoroutines();
+            StartCoroutine(AttemptEnemySpawnLoop());
+        }
     }
 
     private void OnEnable()
@@ -69,7 +76,7 @@ public class TM_EnemySpawner : MonoBehaviour
     public void RelightCandles()
     {
         //Play SFX
-        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawnGlow_SFX, gameObject);
+        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawnGlow_SFX, gameObject.transform.parent.gameObject);
 
         AnimationChange_Idle();
 
@@ -145,7 +152,7 @@ public class TM_EnemySpawner : MonoBehaviour
     public void AnimationEvent_SpawnEnemy()
     {
         //Play SFX
-        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawn_SFX, gameObject);
+        spawnerIdle_DeletableSFX = TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.enemySpawn_SFX, gameObject.transform.parent.gameObject);
 
         //Start Spawning Coroutine
         StartCoroutine(SpawningEnemy());

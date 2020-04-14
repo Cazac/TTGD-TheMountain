@@ -167,7 +167,7 @@ public class TM_DatabaseController : MonoBehaviour
 
 
 
-        //Do Eextra Stuff, Rmove this stuff~
+        //Do Extra Stuff, Rmove this stuff~
 
         TM_SaveController.Instance.SettingsData_LoadSaveFile();
 
