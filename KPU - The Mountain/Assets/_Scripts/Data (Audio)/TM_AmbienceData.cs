@@ -17,8 +17,8 @@ public class TM_AmbienceData : MonoBehaviour
 {
     ////////////////////////////////
 
-    [Header("General Use Ambience")]
-    public TM_Audio_SO water_Ambience;
+    //[Header("General Use Ambience")]
+    //public TM_Audio_SO water_Ambience;
 
 
     ////////////////////////////////

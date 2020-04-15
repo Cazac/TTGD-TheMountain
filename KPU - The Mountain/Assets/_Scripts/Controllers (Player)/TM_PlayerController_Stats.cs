@@ -414,5 +414,17 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     }
 
+    public int CalculateDamageRecieved(int damage)
+    {
+        int damageReceived = damage - player_CurrentDefense;
+
+        if (damageReceived <= 1)
+        {
+            damageReceived = 1;
+        }
+
+        return damageReceived;
+    }
+
     ///////////////////////////////////////////////////////
 }

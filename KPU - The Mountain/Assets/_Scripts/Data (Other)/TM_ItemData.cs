@@ -95,10 +95,21 @@ public class TM_ItemData : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("Items - Armor")]
+    [Header("Items - Armor Enhanced Steampunk")]
+    public TM_Item_SO EnhancedSteampunkArmGuard_SO;
+    public TM_Item_SO EnhancedSteampunkBoots_SO;
+    public TM_Item_SO EnhancedSteampunkChestGuard_SO;
+    //public TM_Item_SO EnhancedSteampunkGlove_SO;
+    public TM_Item_SO EnhancedSteampunkHelmet_SO;
+    public TM_Item_SO EnhancedSteampunkLegGuard_SO;
 
-
-
+    [Header("Items - Armor Gold")]
+    public TM_Item_SO GoldArmGuard_SO;
+    public TM_Item_SO GoldBoots_SO;
+    public TM_Item_SO GoldChestGuard_SO;
+    //public TM_Item_SO GoldGlove_SO;
+    public TM_Item_SO GoldHelmet_SO;
+    public TM_Item_SO GoldLegGuard_SO;
 
     ////////////////////////////////
 
@@ -226,7 +237,21 @@ public class TM_ItemData : MonoBehaviour
 
     private void BuildDatabase_Armor()
     {
+        //Armor Enhanced Steampunk"
+        armorItems_List.Add(EnhancedSteampunkArmGuard_SO);
+        armorItems_List.Add(EnhancedSteampunkBoots_SO);
+        armorItems_List.Add(EnhancedSteampunkChestGuard_SO);
+        //armorItems_List.Add(EnhancedSteampunkGlove_SO);
+        armorItems_List.Add(EnhancedSteampunkHelmet_SO);
+        armorItems_List.Add(EnhancedSteampunkLegGuard_SO);
 
+        //Armor Gold
+        armorItems_List.Add(GoldArmGuard_SO);
+        armorItems_List.Add(GoldBoots_SO);
+        armorItems_List.Add(GoldChestGuard_SO);
+        //armorItems_List.Add(GoldGlove_SO);
+        armorItems_List.Add(GoldHelmet_SO);
+        armorItems_List.Add(GoldLegGuard_SO);
     }
 
 

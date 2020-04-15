@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Enhanced Steampunk Arm Guard
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: b062564958279c341b36c9105e34673d, type: 3}
   maxDurablity: 5
   maxStackSize: 1
   isBurnable: 0

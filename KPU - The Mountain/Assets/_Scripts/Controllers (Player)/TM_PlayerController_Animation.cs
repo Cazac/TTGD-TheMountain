@@ -325,17 +325,12 @@ public class TM_PlayerController_Animation : MonoBehaviour
     {
         //Check If Slot has an Item
         playerRightHandSpawnPoint_GO.SetActive(false);
-
-
     }
 
     public void AnimationEvent_ShowItem()
     {
         //Check If Slot has an Item
         playerRightHandSpawnPoint_GO.SetActive(true);
-
-
-
     }
 
     ///////////////////////////////////////////////////////

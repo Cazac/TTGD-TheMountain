@@ -38,6 +38,15 @@ public class TM_SFXData : MonoBehaviour
     public TM_Audio_SO playerPickup1_SFX;
     public TM_Audio_SO playerPickup2_SFX;
 
+    [Header("Player - Consume")]
+    public TM_Audio_SO playerConsumeItem_SFX;
+    public TM_Audio_SO playerConsumeError_SFX;
+
+    [Header("Player - Other")]
+    public TM_Audio_SO playerLevelUp_SFX;
+    public TM_Audio_SO playerHurt_SFX;
+    public TM_Audio_SO playerDeath_SFX;
+
     ////////////////////////////////
 
     [Header("Enemy Spawning")]
@@ -64,25 +73,14 @@ public class TM_SFXData : MonoBehaviour
     [Header("Minotaur - Footsteps")]
     public TM_Audio_SO minotaurFootsteps1_SFX;
     public TM_Audio_SO minotaurFootsteps2_SFX;
-    public TM_Audio_SO minotaurFootsteps3_SFX;
 
     ////////////////////////////////
 
-    //public TM_Audio_SO _SFX;
-
-    public TM_Audio_SO playerLevelUp_SFX;
-    public TM_Audio_SO playerHurt_SFX;
-    public TM_Audio_SO playerDeath_SFX;
-
-
-    public TM_Audio_SO playerConsumeItem_SFX;
-    public TM_Audio_SO playerConsumeError_SFX;
-
-    ////////////////////////////////
-
+    [Header("Audio Lists")]
     public List<TM_Audio_SO> playerFootsteps_List;
     public List<TM_Audio_SO> minotaurFootsteps_List;
 
+    ///////////////////////////////////////////////////////
 
     public void BuildDatabase()
     {
@@ -97,5 +95,5 @@ public class TM_SFXData : MonoBehaviour
         minotaurFootsteps_List.Add(minotaurFootsteps2_SFX);
     }
 
-    ////////////////////////////////
+    ///////////////////////////////////////////////////////
 }

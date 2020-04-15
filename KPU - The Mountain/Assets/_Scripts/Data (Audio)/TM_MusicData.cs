@@ -19,7 +19,7 @@ public class TM_MusicData : MonoBehaviour
 
     [Header("Title Music")]
     public TM_Audio_SO titleMainTheme_Music;
-    public TM_Audio_SO titleOtherTheme1_Music;
+    //public TM_Audio_SO titleOtherTheme1_Music;
 
     ////////////////////////////////
 
@@ -29,17 +29,19 @@ public class TM_MusicData : MonoBehaviour
     ////////////////////////////////
 
     [Header("Boss Music")]
-    public TM_Audio_SO bossMusic_Minotaur;
+   // public TM_Audio_SO bossMusic_Minotaur;
 
     ////////////////////////////////
 
     [Header("Combat Music")]
-    public TM_Audio_SO combatMusic_Theme1;
+    //public TM_Audio_SO combatMusic_Theme1;
 
     ////////////////////////////////
 
     [Header("Home Music")]
     public TM_Audio_SO homeMusic_Theme1;
+    public TM_Audio_SO homeMusic_Theme2;
+    public TM_Audio_SO homeMusic_Theme3;
 
     ////////////////////////////////
 
@@ -54,8 +56,8 @@ public class TM_MusicData : MonoBehaviour
     public TM_Audio_SO exploringMusic_Theme3;
     public TM_Audio_SO exploringMusic_Theme4;
 
-    [Header("Exploring Music - All List")]
-    public TM_Audio_SO exploringMusic_List;
+    ////////////////////////////////
+
 
     ///////////////////////////////////////////////////////
 

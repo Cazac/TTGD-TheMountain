@@ -162,13 +162,13 @@ public class TM_MusicController : MonoBehaviour
     public void PlayMusic_TitleMain()
     {
         //Get Clip
-        PlayTrackMusic(TM_DatabaseController.Instance.music_DB.titleMainTheme_Music, null);
+        PlayTrackMusic(TM_DatabaseController.Instance.music_DB.titleMainTheme_Music);
     }
 
     public void PlayMusic_Credits()
     {
         //Get Clip
-        PlayTrackMusic(TM_DatabaseController.Instance.music_DB.creditsMusic_MainTheme, null);
+        PlayTrackMusic(TM_DatabaseController.Instance.music_DB.creditsMusic_MainTheme);
     }
 
     /////////////////////////////////////////////////////////////////

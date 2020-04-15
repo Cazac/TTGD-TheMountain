@@ -590,10 +590,38 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             //Toolbar
             SelectType_IsToolbarSlot();
         }
+        else if (isEquipHeadSlot)
+        {
+            //Head
+            SelectType_IsEquipHeadSlot();
+        }
+        else if (isEquipNecklaceSlot)
+        {
+
+        }
+        else if (isEquipTorsoSlot)
+        {
+            //Torso
+            SelectType_IsEquipTorsoSlot();
+        }
         else if (isEquipArmSlot)
         {
-            //Hand Equipment
+            //Arms
             SelectType_IsEquipArmSlot();
+        }
+        else if (isEquipLegsSlot)
+        {
+            //Legs
+            SelectType_IsEquipLegsSlot();
+        }
+        else if (isEquipFeetSlot)
+        {
+            //Feet
+            SelectType_IsEquipFeetSlot();
+        }
+        else if (isEquipRingSlot)
+        {
+
         }
         else if (isForgeMatSlot && isSingleTypeSlot)
         {
@@ -613,8 +641,6 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             print("Test Code: Oops, you forgot to set a slot tag!");
         }
-
-
     }
 
     ///////////////////////////////////////////////////////
@@ -714,7 +740,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 {
                     //Set stack to Inventory
                     Action_PlaceStack();
-                    TM_PlayerController_Stats.Instance.CalculateDefense();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
                 }
                 else
                 {
@@ -738,7 +764,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 {
                     //Switch Stacks
                     Action_SwitchStacks();
-                    TM_PlayerController_Stats.Instance.CalculateDefense();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
                 }
                 else
                 {
@@ -750,7 +776,61 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 //Pickup the stack and give to cursor
                 Action_PickupStack();
-                TM_PlayerController_Stats.Instance.CalculateDefense();
+                TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+            }
+        }
+    }
+
+    public void SelectType_IsEquipTorsoSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorChest)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorChest)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
             }
         }
     }
@@ -768,6 +848,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 {
                     //Set stack to Inventory
                     Action_PlaceStack();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
                 }
                 else
                 {
@@ -791,6 +872,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 {
                     //Switch Stacks
                     Action_SwitchStacks();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
                 }
                 else
                 {
@@ -802,6 +884,115 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 //Pickup the stack and give to cursor
                 Action_PickupStack();
+                TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+            }
+        }
+    }
+
+    public void SelectType_IsEquipLegsSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorLeg)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorLeg)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+            }
+        }
+    }
+
+    public void SelectType_IsEquipFeetSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorBoot)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorBoot)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_PlayerMenuController_Inventory.Instance.Stats_RefreshUI();
             }
         }
     }
