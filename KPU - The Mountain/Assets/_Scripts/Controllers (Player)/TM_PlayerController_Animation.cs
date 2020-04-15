@@ -299,13 +299,13 @@ public class TM_PlayerController_Animation : MonoBehaviour
 
                 TM_PlayerMenuController_Inventory.Instance.Inventory_FindAndRemoveItem(item.itemName);
 
-                //Consume SFX?
-
-
+                //Play SFX
+                TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerConsumeItem_SFX);
             }
             else
-            {
-                //Error SFX?
+            { 
+                //Play SFX
+                TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerConsumeError_SFX);
             }
         }
 

@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Dwarven Mace
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 9b1b7dd20b29807468f14928641a4a8c, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0

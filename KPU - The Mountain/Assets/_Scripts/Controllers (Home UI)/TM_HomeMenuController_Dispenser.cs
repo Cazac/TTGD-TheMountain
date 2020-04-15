@@ -193,13 +193,14 @@ public class TM_HomeMenuController_Dispenser : MonoBehaviour
     private TM_ItemUI[] CreateDeveloperSpawns()
     {
         //Create The Array
-        TM_ItemUI[] itemArray = new TM_ItemUI[20];
+        TM_ItemUI[] itemArray = new TM_ItemUI[100];
 
         int counter = 0;
 
-        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.consumableItems_List)
+        //Loop All Basic Items
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.basicItems_List)
         {
-            if (counter >= 20)
+            if (counter >= 100)
             {
                 return itemArray;
             }
@@ -210,6 +211,53 @@ public class TM_HomeMenuController_Dispenser : MonoBehaviour
 
             counter++;
         }
+
+        //Loop All Consumable Items
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.consumableItems_List)
+        {
+            if (counter >= 100)
+            {
+                return itemArray;
+            }
+            else
+            {
+                itemArray[counter] = new TM_ItemUI(itemSO);
+            }
+
+            counter++;
+        }
+
+        //Loop All Weapon Items
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.weaponsItems_List)
+        {
+            if (counter >= 100)
+            {
+                return itemArray;
+            }
+            else
+            {
+                itemArray[counter] = new TM_ItemUI(itemSO);
+            }
+
+            counter++;
+        }
+
+        //Loop All Armor Items
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.armorItems_List)
+        {
+            if (counter >= 100)
+            {
+                return itemArray;
+            }
+            else
+            {
+                itemArray[counter] = new TM_ItemUI(itemSO);
+            }
+
+            counter++;
+        }
+
+
 
 
 

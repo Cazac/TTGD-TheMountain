@@ -28,8 +28,11 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("Equipment Slot Type")]
     public bool isEquipHeadSlot;
-    public bool isEquipHandSlot;
-    public bool isEquipFootSlot;
+    public bool isEquipNecklaceSlot;
+    public bool isEquipTorsoSlot;
+    public bool isEquipArmSlot;
+    public bool isEquipLegsSlot;
+    public bool isEquipFeetSlot;
     public bool isEquipRingSlot;
 
     [Header("Single Item Slot Type")]
@@ -587,10 +590,10 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             //Toolbar
             SelectType_IsToolbarSlot();
         }
-        else if (isEquipHandSlot)
+        else if (isEquipArmSlot)
         {
             //Hand Equipment
-            SelectType_IsEquipHandSlot();
+            SelectType_IsEquipArmSlot();
         }
         else if (isForgeMatSlot && isSingleTypeSlot)
         {
@@ -698,7 +701,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void SelectType_IsEquipHandSlot()
+    public void SelectType_IsEquipHeadSlot()
     {
         //Current Item
         if (currentItem == null)
@@ -707,7 +710,61 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (TM_CursorController.Instance.Cursor_GetItem() != null)
             {
                 //Filter Object Type
-                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorHead)
+                {
+                    //Set stack to Inventory
+                    Action_PlaceStack();
+                    TM_PlayerController_Stats.Instance.CalculateDefense();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //No Action
+                Action_NoAction();
+            }
+        }
+        else
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorHead)
+                {
+                    //Switch Stacks
+                    Action_SwitchStacks();
+                    TM_PlayerController_Stats.Instance.CalculateDefense();
+                }
+                else
+                {
+                    //No Action
+                    Action_NoAction();
+                }
+            }
+            else
+            {
+                //Pickup the stack and give to cursor
+                Action_PickupStack();
+                TM_PlayerController_Stats.Instance.CalculateDefense();
+            }
+        }
+    }
+
+    public void SelectType_IsEquipArmSlot()
+    {
+        //Current Item
+        if (currentItem == null)
+        {
+            //Cursor Item
+            if (TM_CursorController.Instance.Cursor_GetItem() != null)
+            {
+                //Filter Object Type
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorArm)
                 {
                     //Set stack to Inventory
                     Action_PlaceStack();
@@ -730,7 +787,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (TM_CursorController.Instance.Cursor_GetItem() != null)
             {
                 //Filter Object Type
-                if (TM_CursorController.Instance.Cursor_GetItem().isWeapon)
+                if (TM_CursorController.Instance.Cursor_GetItem().isArmorArm)
                 {
                     //Switch Stacks
                     Action_SwitchStacks();

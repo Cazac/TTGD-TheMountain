@@ -94,8 +94,15 @@ public class TM_PlayerController_Stats : MonoBehaviour
     public bool player_HasUnlocked_Storage;
 
 
-
-
+    [Header("Player Equipment Slots")]
+    public TM_ItemSlot playerEquipmentItemSlot_Head;
+    public TM_ItemSlot playerEquipmentItemSlot_Necklace;
+    public TM_ItemSlot playerEquipmentItemSlot_Torso;
+    public TM_ItemSlot playerEquipmentItemSlot_Arms;
+    public TM_ItemSlot playerEquipmentItemSlot_Legs;
+    public TM_ItemSlot playerEquipmentItemSlot_Feet;
+    public TM_ItemSlot playerEquipmentItemSlot_RingLeft;
+    public TM_ItemSlot playerEquipmentItemSlot_RingRight;
 
 
 
@@ -360,6 +367,28 @@ public class TM_PlayerController_Stats : MonoBehaviour
 
     public void CalculateDefense()
     {
+        playerEquipmentStat_Defense = 0;
+
+        if (playerEquipmentItemSlot_Head.ItemSlot_GetItem() != null)
+        {
+            playerEquipmentStat_Defense += playerEquipmentItemSlot_Head.ItemSlot_GetItem().armor_Defense;
+        }
+
+        if (playerEquipmentItemSlot_Torso.ItemSlot_GetItem() != null)
+        {
+            playerEquipmentStat_Defense += playerEquipmentItemSlot_Torso.ItemSlot_GetItem().armor_Defense;
+        }
+
+        if (playerEquipmentItemSlot_Legs.ItemSlot_GetItem() != null)
+        {
+            playerEquipmentStat_Defense += playerEquipmentItemSlot_Legs.ItemSlot_GetItem().armor_Defense;
+        }
+
+        if (playerEquipmentItemSlot_Feet.ItemSlot_GetItem() != null)
+        {
+            playerEquipmentStat_Defense += playerEquipmentItemSlot_Feet.ItemSlot_GetItem().armor_Defense;
+        }
+
         player_CurrentDefense = 0 + playerEquipmentStat_Defense;
     }
 

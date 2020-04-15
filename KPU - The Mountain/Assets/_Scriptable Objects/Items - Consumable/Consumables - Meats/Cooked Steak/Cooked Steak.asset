@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
-  m_Name: Cooked Meat Stick
+  m_Name: Cooked Steak
   m_EditorClassIdentifier: 
   dropped_Prefab: {fileID: 0}
   placed_Prefab: {fileID: 0}
   held_Prefab: {fileID: 0}
   equipped_Prefab: {fileID: 0}
-  itemName: Cooked Meat Stick
+  itemName: Cooked Steak
   itemDesc: 
   itemIcon: {fileID: 0}
   maxDurablity: 0
@@ -26,8 +26,8 @@ MonoBehaviour:
   burn_FireEffect: 0
   isConsumable: 1
   consumable_Category: Meat
-  consumable_Hunger: 10
-  consumable_Health: 5
+  consumable_Hunger: 15
+  consumable_Health: 10
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
   consumable_DamageBuffDuration: 0

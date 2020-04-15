@@ -71,10 +71,12 @@ public class TM_SFXData : MonoBehaviour
     //public TM_Audio_SO _SFX;
 
     public TM_Audio_SO playerLevelUp_SFX;
-    public TM_Audio_SO playerConsumeItem_SFX;
     public TM_Audio_SO playerHurt_SFX;
     public TM_Audio_SO playerDeath_SFX;
 
+
+    public TM_Audio_SO playerConsumeItem_SFX;
+    public TM_Audio_SO playerConsumeError_SFX;
 
     ////////////////////////////////
 

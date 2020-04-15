@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cooked Meat
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 1300672662304369806, guid: 076dd120585e21e45a07f48a4e7635b0,
+    type: 3}
+  placed_Prefab: {fileID: 7707743004046398296, guid: f8bd959f270f04948b0ea6bf94629214,
+    type: 3}
+  held_Prefab: {fileID: 1374477276986042898, guid: 0e137d5a6006c354db4520ed3e858a34,
+    type: 3}
+  equipped_Prefab: {fileID: 1374477276986042898, guid: 0e137d5a6006c354db4520ed3e858a34,
+    type: 3}
   itemName: Cooked Meat
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ba476eb460046b74faf0efb3fd109ebd, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0
@@ -48,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

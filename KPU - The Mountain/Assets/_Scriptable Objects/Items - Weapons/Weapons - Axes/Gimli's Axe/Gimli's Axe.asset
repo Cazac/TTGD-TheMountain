@@ -20,9 +20,9 @@ MonoBehaviour:
     type: 3}
   equipped_Prefab: {fileID: 671773550097464978, guid: f5169fad5d875004484ac848e00d3f14,
     type: 3}
-  itemName: 
+  itemName: Gimli's Axe
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 57b47297c896dee499849e6dcea592a7, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0
