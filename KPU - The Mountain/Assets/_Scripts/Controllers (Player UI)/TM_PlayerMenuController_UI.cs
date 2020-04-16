@@ -153,8 +153,14 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
             }
             else
             {
-                //Turn Off All Panels
-                PlayerMenu_TurnOffPanels();
+                //Check Game Menu Stats
+                if (gameState_IsMenu)
+                {
+                    PlayerMenu_TurnOffPanels();
+                    Time.timeScale = 1;
+                    LockMouse();
+                    return;
+                }
 
                 //Open Panel
                 PauseMenu_Panel.SetActive(true);
@@ -339,49 +345,69 @@ public class TM_PlayerMenuController_UI : MonoBehaviour
 
     /////////////////////////////////////////////////////// - Utility
 
-    public void PlayerMenu_TurnOffPanels()
+    public bool PlayerMenu_TurnOffPanels()
     {
+        bool menuHasBeenClosed = false;
+
         //Basic Menus
-        InventoryMenu_Panel.SetActive(false);
-        NotesMenu_Panel.SetActive(false);
+        if (InventoryMenu_Panel.activeSelf == true)
+        {
+            InventoryMenu_Panel.SetActive(false);
+            menuHasBeenClosed = true;
+        }
+        if (NotesMenu_Panel.activeSelf == true)
+        {
+            NotesMenu_Panel.SetActive(false);
+            menuHasBeenClosed = true;
+        }
 
         //Other Menus
         if (Fire_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Fire.Instance.FireMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Dispenser_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Dispenser.Instance.DispenserMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Storage_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Storage.Instance.StorageMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Brewery_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Brewery.Instance.BreweryMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Canteen_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Canteen.Instance.CanteenMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Forge_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Forge.Instance.ForgeMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Workshop_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Workshop.Instance.WorkshopMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
         if (Bed_Panel.activeSelf == true)
         {
             TM_HomeMenuController_Bed.Instance.BedMenu_CloseUI();
+            menuHasBeenClosed = true;
         }
 
 
         //Prob should be somewhere else
         TM_CursorController.Instance.Cursor_DropItem();
+
+        return menuHasBeenClosed;
     }
 
     /////////////////////////////////////////////////////// - Utility

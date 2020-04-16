@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 ///////////////
 /// <summary>
@@ -24,6 +25,7 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
     public TextMeshProUGUI death_PlayerName_Text;
     public TextMeshProUGUI death_PlayerCycles_Text;
     public TextMeshProUGUI death_Cause_Text;
+    public TextMeshProUGUI death_Bury_Text;
     public Image death_PlayerClass_Image;
 
     ////////////////////////////////
@@ -53,9 +55,6 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
         //Boost the player 200ft in the air so no one can attack them lol
         TM_PlayerController_Movement.Instance.gameObject.transform.position += new Vector3(0, 200f, 0);
 
-        //Play SFX
-        //TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerDeath_SFX);
-
         //Play Music 
         TM_MusicController.Instance.PlayTrackMusic(TM_DatabaseController.Instance.music_DB.deathMusic_Theme1);
 
@@ -69,7 +68,14 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
         death_PlayerName_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name;
         death_PlayerCycles_Text.text = "Cycles Survivied " + TM_PlayerController_Stats.Instance.playerInfo_CyclesSurvived.ToString();
         death_Cause_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name + " has died an hornarable death to keep the mountain lit.";
+        death_Bury_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name + " has been buried in the mourge.";
         death_PlayerClass_Image.sprite = TM_DatabaseController.Instance.icon_DB.FindData_ClassIcon(TM_PlayerController_Stats.Instance.playerInfo_Class);
+
+
+
+        //Stop All Inputs
+
+
 
 
         //Desc Text Of Death
@@ -100,31 +106,23 @@ public class TM_PlayerMenuController_Death : MonoBehaviour
                     " The Mountain has claimed your soul, the enviroment was too tough to endure.";
                 break;
 
-                    
+           
+                
+
         }
-
-
-
-
-
-        //Stop All Inputs
-
-        //SFX
-
-
-        //Music
-
-
-
-
-
     }
 
+    public void Button_ConfirmDeath()
+    {
+        //Delete Save File
+        TM_SaveController.Instance.PlayerData_DeleteSaveFile(TM_SaveController.Instance.currentSaveSlotID);
+        
+        //Reset Time Scale TO Allow Loading
+        Time.timeScale = 1;
 
-
-
-
+        //Quit Application
+        SceneManager.LoadScene("TM_Title");
+    }
 
     ///////////////////////////////////////////////////////
-
 }

@@ -53,7 +53,7 @@ public class TM_PlayerMenuController_Intro : MonoBehaviour
         TM_PlayerController_Movement.Instance.canPlayerMove = false;
 
         //Set Text
-        intro_introText_Text.text = TM_PlayerController_Stats.Instance.playerInfo_Name + " has accepted the challenge of becoming the keeper of<br><b>The Mountain</b><br><br>The fire keeps The Mountain alive...";
+        intro_introText_Text.text = "<b>" + TM_PlayerController_Stats.Instance.playerInfo_Name + "</b> has accepted the challenge of becoming the keeper of<br><b>The Mountain</b><br><br>The fire keeps The Mountain alive...";
     }
 
     public void StartFadeOutAnimation()

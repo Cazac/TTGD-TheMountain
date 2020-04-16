@@ -133,7 +133,7 @@ public class TM_EnemySpawner : MonoBehaviour
             }
    
             //Wait For Next Loop
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(5f);
         }
 
         if (spawnerIdle_DeletableSFX != null)

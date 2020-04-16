@@ -84,14 +84,7 @@ public class TM_PlayerMenuController_Inventory : MonoBehaviour
 
     public void Setup()
     {
-  
-        DebugSpawnStats();
         Stats_RefreshUI();
-    }
-
-    private void DebugSpawnStats()
-    {
-        TM_PlayerController_Stats.Instance.player_SkillPointsAvalible += 1;
     }
 
     ///////////////////////////////////////////////////////

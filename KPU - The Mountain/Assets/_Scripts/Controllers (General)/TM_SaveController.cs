@@ -171,7 +171,7 @@ public class TM_SaveController : MonoBehaviour
         saveData.player_BaseFire = 100;
 
 
-        saveData.player_Position = new Vector3(-29f, 8.5f, 0.2f);
+        saveData.player_Position = new Vector3(-30f, 8.5f, 0.2f);
         //saveData.player_Rotation = Quaternion.Euler(0f, -90f, 0f);
            
 
