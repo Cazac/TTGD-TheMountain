@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Cobalt Wand
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: fea2b01e59016cd4da7a9cc29b9de9c0, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0

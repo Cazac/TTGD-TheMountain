@@ -45,6 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Logs_SO: {fileID: 11400000, guid: 64c0e7091a4ef8f44a3cc24834777830, type: 2}
   IronBar_SO: {fileID: 11400000, guid: d591a7a04da991947ae0a96d4f36956b, type: 2}
+  AnimalHide_SO: {fileID: 0}
+  Bones_SO: {fileID: 0}
+  Cloth_SO: {fileID: 0}
+  CreatureSkull_SO: {fileID: 0}
+  CreatureSoul_SO: {fileID: 0}
+  Fiber_SO: {fileID: 0}
+  FineCloth_SO: {fileID: 0}
   Bread_SO: {fileID: 11400000, guid: 486cf54b3c8bb0e4f8bded60eb605873, type: 2}
   Hamburger_SO: {fileID: 11400000, guid: 043fd85a16e025b4caf11ca9b3e4728c, type: 2}
   Sandwich_SO: {fileID: 11400000, guid: d260891d072189149aff2160b49b5175, type: 2}
@@ -299,7 +306,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646435469925798929}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -561,9 +568,9 @@ MonoBehaviour:
     type: 2}
   exploringMusic_Theme2: {fileID: 11400000, guid: 66e289a279713ed43b8a92ff81ba9dc9,
     type: 2}
-  exploringMusic_Theme3: {fileID: 11400000, guid: 8e6c66e774537014aa39c841533012dd,
+  exploringMusic_Theme3: {fileID: 11400000, guid: a9170b9fffe250548a1e43f31ef03ef6,
     type: 2}
-  exploringMusic_Theme4: {fileID: 11400000, guid: bd65534415a9e674490f6db0adce75d5,
+  exploringMusic_Theme4: {fileID: 11400000, guid: 99fb386bbc010c34d8bfd035b585cc1a,
     type: 2}
 --- !u!1 &2112669701024867819
 GameObject:
