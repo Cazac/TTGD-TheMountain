@@ -26,6 +26,11 @@ public class TM_CursorController : MonoBehaviour
 
     private TM_ItemSlot cursorItemSlot;
 
+    ////////////////////////////////
+
+    private bool hasLockedToolbarPosition;
+    private TM_ItemSlot lastPlacedItemSlot;
+
     ///////////////////////////////////////////////////////
 
     private void Awake()
@@ -48,15 +53,21 @@ public class TM_CursorController : MonoBehaviour
     private void FollowCursor()
     {
         //Only Folllow When Full
-        if (Cursor_GetItem() != null)
-        {
+        //if (Cursor_GetItem() != null)
+       // {
             //Move Icon with cursor
             Vector3 cursorPosition = (Input.mousePosition);
             cursorPosition.z = -5;
 
             //Apply position
             gameObject.transform.position = cursorPosition;
-        }
+
+            hasLockedToolbarPosition = false;
+        //}
+        //else if (hasLockedToolbarPosition == false)
+        //{
+            hasLockedToolbarPosition = true;
+        //}
     }
 
     ///////////////////////////////////////////////////////
@@ -89,6 +100,18 @@ public class TM_CursorController : MonoBehaviour
     public void Cursor_DupplicateItem(TM_ItemUI item)
     {
         gameObject.GetComponent<TM_ItemSlot>().ItemSlot_DupplicateItem(item);
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void Cursor_ActivateTooltip(TM_ItemUI itemUI)
+    {
+        cursorItemSlot.ItemSlot_ActivateTooltip(itemUI);
+    }
+
+    public void Cursor_RemoveTooltip()
+    {
+        cursorItemSlot.ItemSlot_RemoveTooltip();
     }
 
     ///////////////////////////////////////////////////////

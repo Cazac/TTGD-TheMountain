@@ -79,6 +79,11 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
     public GameObject enemy_Canvas;
 
 
+
+
+    public GameObject enemy_Soul;
+
+
     public int STARTING_HEALTH = 200;
 
 
@@ -524,7 +529,13 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
 
         int raduisChange = 360 / itemSO_List.Count;
-    
+
+
+
+        Vector3 spawnPosition = gameObject.transform.position;
+
+        //Spawn Soul
+        GameObject newSoul = Instantiate(enemy_Soul, spawnPosition, Quaternion.identity);
 
         //Loop Foreach Drop Count
         for (int i = 0; i < itemSO_List.Count; i++)
@@ -537,7 +548,7 @@ public class TM_EnemyDirector_Minotaur : MonoBehaviour
 
 
             //Create a position infront of the player
-            Vector3 spawnPosition = gameObject.transform.position;
+            spawnPosition = gameObject.transform.position;
             spawnPosition += TM_PlayerController_Movement.Instance.gameObject.transform.forward * -3;
 
 

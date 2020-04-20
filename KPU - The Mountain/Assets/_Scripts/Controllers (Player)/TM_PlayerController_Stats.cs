@@ -412,6 +412,7 @@ public class TM_PlayerController_Stats : MonoBehaviour
     {
         int totalCON = player_CurrentStat_CON + tempStat_CON;
         player_MaxHealth = 50 + playerEquipmentStat_Health + (totalCON * 10);
+        player_CurrentHealth = player_MaxHealth;
     }
 
     public void CalculateStamina()

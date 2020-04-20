@@ -166,7 +166,7 @@ MonoBehaviour:
   GoldChestGuard_SO: {fileID: 11400000, guid: af91a02b39cfcfa43a0f39dc303afe31, type: 2}
   GoldHelmet_SO: {fileID: 11400000, guid: 08dbbaebafe42524a84ab405b8b576c2, type: 2}
   GoldLegGuard_SO: {fileID: 11400000, guid: 18e3a72d1d325c343a164818143ae601, type: 2}
-  basicItems_List: []
+  resourceItems_List: []
   consumableItems_List: []
   weaponsItems_List: []
   armorItems_List: []
@@ -522,7 +522,7 @@ MonoBehaviour:
     type: 2}
   playerConsumeError_SFX: {fileID: 11400000, guid: 1722de407416ec142981e4d25c4231c2,
     type: 2}
-  playerLevelUp_SFX: {fileID: 0}
+  playerLevelUp_SFX: {fileID: 11400000, guid: d1609d46f58608346889642abf1b48d2, type: 2}
   playerHurt_SFX: {fileID: 11400000, guid: a58099a35be21054fb18d401bf3dff3b, type: 2}
   playerDeath_SFX: {fileID: 11400000, guid: 6c79afe0c6052844b9722c08fee66683, type: 2}
   enemySpawn_SFX: {fileID: 11400000, guid: e838e93ce51f2f2418fcf7b067ad5532, type: 2}

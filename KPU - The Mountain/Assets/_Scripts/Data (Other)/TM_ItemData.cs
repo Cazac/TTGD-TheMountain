@@ -187,13 +187,13 @@ public class TM_ItemData : MonoBehaviour
         //Resources - Materials
         //resourceItems_List.Add(AnimalHide_SO);
         resourceItems_List.Add(Bones_SO);
-        resourceItems_List.Add(Cloth_SO);
+        //resourceItems_List.Add(Cloth_SO);
         resourceItems_List.Add(CreatureSkull_SO);
         //resourceItems_List.Add(CreatureSoul_SO);
         //resourceItems_List.Add(Fiber_SO);
         //resourceItems_List.Add(FineCloth_SO);
         //resourceItems_List.Add(Furs_SO);
-        resourceItems_List.Add(Leather_SO);
+        //resourceItems_List.Add(Leather_SO);
         //resourceItems_List.Add(Paper_SO);
         //resourceItems_List.Add(Rope_SO);
         //resourceItems_List.Add(Silk_SO);

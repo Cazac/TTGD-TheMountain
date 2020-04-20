@@ -154,6 +154,8 @@ MonoBehaviour:
   popupDamageText: {fileID: 1250228465440630065, guid: e3fc961b879a8e643929054037e4968e,
     type: 3}
   enemy_Canvas: {fileID: 2371445596484875844}
+  enemy_Soul: {fileID: 5794828189086805190, guid: 61fd315c827fcef4184154f3381ac2b8,
+    type: 3}
   STARTING_HEALTH: 200
 --- !u!114 &2371445595995262327
 MonoBehaviour:

@@ -66,6 +66,10 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject slotStackSize_GO;
     public TextMeshProUGUI slotStackSize_Text;
 
+    [Header("Tooltip")]
+    public GameObject toolTip_GO;
+    public TextMeshProUGUI toolTipName_Text;
+
     ////////////////////////////////
 
     //public TM_ItemUI_Base currentSlotItem;
@@ -123,12 +127,29 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Create ToolTip
+        //Activate ToolTip
+        if (ItemSlot_GetItem() != null)
+        {
+            TM_CursorController.Instance.Cursor_ActivateTooltip(ItemSlot_GetItem());
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Remove ToolTip
+        TM_CursorController.Instance.Cursor_RemoveTooltip();
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void ItemSlot_ActivateTooltip(TM_ItemUI itemUI)
+    {
+        toolTip_GO.SetActive(true);
+        toolTipName_Text.text = itemUI.itemName;
+    }
+
+    public void ItemSlot_RemoveTooltip()
+    {
+        toolTip_GO.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////
