@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81c77e46d85b1b45a4a051e01367ee4, type: 3}
+  m_Name: LootTable Item Node - Table Food (Low & Rare)
+  m_EditorClassIdentifier: 
+  lootChance: 20
+  lootItems:
+  - {fileID: 11400000, guid: f5c931a95350b2a4695d99b5c91211a1, type: 2}
+  - {fileID: 11400000, guid: 87d3bcf8facd7c944a90fbdc1725fe5f, type: 2}
+  - {fileID: 11400000, guid: 87d3bcf8facd7c944a90fbdc1725fe5f, type: 2}
+  - {fileID: 11400000, guid: d6e6b197a1aa30045baa12c1d13c6340, type: 2}

@@ -9570,6 +9570,7 @@ Transform:
   - {fileID: 3655441177277316553}
   - {fileID: 8598883133639371285}
   - {fileID: 8047643580230153412}
+  - {fileID: 3132535259643776465}
   m_Father: {fileID: 5868725798844430495}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9591,6 +9592,7 @@ MonoBehaviour:
   - {fileID: 3655441177277316555}
   - {fileID: 8598883133639371287}
   - {fileID: 8047643580230153414}
+  - {fileID: 8792934071102188012}
 --- !u!1 &1377768846291533327
 GameObject:
   m_ObjectHideFlags: 0
@@ -17397,6 +17399,98 @@ Transform:
   m_Father: {fileID: 1377768846723462655}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3235928202108236267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3235928202108236271}
+  - component: {fileID: 3235928202108236266}
+  - component: {fileID: 3235928202108236268}
+  - component: {fileID: 3235928202108236269}
+  m_Layer: 0
+  m_Name: Placed Loot Spawn - Metals (High & Common)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3235928202108236271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235928202108236267}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.23, y: 1.675, z: 6.36}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1377768846290485695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3235928202108236266
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235928202108236267}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3235928202108236268
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235928202108236267}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c3238acff1d2e554cb076f827cc3ed62, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &3235928202108236269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3235928202108236267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawn_LootTable: {fileID: 11400000, guid: fc949d4018ba18d4d95b5e2d5b946970,
+    type: 2}
 --- !u!1 &3610150495315459442
 GameObject:
   m_ObjectHideFlags: 0
@@ -17489,6 +17583,98 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 46094ae0dab77e448b0427bf97d60abd, type: 3}
+--- !u!1 &3655441177277316557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3655441177277316553}
+  - component: {fileID: 3655441177277316556}
+  - component: {fileID: 3655441177277316554}
+  - component: {fileID: 3655441177277316555}
+  m_Layer: 0
+  m_Name: Placed Loot Spawn - Metals (High & Common) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3655441177277316553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655441177277316557}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.41, y: 1.675, z: 5.98}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1377768846290485695}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3655441177277316556
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655441177277316557}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3655441177277316554
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655441177277316557}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c3238acff1d2e554cb076f827cc3ed62, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &3655441177277316555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655441177277316557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawn_LootTable: {fileID: 11400000, guid: fc949d4018ba18d4d95b5e2d5b946970,
+    type: 2}
 --- !u!1 &3881926868272290871
 GameObject:
   m_ObjectHideFlags: 0
@@ -18050,6 +18236,98 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: c9f54ff69210f57439c017f40b662a3e, type: 3}
+--- !u!1 &7440663116460116648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3132535259643776465}
+  - component: {fileID: 3898130642554244299}
+  - component: {fileID: 7969512631271089924}
+  - component: {fileID: 8792934071102188012}
+  m_Layer: 0
+  m_Name: Placed Loot Spawn - Gear
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3132535259643776465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440663116460116648}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.69, y: 0.100000024, z: -6.7}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1377768846290485695}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3898130642554244299
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440663116460116648}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &7969512631271089924
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440663116460116648}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c3238acff1d2e554cb076f827cc3ed62, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &8792934071102188012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7440663116460116648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawn_LootTable: {fileID: 11400000, guid: 2797d1101951d614e9db19940ee25db1,
+    type: 2}
 --- !u!1 &7957586153563170961
 GameObject:
   m_ObjectHideFlags: 0
@@ -18142,6 +18420,190 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 46094ae0dab77e448b0427bf97d60abd, type: 3}
+--- !u!1 &8047643580230153408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8047643580230153412}
+  - component: {fileID: 8047643580230153409}
+  - component: {fileID: 8047643580230153415}
+  - component: {fileID: 8047643580230153414}
+  m_Layer: 0
+  m_Name: Placed Loot Spawn - Metals (High & Common) (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8047643580230153412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047643580230153408}
+  m_LocalRotation: {x: -0, y: -0.41430846, z: -0, w: 0.9101366}
+  m_LocalPosition: {x: -18.1, y: 1.5499992, z: 5.08}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1377768846290485695}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -48.952003, z: 0}
+--- !u!33 &8047643580230153409
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047643580230153408}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8047643580230153415
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047643580230153408}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c3238acff1d2e554cb076f827cc3ed62, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &8047643580230153414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8047643580230153408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawn_LootTable: {fileID: 11400000, guid: fc949d4018ba18d4d95b5e2d5b946970,
+    type: 2}
+--- !u!1 &8598883133639371281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8598883133639371285}
+  - component: {fileID: 8598883133639371280}
+  - component: {fileID: 8598883133639371286}
+  - component: {fileID: 8598883133639371287}
+  m_Layer: 0
+  m_Name: Placed Loot Spawn - BUrnable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8598883133639371285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598883133639371281}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.368, y: 0.1, z: 4.852}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1377768846290485695}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8598883133639371280
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598883133639371281}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8598883133639371286
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598883133639371281}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c3238acff1d2e554cb076f827cc3ed62, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &8598883133639371287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598883133639371281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawn_LootTable: {fileID: 11400000, guid: 85455b42ac93dfc46954f593d1abc67c,
+    type: 2}
 --- !u!1 &8861044767294561819
 GameObject:
   m_ObjectHideFlags: 0
@@ -18326,351 +18788,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 46094ae0dab77e448b0427bf97d60abd, type: 3}
---- !u!1001 &83023175224425378
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1377768846290485695}
-    m_Modifications:
-    - target: {fileID: 7964629212419215202, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_Name
-      value: Placed Loot Spawn - Metals (High & Common) (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -18.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5499992
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.41430846
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9101366
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -48.952003
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38fb0bfc33f01724fb1c9edab5d9334a, type: 3}
---- !u!4 &8047643580230153412 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 83023175224425378}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8047643580230153414 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215204, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 83023175224425378}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &1863736767947892083
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1377768846290485695}
-    m_Modifications:
-    - target: {fileID: 7964629212419215202, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_Name
-      value: Placed Loot Spawn - Metals (High & Common) (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.368
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.852
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38fb0bfc33f01724fb1c9edab5d9334a, type: 3}
---- !u!4 &8598883133639371285 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1863736767947892083}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8598883133639371287 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215204, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1863736767947892083}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &4782927944540896905
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1377768846290485695}
-    m_Modifications:
-    - target: {fileID: 7964629212419215202, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_Name
-      value: Placed Loot Spawn - Metals (High & Common)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.675
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38fb0bfc33f01724fb1c9edab5d9334a, type: 3}
---- !u!4 &3235928202108236271 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4782927944540896905}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3235928202108236269 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215204, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4782927944540896905}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &6643566411933381295
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1377768846290485695}
-    m_Modifications:
-    - target: {fileID: 7964629212419215202, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_Name
-      value: Placed Loot Spawn - Metals (High & Common) (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.675
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 38fb0bfc33f01724fb1c9edab5d9334a, type: 3}
---- !u!4 &3655441177277316553 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215206, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6643566411933381295}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3655441177277316555 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7964629212419215204, guid: 38fb0bfc33f01724fb1c9edab5d9334a,
-    type: 3}
-  m_PrefabInstance: {fileID: 6643566411933381295}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59bdfe6e4e9a5c44591fafb67d95bc7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

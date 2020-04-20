@@ -21,7 +21,6 @@ MonoBehaviour:
   uncommonRolls: 2
   uncommonItems:
   - {fileID: 11400000, guid: c7f0760227bb31748b9bf5382a1077ae, type: 2}
-  - {fileID: 11400000, guid: 34e0647597fb3934c93972464ef61329, type: 2}
   - {fileID: 11400000, guid: 01b12ab36f8d6dc4ba1cb2d84e658c94, type: 2}
   rareChance: 5
   rareRolls: 1

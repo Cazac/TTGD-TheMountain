@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81c77e46d85b1b45a4a051e01367ee4, type: 3}
+  m_Name: LootTable Item Node - Table Food (Meduim & Common)
+  m_EditorClassIdentifier: 
+  lootChance: 50
+  lootItems:
+  - {fileID: 11400000, guid: c505cd52624e3b24d8235f3d9e8d6a54, type: 2}
+  - {fileID: 11400000, guid: 9521a81a62a3e824ba4d542af29a4c41, type: 2}
+  - {fileID: 11400000, guid: 654ace4b93b4a9d48a9316fe0e11cf88, type: 2}
+  - {fileID: 11400000, guid: f2a3fa6037f282e42a5599bbfc338cee, type: 2}
+  - {fileID: 11400000, guid: 8b90a6f92468380458a2321db4b3199a, type: 2}
+  - {fileID: 11400000, guid: 4010d95ce740fa14b8274c4d6cf440db, type: 2}
+  - {fileID: 11400000, guid: d260891d072189149aff2160b49b5175, type: 2}
+  - {fileID: 11400000, guid: 486cf54b3c8bb0e4f8bded60eb605873, type: 2}
+  - {fileID: 11400000, guid: 043fd85a16e025b4caf11ca9b3e4728c, type: 2}
+  - {fileID: 11400000, guid: 26bc65b815b855043897b6c6562f0f23, type: 2}
+  - {fileID: 11400000, guid: 407b97224f88ade428cee34b2bfc61da, type: 2}
+  - {fileID: 11400000, guid: 87d3bcf8facd7c944a90fbdc1725fe5f, type: 2}
+  - {fileID: 11400000, guid: 047b7b77d21e5da4cb3934015d5f3c80, type: 2}
+  - {fileID: 11400000, guid: 0c2570c718ca4c347b459827b0b2967d, type: 2}

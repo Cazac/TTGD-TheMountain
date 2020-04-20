@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81c77e46d85b1b45a4a051e01367ee4, type: 3}
+  m_Name: LootTable Item Node - Burnables (Medium & Uncommon)
+  m_EditorClassIdentifier: 
+  lootChance: 50
+  lootItems:
+  - {fileID: 11400000, guid: 7c506301f4874ab42814696051bfa646, type: 2}
+  - {fileID: 11400000, guid: 7c506301f4874ab42814696051bfa646, type: 2}
+  - {fileID: 11400000, guid: 13bb7a80bac076c41b290a3d8d6cd586, type: 2}
+  - {fileID: 11400000, guid: 13bb7a80bac076c41b290a3d8d6cd586, type: 2}
+  - {fileID: 11400000, guid: 64c0e7091a4ef8f44a3cc24834777830, type: 2}

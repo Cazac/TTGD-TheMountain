@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81c77e46d85b1b45a4a051e01367ee4, type: 3}
+  m_Name: LootTable Item Node - Snack Food (High & Common)
+  m_EditorClassIdentifier: 
+  lootChance: 80
+  lootItems:
+  - {fileID: 11400000, guid: bedc501c179085745b46258092230425, type: 2}
+  - {fileID: 11400000, guid: 42e2148209f2be642ae7c1014ff5dfbd, type: 2}
+  - {fileID: 11400000, guid: 2558fca3c2414ed46bcd14c3d3ec8a63, type: 2}
+  - {fileID: 11400000, guid: 80dfba02b0d8a574e9a88feb13c2543c, type: 2}
+  - {fileID: 11400000, guid: 5a40f1167cb6b3245839e072c84c4545, type: 2}
