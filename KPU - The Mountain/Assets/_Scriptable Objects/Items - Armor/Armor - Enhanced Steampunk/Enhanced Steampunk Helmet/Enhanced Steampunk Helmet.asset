@@ -63,7 +63,7 @@ MonoBehaviour:
   isArmorLeg: 0
   isArmorBoot: 0
   armor_Tier: 3
-  armor_Defense: 42
+  armor_Defense: 3
   armor_Speed: -2
   armor_MaxHealth: 13
   isStatRequired: 0

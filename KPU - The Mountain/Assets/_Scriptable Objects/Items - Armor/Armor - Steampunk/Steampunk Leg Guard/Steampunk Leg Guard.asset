@@ -48,6 +48,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0
@@ -55,7 +59,7 @@ MonoBehaviour:
   isArmorLeg: 1
   isArmorBoot: 0
   armor_Tier: 2
-  armor_Defense: 18
+  armor_Defense: 2
   armor_Speed: 8
   armor_MaxHealth: 5
   isStatRequired: 0
