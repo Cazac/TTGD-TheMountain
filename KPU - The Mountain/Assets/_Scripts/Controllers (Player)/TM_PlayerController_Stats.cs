@@ -384,6 +384,11 @@ public class TM_PlayerController_Stats : MonoBehaviour
             playerEquipmentStat_Defense += playerEquipmentItemSlot_Legs.ItemSlot_GetItem().armor_Defense;
         }
 
+        if (playerEquipmentItemSlot_Arms.ItemSlot_GetItem() != null)
+        {
+            playerEquipmentStat_Defense += playerEquipmentItemSlot_Arms.ItemSlot_GetItem().armor_Defense;
+        }
+
         if (playerEquipmentItemSlot_Feet.ItemSlot_GetItem() != null)
         {
             playerEquipmentStat_Defense += playerEquipmentItemSlot_Feet.ItemSlot_GetItem().armor_Defense;

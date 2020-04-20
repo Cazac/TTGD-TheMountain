@@ -28,7 +28,7 @@ public class TM_EnemyHitboxRangeCollider : MonoBehaviour
             TM_SFXController.Instance.PlayTrackSFX(TM_DatabaseController.Instance.sfx_DB.playerHurt_SFX);
 
             //GET DAMAGE HERE????
-            int damage = 15;
+            int damage = 20;
 
             //Calculate Damage Receieved
             damage = TM_PlayerController_Stats.Instance.CalculateDamageRecieved(damage);

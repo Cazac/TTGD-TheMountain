@@ -86,7 +86,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
     {
         if (hurtScreenDuration == 0)
         {
-            hurtScreenDuration = additionHurting * 2.5f;
+            hurtScreenDuration = additionHurting * 2f;
 
             //Cap Hurt Timer
             if (hurtScreenDuration > 90)
@@ -98,7 +98,7 @@ public class TM_PlayerController_Combat : MonoBehaviour
         }
         else
         {
-            hurtScreenDuration += additionHurting * 1.5f;
+            hurtScreenDuration += additionHurting * 1f;
 
             //Cap Hurt Timer
             if (hurtScreenDuration > 90)

@@ -10,6 +10,85 @@ public class TM_ItemData : MonoBehaviour
     public TM_Item_SO Logs_SO;
     public TM_Item_SO IronBar_SO;
 
+
+
+  
+
+    [Header("Resources - Materials")]
+    public TM_Item_SO AnimalHide_SO;
+    public TM_Item_SO Bones_SO;
+    public TM_Item_SO Cloth_SO;
+
+    public TM_Item_SO CreatureSkull_SO;
+    public TM_Item_SO CreatureSoul_SO;
+    public TM_Item_SO Fiber_SO;
+    public TM_Item_SO FineCloth_SO;
+
+
+    /*
+
+    public TM_Item_SO Cloth_SO;
+    Furs
+
+        Leather
+           Paper
+                Rope
+                Silk
+        Slime
+
+
+        String
+
+
+
+
+
+
+[Header("Resources - Minerals")]
+    public TM_Item_SO xxx_SO;
+    Blue Gem
+   Coal
+          Gold Bar
+        Green Gem
+               Iron
+        Iron Bar
+           Red Gem
+        Refined Stone
+               Scrap Metal
+                Silver
+
+        Steel Bar
+                Stone
+
+
+        Yellow Gem
+
+    [Header("Resources - Plants")]
+    Agaric Mushroom
+    Amanita Mushroom
+    Carnation
+    Lactarius Mushroom
+    Lepiota Mushroom
+    Lily
+        Tulip
+
+
+
+    [Header("Resources - Wood")]
+    Barrel
+    Crate
+    Hardwood Planks
+    Logs
+    Scrapwood
+                Sticks
+
+
+
+    
+
+
+    */
+
     ////////////////////////////////
 
     [Header("Items - Consumable Cooked")]
