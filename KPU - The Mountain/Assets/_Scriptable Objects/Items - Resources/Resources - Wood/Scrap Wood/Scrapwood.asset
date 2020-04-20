@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Scrapwood
   itemDesc: Scraps of wood. Pretty self explanatory. Can be burned
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d0883ee2e7469b640bc2d0b81261de8b, type: 3}
   maxDurablity: 0
   maxStackSize: 32
   isBurnable: 1

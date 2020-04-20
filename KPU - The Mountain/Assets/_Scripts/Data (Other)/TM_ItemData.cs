@@ -185,20 +185,20 @@ public class TM_ItemData : MonoBehaviour
     private void BuildDatabase_Resouces()
     {
         //Resources - Materials
-        resourceItems_List.Add(AnimalHide_SO);
+        //resourceItems_List.Add(AnimalHide_SO);
         resourceItems_List.Add(Bones_SO);
         resourceItems_List.Add(Cloth_SO);
         resourceItems_List.Add(CreatureSkull_SO);
-        resourceItems_List.Add(CreatureSkull_SO);
-        resourceItems_List.Add(Fiber_SO);
-        resourceItems_List.Add(FineCloth_SO);
-        resourceItems_List.Add(Furs_SO);
+        //resourceItems_List.Add(CreatureSoul_SO);
+        //resourceItems_List.Add(Fiber_SO);
+        //resourceItems_List.Add(FineCloth_SO);
+        //resourceItems_List.Add(Furs_SO);
         resourceItems_List.Add(Leather_SO);
-        resourceItems_List.Add(Paper_SO);
-        resourceItems_List.Add(Rope_SO);
-        resourceItems_List.Add(Silk_SO);
+        //resourceItems_List.Add(Paper_SO);
+        //resourceItems_List.Add(Rope_SO);
+        //resourceItems_List.Add(Silk_SO);
         resourceItems_List.Add(Slime_SO);
-        resourceItems_List.Add(String_SO);
+        //resourceItems_List.Add(String_SO);
 
         //Resources - Minerals
         resourceItems_List.Add(BlueGem_SO);
@@ -209,25 +209,25 @@ public class TM_ItemData : MonoBehaviour
         resourceItems_List.Add(IronBar_SO);
         resourceItems_List.Add(RedGem_SO);
         resourceItems_List.Add(RefinedStone_SO);
-        resourceItems_List.Add(ScrapMetal_SO);
+        //resourceItems_List.Add(ScrapMetal_SO);
         resourceItems_List.Add(Silver_SO);
         resourceItems_List.Add(SteelBar_SO);
         resourceItems_List.Add(Stone_SO);
         resourceItems_List.Add(YellowGem_SO);
 
         //Resources - Plants
-        resourceItems_List.Add(AgaricMushroom_SO);
-        resourceItems_List.Add(AmanitaMushroom_SO);
-        resourceItems_List.Add(Carnation_SO);
-        resourceItems_List.Add(LactariusMushroom_SO);
-        resourceItems_List.Add(LepiotaMushroom_SO);
-        resourceItems_List.Add(Lily_SO);
-        resourceItems_List.Add(Tulip_SO);
+        //resourceItems_List.Add(AgaricMushroom_SO);
+        //resourceItems_List.Add(AmanitaMushroom_SO);
+        //resourceItems_List.Add(Carnation_SO);
+        //resourceItems_List.Add(LactariusMushroom_SO);
+        //resourceItems_List.Add(LepiotaMushroom_SO);
+        //resourceItems_List.Add(Lily_SO);
+        //resourceItems_List.Add(Tulip_SO);
 
         //Resources - Wood
-        resourceItems_List.Add(Barrel_SO);
-        resourceItems_List.Add(Crate_SO);
-        resourceItems_List.Add(HardwoodPlanks_SO);
+        //resourceItems_List.Add(Barrel_SO);
+        //resourceItems_List.Add(Crate_SO);
+        //resourceItems_List.Add(HardwoodPlanks_SO);
         resourceItems_List.Add(Logs_SO);
         resourceItems_List.Add(Scrapwood_SO);
         resourceItems_List.Add(Sticks_SO);

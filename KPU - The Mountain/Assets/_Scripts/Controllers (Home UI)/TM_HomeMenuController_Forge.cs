@@ -278,6 +278,7 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
     public void ForgeMenuFixed_Setup()
     {
         ForgeMenuFixed_UpdateInputItems(null);
+        ForgeMenuFixed_UpdateOutputItems();
     }
 
     public void ForgeMenuFixed_UpdateInputItems(TM_Item_SO itemSO)
@@ -339,9 +340,6 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
 
     public void ForgeMenuFixed_UpdateOutputItems()
     {
-
-
-
         if (upgradeItemIngredient1_Slot.ItemSlot_GetItem() != null &&
             upgradeItemIngredient2_Slot.ItemSlot_GetItem() != null &&
             upgradeItemIngredient3_Slot.ItemSlot_GetItem() != null)
@@ -350,18 +348,22 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
             upgradeItemOutput_Slot.ItemSlot_SetItemFade(null);
 
 
-            TM_ItemUI upgradedItem = new TM_ItemUI(upgradeItemInput_Slot.ItemSlot_GetItem().original_SO);
+            TM_ItemUI upgradedItem = new TM_ItemUI(upgradeItemInput_Slot.ItemSlot_GetItem().original_SO.weaponUpgrade_UpgradedWeapon);
             upgradeItemOutput_Slot.ItemSlot_SetItem(upgradedItem);
         }
         else
         {
             upgradeItemOutput_Slot.ItemSlot_RemoveItem();
-            upgradeItemOutput_Slot.ItemSlot_SetItemFade(upgradeItemInput_Slot.ItemSlot_GetItem().itemIcon);
+
+            if (upgradeItemInput_Slot.ItemSlot_GetItem() != null)
+            {
+                upgradeItemOutput_Slot.ItemSlot_SetItemFade(upgradeItemInput_Slot.ItemSlot_GetItem().itemIcon);
+            }
+            else
+            {
+                upgradeItemOutput_Slot.ItemSlot_SetItemFade(TM_DatabaseController.Instance.icon_DB.forgeIcon_Question);
+            }
         }
-
-
-
-
     }
 
     public void ForgeMenuFixed_ConsumeItems()
@@ -373,6 +375,7 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
         upgradeItemInput_Slot.ItemSlot_RemoveItem();
 
         ForgeMenuFixed_UpdateInputItems(null);
+        ForgeMenuFixed_UpdateOutputItems();
     }
 
     ///////////////////////////////////////////////////////

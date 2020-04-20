@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Green Gem
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: e945a1203e11ca74cb1c5fb450b89d75, type: 3}
   maxDurablity: 0
   maxStackSize: 8
   isBurnable: 0

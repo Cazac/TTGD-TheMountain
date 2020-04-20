@@ -1011,6 +1011,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     //Set stack to Inventory
                     Action_PlaceStack();
                     TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(currentItem.original_SO);
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
                 }
                 else
                 {
@@ -1035,6 +1036,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     //Switch Stacks
                     Action_SwitchStacks();
                     TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(currentItem.original_SO);
+                    TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
                 }
                 else
                 {
@@ -1047,6 +1049,7 @@ public class TM_ItemSlot : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Pickup the stack and give to cursor
                 Action_PickupStack();
                 TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateInputItems(null);
+                TM_HomeMenuController_Forge.Instance.ForgeMenuFixed_UpdateOutputItems();
             }
         }
     }
