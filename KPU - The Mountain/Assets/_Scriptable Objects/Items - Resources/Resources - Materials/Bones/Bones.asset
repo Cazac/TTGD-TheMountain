@@ -24,7 +24,7 @@ MonoBehaviour:
   itemDesc: Skeletal substances that used to hold somebody's body together. Kind of
     gross you're touching it right now. You should give them a proper burial...or
     should I say? Cremation?
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 29215b31fa493764b84c7707a0db0158, type: 3}
   maxDurablity: 0
   maxStackSize: 64
   isBurnable: 0

@@ -23,7 +23,7 @@ MonoBehaviour:
   itemName: Coal
   itemDesc: 'A combustable black rock thingy. Careful it might stain your clothes.
     This rock really likes fire. Burn the bad boy. '
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 09fade7df26d5e747a044ad134c00eaf, type: 3}
   maxDurablity: 0
   maxStackSize: 64
   isBurnable: 1

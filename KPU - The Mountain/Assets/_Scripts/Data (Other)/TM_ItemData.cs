@@ -203,17 +203,17 @@ public class TM_ItemData : MonoBehaviour
         //Resources - Minerals
         resourceItems_List.Add(BlueGem_SO);
         resourceItems_List.Add(Coal_SO);
-        resourceItems_List.Add(GoldBar_SO);
+        //resourceItems_List.Add(GoldBar_SO);
         resourceItems_List.Add(GreenGem_SO);
         resourceItems_List.Add(Iron_SO);
         resourceItems_List.Add(IronBar_SO);
         resourceItems_List.Add(RedGem_SO);
-        resourceItems_List.Add(RefinedStone_SO);
+        //resourceItems_List.Add(RefinedStone_SO);
         //resourceItems_List.Add(ScrapMetal_SO);
         resourceItems_List.Add(Silver_SO);
-        resourceItems_List.Add(SteelBar_SO);
-        resourceItems_List.Add(Stone_SO);
-        resourceItems_List.Add(YellowGem_SO);
+        //resourceItems_List.Add(SteelBar_SO);
+        //resourceItems_List.Add(Stone_SO);
+        //resourceItems_List.Add(YellowGem_SO);
 
         //Resources - Plants
         //resourceItems_List.Add(AgaricMushroom_SO);
@@ -230,7 +230,7 @@ public class TM_ItemData : MonoBehaviour
         //resourceItems_List.Add(HardwoodPlanks_SO);
         resourceItems_List.Add(Logs_SO);
         resourceItems_List.Add(Scrapwood_SO);
-        resourceItems_List.Add(Sticks_SO);
+        //resourceItems_List.Add(Sticks_SO);
     }
 
     private void BuildDatabase_Consumables()
