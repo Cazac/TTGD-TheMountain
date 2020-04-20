@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cooked Steak
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 1133823404476950747, guid: d8b9e04bb8b3e444fb9357ed6798a167,
+    type: 3}
+  placed_Prefab: {fileID: 690120522983107973, guid: 263ec095152f87946b4f47abec4e4702,
+    type: 3}
+  held_Prefab: {fileID: 5050314945196356284, guid: 5cdeb346c6dddc04083acabecc702f75,
+    type: 3}
+  equipped_Prefab: {fileID: 5050314945196356284, guid: 5cdeb346c6dddc04083acabecc702f75,
+    type: 3}
   itemName: Cooked Steak
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 84ff9327045eb304db7e1ff43263355a, type: 3}

@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cooked Mystery Meat
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 7791071991470754045, guid: ba4ba83dbabbe8948a6ed139ba4824c3,
+    type: 3}
+  placed_Prefab: {fileID: 1639006991386718515, guid: c6431991d4239594ebf9c87d712885b3,
+    type: 3}
+  held_Prefab: {fileID: 2617433797910116857, guid: 01f3055c59975674ebcb9ad73f23bce1,
+    type: 3}
+  equipped_Prefab: {fileID: 2617433797910116857, guid: 01f3055c59975674ebcb9ad73f23bce1,
+    type: 3}
   itemName: Cooked Mystery Meat
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 8e1be5878388ea740bc727fa46593c5e, type: 3}

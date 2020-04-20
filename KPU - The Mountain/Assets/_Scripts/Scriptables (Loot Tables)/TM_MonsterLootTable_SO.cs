@@ -55,7 +55,57 @@ public class TM_MonsterLootTable_SO : ScriptableObject
                 }
             }
         }
-    
+
+
+        //Uncommon Rolls
+        for (int i = 0; i < uncommonRolls; i++)
+        {
+            //Get Random Value
+            int randomChance = Random.Range(1, 100);
+
+            //Uncommon Chance
+            if (randomChance <= uncommonChance)
+            {
+                //Get Random Loot Item
+                TM_LootItem_SO listedItem = uncommonItems[Random.Range(0, uncommonItems.Count - 1)];
+
+                //Get Item SO
+                TM_Item_SO itemSO = listedItem.lootItem;
+
+                //Loop Foreach Drop Count
+                for (int f = 0; f < Random.Range(listedItem.minDropCount, listedItem.maxDropCount); f++)
+                {
+                    //Add To List
+                    item_List.Add(itemSO);
+                }
+            }
+        }
+
+
+        //Rare Rolls
+        for (int i = 0; i < rareRolls; i++)
+        {
+            //Get Random Value
+            int randomChance = Random.Range(1, 100);
+
+            //Rare Chance
+            if (randomChance <= rareChance)
+            {
+                //Get Random Loot Item
+                TM_LootItem_SO listedItem = rareItems[Random.Range(0, rareItems.Count - 1)];
+
+                //Get Item SO
+                TM_Item_SO itemSO = listedItem.lootItem;
+
+                //Loop Foreach Drop Count
+                for (int f = 0; f < Random.Range(listedItem.minDropCount, listedItem.maxDropCount); f++)
+                {
+                    //Add To List
+                    item_List.Add(itemSO);
+                }
+            }
+        }
+
 
         //Return List
         return item_List;

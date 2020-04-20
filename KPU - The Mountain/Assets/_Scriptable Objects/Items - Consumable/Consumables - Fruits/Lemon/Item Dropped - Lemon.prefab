@@ -4910,12 +4910,12 @@ Rigidbody:
   m_GameObject: {fileID: 6387056646242192819}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 0.5
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &8520838923749703372
 MonoBehaviour:
@@ -4932,3 +4932,4 @@ MonoBehaviour:
   originalItem_SO: {fileID: 11400000, guid: 6962ff7af482a0d45996dec4cf4f1fe8, type: 2}
   currentStackSize: 1
   currentDurablity: 0
+  hasCollided: 0

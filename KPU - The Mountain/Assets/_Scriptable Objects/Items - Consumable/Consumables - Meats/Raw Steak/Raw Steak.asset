@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Raw Steak
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 7450452625736497071, guid: 23d6f2250a7b61b42a6fbcaa9df74aaf,
+    type: 3}
+  placed_Prefab: {fileID: 4347179048565451304, guid: 56045957aba3a124b9e5762d11dc03c8,
+    type: 3}
+  held_Prefab: {fileID: 5853745646192081411, guid: 5d314b08d9291914ca9a20b3ebd6ddec,
+    type: 3}
+  equipped_Prefab: {fileID: 5853745646192081411, guid: 5d314b08d9291914ca9a20b3ebd6ddec,
+    type: 3}
   itemName: Raw Steak
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: 605fe374a20bc364d851a397efbcc73a, type: 3}

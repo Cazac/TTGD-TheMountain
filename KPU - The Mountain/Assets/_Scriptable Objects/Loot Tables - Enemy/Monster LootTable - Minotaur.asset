@@ -13,16 +13,20 @@ MonoBehaviour:
   m_Name: Monster LootTable - Minotaur
   m_EditorClassIdentifier: 
   commonChance: 100
-  commonRolls: 3
+  commonRolls: 2
   commonItems:
-  - {fileID: 11400000, guid: 0dc7260eacc9b554aa774cd3594925f9, type: 2}
   - {fileID: 11400000, guid: 30306b217b9d7e948808d48c82e9e27a, type: 2}
-  - {fileID: 11400000, guid: 01b12ab36f8d6dc4ba1cb2d84e658c94, type: 2}
-  - {fileID: 11400000, guid: 34e0647597fb3934c93972464ef61329, type: 2}
   - {fileID: 11400000, guid: c7f0760227bb31748b9bf5382a1077ae, type: 2}
-  uncommonChance: 0
-  uncommonRolls: 0
-  uncommonItems: []
-  rareChance: 0
-  rareRolls: 0
-  rareItems: []
+  uncommonChance: 50
+  uncommonRolls: 2
+  uncommonItems:
+  - {fileID: 11400000, guid: c7f0760227bb31748b9bf5382a1077ae, type: 2}
+  - {fileID: 11400000, guid: 34e0647597fb3934c93972464ef61329, type: 2}
+  - {fileID: 11400000, guid: 01b12ab36f8d6dc4ba1cb2d84e658c94, type: 2}
+  rareChance: 5
+  rareRolls: 1
+  rareItems:
+  - {fileID: 11400000, guid: 8ae9b25672e05354a9eb40c630cb6da2, type: 2}
+  - {fileID: 11400000, guid: a81da8e536b3ba0449f6be20fd31a642, type: 2}
+  - {fileID: 11400000, guid: feb373b23c0f8c642868cc25359e515a, type: 2}
+  - {fileID: 11400000, guid: 802e90575f3fd834ea848e8577c1e7a3, type: 2}

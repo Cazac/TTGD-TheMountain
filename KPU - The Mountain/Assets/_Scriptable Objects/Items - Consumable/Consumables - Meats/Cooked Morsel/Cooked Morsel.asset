@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7d814a172ea14cb74b229cd1095f1, type: 3}
   m_Name: Cooked Morsel
   m_EditorClassIdentifier: 
-  dropped_Prefab: {fileID: 0}
-  placed_Prefab: {fileID: 0}
-  held_Prefab: {fileID: 0}
-  equipped_Prefab: {fileID: 0}
+  dropped_Prefab: {fileID: 9057436195134852985, guid: 56cece8606b79d74284586a3d44845a0,
+    type: 3}
+  placed_Prefab: {fileID: 7019745757876525611, guid: 9b41293c61e74a743b7bf90cbfee911f,
+    type: 3}
+  held_Prefab: {fileID: 1483720424649829000, guid: 4ef4f46534ebf8749b90a727f723e2e1,
+    type: 3}
+  equipped_Prefab: {fileID: 1483720424649829000, guid: 4ef4f46534ebf8749b90a727f723e2e1,
+    type: 3}
   itemName: Cooked Morsel
   itemDesc: 
   itemIcon: {fileID: 21300000, guid: b325e4b3172c5204e98d8065f98205e8, type: 3}

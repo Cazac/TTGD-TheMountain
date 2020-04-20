@@ -31,7 +31,9 @@ public class TM_SaveController : MonoBehaviour
     public ES3File settingsSaveFile;
     public ES3File unlocksSaveFile;
     public ES3File morgueSaveFile;
-  
+
+
+
     /////////////////////////////////////////////////////////////////
 
     private void Awake()
@@ -242,14 +244,14 @@ public class TM_SaveController : MonoBehaviour
 
         if (settingsSaveFile.KeyExists("SettingsSaveData"))
         {
-            //print("Test Code: ...Settings Found, Loading!");
+            print("Test Code: ...Settings Found, Loading!");
 
             //Load Settings From File
             currentSettingsData = settingsSaveFile.Load<TM_SettingsSaveData>("SettingsSaveData");
         }
         else
         {
-            //print("Test Code: Settings NOT FOUND, Creating!");
+            print("Test Code: Settings NOT FOUND, Creating!");
 
             //Create New defualt Settings
             currentSettingsData = SettingsData_CreateDefault();
