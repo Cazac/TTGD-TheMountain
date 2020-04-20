@@ -30,7 +30,7 @@ MonoBehaviour:
   burn_FireEffect: 0
   isConsumable: 1
   consumable_Category: Fruit
-  consumable_Hunger: 5
+  consumable_Hunger: 4
   consumable_Health: 2
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
@@ -52,6 +52,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

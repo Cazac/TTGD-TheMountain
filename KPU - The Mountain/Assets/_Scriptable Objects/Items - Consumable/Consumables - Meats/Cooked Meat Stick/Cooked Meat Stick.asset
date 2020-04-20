@@ -30,7 +30,7 @@ MonoBehaviour:
   burn_FireEffect: 0
   isConsumable: 1
   consumable_Category: Meat
-  consumable_Hunger: 10
+  consumable_Hunger: 8
   consumable_Health: 5
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0

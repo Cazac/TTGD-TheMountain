@@ -30,7 +30,7 @@ MonoBehaviour:
   burn_FireEffect: 0
   isConsumable: 1
   consumable_Category: Fruit
-  consumable_Hunger: 5
+  consumable_Hunger: 4
   consumable_Health: 0
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
