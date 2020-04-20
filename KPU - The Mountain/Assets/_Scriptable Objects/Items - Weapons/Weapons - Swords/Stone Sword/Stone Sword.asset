@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   itemName: Stone Sword
   itemDesc: A basic tool, but could be refined.
-  itemIcon: {fileID: 21300000, guid: 26ccd8f39985fcb459908cf2ba2e6cc3, type: 3}
+  itemIcon: {fileID: 21300000, guid: db82d2394959380488fcd3503accc1db, type: 3}
   maxDurablity: 0
   maxStackSize: 0
   isBurnable: 0
