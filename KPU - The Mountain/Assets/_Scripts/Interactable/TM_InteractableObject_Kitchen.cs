@@ -20,7 +20,15 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
 
     ////////////////////////////////
 
+    [Header("Outline Tool")]
     public TOOL_Outline outlineTool;
+
+    [Header("Fixed Status")]
+    public bool isFixed;
+
+    [Header("States")]
+    public GameObject kitchen_Broken;
+    public GameObject kitchen_Fixed;
 
     ///////////////////////////////////////////////////////
 
@@ -57,7 +65,7 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
         else
         {
             //Open UI
-            TM_HomeMenuController_Canteen.Instance.CanteenMenu_OpenUI();
+            TM_HomeMenuController_Canteen.Instance.CanteenMenu_OpenUI(this);
         }
     }
 
@@ -73,6 +81,26 @@ public class TM_InteractableObject_Kitchen : MonoBehaviour, TM_InteractableObjec
     {
         //Does Not Support Hold Interaction
         return;
+    }
+
+    ///////////////////////////////////////////////////////
+
+    public void BreakStructureCanteen()
+    {
+        isFixed = false;
+
+        //Turn On Visable GO
+        kitchen_Fixed.SetActive(false);
+        kitchen_Broken.SetActive(true);
+    }
+
+    public void RepairStructureCanteen()
+    {
+        isFixed = true;
+
+        //Turn On Visable GO
+        kitchen_Fixed.SetActive(true);
+        kitchen_Broken.SetActive(false);
     }
 
     ///////////////////////////////////////////////////////

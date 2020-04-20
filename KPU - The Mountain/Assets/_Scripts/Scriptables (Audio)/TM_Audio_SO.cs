@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+///////////////
+/// <summary>
+///     
+/// TM_Audio_SO creates the Scriptable Objects for audio files used in both SFX and Music.
+/// 
+/// </summary>
+///////////////
+
 [CreateAssetMenu(fileName = "Audio", menuName = "Scriptables/New Audio")]
 public class TM_Audio_SO : ScriptableObject
 {

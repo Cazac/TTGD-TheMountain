@@ -172,14 +172,14 @@ public class TM_ItemData : MonoBehaviour
         //Consumable Meats
         consumableItems_List.Add(CookedMeat_SO);
         consumableItems_List.Add(CookedMeatStick_SO);
-        //consumableItems_List.Add(CookedMorsel_SO);
-        //consumableItems_List.Add(CookedMysteryMeat_SO);
-        //consumableItems_List.Add(CookedSteak_SO);
-        //consumableItems_List.Add(RawMeat_SO);
-        //consumableItems_List.Add(RawMeatStick_SO);
-        //consumableItems_List.Add(RawMorsel_SO);
-        //consumableItems_List.Add(RawMysteryMeat_SO);
-        //consumableItems_List.Add(RawSteak_SO);
+        consumableItems_List.Add(CookedMorsel_SO);
+        consumableItems_List.Add(CookedMysteryMeat_SO);
+        consumableItems_List.Add(CookedSteak_SO);
+        consumableItems_List.Add(RawMeat_SO);
+        consumableItems_List.Add(RawMeatStick_SO);
+        consumableItems_List.Add(RawMorsel_SO);
+        consumableItems_List.Add(RawMysteryMeat_SO);
+        consumableItems_List.Add(RawSteak_SO);
 
         //Consumable Cooked
         consumableItems_List.Add(Bread_SO);
@@ -202,8 +202,7 @@ public class TM_ItemData : MonoBehaviour
         weaponsItems_List.Add(SilverMace_SO);
         weaponsItems_List.Add(SteelMace_SO);
         weaponsItems_List.Add(StoneMace_SO);
-
-
+        
         //Weapons Staff
         weaponsItems_List.Add(CedarStaff_SO);
         weaponsItems_List.Add(CobaltStaff_SO);
@@ -211,7 +210,6 @@ public class TM_ItemData : MonoBehaviour
         weaponsItems_List.Add(HackberryStaff_SO);
         weaponsItems_List.Add(RubyStaff_SO);
 
-        /*
         //Weapons Sword
         weaponsItems_List.Add(DwarvenSword_SO);
         weaponsItems_List.Add(IronScimitar_SO);
@@ -232,7 +230,6 @@ public class TM_ItemData : MonoBehaviour
         weaponsItems_List.Add(EmeraldWand_SO);
         weaponsItems_List.Add(HackberryWand_SO);
         weaponsItems_List.Add(RubyWand_SO);
-        */
     }
 
     private void BuildDatabase_Armor()

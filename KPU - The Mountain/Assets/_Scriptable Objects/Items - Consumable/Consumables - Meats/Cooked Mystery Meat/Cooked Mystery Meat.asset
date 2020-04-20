@@ -18,7 +18,7 @@ MonoBehaviour:
   equipped_Prefab: {fileID: 0}
   itemName: Cooked Mystery Meat
   itemDesc: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 8e1be5878388ea740bc727fa46593c5e, type: 3}
   maxDurablity: 0
   maxStackSize: 3
   isBurnable: 0
@@ -48,6 +48,10 @@ MonoBehaviour:
   weapon_BlockSpeed: 0
   weapon_BlockNegation: 0
   weapon_BlockParryTime: 0
+  weaponUpgrade_Mat1: {fileID: 0}
+  weaponUpgrade_Mat2: {fileID: 0}
+  weaponUpgrade_Mat3: {fileID: 0}
+  weaponUpgrade_UpgradedWeapon: {fileID: 0}
   isArmorHead: 0
   isArmorChest: 0
   isArmorArm: 0

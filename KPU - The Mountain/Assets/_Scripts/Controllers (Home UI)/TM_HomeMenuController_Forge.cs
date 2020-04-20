@@ -24,25 +24,27 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("Conainters")]
+    [Header("UI Conainters")]
     public GameObject forgeFixed_Container;
     public GameObject forgeRepair_Container;
 
     ////////////////////////////////
 
-    [Header("Checks / Crosses")]
+    [Header("UI Repair - Checks / Crosses")]
     public GameObject forgeRepair_LogStatus_Check;
     public GameObject forgeRepair_LogStatus_Cross;
     public GameObject forgeRepair_IronStatus_Check;
     public GameObject forgeRepair_IronStatus_Cross;
 
-    [Header("Repair Text")]
+    [Header("UI Repair - Repair Text")]
     public TextMeshProUGUI forgeRepair_CurrentLogs_Text;
     public TextMeshProUGUI forgeRepair_CurrentIronBars_Text;
 
+    [Header("UI Repair - Button")]
+    public Button forgeRepair_Button;
+
     ////////////////////////////////
 
-    public Button forgeRepair_Button;
 
     ////////////////////////////////
 
@@ -63,7 +65,7 @@ public class TM_HomeMenuController_Forge : MonoBehaviour
 
     ////////////////////////////////
 
-    [Header("Forge")]
+    [Header("Current Forge")]
     private TM_InteractableObject_Forge currentlyOpenForge;
 
     ///////////////////////////////////////////////////////
