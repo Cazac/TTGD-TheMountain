@@ -198,7 +198,7 @@ public class TM_HomeMenuController_Dispenser : MonoBehaviour
         int counter = 0;
 
         //Loop All Basic Items
-        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.basicItems_List)
+        foreach (TM_Item_SO itemSO in TM_DatabaseController.Instance.item_DB.resourceItems_List)
         {
             if (counter >= 100)
             {

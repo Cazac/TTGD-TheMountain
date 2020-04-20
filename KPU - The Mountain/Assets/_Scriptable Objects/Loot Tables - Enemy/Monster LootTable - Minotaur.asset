@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Monster LootTable - Minotaur
   m_EditorClassIdentifier: 
   commonChance: 100
-  commonRolls: 2
+  commonRolls: 3
   commonItems:
   - {fileID: 11400000, guid: 0dc7260eacc9b554aa774cd3594925f9, type: 2}
   - {fileID: 11400000, guid: 30306b217b9d7e948808d48c82e9e27a, type: 2}
+  - {fileID: 11400000, guid: 01b12ab36f8d6dc4ba1cb2d84e658c94, type: 2}
+  - {fileID: 11400000, guid: 34e0647597fb3934c93972464ef61329, type: 2}
+  - {fileID: 11400000, guid: c7f0760227bb31748b9bf5382a1077ae, type: 2}
   uncommonChance: 0
   uncommonRolls: 0
   uncommonItems: []

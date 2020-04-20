@@ -43,15 +43,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 040e574b1312c414794701f148484ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Logs_SO: {fileID: 11400000, guid: 64c0e7091a4ef8f44a3cc24834777830, type: 2}
+  AnimalHide_SO: {fileID: 11400000, guid: 965781fe35e3725458d8e5078763e6d9, type: 2}
+  Bones_SO: {fileID: 11400000, guid: d129788a36e50f640ad19e0f9bdbb280, type: 2}
+  Cloth_SO: {fileID: 11400000, guid: 81f72c3b23101cb41a1baf3fabf07b01, type: 2}
+  CreatureSkull_SO: {fileID: 11400000, guid: aec68c544ac58ef46b491a2c6f0af810, type: 2}
+  CreatureSoul_SO: {fileID: 11400000, guid: 26154aea5ee1476449c9745f61187436, type: 2}
+  Fiber_SO: {fileID: 11400000, guid: d467a6459e66ecc4db662a6a3813b835, type: 2}
+  FineCloth_SO: {fileID: 11400000, guid: c739ea04aa83a614bb24f87aa873f5a4, type: 2}
+  Furs_SO: {fileID: 11400000, guid: df8051b3ca9db22458d7eee2219ea239, type: 2}
+  Leather_SO: {fileID: 11400000, guid: 7fd85fd8d7784fb4b9fd9de9e2c70a3e, type: 2}
+  Paper_SO: {fileID: 11400000, guid: 9c182e61e85a0504eb9c8753b9f402b9, type: 2}
+  Rope_SO: {fileID: 11400000, guid: e2161e3a3f14fcf4e9d0cdab419d7c9a, type: 2}
+  Silk_SO: {fileID: 11400000, guid: 6dd67632a4bdd03489dd62450bc07bf0, type: 2}
+  Slime_SO: {fileID: 11400000, guid: e145b8a47f376974c9ce50cc5aabc0e3, type: 2}
+  String_SO: {fileID: 11400000, guid: 71e4b2ab312a97c48bf3d5a5638e0b97, type: 2}
+  BlueGem_SO: {fileID: 11400000, guid: 57adff06224cd8f46b2fde564937850b, type: 2}
+  Coal_SO: {fileID: 11400000, guid: 7c506301f4874ab42814696051bfa646, type: 2}
+  GoldBar_SO: {fileID: 11400000, guid: 1852120f94d07da429bb6fedf316293a, type: 2}
+  GreenGem_SO: {fileID: 11400000, guid: 88d459acce920da4a82a61d823615625, type: 2}
+  Iron_SO: {fileID: 11400000, guid: f3c03cc2e08d45042966c73cb3671a1a, type: 2}
   IronBar_SO: {fileID: 11400000, guid: d591a7a04da991947ae0a96d4f36956b, type: 2}
-  AnimalHide_SO: {fileID: 0}
-  Bones_SO: {fileID: 0}
-  Cloth_SO: {fileID: 0}
-  CreatureSkull_SO: {fileID: 0}
-  CreatureSoul_SO: {fileID: 0}
-  Fiber_SO: {fileID: 0}
-  FineCloth_SO: {fileID: 0}
+  RedGem_SO: {fileID: 11400000, guid: ece332be84f5ccd44863dc2af50aaba2, type: 2}
+  RefinedStone_SO: {fileID: 11400000, guid: ece332be84f5ccd44863dc2af50aaba2, type: 2}
+  ScrapMetal_SO: {fileID: 11400000, guid: 3690533e5d7d61f4b94333d955c9b198, type: 2}
+  Silver_SO: {fileID: 11400000, guid: 5f31a151613fb6f4b9204ae2d3516836, type: 2}
+  SteelBar_SO: {fileID: 11400000, guid: 46c8d09ac9d09284c83cb8d76c016cd7, type: 2}
+  Stone_SO: {fileID: 11400000, guid: ee589e14cf2d3b746a9a9d96819d95b5, type: 2}
+  YellowGem_SO: {fileID: 11400000, guid: 6f1077ccb7a41f54dbad9ec540deab5c, type: 2}
+  AgaricMushroom_SO: {fileID: 11400000, guid: b68348b003fc0194390a708f82b51b32, type: 2}
+  AmanitaMushroom_SO: {fileID: 11400000, guid: 78462cc2b48c39a4a86806d3a738a8f0, type: 2}
+  Carnation_SO: {fileID: 11400000, guid: 8f0695550527ebc44b2b4f2b29967505, type: 2}
+  LactariusMushroom_SO: {fileID: 11400000, guid: b67d477d0de52b8418958ad5ae55736b,
+    type: 2}
+  LepiotaMushroom_SO: {fileID: 11400000, guid: 80f6bcad34a22844db2dbcf7a4b2157b, type: 2}
+  Lily_SO: {fileID: 11400000, guid: bf0a3de4b02153e4ba4af0255e3ee19c, type: 2}
+  Tulip_SO: {fileID: 11400000, guid: c1aad1c85ce8aea4aae898203d347f03, type: 2}
+  Barrel_SO: {fileID: 11400000, guid: 7a56d4ed710d9c4499052ed4a1e4393d, type: 2}
+  Crate_SO: {fileID: 11400000, guid: bb061cf714e48ce48adf762b6d449a85, type: 2}
+  HardwoodPlanks_SO: {fileID: 11400000, guid: 539de83d0da713c42991a25223a79aa3, type: 2}
+  Logs_SO: {fileID: 11400000, guid: 64c0e7091a4ef8f44a3cc24834777830, type: 2}
+  Scrapwood_SO: {fileID: 11400000, guid: 13bb7a80bac076c41b290a3d8d6cd586, type: 2}
+  Sticks_SO: {fileID: 11400000, guid: 2f6ab80e0eeafc34eadb57be9fb1fda0, type: 2}
   Bread_SO: {fileID: 11400000, guid: 486cf54b3c8bb0e4f8bded60eb605873, type: 2}
   Hamburger_SO: {fileID: 11400000, guid: 043fd85a16e025b4caf11ca9b3e4728c, type: 2}
   Sandwich_SO: {fileID: 11400000, guid: d260891d072189149aff2160b49b5175, type: 2}
