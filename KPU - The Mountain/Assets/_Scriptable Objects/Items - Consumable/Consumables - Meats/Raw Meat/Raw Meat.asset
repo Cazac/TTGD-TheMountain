@@ -29,9 +29,9 @@ MonoBehaviour:
   burn_FireValue: 0
   burn_FireEffect: 0
   isConsumable: 1
-  consumable_Category: 30
-  consumable_Hunger: 20
-  consumable_Health: 0
+  consumable_Category: Meat
+  consumable_Hunger: 23
+  consumable_Health: 20
   consumable_Stamina: 0
   consumable_DamageBuffValue: 0
   consumable_DamageBuffDuration: 0

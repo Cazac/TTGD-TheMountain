@@ -42,8 +42,8 @@ MonoBehaviour:
   consumable_StaminaBuffValue: 0
   consumable_StaminaBuffDuration: 0
   isWeapon: 1
-  weapon_Tier: 1
-  weapon_Damage: 15
+  weapon_Tier: 2
+  weapon_Damage: 47
   weapon_Range: 2.5
   weapon_Speed: 0.6
   weapon_Knockback: 9
