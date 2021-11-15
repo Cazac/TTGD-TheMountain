@@ -1,2 +1,2 @@
 # KPU-The_Mountain
- KPU integrations project.
+A KPU integrations project in developing a survival game using the Unity Engine.
